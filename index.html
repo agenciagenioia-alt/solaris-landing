@@ -852,88 +852,51 @@
       letter-spacing: -0.03em;
     }
 
-    .comparison-board {
+    .why-metrics {
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255, 107, 0, 0.16), rgba(255, 184, 0, 0.06) 35%, rgba(10, 10, 10, 0.92) 68%),
+        #0A0A0A;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 22px;
+      padding: clamp(1rem, 3vw, 1.6rem);
+    }
+
+    .why-metrics-grid {
       display: grid;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .why-metric {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(255, 255, 255, 0.02);
-    }
-
-    .comparison-header,
-    .comparison-row {
+      padding: 1rem;
+      min-height: 220px;
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      align-items: stretch;
+      align-content: center;
+      gap: 0.5rem;
     }
 
-    .comparison-header {
-      font-weight: 700;
+    .why-metric-label {
+      font-size: 0.85rem;
+      color: #c5c5c5;
       letter-spacing: 0.01em;
     }
 
-    .comparison-header div,
-    .comparison-row div {
-      padding: 1rem 1.1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .why-metric-context {
+      margin: 0;
+      color: rgba(255, 184, 0, 0.66);
+      font-size: 0.82rem;
+      line-height: 1.5;
     }
 
-    .comparison-row:last-child div {
-      border-bottom: 0;
-    }
-
-    .comparison-label {
-      font-weight: 700;
-      color: #ededed;
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .without-col {
-      background: rgba(255, 60, 60, 0.08);
-      color: #dfa7a7;
-    }
-
-    .with-col {
-      background: rgba(255, 107, 0, 0.09);
-      border-left: 1px solid rgba(255, 184, 0, 0.24);
-      border-right: 1px solid rgba(255, 184, 0, 0.24);
-      color: #f6e3cc;
-    }
-
-    .comparison-header .without-col {
-      color: #f3bab9;
-      font-size: 1.02rem;
-    }
-
-    .comparison-header .with-col {
-      font-size: 1.02rem;
-      text-shadow: 0 0 22px rgba(255, 184, 0, 0.18);
-      box-shadow: inset 0 0 0 1px rgba(255, 107, 0, 0.3);
-    }
-
-    .comparison-icon {
-      display: inline-flex;
-      width: 22px;
-      height: 22px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      margin-right: 0.5rem;
-      font-size: 0.78rem;
+    .why-metrics-claim {
+      margin: 1.2rem 0 0;
+      text-align: center;
       font-weight: 800;
-      vertical-align: middle;
-    }
-
-    .comparison-icon.x {
-      color: #f09292;
-      background: rgba(255, 70, 70, 0.16);
-      border: 1px solid rgba(255, 70, 70, 0.35);
-    }
-
-    .comparison-icon.ok {
-      color: #130a06;
-      background: linear-gradient(135deg, #FF6B00, #FFB800);
-      border: 1px solid rgba(255, 184, 0, 0.5);
+      letter-spacing: 0.01em;
+      font-size: clamp(1rem, 2.4vw, 1.28rem);
     }
 
     .services-tabs {
@@ -1374,160 +1337,226 @@
       font-weight: 800;
     }
 
-    .pricing-v2 {
+    .pricing-impact {
       display: grid;
-      gap: 1.4rem;
+      gap: 1.2rem;
     }
 
-    .pricing-v2 .pricing-intro {
+    .pricing-impact .pricing-intro {
       max-width: 760px;
     }
 
-    .scarcity-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.55rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 107, 0, 0.4);
-      background: rgba(255, 107, 0, 0.12);
-      color: #ffd7c0;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .pricing-group {
-      display: grid;
-      gap: 1rem;
-      padding-top: 0.35rem;
-    }
-
-    .pricing-group-title {
-      font-size: clamp(1.15rem, 2.4vw, 1.45rem);
-      margin: 0;
-    }
-
-    .pricing-divider {
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255, 107, 0, 0.5), rgba(255, 184, 0, 0.22), rgba(255, 60, 172, 0.45));
-      opacity: 0.7;
-      border-radius: 999px;
-      margin: 0.1rem 0 0.2rem;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .monthly-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      max-width: 980px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .entry-card {
-      border-radius: 16px;
-      background: rgba(255, 107, 0, 0.03);
-      border: 1px solid rgba(255, 184, 0, 0.15);
-      backdrop-filter: blur(18px) saturate(1.1);
-      -webkit-backdrop-filter: blur(18px) saturate(1.1);
-      padding: 1.1rem;
+    .pricing-filter-nav {
       display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      min-height: 285px;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .pricing-filter-btn {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.03);
+      color: #f0f0f0;
+      border-radius: 999px;
+      padding: 0.62rem 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+    }
+
+    .pricing-filter-btn.active {
+      border-color: rgba(255, 184, 0, 0.45);
+      background: linear-gradient(120deg, rgba(255, 107, 0, 0.34), rgba(255, 184, 0, 0.26));
+      box-shadow: 0 10px 26px rgba(255, 107, 0, 0.16);
+    }
+
+    .pricing-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .pricing-card {
+      grid-column: span 4;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-left: 3px solid var(--tier-color, #FF6B00);
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1rem 1rem 1.05rem;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      min-height: 320px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
     }
 
-    .entry-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(255, 107, 0, 0.4);
-      box-shadow: 0 20px 60px rgba(255, 107, 0, 0.15);
+    .pricing-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .entry-badge {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      padding: 0.3rem 0.62rem;
-      border: 1px solid rgba(255, 184, 0, 0.35);
-      background: rgba(255, 184, 0, 0.12);
-      color: #ffd68d;
-      font-size: 0.78rem;
-      font-weight: 700;
-      width: fit-content;
+    .pricing-card.tier-presence { --tier-color: #FF6B00; }
+    .pricing-card.tier-monthly { --tier-color: #FFB800; }
+    .pricing-card.tier-enterprise { --tier-color: #FF3CAC; }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 44px color-mix(in srgb, var(--tier-color) 30%, transparent);
     }
 
-    .entry-price {
-      font-size: clamp(1.28rem, 2.5vw, 1.9rem);
-      font-weight: 800;
+    .pricing-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding-right: 6.4rem;
+    }
+
+    .pricing-card h3 {
       margin: 0;
-      line-height: 1.1;
     }
 
-    .entry-card p {
-      margin: 0;
-      color: #d8d8d8;
-      flex: 1;
-    }
-
-    .entry-card .btn {
-      width: fit-content;
-    }
-
-    .monthly-grid .entry-card.featured {
-      min-height: 330px;
-      border-color: rgba(255, 107, 0, 0.45);
-      box-shadow: 0 16px 42px rgba(255, 107, 0, 0.2);
-    }
-
-    .monthly-grid .entry-card.featured::before {
-      content: "";
+    .pricing-badge {
       position: absolute;
-      inset: -1px;
-      border-radius: 17px;
-      background: linear-gradient(135deg, rgba(255, 107, 0, 0.65), rgba(255, 184, 0, 0.55), rgba(255, 60, 172, 0.55));
-      z-index: -1;
+      top: 0.8rem;
+      right: 0.8rem;
+      border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--tier-color) 65%, white 20%);
+      background: color-mix(in srgb, var(--tier-color) 20%, transparent);
+      color: #ffe5c8;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.28rem 0.54rem;
+      white-space: nowrap;
     }
 
-    .enterprise-card {
-      background: linear-gradient(135deg, rgba(255, 107, 0, 0.95), rgba(255, 60, 172, 0.95));
-      border-radius: 20px;
-      padding: clamp(1.2rem, 3vw, 2rem);
-      box-shadow: 0 22px 48px rgba(255, 107, 0, 0.22);
-      color: #130b08;
+    .pricing-amount {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin: 0.2rem 0 0;
+      background: linear-gradient(120deg, #FF6B00, #FFB800);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .pricing-includes {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.45rem;
+      flex: 1;
+      color: #d9d9d9;
+    }
+
+    .pricing-includes li {
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .pricing-includes li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #FF9A1F;
+      font-weight: 800;
+    }
+
+    .pricing-cta {
+      width: fit-content;
+      border-radius: 10px;
+      border: 0;
+      color: #100a06;
+      font-weight: 800;
+      padding: 0.74rem 0.95rem;
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), filter 0.25s var(--ease-out);
+    }
+
+    .tier-presence .pricing-cta {
+      background: #FF6B00;
+      color: #1a0f08;
+      box-shadow: 0 12px 28px rgba(255, 107, 0, 0.25);
+    }
+
+    .tier-monthly .pricing-cta {
+      background: #FFB800;
+      color: #1a1205;
+      box-shadow: 0 12px 28px rgba(255, 184, 0, 0.22);
+    }
+
+    .tier-enterprise .pricing-cta {
+      background: #FF3CAC;
+      color: #250817;
+      box-shadow: 0 12px 30px rgba(255, 60, 172, 0.28);
+    }
+
+    .pricing-cta:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .pricing-card.enterprise-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(110deg, rgba(255, 107, 0, 0.95), rgba(255, 60, 172, 0.92));
+      border-color: rgba(255, 184, 0, 0.35);
+      border-left-color: #FF3CAC;
+      color: #180b12;
+      min-height: 0;
+    }
+
+    .enterprise-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.55rem;
     }
 
     .enterprise-card h3,
     .enterprise-card p,
     .enterprise-card li {
-      color: #170d09;
+      color: #1a0d15;
     }
 
-    .enterprise-card .entry-price {
-      color: #130a07;
-      margin-bottom: 0.5rem;
+    .enterprise-amount {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1;
+      color: #1a0d15;
+      margin: 0;
     }
 
-    .enterprise-list {
-      margin: 0.6rem 0 1rem;
-      padding-left: 1rem;
+    .enterprise-agents {
+      font-size: clamp(1.2rem, 3.2vw, 1.7rem);
+      font-weight: 800;
+      margin: 0 0 0.3rem;
+    }
+
+    .enterprise-modules {
       display: grid;
-      gap: 0.3rem;
-      font-weight: 600;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      margin: 0.6rem 0 0.95rem;
     }
 
-    .enterprise-card .btn {
-      background: #0A0A0A;
-      color: #f5f5f5;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    .enterprise-modules span {
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 12px;
+      padding: 0.55rem 0.65rem;
+      font-weight: 700;
+      text-align: center;
     }
 
     .guarantee-box {
@@ -1537,7 +1566,30 @@
       padding: 1rem 1.1rem;
       color: #f0d9a5;
       line-height: 1.7;
-      font-weight: 600;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .guarantee-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(110deg, transparent 0%, rgba(255, 184, 0, 0.05) 35%, rgba(255, 184, 0, 0.6) 50%, rgba(255, 184, 0, 0.05) 65%, transparent 100%);
+      background-size: 220% 100%;
+      animation: shimmerBorder 3s linear infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: -1;
+    }
+
+    @keyframes shimmerBorder {
+      from { background-position: 0% 0%; }
+      to { background-position: 200% 0%; }
     }
 
     .faq-list {
@@ -1703,7 +1755,11 @@
         grid-template-columns: 1fr;
       }
 
-      .service-grid {
+      .pricing-card {
+        grid-column: span 6;
+      }
+
+      .enterprise-modules {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -1780,13 +1836,30 @@
         justify-content: flex-start;
       }
 
-      .service-grid,
-      .monthly-grid {
-        grid-template-columns: 1fr;
+      .pricing-filter-nav {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.35rem;
       }
 
-      .monthly-grid .entry-card.featured {
-        min-height: 285px;
+      .pricing-filter-btn {
+        white-space: nowrap;
+      }
+
+      .pricing-card {
+        grid-column: 1 / -1;
+      }
+
+      .pricing-amount {
+        font-size: clamp(2.2rem, 10vw, 3.3rem);
+      }
+
+      .pricing-card.enterprise-card {
+        background: linear-gradient(180deg, rgba(255, 107, 0, 0.95), rgba(255, 60, 172, 0.92));
+      }
+
+      .enterprise-modules {
+        grid-template-columns: 1fr;
       }
 
       .industries-scroll {
@@ -1829,16 +1902,12 @@
         font-size: 0.75rem;
       }
 
-      .comparison-header {
-        display: none;
-      }
-
-      .comparison-row {
+      .why-metrics-grid {
         grid-template-columns: 1fr;
       }
 
-      .comparison-row .comparison-label {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      .why-metric {
+        min-height: 0;
       }
 
       .tab-panel,
@@ -2047,39 +2116,39 @@
     <section class="section" aria-labelledby="why-solaris">
       <div class="container">
         <div class="section-tag reveal">Por qué SOLARIS</div>
-        <h2 id="why-solaris" class="reveal">La diferencia se ve en cada frente de tu negocio.</h2>
-        <p class="reveal">Compara tu operacion sin sistema vs. con una maquina de crecimiento impulsada por IA.</p>
-        <div class="comparison-board reveal" style="margin-top:1rem;">
-          <div class="comparison-header">
-            <div class="comparison-label">Area</div>
-            <div class="without-col">Sin SOLARIS</div>
-            <div class="with-col"><span class="gradient-text">Con SOLARIS</span></div>
+        <h2 id="why-solaris" class="reveal">Resultados mas claros. Mas rapido. Con menos friccion.</h2>
+        <div class="why-metrics reveal" style="margin-top:1rem;">
+          <div class="why-metrics-grid">
+            <article class="why-metric reveal delay-1">
+              <div class="metric-big gradient-text">
+                <span data-count="4.2" data-decimals="1" data-suffix="x">4.2x</span>
+              </div>
+              <div class="why-metric-label">ROI promedio de nuestros clientes</div>
+              <p class="why-metric-context">Campanas optimizadas por IA para rentabilidad sostenida.</p>
+            </article>
+            <article class="why-metric reveal delay-2">
+              <div class="metric-big gradient-text">
+                <span data-count="30" data-suffix=" días">30 días</span>
+              </div>
+              <div class="why-metric-label">De contrato firmado a primeros resultados</div>
+              <p class="why-metric-context">Implementacion rapida con foco en impacto comercial real.</p>
+            </article>
+            <article class="why-metric reveal delay-3">
+              <div class="metric-big gradient-text">
+                <span data-count="0">0</span>
+              </div>
+              <div class="why-metric-label">Leads perdidos con nuestro sistema de automatizacion</div>
+              <p class="why-metric-context">Bots y seguimientos activos 24/7 en cada punto de contacto.</p>
+            </article>
+            <article class="why-metric reveal delay-4">
+              <div class="metric-big gradient-text">
+                <span data-count="100" data-suffix="%">100%</span>
+              </div>
+              <div class="why-metric-label">De clientes con resultados medibles en el primer mes</div>
+              <p class="why-metric-context">Dashboards en vivo para decidir con datos, no con intuicion.</p>
+            </article>
           </div>
-          <div class="comparison-row">
-            <div class="comparison-label">Publicidad</div>
-            <div class="without-col"><span class="comparison-icon x">X</span>Gastas sin saber que funciona</div>
-            <div class="with-col"><span class="comparison-icon ok">✓</span>Cada peso optimizado con IA</div>
-          </div>
-          <div class="comparison-row">
-            <div class="comparison-label">Clientes</div>
-            <div class="without-col"><span class="comparison-icon x">X</span>Pierdes leads por WhatsApp</div>
-            <div class="with-col"><span class="comparison-icon ok">✓</span>Bot atiende 24/7, cero leads perdidos</div>
-          </div>
-          <div class="comparison-row">
-            <div class="comparison-label">Contenido</div>
-            <div class="without-col"><span class="comparison-icon x">X</span>Publicas sin estrategia</div>
-            <div class="with-col"><span class="comparison-icon ok">✓</span>Contenido que convierte con IA</div>
-          </div>
-          <div class="comparison-row">
-            <div class="comparison-label">Datos</div>
-            <div class="without-col"><span class="comparison-icon x">X</span>No sabes que genera dinero</div>
-            <div class="with-col"><span class="comparison-icon ok">✓</span>Dashboard con metricas en tiempo real</div>
-          </div>
-          <div class="comparison-row">
-            <div class="comparison-label">Tiempo</div>
-            <div class="without-col"><span class="comparison-icon x">X</span>Haces todo manualmente</div>
-            <div class="with-col"><span class="comparison-icon ok">✓</span>La IA trabaja mientras duermes</div>
-          </div>
+          <p class="why-metrics-claim gradient-text reveal">Construido en Colombia. Probado en Latam. Listo para el mundo.</p>
         </div>
       </div>
     </section>
@@ -2360,107 +2429,137 @@
 
     <section class="section" id="precios" aria-labelledby="pricing-title">
       <div class="container">
-        <div class="pricing-v2">
+        <div class="pricing-impact">
           <div class="pricing-intro reveal">
-            <h2 id="pricing-title">Elige tu punto de entrada.</h2>
-            <p>Cada servicio está diseñado para llevarte al siguiente nivel. Empieza donde puedas. Escala cuando veas los resultados.</p>
+            <h2 id="pricing-title">Elige tu tipo de crecimiento y activa el plan correcto.</h2>
+            <p>Filtra por etapa y mira solo los planes que aplican para tu negocio hoy.</p>
           </div>
 
-          <div class="scarcity-badge reveal">🔴 Solo 10 cupos activos por mes — <strong>agenda tu diagnóstico para validar disponibilidad</strong></div>
-
-          <div class="pricing-group reveal">
-            <h3 class="pricing-group-title">Soluciones que resuelven un problema hoy</h3>
-            <div class="service-grid">
-              <article class="entry-card">
-                <span class="entry-badge">Entrada perfecta</span>
-                <h3>Video Clip con IA</h3>
-                <p class="entry-price gradient-text">Desde $300.000</p>
-                <p>15 segundos a 1 minuto. Edición avanzada + efectos IA. Listo para pauta. El contenido que para el scroll.</p>
-                <a class="btn btn-secondary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20servicio%20de%20Video%20Clip%20con%20IA.%20Necesito%20%5Btipo%20de%20video%5D%20para%20%5Bcanal%5D%20y%20quiero%20publicarlo%20esta%20semana." target="_blank" rel="noopener noreferrer">Quiero mi video →</a>
-              </article>
-
-              <article class="entry-card">
-                <span class="entry-badge">Más vendido</span>
-                <h3>Landing Page</h3>
-                <p class="entry-price gradient-text">Desde $1.500.000</p>
-                <p>Diseño UX/UI + desarrollo + optimización para conversión. Lista para recibir clientes en 7 días.</p>
-                <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20una%20Landing%20Page.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20captar%20%5Bleads%2Fventas%5D%20en%20los%20pr%C3%B3ximos%2030%20d%C3%ADas." target="_blank" rel="noopener noreferrer">Quiero mi landing →</a>
-              </article>
-
-              <article class="entry-card">
-                <span class="entry-badge">Sin comisiones</span>
-                <h3>Tienda Virtual</h3>
-                <p class="entry-price gradient-text">Desde $3.000.000</p>
-                <p>Base de datos + diseño UX + plataforma de pagos integrada. Te ahorras los $2M-$5M que cobra Shopify. Con panel administrador propio.</p>
-                <a class="btn btn-secondary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20una%20Tienda%20Virtual.%20Necesito%20integrar%20pagos%20y%20administrar%20mi%20cat%C3%A1logo%20de%20%5Bn%C3%BAmero%5D%20productos." target="_blank" rel="noopener noreferrer">Quiero mi tienda →</a>
-              </article>
-
-              <article class="entry-card">
-                <span class="entry-badge">Para clínicas y servicios</span>
-                <h3>Sistema de Agendamiento IA</h3>
-                <p class="entry-price gradient-text">Desde $1.500.000</p>
-                <p>Agenda citas automáticamente por voz o por chat. Sin intervención humana. Funciona 24/7.</p>
-                <a class="btn btn-secondary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20Sistema%20de%20Agendamiento%20IA.%20Recibo%20%5Bn%C3%BAmero%5D%20solicitudes%20diarias%20y%20quiero%20automatizar%20confirmaciones." target="_blank" rel="noopener noreferrer">Automatizar agenda →</a>
-              </article>
-
-              <article class="entry-card">
-                <span class="entry-badge">Solo negocios organizados</span>
-                <h3>Automatizaciones</h3>
-                <p class="entry-price gradient-text">Desde $1.500.000</p>
-                <p>Delegamos lo administrativo a la IA. Para negocios organizados que quieren escalar sin contratar más personas.</p>
-                <a class="btn btn-secondary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20automatizaciones%20para%20mi%20negocio.%20Quiero%20delegar%20%5Bproceso%20administrativo%5D%20y%20ahorrar%20tiempo%20operativo." target="_blank" rel="noopener noreferrer">Automatizar negocio →</a>
-              </article>
-            </div>
+          <div class="pricing-filter-nav reveal" role="tablist" aria-label="Selector tipo de cliente">
+            <button class="pricing-filter-btn active" aria-pressed="true" data-pricing-filter="presencia">🚀 Quiero presencia digital</button>
+            <button class="pricing-filter-btn" aria-pressed="false" data-pricing-filter="mensual">📈 Quiero crecer mensual</button>
+            <button class="pricing-filter-btn" aria-pressed="false" data-pricing-filter="enterprise">🤖 Quiero transformación total</button>
           </div>
 
-          <div class="pricing-divider"></div>
-
-          <div class="pricing-group reveal">
-            <h3 class="pricing-group-title">Para los que quieren resultados mes a mes</h3>
-            <div class="monthly-grid">
-              <article class="entry-card">
-                <span class="entry-badge">Recurrente</span>
-                <h3>Trafficker Advanced</h3>
-                <p class="entry-price gradient-text">Desde $1.500.000/mes</p>
-                <p>Estrategia de contenido + automatización de Instagram para conversión + pauta optimizada con IA. Para negocios que quieren multiplicar facturación y reputación.</p>
-                <a class="btn btn-secondary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20con%20Trafficker%20Advanced.%20Mi%20meta%20es%20aumentar%20ventas%20y%20reputaci%C3%B3n%20en%20%5Bciudad%5D." target="_blank" rel="noopener noreferrer">Empezar a crecer →</a>
-              </article>
-
-              <article class="entry-card featured">
-                <span class="entry-badge">El más completo</span>
-                <h3>Plan Crecimiento de Marca</h3>
-                <p class="entry-price gradient-text">Desde $2.000.000/mes</p>
-                <p>Landing o tienda + administrador de pauta + estrategia de contenido + automatizaciones + reportes semanales. Todo en uno.</p>
-                <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20Plan%20Crecimiento%20de%20Marca.%20Quiero%20una%20estrategia%20integral%20de%20pauta%2C%20contenido%20y%20automatizaci%C3%B3n." target="_blank" rel="noopener noreferrer">Quiero este plan →</a>
-              </article>
-            </div>
-          </div>
-
-          <div class="pricing-divider"></div>
-
-          <div class="pricing-group reveal">
-            <h3 class="pricing-group-title">Para los que quieren transformación total</h3>
-            <article class="enterprise-card">
-              <h3>SOLARIS ENTERPRISE — Sistema IA Completo</h3>
-              <p class="entry-price">Desde $15.000.000</p>
-              <p>+10 agentes de IA trabajando 24/7 en tu operación:</p>
-              <ul class="enterprise-list">
-                <li>Agente que genera contenido diario</li>
-                <li>Agente que agenda y confirma citas</li>
-                <li>Agente que cierra ventas por WhatsApp</li>
-                <li>Agente que estudia el mercado en tiempo real</li>
-                <li>Agente que gestiona reputación online</li>
+          <div class="pricing-cards-grid reveal">
+            <article class="pricing-card tier-presence" data-tier="presencia">
+              <span class="pricing-badge">Entrada</span>
+              <div class="pricing-card-head">
+                <h3>🎬 VIDEO CLIP IA</h3>
+              </div>
+              <p class="pricing-amount">$300.000</p>
+              <ul class="pricing-includes">
+                <li>15s a 1 min</li>
+                <li>Efectos IA incluidos</li>
+                <li>Listo para pauta</li>
               </ul>
-              <p>Ideal para: clínicas estéticas, odontológicas, consultorios, agencias, entidades. Conectamos la IA a tu operación completa para que evoluciones en pocos meses.</p>
-              <p style="margin-top:1rem;">
-                <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20SOLARIS%20Enterprise.%20Busco%20transformar%20mi%20operaci%C3%B3n%20completa%20con%20agentes%20de%20IA%2024%2F7." target="_blank" rel="noopener noreferrer">Quiero transformar mi negocio →</a>
-              </p>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20servicio%20de%20Video%20Clip%20con%20IA.%20Necesito%20%5Btipo%20de%20video%5D%20para%20%5Bcanal%5D%20y%20quiero%20publicarlo%20esta%20semana." target="_blank" rel="noopener noreferrer">Quiero mi video →</a>
+            </article>
+
+            <article class="pricing-card tier-presence" data-tier="presencia">
+              <span class="pricing-badge">Popular</span>
+              <div class="pricing-card-head">
+                <h3>🌐 LANDING PAGE</h3>
+              </div>
+              <p class="pricing-amount">$1.500.000</p>
+              <ul class="pricing-includes">
+                <li>Diseño UX/UI premium</li>
+                <li>Lista en 7 dias</li>
+                <li>Optimizada para conversion</li>
+              </ul>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20una%20Landing%20Page.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20captar%20%5Bleads%2Fventas%5D%20en%20los%20pr%C3%B3ximos%2030%20d%C3%ADas." target="_blank" rel="noopener noreferrer">Quiero mi landing →</a>
+            </article>
+
+            <article class="pricing-card tier-presence" data-tier="presencia">
+              <span class="pricing-badge">Sin comis.</span>
+              <div class="pricing-card-head">
+                <h3>🛒 TIENDA VIRTUAL</h3>
+              </div>
+              <p class="pricing-amount">$3.000.000</p>
+              <ul class="pricing-includes">
+                <li>Plataforma de pagos propia</li>
+                <li>Te ahorras $2M-$5M/año</li>
+                <li>Panel administrador</li>
+              </ul>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20una%20Tienda%20Virtual.%20Necesito%20integrar%20pagos%20y%20administrar%20mi%20cat%C3%A1logo%20de%20%5Bn%C3%BAmero%5D%20productos." target="_blank" rel="noopener noreferrer">Quiero mi tienda →</a>
+            </article>
+
+            <article class="pricing-card tier-monthly" data-tier="mensual">
+              <span class="pricing-badge">Clinicas</span>
+              <div class="pricing-card-head">
+                <h3>🤖 AGENDAMIENTO IA</h3>
+              </div>
+              <p class="pricing-amount">$1.500.000</p>
+              <ul class="pricing-includes">
+                <li>Agenda por voz o chat</li>
+                <li>Sin intervencion humana</li>
+                <li>Funciona 24/7</li>
+              </ul>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20Sistema%20de%20Agendamiento%20IA.%20Recibo%20%5Bn%C3%BAmero%5D%20solicitudes%20diarias%20y%20quiero%20automatizar%20confirmaciones." target="_blank" rel="noopener noreferrer">Automatizar agenda →</a>
+            </article>
+
+            <article class="pricing-card tier-monthly" data-tier="mensual">
+              <span class="pricing-badge">Pro</span>
+              <div class="pricing-card-head">
+                <h3>⚡ AUTOMATIZACIONES</h3>
+              </div>
+              <p class="pricing-amount">$1.500.000</p>
+              <ul class="pricing-includes">
+                <li>Delega lo administrativo</li>
+                <li>Para negocios organizados</li>
+                <li>Escala sin contratar</li>
+              </ul>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20automatizaciones%20para%20mi%20negocio.%20Quiero%20delegar%20%5Bproceso%20administrativo%5D%20y%20ahorrar%20tiempo%20operativo." target="_blank" rel="noopener noreferrer">Automatizar negocio →</a>
+            </article>
+
+            <article class="pricing-card tier-monthly" data-tier="mensual">
+              <span class="pricing-badge">Recur.</span>
+              <div class="pricing-card-head">
+                <h3>📱 TRAFFICKER ADV.</h3>
+              </div>
+              <p class="pricing-amount">$1.500.000/mes</p>
+              <ul class="pricing-includes">
+                <li>Estrategia de contenido</li>
+                <li>Instagram automatizado</li>
+                <li>Pauta optimizada con IA</li>
+              </ul>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20con%20Trafficker%20Advanced.%20Mi%20meta%20es%20aumentar%20ventas%20y%20reputaci%C3%B3n%20en%20%5Bciudad%5D." target="_blank" rel="noopener noreferrer">Empezar a crecer →</a>
+            </article>
+
+            <article class="pricing-card tier-monthly" data-tier="mensual">
+              <span class="pricing-badge">Best</span>
+              <div class="pricing-card-head">
+                <h3>🏆 CRECIMIENTO MARCA</h3>
+              </div>
+              <p class="pricing-amount">$2.000.000/mes</p>
+              <ul class="pricing-includes">
+                <li>Todo lo anterior incluido</li>
+                <li>Reportes semanales</li>
+                <li>Reunion estrategica mensual</li>
+              </ul>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20Plan%20Crecimiento%20de%20Marca.%20Quiero%20una%20estrategia%20integral%20de%20pauta%2C%20contenido%20y%20automatizaci%C3%B3n." target="_blank" rel="noopener noreferrer">Quiero este plan →</a>
+            </article>
+
+            <article class="pricing-card tier-enterprise enterprise-card" data-tier="enterprise">
+              <div class="enterprise-top">
+                <h3>SOLARIS ENTERPRISE</h3>
+                <p class="enterprise-amount">Desde $15.000.000</p>
+              </div>
+              <p class="enterprise-agents">+10 AGENTES IA TRABAJANDO 24/7</p>
+              <div class="enterprise-modules">
+                <span>🧠 Genera contenido</span>
+                <span>📅 Agenda citas</span>
+                <span>💬 Cierra ventas</span>
+                <span>📊 Estudia mercado</span>
+                <span>⭐ Gestiona reputación</span>
+              </div>
+              <p><strong>Ideal:</strong> clinicas · agencias · consultorios</p>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20SOLARIS%20Enterprise.%20Busco%20transformar%20mi%20operaci%C3%B3n%20completa%20con%20agentes%20de%20IA%2024%2F7." target="_blank" rel="noopener noreferrer">Transformar mi negocio →</a>
             </article>
           </div>
 
           <div class="guarantee-box reveal">
-            Solo trabajamos con 10 clientes al mes. No más. Cupos totalmente limitados.
-            Prueba un mes — si no logramos avances claros en métricas acordadas, te entregamos todo lo construido (estrategia, material y automatizaciones) para que puedas continuar. Sin letra pequeña.
+            Solo 10 cupos al mes · Prueba un mes · Si no ves resultados, todo el trabajo es tuyo.
           </div>
         </div>
       </div>
@@ -2732,16 +2831,17 @@
         if (duration === undefined) duration = 2000;
         const start = 0;
         const startTime = performance.now();
-        const isPercent = element.dataset.suffix === '%';
-        const isPlus = element.dataset.prefix === '+';
+        const prefix = element.dataset.prefix || "";
+        const suffix = element.dataset.suffix || "";
+        const decimals = parseInt(element.dataset.decimals || "0", 10);
 
         function update(currentTime) {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.floor(start + eased * (end - start));
-
-          element.textContent = (isPlus ? '+' : '') + current + (isPercent ? '%' : '');
+          const value = start + eased * (end - start);
+          const current = decimals > 0 ? value.toFixed(decimals) : Math.floor(value);
+          element.textContent = prefix + current + suffix;
 
           if (progress < 1) requestAnimationFrame(update);
         }
@@ -2753,7 +2853,7 @@
         function (entries) {
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
-            const end = parseInt(entry.target.dataset.count || "0", 10);
+            const end = parseFloat(entry.target.dataset.count || "0");
             const duration = parseInt(entry.target.dataset.duration || "2000", 10);
             countUp(entry.target, end, duration);
             countObserver.unobserve(entry.target);
@@ -2807,6 +2907,54 @@
           });
         });
       });
+
+      const pricingFilterBtns = document.querySelectorAll(".pricing-filter-btn");
+      const pricingCards = document.querySelectorAll(".pricing-card");
+
+      function applyPricingFilter(filter) {
+        pricingFilterBtns.forEach(function (btn) {
+          const active = btn.dataset.pricingFilter === filter;
+          btn.classList.toggle("active", active);
+          btn.setAttribute("aria-pressed", String(active));
+        });
+
+        pricingCards.forEach(function (card) {
+          const shouldShow = card.dataset.tier === filter;
+
+          if (shouldShow) {
+            card.style.display = "flex";
+            if (prefersReducedMotion) {
+              card.classList.add("is-visible");
+            } else {
+              requestAnimationFrame(function () {
+                card.classList.add("is-visible");
+              });
+            }
+            return;
+          }
+
+          card.classList.remove("is-visible");
+          if (prefersReducedMotion) {
+            card.style.display = "none";
+          } else {
+            setTimeout(function () {
+              if (!card.classList.contains("is-visible")) {
+                card.style.display = "none";
+              }
+            }, 300);
+          }
+        });
+      }
+
+      pricingFilterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          applyPricingFilter(btn.dataset.pricingFilter || "presencia");
+        });
+      });
+
+      if (pricingFilterBtns.length > 0 && pricingCards.length > 0) {
+        applyPricingFilter("presencia");
+      }
 
       document.querySelectorAll(".faq-trigger").forEach(function (trigger) {
         trigger.addEventListener("click", function () {
