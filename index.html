@@ -1589,6 +1589,7 @@
     .flow-line.delay-9 { animation-delay: 440ms !important; }
     .flow-line.delay-10 { animation-delay: 490ms !important; }
     .flow-line.delay-11 { animation-delay: 540ms !important; }
+    .flow-line.delay-12 { animation-delay: 590ms !important; }
 
     @keyframes drawLine {
       from { stroke-dashoffset: 100; }
@@ -3560,54 +3561,58 @@
         <div class="ecosystem-map reveal" aria-label="Mapa visual del stack de herramientas SOLARIS">
           <svg class="ecosystem-svg" viewBox="0 0 1000 640" aria-hidden="true" focusable="false">
             <defs>
-              <linearGradient id="g-gpt" x1="500" y1="320" x2="500" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
-              <linearGradient id="g-claude" x1="500" y1="320" x2="650" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
-              <linearGradient id="g-gemini" x1="500" y1="320" x2="350" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
-              <linearGradient id="g-make" x1="500" y1="320" x2="760" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
-              <linearGradient id="g-n8n" x1="500" y1="320" x2="710" y2="410" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
-              <linearGradient id="g-manychat" x1="500" y1="320" x2="290" y2="410" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
-              <linearGradient id="g-canva" x1="500" y1="320" x2="240" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
-              <linearGradient id="g-meta" x1="500" y1="320" x2="500" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
-              <linearGradient id="g-google" x1="500" y1="320" x2="850" y2="300" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
-              <linearGradient id="g-webflow" x1="500" y1="320" x2="650" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-              <linearGradient id="g-figma" x1="500" y1="320" x2="350" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+              <linearGradient id="g-claude" x1="500" y1="320" x2="500" y2="105" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+              <linearGradient id="g-claudecode" x1="500" y1="320" x2="635" y2="140" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+              <linearGradient id="g-gemini" x1="500" y1="320" x2="365" y2="140" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+              <linearGradient id="g-cursor" x1="500" y1="320" x2="740" y2="235" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+              <linearGradient id="g-antigravity" x1="500" y1="320" x2="215" y2="360" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
+              <linearGradient id="g-manus" x1="500" y1="320" x2="260" y2="235" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+              <linearGradient id="g-n8n" x1="500" y1="320" x2="500" y2="590" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
+              <linearGradient id="g-meta" x1="500" y1="320" x2="735" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
+              <linearGradient id="g-manychat" x1="500" y1="320" x2="785" y2="360" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
+              <linearGradient id="g-canva" x1="500" y1="320" x2="265" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
+              <linearGradient id="g-pencil" x1="500" y1="320" x2="620" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
+              <linearGradient id="g-obsidian" x1="500" y1="320" x2="380" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
 
-              <path id="p-gpt" d="M500 320 L500 120"></path>
-              <path id="p-claude" d="M500 320 L650 170"></path>
-              <path id="p-gemini" d="M500 320 L350 170"></path>
-              <path id="p-make" d="M500 320 L760 280"></path>
-              <path id="p-n8n" d="M500 320 L710 410"></path>
-              <path id="p-manychat" d="M500 320 L290 410"></path>
-              <path id="p-canva" d="M500 320 L240 280"></path>
-              <path id="p-meta" d="M500 320 L500 500"></path>
-              <path id="p-google" d="M500 320 L850 300"></path>
-              <path id="p-webflow" d="M500 320 L650 530"></path>
-              <path id="p-figma" d="M500 320 L350 530"></path>
+              <path id="p-claude" d="M500 320 L500 105"></path>
+              <path id="p-claudecode" d="M500 320 L635 140"></path>
+              <path id="p-gemini" d="M500 320 L365 140"></path>
+              <path id="p-cursor" d="M500 320 L740 235"></path>
+              <path id="p-antigravity" d="M500 320 L215 360"></path>
+              <path id="p-manus" d="M500 320 L260 235"></path>
+              <path id="p-n8n" d="M500 320 L500 590"></path>
+              <path id="p-meta" d="M500 320 L735 480"></path>
+              <path id="p-manychat" d="M500 320 L785 360"></path>
+              <path id="p-canva" d="M500 320 L265 480"></path>
+              <path id="p-pencil" d="M500 320 L620 560"></path>
+              <path id="p-obsidian" d="M500 320 L380 560"></path>
             </defs>
 
-            <path id="line-gpt" class="flow-line delay-1" pathLength="100" d="M500 320 L500 120" stroke="url(#g-gpt)"></path>
-            <path id="line-claude" class="flow-line delay-2" pathLength="100" d="M500 320 L650 170" stroke="url(#g-claude)"></path>
-            <path id="line-gemini" class="flow-line delay-3" pathLength="100" d="M500 320 L350 170" stroke="url(#g-gemini)"></path>
-            <path id="line-make" class="flow-line delay-4" pathLength="100" d="M500 320 L760 280" stroke="url(#g-make)"></path>
-            <path id="line-n8n" class="flow-line delay-5" pathLength="100" d="M500 320 L710 410" stroke="url(#g-n8n)"></path>
-            <path id="line-manychat" class="flow-line delay-6" pathLength="100" d="M500 320 L290 410" stroke="url(#g-manychat)"></path>
-            <path id="line-canva" class="flow-line delay-7" pathLength="100" d="M500 320 L240 280" stroke="url(#g-canva)"></path>
-            <path id="line-meta" class="flow-line delay-8" pathLength="100" d="M500 320 L500 500" stroke="url(#g-meta)"></path>
-            <path id="line-google" class="flow-line delay-9" pathLength="100" d="M500 320 L850 300" stroke="url(#g-google)"></path>
-            <path id="line-webflow" class="flow-line delay-10" pathLength="100" d="M500 320 L650 530" stroke="url(#g-webflow)"></path>
-            <path id="line-figma" class="flow-line delay-11" pathLength="100" d="M500 320 L350 530" stroke="url(#g-figma)"></path>
+            <path id="line-claude" class="flow-line delay-1" pathLength="100" d="M500 320 L500 105" stroke="url(#g-claude)"></path>
+            <path id="line-claudecode" class="flow-line delay-2" pathLength="100" d="M500 320 L635 140" stroke="url(#g-claudecode)"></path>
+            <path id="line-gemini" class="flow-line delay-3" pathLength="100" d="M500 320 L365 140" stroke="url(#g-gemini)"></path>
+            <path id="line-cursor" class="flow-line delay-4" pathLength="100" d="M500 320 L740 235" stroke="url(#g-cursor)"></path>
+            <path id="line-antigravity" class="flow-line delay-5" pathLength="100" d="M500 320 L215 360" stroke="url(#g-antigravity)"></path>
+            <path id="line-manus" class="flow-line delay-6" pathLength="100" d="M500 320 L260 235" stroke="url(#g-manus)"></path>
+            <path id="line-n8n" class="flow-line delay-7" pathLength="100" d="M500 320 L500 590" stroke="url(#g-n8n)"></path>
+            <path id="line-meta" class="flow-line delay-8" pathLength="100" d="M500 320 L735 480" stroke="url(#g-meta)"></path>
+            <path id="line-manychat" class="flow-line delay-9" pathLength="100" d="M500 320 L785 360" stroke="url(#g-manychat)"></path>
+            <path id="line-canva" class="flow-line delay-10" pathLength="100" d="M500 320 L265 480" stroke="url(#g-canva)"></path>
+            <path id="line-pencil" class="flow-line delay-11" pathLength="100" d="M500 320 L620 560" stroke="url(#g-pencil)"></path>
+            <path id="line-obsidian" class="flow-line delay-12" pathLength="100" d="M500 320 L380 560" stroke="url(#g-obsidian)"></path>
 
-            <circle class="flow-dot" r="2.4"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#p-gpt"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.1s" repeatCount="indefinite"><mpath href="#p-claude"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.3s" repeatCount="indefinite"><mpath href="#p-gemini"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#p-make"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.8s" repeatCount="indefinite"><mpath href="#p-n8n"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.7s" repeatCount="indefinite"><mpath href="#p-manychat"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="2.7s" repeatCount="indefinite"><mpath href="#p-claude"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.3s" repeatCount="indefinite"><mpath href="#p-claudecode"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.1s" repeatCount="indefinite"><mpath href="#p-gemini"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.8s" repeatCount="indefinite"><mpath href="#p-cursor"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#p-antigravity"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#p-manus"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="4.0s" repeatCount="indefinite"><mpath href="#p-n8n"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.7s" repeatCount="indefinite"><mpath href="#p-meta"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.5s" repeatCount="indefinite"><mpath href="#p-manychat"></mpath></animateMotion></circle>
             <circle class="flow-dot" r="2.4"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#p-canva"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.0s" repeatCount="indefinite"><mpath href="#p-meta"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="4.0s" repeatCount="indefinite"><mpath href="#p-google"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#p-webflow"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.5s" repeatCount="indefinite"><mpath href="#p-figma"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.9s" repeatCount="indefinite"><mpath href="#p-pencil"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="4.1s" repeatCount="indefinite"><mpath href="#p-obsidian"></mpath></animateMotion></circle>
           </svg>
 
           <div class="ecosystem-center">
@@ -3633,20 +3638,21 @@
             <strong>SOLARIS</strong>
           </div>
 
-          <button class="tech-node cat-ai" type="button" style="--x:500;--y:120;" data-link="line-gpt" data-tip="Modelo avanzado para estrategia y ejecucion.">GPT-4</button>
-          <button class="tech-node cat-ai" type="button" style="--x:650;--y:170;" data-link="line-claude" data-tip="Razonamiento y redaccion de alta precision.">Claude</button>
-          <button class="tech-node cat-ai" type="button" style="--x:350;--y:170;" data-link="line-gemini" data-tip="Multimodal para contenido y analisis rapido.">Gemini</button>
+          <button class="tech-node cat-ai" type="button" style="--x:500;--y:105;" data-link="line-claude" data-tip="Modelo principal para estrategia, copy y razonamiento comercial.">Claude</button>
+          <button class="tech-node cat-ai" type="button" style="--x:365;--y:140;" data-link="line-gemini" data-tip="Motor multimodal para analisis, ideas y soporte creativo.">Gemini</button>
+          <button class="tech-node cat-ai" type="button" style="--x:260;--y:235;" data-link="line-manus" data-tip="Sistema IA para investigacion profunda y ejecucion compleja.">Manus</button>
 
-          <button class="tech-node cat-auto" type="button" style="--x:760;--y:280;" data-link="line-make" data-tip="Orquestacion automatica de procesos comerciales.">Make</button>
-          <button class="tech-node cat-auto" type="button" style="--x:710;--y:410;" data-link="line-n8n" data-tip="Flujos backend flexibles para operaciones IA.">n8n</button>
-          <button class="tech-node cat-auto" type="button" style="--x:290;--y:410;" data-link="line-manychat" data-tip="Bots para captacion y cierre por WhatsApp.">ManyChat</button>
-          <button class="tech-node cat-auto" type="button" style="--x:240;--y:280;" data-link="line-canva" data-tip="Produccion visual rapida para campanas.">Canva</button>
+          <button class="tech-node cat-auto" type="button" style="--x:500;--y:590;" data-link="line-n8n" data-tip="Automatizaciones backend para integrar procesos y datos.">n8n</button>
+          <button class="tech-node cat-auto" type="button" style="--x:785;--y:360;" data-link="line-manychat" data-tip="Bots conversacionales para captar y calificar leads.">ManyChat</button>
+          <button class="tech-node cat-auto" type="button" style="--x:620;--y:560;" data-link="line-pencil" data-tip="Diseño y edición de experiencias visuales interactivas.">Pencil</button>
 
-          <button class="tech-node cat-mkt" type="button" style="--x:500;--y:500;" data-link="line-meta" data-tip="Escalado de pauta para conversion y remarketing.">Meta Ads</button>
-          <button class="tech-node cat-mkt" type="button" style="--x:850;--y:300;" data-link="line-google" data-tip="Captura demanda activa de alta intencion.">Google</button>
+          <button class="tech-node cat-mkt" type="button" style="--x:735;--y:480;" data-link="line-meta" data-tip="Escalado de pauta y remarketing orientado a ROAS.">Meta Ads</button>
+          <button class="tech-node cat-mkt" type="button" style="--x:265;--y:480;" data-link="line-canva" data-tip="Producción creativa para anuncios y piezas de contenido.">Canva</button>
+          <button class="tech-node cat-mkt" type="button" style="--x:215;--y:360;" data-link="line-antigravity" data-tip="Framework de crecimiento para experimentos y optimización.">Antigravity</button>
 
-          <button class="tech-node cat-dev" type="button" style="--x:650;--y:530;" data-link="line-webflow" data-tip="Landing y sitios optimizados para conversion.">Webflow</button>
-          <button class="tech-node cat-dev" type="button" style="--x:350;--y:530;" data-link="line-figma" data-tip="Sistema UX/UI consistente y escalable.">Figma</button>
+          <button class="tech-node cat-dev" type="button" style="--x:635;--y:140;" data-link="line-claudecode" data-tip="Asistencia de ingeniería para construir más rápido y mejor.">Claude Code</button>
+          <button class="tech-node cat-dev" type="button" style="--x:740;--y:235;" data-link="line-cursor" data-tip="Entorno de desarrollo IA para ejecución y refactor ágil.">Cursor</button>
+          <button class="tech-node cat-dev" type="button" style="--x:380;--y:560;" data-link="line-obsidian" data-tip="Base de conocimiento para estrategia, prompts y playbooks.">Obsidian</button>
         </div>
 
         <div class="ecosystem-legend reveal" aria-label="Categorías del ecosistema">
@@ -3657,15 +3663,18 @@
         </div>
 
         <div class="ecosystem-mobile reveal" style="margin-top:1rem;">
-          <span class="tech-pill b-ai">GPT-4</span>
           <span class="tech-pill b-ai">Claude</span>
           <span class="tech-pill b-ai">Gemini</span>
-          <span class="tech-pill b-design">Make</span>
+          <span class="tech-pill b-ai">Manus</span>
           <span class="tech-pill b-design">n8n</span>
           <span class="tech-pill b-design">ManyChat</span>
+          <span class="tech-pill b-design">Pencil</span>
           <span class="tech-pill b-marketing">Meta Ads</span>
-          <span class="tech-pill b-marketing">Google Ads</span>
-          <span class="tech-pill b-dev">Webflow + Figma</span>
+          <span class="tech-pill b-marketing">Canva</span>
+          <span class="tech-pill b-marketing">Antigravity</span>
+          <span class="tech-pill b-dev">Claude Code</span>
+          <span class="tech-pill b-dev">Cursor</span>
+          <span class="tech-pill b-dev">Obsidian</span>
         </div>
         <p class="ecosystem-mobile-note reveal">Un ecosistema completo. Un solo equipo.</p>
       </div>
