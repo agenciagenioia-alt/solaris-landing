@@ -1111,13 +1111,64 @@
 
     .ecosystem-map {
       position: relative;
-      min-height: 520px;
+      min-height: 620px;
       border-radius: 22px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       background:
-        radial-gradient(circle at center, rgba(255, 184, 0, 0.12), rgba(255, 107, 0, 0.03) 35%, rgba(255, 255, 255, 0.01) 60%),
+        radial-gradient(circle at 50% 50%, rgba(255, 184, 0, 0.14), rgba(255, 107, 0, 0.05) 35%, rgba(255, 255, 255, 0.01) 62%),
         rgba(255, 255, 255, 0.02);
       overflow: hidden;
+      isolation: isolate;
+    }
+
+    .ecosystem-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .flow-line {
+      fill: none;
+      stroke-width: 1.6;
+      opacity: 0.3;
+      stroke-linecap: round;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      transition: opacity 0.22s ease, stroke-width 0.22s ease;
+    }
+
+    .ecosystem-map.is-drawn .flow-line {
+      animation: drawLine 1s var(--ease-out) forwards;
+    }
+
+    .flow-line.delay-1 { animation-delay: 40ms !important; }
+    .flow-line.delay-2 { animation-delay: 90ms !important; }
+    .flow-line.delay-3 { animation-delay: 140ms !important; }
+    .flow-line.delay-4 { animation-delay: 190ms !important; }
+    .flow-line.delay-5 { animation-delay: 240ms !important; }
+    .flow-line.delay-6 { animation-delay: 290ms !important; }
+    .flow-line.delay-7 { animation-delay: 340ms !important; }
+    .flow-line.delay-8 { animation-delay: 390ms !important; }
+    .flow-line.delay-9 { animation-delay: 440ms !important; }
+    .flow-line.delay-10 { animation-delay: 490ms !important; }
+    .flow-line.delay-11 { animation-delay: 540ms !important; }
+
+    @keyframes drawLine {
+      from { stroke-dashoffset: 100; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    .flow-line.active {
+      opacity: 0.8;
+      stroke-width: 2.2;
+    }
+
+    .flow-dot {
+      fill: #FF9A1F;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 5px rgba(255, 107, 0, 0.65));
     }
 
     .ecosystem-center {
@@ -1128,104 +1179,105 @@
       width: 130px;
       height: 130px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 184, 0, 0.45);
-      background: rgba(10, 10, 10, 0.9);
+      border: 1px solid rgba(255, 184, 0, 0.42);
+      background: rgba(10, 10, 10, 0.92);
       display: grid;
       place-content: center;
       text-align: center;
-      box-shadow: 0 0 45px rgba(255, 107, 0, 0.16);
       z-index: 3;
+      box-shadow: 0 0 0 rgba(255, 107, 0, 0.35);
+      animation: corePulse 2.8s ease-in-out infinite;
     }
 
-    .ecosystem-center svg {
-      width: 34px;
-      height: 34px;
-      margin: 0 auto 0.4rem;
+    @keyframes corePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.15), 0 0 38px rgba(255, 107, 0, 0.16); }
+      50% { box-shadow: 0 0 0 8px rgba(255, 107, 0, 0), 0 0 60px rgba(255, 184, 0, 0.32); }
+    }
+
+    .solaris-core {
+      width: 80px;
+      height: 80px;
+      display: block;
+      margin: 0 auto;
     }
 
     .ecosystem-center strong {
-      font-size: 0.92rem;
-      letter-spacing: 0.04em;
-    }
-
-    .orbit {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border: 1px dashed rgba(255, 255, 255, 0.16);
-      border-radius: 999px;
-      transform: translate(-50%, -50%);
-      animation: orbitSpin 34s linear infinite;
-    }
-
-    .orbit-1 { width: 250px; height: 250px; }
-    .orbit-2 { width: 370px; height: 370px; animation-duration: 50s; animation-direction: reverse; }
-    .orbit-3 { width: 500px; height: 500px; animation-duration: 66s; }
-
-    @keyframes orbitSpin {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
+      font-size: 0.84rem;
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
     }
 
     .tech-node {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: rotate(calc(360deg / var(--total) * var(--i))) translateX(calc(var(--radius) * 1px)) rotate(calc(-360deg / var(--total) * var(--i)));
+      left: calc(var(--x) * 1px);
+      top: calc(var(--y) * 1px);
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
       border-radius: 999px;
-      background: rgba(12, 12, 12, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #111111;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
       color: #f0f0f0;
-      font-size: 0.82rem;
+      font-size: 10px;
+      line-height: 1.08;
       font-weight: 700;
-      padding: 0.38rem 0.68rem;
-      white-space: nowrap;
-      transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+      text-align: center;
+      display: grid;
+      place-content: center;
+      padding: 0.2rem;
+      cursor: pointer;
       z-index: 2;
+      transition: transform 0.24s var(--ease-out), box-shadow 0.24s var(--ease-out), border-color 0.24s var(--ease-out);
+    }
+
+    .tech-node:focus-visible,
+    .tech-node:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 12px 26px rgba(255, 107, 0, 0.25);
     }
 
     .tech-node::after {
-      content: attr(data-cat);
+      content: attr(data-tip);
       position: absolute;
       left: 50%;
-      top: -26px;
+      top: -42px;
       transform: translateX(-50%);
-      font-size: 0.68rem;
+      font-size: 0.67rem;
+      line-height: 1.2;
+      min-width: 150px;
+      background: rgba(12, 12, 12, 0.94);
+      border: 1px solid rgba(255, 184, 0, 0.36);
+      border-radius: 8px;
+      padding: 0.35rem 0.45rem;
+      color: #f6ddbe;
       opacity: 0;
-      transition: opacity 0.2s ease;
-      color: #ffd6a6;
       pointer-events: none;
+      transition: opacity 0.2s ease;
     }
 
-    .tech-node:hover {
-      box-shadow: 0 10px 22px rgba(255, 107, 0, 0.2);
-      transform: rotate(calc(360deg / var(--total) * var(--i))) translateX(calc(var(--radius) * 1px)) rotate(calc(-360deg / var(--total) * var(--i))) scale(1.05);
-    }
-
-    .tech-node:hover::after {
+    .tech-node:hover::after,
+    .tech-node:focus-visible::after {
       opacity: 1;
     }
 
-    .tech-node.cat-ai { border-color: rgba(255, 107, 0, 0.55); }
-    .tech-node.cat-auto { border-color: rgba(255, 184, 0, 0.55); }
-    .tech-node.cat-mkt { border-color: rgba(255, 60, 172, 0.55); }
-    .tech-node.cat-dev { border-color: rgba(240, 240, 240, 0.42); }
+    .tech-node.cat-ai { border-color: #FF6B00; }
+    .tech-node.cat-auto { border-color: #FFB800; }
+    .tech-node.cat-mkt { border-color: #FF3CAC; }
+    .tech-node.cat-dev { border-color: rgba(255, 255, 255, 0.75); }
 
-    .tech-connector {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 1px;
-      height: calc(var(--radius) * 1px);
-      background: linear-gradient(180deg, rgba(255, 184, 0, 0.28), rgba(255, 184, 0, 0));
-      transform: translate(-50%, -100%) rotate(calc(360deg / var(--total) * var(--i)));
-      transform-origin: bottom center;
-      pointer-events: none;
+    .ecosystem-legend {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.9rem;
+      color: #d6d6d6;
+      font-size: 0.9rem;
+      font-weight: 650;
     }
 
     .ecosystem-mobile {
       display: none;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.7rem;
     }
 
@@ -1235,7 +1287,16 @@
       text-align: center;
       font-weight: 700;
       border-radius: 12px;
-      padding: 0.55rem 0.7rem;
+      padding: 0.6rem 0.5rem;
+      font-size: 0.82rem;
+    }
+
+    .ecosystem-mobile-note {
+      display: none;
+      margin-top: 0.8rem;
+      color: #e8d6be;
+      font-weight: 700;
+      text-align: center;
     }
 
     .testimonials-grid {
@@ -1954,8 +2015,16 @@
         display: none;
       }
 
+      .ecosystem-legend {
+        display: none;
+      }
+
       .ecosystem-mobile {
         display: grid;
+      }
+
+      .ecosystem-mobile-note {
+        display: block;
       }
     }
 
@@ -2609,48 +2678,105 @@
     <section class="section" aria-labelledby="stack-title">
       <div class="container">
         <h2 id="stack-title" class="reveal">Un ecosistema conectado que trabaja al mismo tiempo</h2>
-        <p class="reveal">SOLARIS en el centro. IA, automatizacion, marketing y desarrollo orbitando como un solo sistema.</p>
+        <p class="reveal">No somos una herramienta. Somos el ecosistema completo trabajando en sincronía para tu negocio.</p>
 
         <div class="ecosystem-map reveal" aria-label="Mapa visual del stack de herramientas SOLARIS">
+          <svg class="ecosystem-svg" viewBox="0 0 1000 640" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="g-gpt" x1="500" y1="320" x2="500" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+              <linearGradient id="g-claude" x1="500" y1="320" x2="650" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+              <linearGradient id="g-gemini" x1="500" y1="320" x2="350" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
+              <linearGradient id="g-make" x1="500" y1="320" x2="760" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
+              <linearGradient id="g-n8n" x1="500" y1="320" x2="710" y2="410" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
+              <linearGradient id="g-manychat" x1="500" y1="320" x2="290" y2="410" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
+              <linearGradient id="g-canva" x1="500" y1="320" x2="240" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
+              <linearGradient id="g-meta" x1="500" y1="320" x2="500" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
+              <linearGradient id="g-google" x1="500" y1="320" x2="850" y2="300" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
+              <linearGradient id="g-webflow" x1="500" y1="320" x2="650" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+              <linearGradient id="g-figma" x1="500" y1="320" x2="350" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+
+              <path id="p-gpt" d="M500 320 L500 120"></path>
+              <path id="p-claude" d="M500 320 L650 170"></path>
+              <path id="p-gemini" d="M500 320 L350 170"></path>
+              <path id="p-make" d="M500 320 L760 280"></path>
+              <path id="p-n8n" d="M500 320 L710 410"></path>
+              <path id="p-manychat" d="M500 320 L290 410"></path>
+              <path id="p-canva" d="M500 320 L240 280"></path>
+              <path id="p-meta" d="M500 320 L500 500"></path>
+              <path id="p-google" d="M500 320 L850 300"></path>
+              <path id="p-webflow" d="M500 320 L650 530"></path>
+              <path id="p-figma" d="M500 320 L350 530"></path>
+            </defs>
+
+            <path id="line-gpt" class="flow-line delay-1" pathLength="100" d="M500 320 L500 120" stroke="url(#g-gpt)"></path>
+            <path id="line-claude" class="flow-line delay-2" pathLength="100" d="M500 320 L650 170" stroke="url(#g-claude)"></path>
+            <path id="line-gemini" class="flow-line delay-3" pathLength="100" d="M500 320 L350 170" stroke="url(#g-gemini)"></path>
+            <path id="line-make" class="flow-line delay-4" pathLength="100" d="M500 320 L760 280" stroke="url(#g-make)"></path>
+            <path id="line-n8n" class="flow-line delay-5" pathLength="100" d="M500 320 L710 410" stroke="url(#g-n8n)"></path>
+            <path id="line-manychat" class="flow-line delay-6" pathLength="100" d="M500 320 L290 410" stroke="url(#g-manychat)"></path>
+            <path id="line-canva" class="flow-line delay-7" pathLength="100" d="M500 320 L240 280" stroke="url(#g-canva)"></path>
+            <path id="line-meta" class="flow-line delay-8" pathLength="100" d="M500 320 L500 500" stroke="url(#g-meta)"></path>
+            <path id="line-google" class="flow-line delay-9" pathLength="100" d="M500 320 L850 300" stroke="url(#g-google)"></path>
+            <path id="line-webflow" class="flow-line delay-10" pathLength="100" d="M500 320 L650 530" stroke="url(#g-webflow)"></path>
+            <path id="line-figma" class="flow-line delay-11" pathLength="100" d="M500 320 L350 530" stroke="url(#g-figma)"></path>
+
+            <circle class="flow-dot" r="2.4"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#p-gpt"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.1s" repeatCount="indefinite"><mpath href="#p-claude"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.3s" repeatCount="indefinite"><mpath href="#p-gemini"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#p-make"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.8s" repeatCount="indefinite"><mpath href="#p-n8n"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.7s" repeatCount="indefinite"><mpath href="#p-manychat"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#p-canva"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.0s" repeatCount="indefinite"><mpath href="#p-meta"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="4.0s" repeatCount="indefinite"><mpath href="#p-google"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#p-webflow"></mpath></animateMotion></circle>
+            <circle class="flow-dot" r="2.4"><animateMotion dur="3.5s" repeatCount="indefinite"><mpath href="#p-figma"></mpath></animateMotion></circle>
+          </svg>
+
           <div class="ecosystem-center">
-            <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-              <circle cx="50" cy="50" r="10" fill="#FFB800"></circle>
-              <circle cx="50" cy="50" r="28" fill="none" stroke="#FF6B00" stroke-width="4"></circle>
-              <circle cx="79" cy="50" r="5" fill="#FF3CAC"></circle>
+            <svg class="solaris-core" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="sunGrad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF6B00"></stop>
+                  <stop offset="1" stop-color="#FFB800"></stop>
+                </linearGradient>
+              </defs>
+              <g stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round" fill="none">
+                <line x1="40" y1="6" x2="40" y2="16"></line>
+                <line x1="40" y1="64" x2="40" y2="74"></line>
+                <line x1="6" y1="40" x2="16" y2="40"></line>
+                <line x1="64" y1="40" x2="74" y2="40"></line>
+                <line x1="14.5" y1="14.5" x2="21.5" y2="21.5"></line>
+                <line x1="58.5" y1="58.5" x2="65.5" y2="65.5"></line>
+                <line x1="58.5" y1="21.5" x2="65.5" y2="14.5"></line>
+                <line x1="14.5" y1="65.5" x2="21.5" y2="58.5"></line>
+              </g>
+              <circle cx="40" cy="40" r="14" fill="url(#sunGrad)"></circle>
             </svg>
             <strong>SOLARIS</strong>
           </div>
 
-          <div class="orbit orbit-1">
-            <span class="tech-connector" style="--i:0;--total:3;--radius:125;"></span>
-            <span class="tech-node cat-ai" data-cat="IA" style="--i:0;--total:3;--radius:125;">GPT-4</span>
-            <span class="tech-connector" style="--i:1;--total:3;--radius:125;"></span>
-            <span class="tech-node cat-ai" data-cat="IA" style="--i:1;--total:3;--radius:125;">Claude</span>
-            <span class="tech-connector" style="--i:2;--total:3;--radius:125;"></span>
-            <span class="tech-node cat-ai" data-cat="IA" style="--i:2;--total:3;--radius:125;">Gemini</span>
-          </div>
+          <button class="tech-node cat-ai" type="button" style="--x:500;--y:120;" data-link="line-gpt" data-tip="Modelo avanzado para estrategia y ejecucion.">GPT-4</button>
+          <button class="tech-node cat-ai" type="button" style="--x:650;--y:170;" data-link="line-claude" data-tip="Razonamiento y redaccion de alta precision.">Claude</button>
+          <button class="tech-node cat-ai" type="button" style="--x:350;--y:170;" data-link="line-gemini" data-tip="Multimodal para contenido y analisis rapido.">Gemini</button>
 
-          <div class="orbit orbit-2">
-            <span class="tech-connector" style="--i:0;--total:4;--radius:185;"></span>
-            <span class="tech-node cat-auto" data-cat="Automatizacion" style="--i:0;--total:4;--radius:185;">Make</span>
-            <span class="tech-connector" style="--i:1;--total:4;--radius:185;"></span>
-            <span class="tech-node cat-auto" data-cat="Automatizacion" style="--i:1;--total:4;--radius:185;">n8n</span>
-            <span class="tech-connector" style="--i:2;--total:4;--radius:185;"></span>
-            <span class="tech-node cat-auto" data-cat="Automatizacion" style="--i:2;--total:4;--radius:185;">ManyChat</span>
-            <span class="tech-connector" style="--i:3;--total:4;--radius:185;"></span>
-            <span class="tech-node cat-auto" data-cat="Automatizacion" style="--i:3;--total:4;--radius:185;">Canva Pro</span>
-          </div>
+          <button class="tech-node cat-auto" type="button" style="--x:760;--y:280;" data-link="line-make" data-tip="Orquestacion automatica de procesos comerciales.">Make</button>
+          <button class="tech-node cat-auto" type="button" style="--x:710;--y:410;" data-link="line-n8n" data-tip="Flujos backend flexibles para operaciones IA.">n8n</button>
+          <button class="tech-node cat-auto" type="button" style="--x:290;--y:410;" data-link="line-manychat" data-tip="Bots para captacion y cierre por WhatsApp.">ManyChat</button>
+          <button class="tech-node cat-auto" type="button" style="--x:240;--y:280;" data-link="line-canva" data-tip="Produccion visual rapida para campanas.">Canva</button>
 
-          <div class="orbit orbit-3">
-            <span class="tech-connector" style="--i:0;--total:4;--radius:250;"></span>
-            <span class="tech-node cat-mkt" data-cat="Marketing" style="--i:0;--total:4;--radius:250;">Meta Ads</span>
-            <span class="tech-connector" style="--i:1;--total:4;--radius:250;"></span>
-            <span class="tech-node cat-mkt" data-cat="Marketing" style="--i:1;--total:4;--radius:250;">Google Ads</span>
-            <span class="tech-connector" style="--i:2;--total:4;--radius:250;"></span>
-            <span class="tech-node cat-dev" data-cat="Diseno/Dev" style="--i:2;--total:4;--radius:250;">Webflow</span>
-            <span class="tech-connector" style="--i:3;--total:4;--radius:250;"></span>
-            <span class="tech-node cat-dev" data-cat="Diseno/Dev" style="--i:3;--total:4;--radius:250;">Figma</span>
-          </div>
+          <button class="tech-node cat-mkt" type="button" style="--x:500;--y:500;" data-link="line-meta" data-tip="Escalado de pauta para conversion y remarketing.">Meta Ads</button>
+          <button class="tech-node cat-mkt" type="button" style="--x:850;--y:300;" data-link="line-google" data-tip="Captura demanda activa de alta intencion.">Google</button>
+
+          <button class="tech-node cat-dev" type="button" style="--x:650;--y:530;" data-link="line-webflow" data-tip="Landing y sitios optimizados para conversion.">Webflow</button>
+          <button class="tech-node cat-dev" type="button" style="--x:350;--y:530;" data-link="line-figma" data-tip="Sistema UX/UI consistente y escalable.">Figma</button>
+        </div>
+
+        <div class="ecosystem-legend reveal" aria-label="Categorías del ecosistema">
+          <span>🟠 IA &amp; Modelos</span>
+          <span>🟡 Automatización</span>
+          <span>🔴 Marketing</span>
+          <span>⚪ Diseño &amp; Dev</span>
         </div>
 
         <div class="ecosystem-mobile reveal" style="margin-top:1rem;">
@@ -2660,12 +2786,11 @@
           <span class="tech-pill b-design">Make</span>
           <span class="tech-pill b-design">n8n</span>
           <span class="tech-pill b-design">ManyChat</span>
-          <span class="tech-pill b-design">Canva Pro</span>
           <span class="tech-pill b-marketing">Meta Ads</span>
           <span class="tech-pill b-marketing">Google Ads</span>
-          <span class="tech-pill b-dev">Webflow</span>
-          <span class="tech-pill b-dev">Figma</span>
+          <span class="tech-pill b-dev">Webflow + Figma</span>
         </div>
+        <p class="ecosystem-mobile-note reveal">Un ecosistema completo. Un solo equipo.</p>
       </div>
     </section>
 
@@ -2954,6 +3079,52 @@
 
       if (pricingFilterBtns.length > 0 && pricingCards.length > 0) {
         applyPricingFilter("presencia");
+      }
+
+      const ecosystemMap = document.querySelector(".ecosystem-map");
+      if (ecosystemMap) {
+        const flowLines = ecosystemMap.querySelectorAll(".flow-line");
+        const techNodes = ecosystemMap.querySelectorAll(".tech-node[data-link]");
+
+        if (prefersReducedMotion) {
+          ecosystemMap.classList.add("is-drawn");
+        } else {
+          const ecosystemObserver = new IntersectionObserver(
+            function (entries, obs) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                ecosystemMap.classList.add("is-drawn");
+                obs.disconnect();
+              });
+            },
+            { threshold: 0.32 }
+          );
+          ecosystemObserver.observe(ecosystemMap);
+        }
+
+        function clearActiveLines() {
+          flowLines.forEach(function (line) { line.classList.remove("active"); });
+        }
+
+        techNodes.forEach(function (node) {
+          const lineId = node.dataset.link;
+          const targetLine = lineId ? document.getElementById(lineId) : null;
+          if (!targetLine) return;
+
+          function activate() {
+            clearActiveLines();
+            targetLine.classList.add("active");
+          }
+
+          function deactivate() {
+            targetLine.classList.remove("active");
+          }
+
+          node.addEventListener("mouseenter", activate);
+          node.addEventListener("mouseleave", deactivate);
+          node.addEventListener("focus", activate);
+          node.addEventListener("blur", deactivate);
+        });
       }
 
       document.querySelectorAll(".faq-trigger").forEach(function (trigger) {
