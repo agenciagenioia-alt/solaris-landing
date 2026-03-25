@@ -54,6 +54,29 @@
       scroll-behavior: smooth;
     }
 
+    body.is-loading {
+      overflow: hidden;
+    }
+
+    body header,
+    body main,
+    body footer,
+    body .mobile-sticky-cta,
+    body #particles-bg {
+      transition: opacity 0.9s var(--ease-out), filter 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+
+    body.is-loading header,
+    body.is-loading main,
+    body.is-loading footer,
+    body.is-loading .mobile-sticky-cta,
+    body.is-loading #particles-bg {
+      opacity: 0;
+      filter: blur(10px);
+      transform: scale(1.01);
+      pointer-events: none;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -96,6 +119,276 @@
       z-index: 0;
       opacity: 0.5;
       mix-blend-mode: screen;
+    }
+
+    #solar-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 12000;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(255, 184, 0, 0.16), rgba(255, 107, 0, 0.08) 26%, rgba(10, 10, 10, 0.98) 62%),
+        #0A0A0A;
+      transition: opacity 0.95s var(--ease-out), visibility 0.95s var(--ease-out);
+      opacity: 1;
+      visibility: visible;
+      overflow: hidden;
+    }
+
+    #solar-loader::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 107, 0, 0.18), transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(255, 184, 0, 0.14), transparent 38%),
+        radial-gradient(circle at 50% 80%, rgba(255, 60, 172, 0.1), transparent 42%);
+      filter: blur(20px);
+      animation: loaderNebulaDrift 8s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    #solar-loader.is-exit {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #solar-loader.is-exit .solar-loader__scene {
+      animation: sceneExit 0.9s var(--ease-out) both;
+    }
+
+    .solar-loader__scene {
+      position: relative;
+      width: min(56vw, 420px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      filter: drop-shadow(0 0 30px rgba(255, 107, 0, 0.28));
+      perspective: 1200px;
+      animation: sceneFloat 1.8s ease-in-out infinite alternate;
+      z-index: 2;
+    }
+
+    .solar-loader__halo {
+      position: absolute;
+      width: 24%;
+      height: 24%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 184, 0, 0.5) 0%, rgba(255, 107, 0, 0.2) 55%, transparent 100%);
+      filter: blur(8px);
+      animation: haloBreath 1.4s ease-in-out 0.2s infinite;
+      z-index: 1;
+    }
+
+    .solar-loader__core {
+      width: clamp(42px, 8.8vw, 76px);
+      height: clamp(42px, 8.8vw, 76px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 36% 34%, #FFF1A0 0%, #FFD700 26%, #FFB800 52%, #FF6B00 100%);
+      box-shadow: 0 0 0 rgba(255, 107, 0, 0.5);
+      animation: coreBirth 0.95s var(--ease-spring) 0.1s both, corePulse 1.25s ease-in-out 1.05s infinite;
+      z-index: 4;
+    }
+
+    .solar-loader__ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.4px solid rgba(255, 184, 0, 0.4);
+      opacity: 0;
+      transform: scale(0.6);
+      animation: ringAppear 0.7s var(--ease-out) forwards;
+    }
+
+    .solar-loader__ring.r1 {
+      width: 34%;
+      height: 34%;
+      border-color: rgba(255, 107, 0, 0.66);
+      animation-delay: 0.45s;
+    }
+
+    .solar-loader__ring.r2 {
+      width: 56%;
+      height: 56%;
+      border-color: rgba(255, 184, 0, 0.48);
+      animation-delay: 0.62s;
+    }
+
+    .solar-loader__ring.r3 {
+      width: 78%;
+      height: 78%;
+      border-color: rgba(255, 60, 172, 0.38);
+      animation-delay: 0.78s;
+    }
+
+    .solar-loader__ring.spin-a { animation-name: ringAppear, orbitSpin; animation-duration: 0.7s, 4.2s; animation-delay: 0.45s, 1.2s; animation-iteration-count: 1, infinite; }
+    .solar-loader__ring.spin-b { animation-name: ringAppear, orbitSpinRev; animation-duration: 0.7s, 4.8s; animation-delay: 0.62s, 1.2s; animation-iteration-count: 1, infinite; }
+    .solar-loader__ring.spin-c { animation-name: ringAppear, orbitSpin; animation-duration: 0.7s, 5.6s; animation-delay: 0.78s, 1.2s; animation-iteration-count: 1, infinite; }
+
+    .solar-loader__shockwave {
+      position: absolute;
+      width: 16%;
+      height: 16%;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 184, 0, 0.45);
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .solar-loader__shockwave.wave-a {
+      animation: shockwave 0.95s ease-out 1.46s forwards;
+    }
+
+    .solar-loader__shockwave.wave-b {
+      animation: shockwave 1.05s ease-out 1.62s forwards;
+      border-color: rgba(255, 107, 0, 0.42);
+    }
+
+    .solar-loader__nova {
+      position: absolute;
+      width: 18%;
+      height: 18%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 184, 0, 1), rgba(255, 107, 0, 0.72) 42%, rgba(255, 60, 172, 0.1) 74%, transparent 100%);
+      transform: scale(0);
+      opacity: 0;
+      animation: novaBlast 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.45s forwards;
+      z-index: 3;
+    }
+
+    .solar-loader__flash {
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle, rgba(255, 230, 185, 0.95), rgba(255, 184, 0, 0.45) 20%, transparent 55%);
+      opacity: 0;
+      mix-blend-mode: screen;
+      animation: solarFlash 0.58s ease-out 1.6s forwards;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .solar-loader__spark {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FFB800;
+      box-shadow: 0 0 14px rgba(255, 107, 0, 0.86);
+      transform: rotate(calc(var(--i) * 20deg)) translateY(0);
+      opacity: 0;
+      animation: sparkBurst 1.05s var(--ease-out) 1.5s forwards;
+      z-index: 4;
+    }
+
+    .solar-loader__caption {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      text-align: center;
+      display: grid;
+      gap: 0.16rem;
+    }
+
+    .solar-loader__brand {
+      letter-spacing: 0.32em;
+      font-size: clamp(0.72rem, 1.5vw, 0.92rem);
+      font-weight: 800;
+      color: rgba(255, 240, 220, 0.92);
+      text-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+      opacity: 0;
+      animation: brandIn 0.65s var(--ease-out) 1.05s forwards;
+    }
+
+    .solar-loader__subtitle {
+      font-size: clamp(0.62rem, 1.2vw, 0.76rem);
+      letter-spacing: 0.12em;
+      color: rgba(255, 215, 168, 0.7);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: subtitleIn 0.65s var(--ease-out) 1.22s forwards;
+    }
+
+    @keyframes coreBirth {
+      0% { transform: scale(0.1); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes corePulse {
+      0%, 100% { box-shadow: 0 0 0 rgba(255, 107, 0, 0.15), 0 0 25px rgba(255, 107, 0, 0.24); }
+      50% { box-shadow: 0 0 0 12px rgba(255, 107, 0, 0), 0 0 40px rgba(255, 184, 0, 0.35); }
+    }
+
+    @keyframes haloBreath {
+      0%, 100% { transform: scale(0.8); opacity: 0.65; }
+      50% { transform: scale(1.25); opacity: 0.95; }
+    }
+
+    @keyframes ringAppear {
+      0% { opacity: 0; transform: scale(0.6); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes orbitSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes orbitSpinRev {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    @keyframes novaBlast {
+      0% { transform: scale(0.35); opacity: 0.8; }
+      58% { transform: scale(5.2); opacity: 0.62; }
+      100% { transform: scale(9.5); opacity: 0; }
+    }
+
+    @keyframes shockwave {
+      0% { transform: scale(0.45); opacity: 0.75; }
+      100% { transform: scale(8.5); opacity: 0; }
+    }
+
+    @keyframes solarFlash {
+      0% { opacity: 0; }
+      20% { opacity: 0.92; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes sparkBurst {
+      0% { opacity: 0; transform: rotate(calc(var(--i) * 30deg)) translateY(0) scale(0.4); }
+      20% { opacity: 1; }
+      100% { opacity: 0; transform: rotate(calc(var(--i) * 30deg)) translateY(-145px) scale(0.9); }
+    }
+
+    @keyframes brandIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes subtitleIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes loaderNebulaDrift {
+      0% { transform: translate3d(-2%, -1%, 0) scale(1); }
+      50% { transform: translate3d(2%, 1.5%, 0) scale(1.04); }
+      100% { transform: translate3d(-2%, -1%, 0) scale(1); }
+    }
+
+    @keyframes sceneFloat {
+      from { transform: translateY(-4px) rotateX(1deg); }
+      to { transform: translateY(4px) rotateX(-1deg); }
+    }
+
+    @keyframes sceneExit {
+      from { transform: scale(1); opacity: 1; filter: blur(0); }
+      to { transform: scale(1.15); opacity: 0; filter: blur(8px); }
     }
 
     .section-divider {
@@ -532,6 +825,25 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
+    .hero-trust-strip {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.55rem;
+      max-width: 720px;
+    }
+
+    .hero-trust-item {
+      border-radius: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.5rem 0.58rem;
+      font-size: 0.82rem;
+      color: #e8e8e8;
+      font-weight: 620;
+      text-align: center;
+    }
+
     .hero-visual {
       display: flex;
       align-items: center;
@@ -615,6 +927,7 @@
       z-index: 999;
       height: calc(56px + env(safe-area-inset-bottom));
       background: linear-gradient(90deg, #FF6B00, #FFB800);
+      box-shadow: 0 -10px 28px rgba(255, 107, 0, 0.22);
     }
 
     .mobile-sticky-cta a {
@@ -628,6 +941,28 @@
       font-weight: 800;
       letter-spacing: 0.01em;
       text-align: center;
+    }
+
+    .faq-cta-inline {
+      margin-top: 1rem;
+      border: 1px solid rgba(255, 184, 0, 0.3);
+      border-radius: 14px;
+      background: rgba(255, 184, 0, 0.08);
+      padding: 0.85rem 0.95rem;
+      color: #f2deb5;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .faq-cta-inline a {
+      font-weight: 800;
+      color: #ffd27a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
 
     .ticker-wrap {
@@ -1708,6 +2043,16 @@
       z-index: -1;
     }
 
+    .mobile-swipe-hint {
+      display: none;
+      margin: -0.1rem 0 0.7rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 184, 0, 0.74);
+      font-weight: 700;
+    }
+
     @keyframes shimmerBorder {
       from { background-position: 0% 0%; }
       to { background-position: 200% 0%; }
@@ -1953,27 +2298,29 @@
 
       .hero-bg-nebula {
         position: absolute !important;
-        top: 72px !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: min(300px, 45vh) !important;
-        max-height: 300px !important;
+        top: 0 !important;
+        left: -8% !important;
+        width: 116% !important;
+        height: min(78vh, 620px) !important;
+        max-height: none !important;
         z-index: 0 !important;
         pointer-events: none !important;
-        -webkit-mask-image: radial-gradient(ellipse 90% 72% at 70% 40%, black 30%, transparent 78%) !important;
-        mask-image: radial-gradient(ellipse 90% 72% at 70% 40%, black 30%, transparent 78%) !important;
+        opacity: 0.94 !important;
+        -webkit-mask-image: radial-gradient(ellipse 95% 82% at 68% 38%, black 28%, transparent 78%) !important;
+        mask-image: radial-gradient(ellipse 95% 82% at 68% 38%, black 28%, transparent 78%) !important;
       }
 
       .hero-bg-nebula iframe {
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
+        top: -10% !important;
+        left: -6% !important;
+        width: 112% !important;
+        height: 122% !important;
         pointer-events: none !important;
       }
 
       .hero {
         text-align: left;
+        min-height: 100vh;
       }
 
       .hero-copy {
@@ -1981,10 +2328,16 @@
         padding: 0;
         position: relative;
         z-index: 2;
+        padding-top: clamp(1.3rem, 6vh, 3rem);
       }
 
       .hero-badge {
         margin-inline: 0;
+      }
+
+      .hero-trust-strip {
+        grid-template-columns: 1fr;
+        max-width: 100%;
       }
 
       .hero-ctas,
@@ -2003,7 +2356,7 @@
       }
 
       .pricing-card {
-        grid-column: 1 / -1;
+        grid-column: auto;
       }
 
       .pricing-amount {
@@ -2062,12 +2415,61 @@
         font-size: 0.75rem;
       }
 
+      .mobile-swipe-hint {
+        display: block;
+      }
+
+      .faq-cta-inline {
+        align-items: flex-start;
+      }
+
       .why-metrics-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: none;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(84%, 1fr);
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        gap: 0.85rem;
+        padding-bottom: 0.3rem;
+      }
+
+      .why-metrics-grid,
+      .cases-grid,
+      .pricing-cards-grid,
+      .testimonials-grid {
+        scrollbar-width: none;
+      }
+
+      .why-metrics-grid::-webkit-scrollbar,
+      .cases-grid::-webkit-scrollbar,
+      .pricing-cards-grid::-webkit-scrollbar,
+      .testimonials-grid::-webkit-scrollbar {
+        display: none;
       }
 
       .why-metric {
         min-height: 0;
+        scroll-snap-align: start;
+      }
+
+      .cases-grid,
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(86%, 1fr);
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        gap: 0.85rem;
+        padding-bottom: 0.3rem;
+      }
+
+      .case-card,
+      .testimonials-grid article {
+        scroll-snap-align: start;
       }
 
       .tab-panel,
@@ -2075,11 +2477,42 @@
         grid-template-columns: 1fr;
       }
 
+      .tab-panel {
+        padding: 0.95rem;
+        gap: 0.8rem;
+      }
+
+      .tab-panel p {
+        line-height: 1.55;
+      }
+
+      .service-result {
+        margin-top: 0.25rem;
+      }
+
+      .service-metric {
+        min-height: 116px;
+        padding: 0.75rem;
+      }
+
+      .metric-big {
+        font-size: clamp(2.2rem, 13vw, 3rem);
+      }
+
+      .industries-selector {
+        gap: 0.85rem;
+      }
+
       .industry-meta {
         border-left: 0;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         padding-left: 0;
         padding-top: 0.8rem;
+      }
+
+      .industry-panel {
+        padding: 0.95rem;
+        gap: 0.75rem;
       }
 
       .process-timeline {
@@ -2108,6 +2541,46 @@
 
       .process-steps {
         grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+
+      .process-step {
+        position: relative;
+        margin-left: 0.45rem;
+        padding: 0.85rem 0.85rem 0.9rem;
+      }
+
+      .process-step::before {
+        content: "";
+        position: absolute;
+        left: -1rem;
+        top: 1.08rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, #FF6B00, #FFB800);
+        box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.16), 0 0 16px rgba(255, 184, 0, 0.28);
+      }
+
+      .pricing-cards-grid {
+        display: grid;
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(86vw, 1fr);
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        gap: 0.85rem;
+        padding-bottom: 0.35rem;
+      }
+
+      .pricing-card {
+        min-height: 300px;
+        scroll-snap-align: start;
+      }
+
+      .pricing-card.enterprise-card {
+        grid-column: auto;
       }
 
       .ecosystem-map {
@@ -2120,6 +2593,11 @@
 
       .ecosystem-mobile {
         display: grid;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 0.95rem;
+        background: radial-gradient(circle at 50% 14%, rgba(255, 107, 0, 0.18), rgba(255, 107, 0, 0) 58%), rgba(255, 255, 255, 0.02);
+        gap: 0.55rem;
       }
 
       .ecosystem-mobile-note {
@@ -2148,6 +2626,21 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      #solar-loader {
+        display: none !important;
+      }
+
+      body.is-loading header,
+      body.is-loading main,
+      body.is-loading footer,
+      body.is-loading .mobile-sticky-cta,
+      body.is-loading #particles-bg {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+        pointer-events: auto !important;
+      }
+
       #particles-bg {
         display: none;
       }
@@ -2184,8 +2677,43 @@
     }
   </style>
 </head>
-<body>
+<body class="is-loading">
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  <div id="solar-loader" aria-hidden="true">
+    <div class="solar-loader__scene">
+      <div class="solar-loader__halo"></div>
+      <div class="solar-loader__ring r1 spin-a"></div>
+      <div class="solar-loader__ring r2 spin-b"></div>
+      <div class="solar-loader__ring r3 spin-c"></div>
+      <div class="solar-loader__core"></div>
+      <div class="solar-loader__shockwave wave-a"></div>
+      <div class="solar-loader__shockwave wave-b"></div>
+      <div class="solar-loader__nova"></div>
+      <div class="solar-loader__flash"></div>
+      <span class="solar-loader__spark" style="--i:0;"></span>
+      <span class="solar-loader__spark" style="--i:1;"></span>
+      <span class="solar-loader__spark" style="--i:2;"></span>
+      <span class="solar-loader__spark" style="--i:3;"></span>
+      <span class="solar-loader__spark" style="--i:4;"></span>
+      <span class="solar-loader__spark" style="--i:5;"></span>
+      <span class="solar-loader__spark" style="--i:6;"></span>
+      <span class="solar-loader__spark" style="--i:7;"></span>
+      <span class="solar-loader__spark" style="--i:8;"></span>
+      <span class="solar-loader__spark" style="--i:9;"></span>
+      <span class="solar-loader__spark" style="--i:10;"></span>
+      <span class="solar-loader__spark" style="--i:11;"></span>
+      <span class="solar-loader__spark" style="--i:12;"></span>
+      <span class="solar-loader__spark" style="--i:13;"></span>
+      <span class="solar-loader__spark" style="--i:14;"></span>
+      <span class="solar-loader__spark" style="--i:15;"></span>
+      <span class="solar-loader__spark" style="--i:16;"></span>
+      <span class="solar-loader__spark" style="--i:17;"></span>
+      <div class="solar-loader__caption">
+        <div class="solar-loader__brand">SOLARIS</div>
+        <div class="solar-loader__subtitle">Activando núcleo de energía</div>
+      </div>
+    </div>
+  </div>
 
   <header class="nav-wrap" id="siteNav">
     <div class="container nav">
@@ -2207,7 +2735,7 @@
       </nav>
 
       <a class="btn btn-primary nav-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20mi%20objetivo%20es%20%5Bobjetivo%5D." target="_blank" rel="noopener noreferrer" aria-label="Agendar diagnóstico gratuito por WhatsApp">
-        Diagnóstico Gratuito →
+        Diagnóstico Estratégico →
       </a>
 
       <button class="hamburger" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú de navegación">
@@ -2223,7 +2751,7 @@
         <a href="#precios">Precios</a>
         <a href="#contacto">Contacto</a>
         <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20mi%20objetivo%20es%20%5Bobjetivo%5D." target="_blank" rel="noopener noreferrer">
-          Diagnóstico Gratuito →
+          Diagnóstico Estratégico →
         </a>
       </div>
     </div>
@@ -2268,7 +2796,7 @@
           </p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20vengo%20desde%20la%20landing%20y%20quiero%20hablar%20con%20un%20experto.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20busco%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Hablar con SOLARIS por WhatsApp">
-              💬 Agendar diagnóstico ahora
+              💬 Quiero mi plan de acción
             </a>
             <a class="btn btn-secondary" href="#casos" aria-label="Ver casos reales">
               ▶ Ver casos reales
@@ -2278,6 +2806,11 @@
             <span><strong data-count="320" data-prefix="+" data-suffix="%">+320%</strong> ventas promedio</span>
             <span><strong data-count="40" data-prefix="+">+40</strong> clientes activos</span>
             <span><strong data-count="100" data-suffix="%">100%</strong> resultados medibles</span>
+          </div>
+          <div class="hero-trust-strip" aria-label="Pruebas de confianza">
+            <div class="hero-trust-item">Diagnóstico en 30 min</div>
+            <div class="hero-trust-item">Implementación desde 7 días</div>
+            <div class="hero-trust-item">KPIs claros cada semana</div>
           </div>
         </div>
 
@@ -2312,6 +2845,7 @@
       <div class="container">
         <div class="section-tag reveal">Por qué SOLARIS</div>
         <h2 id="why-solaris" class="reveal section-title">Resultados mas claros. Mas rapido. Con menos friccion.</h2>
+        <p class="mobile-swipe-hint" aria-hidden="true">Desliza para ver cada métrica</p>
         <div class="why-metrics reveal" style="margin-top:1rem;">
           <div class="why-metrics-grid">
             <article class="why-metric reveal delay-1">
@@ -2356,6 +2890,7 @@
       <div class="container">
         <div class="section-tag reveal">Casos reales</div>
         <h2 id="cases-title" class="reveal section-title">Resultados que hablan por sí solos.</h2>
+        <p class="mobile-swipe-hint" aria-hidden="true">Desliza para ver más casos</p>
         <div class="cases-grid">
           <article class="case-card card-grad-border reveal delay-1">
             <p class="muted">Clínica Odontológica · Montería</p>
@@ -2648,6 +3183,7 @@
           <div class="pricing-intro reveal">
             <h2 id="pricing-title" class="section-title">Elige tu tipo de crecimiento y activa el plan correcto.</h2>
             <p>Filtra por etapa y mira solo los planes que aplican para tu negocio hoy.</p>
+            <p class="mobile-swipe-hint" aria-hidden="true">Desliza las cards para comparar</p>
           </div>
 
           <div class="pricing-filter-nav reveal" role="tablist" aria-label="Selector tipo de cliente">
@@ -2787,6 +3323,7 @@
     <section class="section" aria-labelledby="testimonials-title">
       <div class="container">
         <h2 id="testimonials-title" class="reveal section-title">Lo que dicen nuestros clientes</h2>
+        <p class="mobile-swipe-hint" aria-hidden="true">Desliza para ver testimonios</p>
         <div class="testimonials-grid" style="margin-top:1rem;">
           <article class="card glass gradient-border reveal delay-1">
             <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
@@ -2999,6 +3536,10 @@
             <div class="faq-body"><p>Sí. Nacimos en Colombia y operamos para clientes en Latam. Nuestro enfoque local nos hace más precisos y nuestra ejecución es global.</p></div>
           </article>
         </div>
+        <div class="faq-cta-inline reveal">
+          <span>¿Prefieres resolverlo en una llamada rápida?</span>
+          <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20resolver%20unas%20dudas%20r%C3%A1pidas%20antes%20de%20iniciar.%20%C2%BFPodemos%20hablar%20hoy%3F" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp ahora →</a>
+        </div>
       </div>
     </section>
 
@@ -3025,7 +3566,7 @@
 
   <div class="mobile-sticky-cta">
     <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20objetivo%20principal%20es%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Diagnóstico gratuito por WhatsApp">
-      💬 Diagnóstico gratuito por WhatsApp
+      💬 Hablar por WhatsApp y activar mi plan
     </a>
   </div>
 
@@ -3064,6 +3605,35 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      const loader = document.getElementById('solar-loader');
+      if (!loader) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const start = performance.now();
+      const minDuration = reduceMotion ? 260 : 2600;
+      let done = false;
+
+      function hideLoader() {
+        if (done) return;
+        done = true;
+        loader.classList.add('is-exit');
+        document.body.classList.remove('is-loading');
+        setTimeout(function () {
+          loader.style.display = 'none';
+        }, reduceMotion ? 260 : 980);
+      }
+
+      window.addEventListener('load', function () {
+        const elapsed = performance.now() - start;
+        const wait = Math.max(0, minDuration - elapsed);
+        setTimeout(hideLoader, wait);
+      }, { once: true });
+
+      setTimeout(hideLoader, reduceMotion ? 900 : 5200);
+    })();
+  </script>
   <script>
     (function () {
       "use strict";
@@ -3242,6 +3812,7 @@
 
       const pricingFilterBtns = document.querySelectorAll(".pricing-filter-btn");
       const pricingCards = document.querySelectorAll(".pricing-card");
+      const pricingCardsGrid = document.querySelector(".pricing-cards-grid");
 
       function applyPricingFilter(filter) {
         pricingFilterBtns.forEach(function (btn) {
@@ -3276,6 +3847,13 @@
             }, 300);
           }
         });
+
+        if (pricingCardsGrid && window.matchMedia("(max-width: 768px)").matches) {
+          pricingCardsGrid.scrollTo({
+            left: 0,
+            behavior: prefersReducedMotion ? "auto" : "smooth"
+          });
+        }
       }
 
       pricingFilterBtns.forEach(function (btn) {
@@ -3286,6 +3864,54 @@
 
       if (pricingFilterBtns.length > 0 && pricingCards.length > 0) {
         applyPricingFilter("presencia");
+      }
+
+      const testimonialsTrack = document.querySelector(".testimonials-grid");
+      if (testimonialsTrack && window.matchMedia("(max-width: 768px)").matches) {
+        const testimonialCards = Array.from(testimonialsTrack.querySelectorAll("article"));
+        let testimonialIndex = 0;
+        let autoplayTimer = null;
+
+        const scrollToTestimonial = function (index, smooth) {
+          const card = testimonialCards[index];
+          if (!card) return;
+          testimonialsTrack.scrollTo({
+            left: card.offsetLeft - testimonialsTrack.offsetLeft,
+            behavior: smooth && !prefersReducedMotion ? "smooth" : "auto"
+          });
+        };
+
+        const startTestimonialsAutoplay = function () {
+          if (prefersReducedMotion || testimonialCards.length < 2 || autoplayTimer) return;
+          autoplayTimer = setInterval(function () {
+            testimonialIndex = (testimonialIndex + 1) % testimonialCards.length;
+            scrollToTestimonial(testimonialIndex, true);
+          }, 3400);
+        };
+
+        const stopTestimonialsAutoplay = function () {
+          if (!autoplayTimer) return;
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        };
+
+        testimonialsTrack.addEventListener("scroll", function () {
+          const closestIndex = testimonialCards.reduce(function (closest, card, idx) {
+            const distance = Math.abs((card.offsetLeft - testimonialsTrack.offsetLeft) - testimonialsTrack.scrollLeft);
+            return distance < closest.distance ? { index: idx, distance: distance } : closest;
+          }, { index: 0, distance: Number.POSITIVE_INFINITY }).index;
+          testimonialIndex = closestIndex;
+        }, { passive: true });
+
+        testimonialsTrack.addEventListener("touchstart", stopTestimonialsAutoplay, { passive: true });
+        testimonialsTrack.addEventListener("mouseenter", stopTestimonialsAutoplay);
+        testimonialsTrack.addEventListener("mouseleave", startTestimonialsAutoplay);
+        testimonialsTrack.addEventListener("touchend", function () {
+          setTimeout(startTestimonialsAutoplay, 900);
+        }, { passive: true });
+
+        scrollToTestimonial(0, false);
+        startTestimonialsAutoplay();
       }
 
       const ecosystemMap = document.querySelector(".ecosystem-map");
