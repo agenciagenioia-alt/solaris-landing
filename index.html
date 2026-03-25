@@ -990,6 +990,23 @@
       text-transform: uppercase;
     }
 
+    .ticker-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 184, 0, 0.45);
+      background: rgba(255, 184, 0, 0.08);
+      box-shadow: 0 0 0 rgba(255, 107, 0, 0.2);
+      animation: tickerPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes tickerPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.06); }
+      50% { box-shadow: 0 0 0 8px rgba(255, 107, 0, 0); }
+    }
+
     @keyframes ticker {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
@@ -1179,6 +1196,7 @@
       height: 100%;
       background: var(--grad);
       transition: width 1.35s var(--ease-reveal);
+      position: relative;
     }
 
     .timeline-fill.animated {
@@ -1466,6 +1484,28 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(255, 255, 255, 0.02);
       padding: 1rem;
+      transition: border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), transform 0.35s var(--ease-out), background 0.35s var(--ease-out);
+    }
+
+    .process-step.active {
+      border-color: rgba(255, 184, 0, 0.55);
+      background: radial-gradient(circle at 20% 15%, rgba(255, 184, 0, 0.15), rgba(255, 107, 0, 0.05) 58%, rgba(255, 255, 255, 0.03));
+      box-shadow: 0 16px 30px rgba(255, 107, 0, 0.16);
+      transform: translateY(-3px);
+    }
+
+    .timeline-energy-orb {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff0b8 0%, #FFB800 48%, #FF6B00 100%);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2), 0 0 18px rgba(255, 184, 0, 0.42);
+      top: 50%;
+      left: 0%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      transition: top 0.12s linear, left 0.12s linear;
     }
 
     .step-badge {
@@ -2053,6 +2093,36 @@
       font-weight: 700;
     }
 
+    .mobile-scroll-indicator {
+      display: none;
+      margin: -0.18rem 0 0.55rem;
+      width: fit-content;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 184, 0, 0.8);
+      font-weight: 750;
+      border: 1px dashed rgba(255, 184, 0, 0.4);
+      border-radius: 999px;
+      padding: 0.32rem 0.62rem;
+      animation: hintShift 1.6s ease-in-out infinite;
+    }
+
+    .mobile-auto-hint {
+      display: none;
+      margin: -0.08rem 0 0.7rem;
+      font-size: 0.73rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 184, 0, 0.78);
+      font-weight: 720;
+    }
+
+    @keyframes hintShift {
+      0%, 100% { transform: translateX(0); opacity: 0.9; }
+      50% { transform: translateX(5px); opacity: 1; }
+    }
+
     @keyframes shimmerBorder {
       from { background-position: 0% 0%; }
       to { background-position: 200% 0%; }
@@ -2419,6 +2489,11 @@
         display: block;
       }
 
+      .mobile-scroll-indicator,
+      .mobile-auto-hint {
+        display: inline-flex;
+      }
+
       .faq-cta-inline {
         align-items: flex-start;
       }
@@ -2467,9 +2542,17 @@
         padding-bottom: 0.3rem;
       }
 
+      .testimonials-grid {
+        scroll-snap-type: none;
+      }
+
       .case-card,
       .testimonials-grid article {
         scroll-snap-align: start;
+      }
+
+      .testimonials-grid article {
+        scroll-snap-align: none;
       }
 
       .tab-panel,
@@ -2533,6 +2616,11 @@
         width: 100%;
         height: 0%;
         transition: height 1.1s var(--ease-reveal);
+      }
+
+      .timeline-energy-orb {
+        left: 50%;
+        top: 0%;
       }
 
       .timeline-fill.animated {
@@ -2825,14 +2913,14 @@
           <span>✦ 40 pacientes nuevos — Clínica, Montería</span>
           <span>✦ 3x conversión — Restaurante, Pereira</span>
           <span>✦ Bot WhatsApp 24/7 — Tienda de Ropa</span>
-          <span>✦ #1 en Google Maps — Servicio Local</span>
+          <span class="ticker-live-pill">✦ Caso activo: reputación + IA local en modo crecimiento</span>
         </div>
         <div class="ticker-content gradient-text" aria-hidden="true">
           <span>✦ +320% ventas en 60 días — Retail, Montería</span>
           <span>✦ 40 pacientes nuevos — Clínica, Montería</span>
           <span>✦ 3x conversión — Restaurante, Pereira</span>
           <span>✦ Bot WhatsApp 24/7 — Tienda de Ropa</span>
-          <span>✦ #1 en Google Maps — Servicio Local</span>
+          <span class="ticker-live-pill">✦ Caso activo: reputación + IA local en modo crecimiento</span>
         </div>
       </div>
     </section>
@@ -2845,7 +2933,7 @@
       <div class="container">
         <div class="section-tag reveal">Por qué SOLARIS</div>
         <h2 id="why-solaris" class="reveal section-title">Resultados mas claros. Mas rapido. Con menos friccion.</h2>
-        <p class="mobile-swipe-hint" aria-hidden="true">Desliza para ver cada métrica</p>
+        <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza para descubrir cada métrica</p>
         <div class="why-metrics reveal" style="margin-top:1rem;">
           <div class="why-metrics-grid">
             <article class="why-metric reveal delay-1">
@@ -2890,7 +2978,7 @@
       <div class="container">
         <div class="section-tag reveal">Casos reales</div>
         <h2 id="cases-title" class="reveal section-title">Resultados que hablan por sí solos.</h2>
-        <p class="mobile-swipe-hint" aria-hidden="true">Desliza para ver más casos</p>
+        <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza para ver más casos reales</p>
         <div class="cases-grid">
           <article class="case-card card-grad-border reveal delay-1">
             <p class="muted">Clínica Odontológica · Montería</p>
@@ -2925,6 +3013,39 @@
             </div>
             <p style="margin-top:0.7rem;">“El bot atiende mientras duermo. Es increíble.” — Carlos R.</p>
           </article>
+          <article class="case-card card-grad-border reveal">
+            <p class="muted">Inmobiliaria · Medellín</p>
+            <div class="case-big gradient-text">+<span data-count="185">185</span>%</div>
+            <p><strong>más leads calificados en 45 días</strong></p>
+            <div>
+              <span class="pill">Google Search</span>
+              <span class="pill">CRM IA</span>
+              <span class="pill">Lead Scoring</span>
+            </div>
+            <p style="margin-top:0.7rem;">“Ahora nos llegan contactos con intención real de compra.” — Felipe G.</p>
+          </article>
+          <article class="case-card card-grad-border reveal">
+            <p class="muted">Educación · Bogotá</p>
+            <div class="case-big gradient-text"><span data-count="62">62</span>%</div>
+            <p><strong>menos costo por inscripción</strong></p>
+            <div>
+              <span class="pill">Meta Ads</span>
+              <span class="pill">Embudo IA</span>
+              <span class="pill">WhatsApp</span>
+            </div>
+            <p style="margin-top:0.7rem;">“Bajamos costos y subimos matrículas al mismo tiempo.” — Natalia P.</p>
+          </article>
+          <article class="case-card card-grad-border reveal">
+            <p class="muted">E-commerce Beauty · Cali</p>
+            <div class="case-big gradient-text">+<span data-count="228">228</span>%</div>
+            <p><strong>crecimiento en recompra trimestral</strong></p>
+            <div>
+              <span class="pill">Remarketing IA</span>
+              <span class="pill">Email Flows</span>
+              <span class="pill">Automatización</span>
+            </div>
+            <p style="margin-top:0.7rem;">“La recompra se volvió predecible y escalable.” — Paola V.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -2938,6 +3059,7 @@
         <div class="section-tag reveal">Servicios</div>
         <h2 id="services-title" class="reveal section-title">Activa un frente. Escala todo el sistema.</h2>
         <div class="services-tabs reveal" style="margin-top:1rem;">
+          <p class="mobile-scroll-indicator" aria-hidden="true">↔ Desliza categorías de servicio</p>
           <div class="tabs-nav" role="tablist" aria-label="Tabs de servicios">
             <button class="tab-btn active" role="tab" aria-selected="true" data-service="publicidad">Publicidad</button>
             <button class="tab-btn" role="tab" aria-selected="false" data-service="automatizacion">Automatizacion</button>
@@ -3036,6 +3158,7 @@
       <div class="container">
         <h2 id="industry-title" class="reveal section-title">Escoge tu industria y mira el sistema en accion</h2>
         <div class="industries-selector reveal" style="margin-top:1rem;">
+          <p class="mobile-scroll-indicator" aria-hidden="true">↔ Desliza para elegir industria</p>
           <div class="industry-nav" role="tablist" aria-label="Selector de industrias">
             <button class="industry-btn active" data-industry="restaurantes">🍽️ Restaurantes</button>
             <button class="industry-btn" data-industry="salud">🏥 Salud</button>
@@ -3142,6 +3265,7 @@
         <div class="process-timeline reveal">
           <div class="timeline-line">
             <div class="timeline-fill" id="timelineFill"></div>
+            <div class="timeline-energy-orb" id="timelineOrb" aria-hidden="true"></div>
           </div>
           <div class="process-steps">
             <article class="process-step">
@@ -3183,9 +3307,10 @@
           <div class="pricing-intro reveal">
             <h2 id="pricing-title" class="section-title">Elige tu tipo de crecimiento y activa el plan correcto.</h2>
             <p>Filtra por etapa y mira solo los planes que aplican para tu negocio hoy.</p>
-            <p class="mobile-swipe-hint" aria-hidden="true">Desliza las cards para comparar</p>
+            <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza las cards para comparar</p>
           </div>
 
+          <p class="mobile-scroll-indicator reveal" aria-hidden="true">↔ Desliza los filtros de etapa</p>
           <div class="pricing-filter-nav reveal" role="tablist" aria-label="Selector tipo de cliente">
             <button class="pricing-filter-btn active" aria-pressed="true" data-pricing-filter="presencia">🚀 Quiero presencia digital</button>
             <button class="pricing-filter-btn" aria-pressed="false" data-pricing-filter="mensual">📈 Quiero crecer mensual</button>
@@ -3323,7 +3448,7 @@
     <section class="section" aria-labelledby="testimonials-title">
       <div class="container">
         <h2 id="testimonials-title" class="reveal section-title">Lo que dicen nuestros clientes</h2>
-        <p class="mobile-swipe-hint" aria-hidden="true">Desliza para ver testimonios</p>
+        <p class="mobile-auto-hint" aria-hidden="true">Historias reales en movimiento continuo</p>
         <div class="testimonials-grid" style="margin-top:1rem;">
           <article class="card glass gradient-border reveal delay-1">
             <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
@@ -3355,6 +3480,50 @@
               <div>
                 <strong>Laura S.</strong>
                 <div class="muted">Tienda de Moda · Colombia</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“Lo que más valoro es la claridad: sabemos qué funciona y qué ajustar cada semana.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">FG</span>
+              <div>
+                <strong>Felipe G.</strong>
+                <div class="muted">Inmobiliaria · Medellín</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“Pasamos de campañas sueltas a un sistema completo que sí genera ventas cada mes.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">NP</span>
+              <div>
+                <strong>Natalia P.</strong>
+                <div class="muted">Educación · Bogotá</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“Automatizar WhatsApp nos liberó tiempo y mejoró la experiencia del cliente.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">PV</span>
+              <div>
+                <strong>Paola V.</strong>
+                <div class="muted">E-commerce Beauty · Cali</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“En 3 semanas ya teníamos citas constantes, y ahora el proceso es mucho más ordenado.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">JM</span>
+              <div>
+                <strong>Julián M.</strong>
+                <div class="muted">Clínica estética · Barranquilla</div>
               </div>
             </div>
           </article>
@@ -3766,19 +3935,52 @@
       countEls.forEach(function (el) { countObserver.observe(el); });
 
       const timelineFill = document.getElementById("timelineFill");
-      if (timelineFill) {
-        const timelineRoot = timelineFill.closest(".timeline") || timelineFill.closest(".process-timeline");
-        const timelineObserver = new IntersectionObserver(
-          function (entries, obs) {
-            entries.forEach(function (entry) {
-              if (!entry.isIntersecting) return;
-              timelineFill.classList.add("animated");
-              obs.disconnect();
+      const timelineOrb = document.getElementById("timelineOrb");
+      const processTimeline = document.querySelector(".process-timeline");
+      const processSteps = Array.from(document.querySelectorAll(".process-step"));
+      if (timelineFill && processTimeline && processSteps.length > 0) {
+        const updateProcessEnergy = function () {
+          const rect = processTimeline.getBoundingClientRect();
+          const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+          const startPoint = viewportHeight * 0.78;
+          const range = rect.height + viewportHeight * 0.42;
+          const progress = Math.min(1, Math.max(0, (startPoint - rect.top) / Math.max(1, range)));
+          const percent = (progress * 100).toFixed(2) + "%";
+          const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+          if (isMobile) {
+            timelineFill.style.height = percent;
+            if (timelineOrb) timelineOrb.style.top = percent;
+          } else {
+            timelineFill.style.width = percent;
+            if (timelineOrb) timelineOrb.style.left = percent;
+          }
+
+          processSteps.forEach(function (step, idx) {
+            const threshold = (idx + 0.28) / processSteps.length;
+            step.classList.toggle("active", progress >= threshold);
+          });
+        };
+
+        if (prefersReducedMotion) {
+          timelineFill.style.width = "100%";
+          timelineFill.style.height = "100%";
+          processSteps.forEach(function (step) { step.classList.add("active"); });
+        } else {
+          let timelineTicking = false;
+          const requestTimelineUpdate = function () {
+            if (timelineTicking) return;
+            timelineTicking = true;
+            requestAnimationFrame(function () {
+              updateProcessEnergy();
+              timelineTicking = false;
             });
-          },
-          { threshold: 0.3 }
-        );
-        if (timelineRoot) timelineObserver.observe(timelineRoot);
+          };
+
+          updateProcessEnergy();
+          window.addEventListener("scroll", requestTimelineUpdate, { passive: true });
+          window.addEventListener("resize", requestTimelineUpdate);
+        }
       }
 
       const serviceTabs = document.querySelectorAll(".tab-btn");
@@ -3867,51 +4069,42 @@
       }
 
       const testimonialsTrack = document.querySelector(".testimonials-grid");
-      if (testimonialsTrack && window.matchMedia("(max-width: 768px)").matches) {
-        const testimonialCards = Array.from(testimonialsTrack.querySelectorAll("article"));
-        let testimonialIndex = 0;
-        let autoplayTimer = null;
+      if (
+        testimonialsTrack &&
+        window.matchMedia("(max-width: 768px)").matches &&
+        !prefersReducedMotion &&
+        !testimonialsTrack.dataset.continuousReady
+      ) {
+        testimonialsTrack.dataset.continuousReady = "true";
+        const originals = Array.from(testimonialsTrack.querySelectorAll("article"));
+        originals.forEach(function (card) {
+          testimonialsTrack.appendChild(card.cloneNode(true));
+        });
 
-        const scrollToTestimonial = function (index, smooth) {
-          const card = testimonialCards[index];
-          if (!card) return;
-          testimonialsTrack.scrollTo({
-            left: card.offsetLeft - testimonialsTrack.offsetLeft,
-            behavior: smooth && !prefersReducedMotion ? "smooth" : "auto"
-          });
+        let marqueeRaf = 0;
+        let offset = 0;
+        const speed = 0.32;
+
+        const loopTestimonials = function () {
+          const resetPoint = testimonialsTrack.scrollWidth / 2;
+          offset += speed;
+          if (offset >= resetPoint) offset = 0;
+          testimonialsTrack.scrollLeft = offset;
+          marqueeRaf = requestAnimationFrame(loopTestimonials);
         };
 
-        const startTestimonialsAutoplay = function () {
-          if (prefersReducedMotion || testimonialCards.length < 2 || autoplayTimer) return;
-          autoplayTimer = setInterval(function () {
-            testimonialIndex = (testimonialIndex + 1) % testimonialCards.length;
-            scrollToTestimonial(testimonialIndex, true);
-          }, 3400);
-        };
+        marqueeRaf = requestAnimationFrame(loopTestimonials);
 
-        const stopTestimonialsAutoplay = function () {
-          if (!autoplayTimer) return;
-          clearInterval(autoplayTimer);
-          autoplayTimer = null;
-        };
-
-        testimonialsTrack.addEventListener("scroll", function () {
-          const closestIndex = testimonialCards.reduce(function (closest, card, idx) {
-            const distance = Math.abs((card.offsetLeft - testimonialsTrack.offsetLeft) - testimonialsTrack.scrollLeft);
-            return distance < closest.distance ? { index: idx, distance: distance } : closest;
-          }, { index: 0, distance: Number.POSITIVE_INFINITY }).index;
-          testimonialIndex = closestIndex;
-        }, { passive: true });
-
-        testimonialsTrack.addEventListener("touchstart", stopTestimonialsAutoplay, { passive: true });
-        testimonialsTrack.addEventListener("mouseenter", stopTestimonialsAutoplay);
-        testimonialsTrack.addEventListener("mouseleave", startTestimonialsAutoplay);
-        testimonialsTrack.addEventListener("touchend", function () {
-          setTimeout(startTestimonialsAutoplay, 900);
-        }, { passive: true });
-
-        scrollToTestimonial(0, false);
-        startTestimonialsAutoplay();
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "hidden" && marqueeRaf) {
+            cancelAnimationFrame(marqueeRaf);
+            marqueeRaf = 0;
+            return;
+          }
+          if (document.visibilityState === "visible" && !marqueeRaf) {
+            marqueeRaf = requestAnimationFrame(loopTestimonials);
+          }
+        });
       }
 
       const ecosystemMap = document.querySelector(".ecosystem-map");
