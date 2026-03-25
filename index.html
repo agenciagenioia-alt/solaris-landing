@@ -1495,6 +1495,7 @@
     }
 
     .timeline-energy-orb {
+      display: none;
       position: absolute;
       width: 14px;
       height: 14px;
@@ -2630,6 +2631,7 @@
       }
 
       .timeline-energy-orb {
+        display: block;
         left: 50%;
         top: 0%;
       }
@@ -3965,23 +3967,33 @@
       const processTimeline = document.querySelector(".process-timeline");
       const processSteps = Array.from(document.querySelectorAll(".process-step"));
       if (timelineFill && processTimeline && processSteps.length > 0) {
+        const mobileProcessQuery = window.matchMedia("(max-width: 768px)");
         processSteps.forEach(function (step) { step.classList.remove("stage-visible", "active"); });
 
+        const applyDesktopProcessState = function () {
+          timelineFill.style.width = "100%";
+          timelineFill.style.height = "100%";
+          if (timelineOrb) {
+            timelineOrb.style.left = "100%";
+            timelineOrb.style.top = "50%";
+          }
+          processSteps.forEach(function (step) { step.classList.remove("stage-visible", "active"); });
+        };
+
         const updateProcessEnergy = function () {
+          if (!mobileProcessQuery.matches) {
+            applyDesktopProcessState();
+            return;
+          }
+
           const rect = processTimeline.getBoundingClientRect();
           const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
           const range = rect.height + viewportHeight * 0.24;
           const progress = Math.min(1, Math.max(0, (viewportHeight - rect.top) / Math.max(1, range)));
           const percent = (progress * 100).toFixed(2) + "%";
-          const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-          if (isMobile) {
-            timelineFill.style.height = percent;
-            if (timelineOrb) timelineOrb.style.top = percent;
-          } else {
-            timelineFill.style.width = percent;
-            if (timelineOrb) timelineOrb.style.left = percent;
-          }
+          timelineFill.style.height = percent;
+          if (timelineOrb) timelineOrb.style.top = percent;
 
           processSteps.forEach(function (step, idx) {
             const revealThreshold = 0.12 + idx * 0.18;
@@ -3992,9 +4004,12 @@
         };
 
         if (prefersReducedMotion) {
-          timelineFill.style.width = "100%";
-          timelineFill.style.height = "100%";
-          processSteps.forEach(function (step) { step.classList.add("active", "stage-visible"); });
+          if (mobileProcessQuery.matches) {
+            timelineFill.style.height = "100%";
+            processSteps.forEach(function (step) { step.classList.add("active", "stage-visible"); });
+          } else {
+            applyDesktopProcessState();
+          }
         } else {
           let timelineTicking = false;
           const requestTimelineUpdate = function () {
