@@ -100,6 +100,18 @@
       z-index: 1;
     }
 
+    .section--contrast-a {
+      background: linear-gradient(180deg, rgba(255, 107, 0, 0.06) 0%, rgba(255, 107, 0, 0) 38%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .section--contrast-b {
+      background: linear-gradient(180deg, rgba(255, 184, 0, 0.05) 0%, rgba(255, 184, 0, 0) 45%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .section--contrast-c {
+      background: linear-gradient(180deg, rgba(255, 60, 172, 0.06) 0%, rgba(255, 60, 172, 0) 42%, rgba(255, 255, 255, 0) 100%);
+    }
+
     main,
     .hero,
     .ticker-wrap,
@@ -1322,6 +1334,27 @@
       gap: 1rem;
     }
 
+    .services-hero-title {
+      font-size: clamp(2.2rem, 9vw, 5.2rem);
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+      margin: 0;
+      font-weight: 900;
+      text-transform: uppercase;
+      background: linear-gradient(120deg, #FF6B00, #FFB800 55%, #FFF0B8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 24px rgba(255, 107, 0, 0.2);
+    }
+
+    .services-subcopy {
+      margin: 0.45rem 0 0;
+      max-width: 760px;
+      color: #f2dfc4;
+      font-weight: 600;
+    }
+
     .tabs-nav {
       display: flex;
       gap: 0.6rem;
@@ -1439,13 +1472,30 @@
       gap: 1rem;
       border-radius: 18px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.02);
+      background: radial-gradient(circle at 12% 10%, rgba(255, 184, 0, 0.14), rgba(255, 107, 0, 0.05) 45%, rgba(255, 255, 255, 0.02));
       padding: 1.1rem;
       animation: industrySlide 0.3s var(--ease-out);
     }
 
     .industry-panel.active {
       display: grid;
+      box-shadow: 0 18px 42px rgba(255, 107, 0, 0.14);
+      border-color: rgba(255, 184, 0, 0.38);
+    }
+
+    .industry-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 184, 0, 0.45);
+      background: rgba(255, 184, 0, 0.1);
+      color: #ffe4bb;
+      font-weight: 800;
+      font-size: 0.77rem;
+      padding: 0.34rem 0.62rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.6rem;
     }
 
     @keyframes industrySlide {
@@ -2952,43 +3002,43 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" aria-labelledby="why-solaris">
+    <section class="section section--contrast-a" aria-labelledby="why-solaris">
       <div class="container">
         <div class="section-tag reveal">Por qué SOLARIS</div>
-        <h2 id="why-solaris" class="reveal section-title">Resultados mas claros. Mas rapido. Con menos friccion.</h2>
+        <h2 id="why-solaris" class="reveal section-title">Lo que a un dueño de negocio sí le importa: vender más y operar mejor.</h2>
         <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza para descubrir cada métrica</p>
         <div class="why-metrics reveal" style="margin-top:1rem;">
           <div class="why-metrics-grid">
             <article class="why-metric reveal delay-1">
               <div class="metric-big gradient-text">
-                <span data-count="4.2" data-decimals="1" data-suffix="x">4.2x</span>
+                <span data-count="37" data-prefix="+">+37</span>
               </div>
-              <div class="why-metric-label">ROI promedio de nuestros clientes</div>
-              <p class="why-metric-context">Campanas optimizadas por IA para rentabilidad sostenida.</p>
+              <div class="why-metric-label">ventas nuevas promedio por mes</div>
+              <p class="why-metric-context">Más cierres reales, no solo likes o alcance.</p>
             </article>
             <article class="why-metric reveal delay-2">
               <div class="metric-big gradient-text">
-                <span data-count="30" data-suffix=" días">30 días</span>
+                <span data-count="2.4" data-decimals="1" data-suffix="h">2.4h</span>
               </div>
-              <div class="why-metric-label">De contrato firmado a primeros resultados</div>
-              <p class="why-metric-context">Implementacion rapida con foco en impacto comercial real.</p>
+              <div class="why-metric-label">ahorradas por día en tareas repetitivas</div>
+              <p class="why-metric-context">Tu equipo vuelve a enfocarse en vender y atender mejor.</p>
             </article>
             <article class="why-metric reveal delay-3">
               <div class="metric-big gradient-text">
-                <span data-count="0">0</span>
+                <span data-count="93" data-suffix="%">93%</span>
               </div>
-              <div class="why-metric-label">Leads perdidos con nuestro sistema de automatizacion</div>
-              <p class="why-metric-context">Bots y seguimientos activos 24/7 en cada punto de contacto.</p>
+              <div class="why-metric-label">de chats atendidos en menos de 5 minutos</div>
+              <p class="why-metric-context">Cuando respondes rápido, vendes más.</p>
             </article>
             <article class="why-metric reveal delay-4">
               <div class="metric-big gradient-text">
-                <span data-count="100" data-suffix="%">100%</span>
+                <span data-count="28" data-suffix=" días">28 días</span>
               </div>
-              <div class="why-metric-label">De clientes con resultados medibles en el primer mes</div>
-              <p class="why-metric-context">Dashboards en vivo para decidir con datos, no con intuicion.</p>
+              <div class="why-metric-label">para ver mejoras claras en caja comercial</div>
+              <p class="why-metric-context">Con ejecución semanal y decisiones basadas en datos.</p>
             </article>
           </div>
-          <p class="why-metrics-claim gradient-text reveal">Construido en Colombia. Probado en Latam. Listo para el mundo.</p>
+          <p class="why-metrics-claim gradient-text reveal">Menos improvisación. Más clientes. Más rentabilidad.</p>
         </div>
       </div>
     </section>
@@ -2997,10 +3047,10 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" id="casos" aria-labelledby="cases-title">
+    <section class="section section--contrast-b" id="casos" aria-labelledby="cases-title">
       <div class="container">
         <div class="section-tag reveal">Casos reales</div>
-        <h2 id="cases-title" class="reveal section-title">Resultados que hablan por sí solos.</h2>
+        <h2 id="cases-title" class="reveal section-title">Negocios reales que hoy venden más con SOLARIS.</h2>
         <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza para ver más casos reales</p>
         <div class="cases-grid">
           <article class="case-card card-grad-border reveal delay-1">
@@ -3077,15 +3127,16 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" id="servicios" aria-labelledby="services-title">
+    <section class="section section--contrast-c" id="servicios" aria-labelledby="services-title">
       <div class="container">
         <div class="section-tag reveal">Servicios</div>
-        <h2 id="services-title" class="reveal section-title">Activa un frente. Escala todo el sistema.</h2>
+        <h2 id="services-title" class="reveal services-hero-title">SERVICIOS</h2>
+        <p class="reveal services-subcopy">Aquí está el núcleo de crecimiento: lo que activamos para que tu negocio facture más, responda más rápido y escale con control.</p>
         <div class="services-tabs reveal" style="margin-top:1rem;">
           <p class="mobile-scroll-indicator" aria-hidden="true">↔ Desliza categorías de servicio</p>
           <div class="tabs-nav" role="tablist" aria-label="Tabs de servicios">
             <button class="tab-btn active" role="tab" aria-selected="true" data-service="publicidad">Publicidad</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-service="automatizacion">Automatizacion</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-service="sistemas">Sistemas IA a medida</button>
             <button class="tab-btn" role="tab" aria-selected="false" data-service="contenido">Contenido</button>
             <button class="tab-btn" role="tab" aria-selected="false" data-service="web">Web</button>
             <button class="tab-btn" role="tab" aria-selected="false" data-service="estrategia">Estrategia</button>
@@ -3105,16 +3156,16 @@
             </div>
           </article>
 
-          <article class="tab-panel" data-service-panel="automatizacion">
+          <article class="tab-panel" data-service-panel="sistemas">
             <div>
-              <h3>Automatizacion comercial de punta a punta.</h3>
-              <p>Implementamos bots, secuencias de seguimiento y CRM para responder y calificar leads en segundos.</p>
-              <p class="service-result">Resultado esperado: velocidad comercial y cero fuga de prospectos.</p>
-              <a class="btn btn-primary" href="#precios">Automatizar mi negocio →</a>
+              <h3>Sistemas IA personalizados para tu operación.</h3>
+              <p>Diseñamos soluciones a medida (automatización, agendamiento, tráfico y flujos internos) según tu tipo de negocio y tu proceso comercial.</p>
+              <p class="service-result">Resultado esperado: menos carga operativa y más ventas con control.</p>
+              <a class="btn btn-primary" href="#contacto">Cotizar solución a medida →</a>
             </div>
             <div class="service-metric">
-              <div class="metric-big gradient-text">0</div>
-              <p>leads perdidos</p>
+              <div class="metric-big gradient-text">A medida</div>
+              <p>según tu negocio</p>
             </div>
           </article>
 
@@ -3177,9 +3228,9 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" id="industrias" aria-labelledby="industry-title">
+    <section class="section section--contrast-a" id="industrias" aria-labelledby="industry-title">
       <div class="container">
-        <h2 id="industry-title" class="reveal section-title">Escoge tu industria y mira el sistema en accion</h2>
+        <h2 id="industry-title" class="reveal section-title">Escoge tu industria y mira exactamente cómo crece contigo.</h2>
         <div class="industries-selector reveal" style="margin-top:1rem;">
           <p class="mobile-scroll-indicator" aria-hidden="true">↔ Desliza para elegir industria</p>
           <div class="industry-nav" role="tablist" aria-label="Selector de industrias">
@@ -3192,6 +3243,7 @@
 
           <article class="industry-panel active" data-industry-panel="restaurantes">
             <div>
+              <span class="industry-proof">⚡ Sistema activo en 3-4 semanas</span>
               <p class="muted">Caso real · Restaurante en Pereira</p>
               <div class="industry-number gradient-text">3x</div>
               <p><strong>mas reservas y pedidos online en 45 dias.</strong></p>
@@ -3209,6 +3261,7 @@
 
           <article class="industry-panel" data-industry-panel="salud">
             <div>
+              <span class="industry-proof">⚡ Captación + agenda en tiempo real</span>
               <p class="muted">Caso real · Clinica odontologica en Monteria</p>
               <div class="industry-number gradient-text">40</div>
               <p><strong>pacientes nuevos en el primer mes.</strong></p>
@@ -3226,6 +3279,7 @@
 
           <article class="industry-panel" data-industry-panel="moda">
             <div>
+              <span class="industry-proof">⚡ Más ventas con recompra automática</span>
               <p class="muted">Caso real · Tienda de moda en Colombia</p>
               <div class="industry-number gradient-text">+320%</div>
               <p><strong>aumento en ventas online en 60 dias.</strong></p>
@@ -3243,6 +3297,7 @@
 
           <article class="industry-panel" data-industry-panel="servicios">
             <div>
+              <span class="industry-proof">⚡ Más llamadas, más cierres locales</span>
               <p class="muted">Caso real · Servicio local en Colombia</p>
               <div class="industry-number gradient-text">#1</div>
               <p><strong>en Google Maps en su zona principal.</strong></p>
@@ -3260,6 +3315,7 @@
 
           <article class="industry-panel" data-industry-panel="verde">
             <div>
+              <span class="industry-proof">⚡ Leads calificados de alto valor</span>
               <p class="muted">Caso real · Marca sostenible regional</p>
               <div class="industry-number gradient-text">2.7x</div>
               <p><strong>mas solicitudes de cotizacion calificada.</strong></p>
@@ -3282,7 +3338,7 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" aria-labelledby="process-title">
+    <section class="section section--contrast-b" aria-labelledby="process-title">
       <div class="container">
         <h2 id="process-title" class="reveal section-title">Un proceso visual. Una ejecucion precisa.</h2>
         <div class="process-timeline reveal">
@@ -3324,12 +3380,12 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" id="precios" aria-labelledby="pricing-title">
+    <section class="section section--contrast-c" id="precios" aria-labelledby="pricing-title">
       <div class="container">
         <div class="pricing-impact">
           <div class="pricing-intro reveal">
-            <h2 id="pricing-title" class="section-title">Elige tu tipo de crecimiento y activa el plan correcto.</h2>
-            <p>Filtra por etapa y mira solo los planes que aplican para tu negocio hoy.</p>
+            <h2 id="pricing-title" class="section-title">Empieza con una base clara y escala con estrategia.</h2>
+            <p>Precios de entrada para arrancar. Los sistemas avanzados se cotizan según tu operación y objetivos.</p>
             <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza las cards para comparar</p>
           </div>
 
@@ -3384,45 +3440,17 @@
             </article>
 
             <article class="pricing-card tier-monthly" data-tier="mensual">
-              <span class="pricing-badge">Clinicas</span>
+              <span class="pricing-badge">Personalizado</span>
               <div class="pricing-card-head">
-                <h3>🤖 AGENDAMIENTO IA</h3>
+                <h3>🧩 SISTEMAS IA A MEDIDA</h3>
               </div>
-              <p class="pricing-amount">$1.500.000</p>
+              <p class="pricing-amount">Cotización</p>
               <ul class="pricing-includes">
-                <li>Agenda por voz o chat</li>
-                <li>Sin intervencion humana</li>
-                <li>Funciona 24/7</li>
+                <li>Agendamiento inteligente</li>
+                <li>Automatizaciones comerciales</li>
+                <li>Gestión de tráfico y seguimiento</li>
               </ul>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20Sistema%20de%20Agendamiento%20IA.%20Recibo%20%5Bn%C3%BAmero%5D%20solicitudes%20diarias%20y%20quiero%20automatizar%20confirmaciones." target="_blank" rel="noopener noreferrer">Automatizar agenda →</a>
-            </article>
-
-            <article class="pricing-card tier-monthly" data-tier="mensual">
-              <span class="pricing-badge">Pro</span>
-              <div class="pricing-card-head">
-                <h3>⚡ AUTOMATIZACIONES</h3>
-              </div>
-              <p class="pricing-amount">$1.500.000</p>
-              <ul class="pricing-includes">
-                <li>Delega lo administrativo</li>
-                <li>Para negocios organizados</li>
-                <li>Escala sin contratar</li>
-              </ul>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20automatizaciones%20para%20mi%20negocio.%20Quiero%20delegar%20%5Bproceso%20administrativo%5D%20y%20ahorrar%20tiempo%20operativo." target="_blank" rel="noopener noreferrer">Automatizar negocio →</a>
-            </article>
-
-            <article class="pricing-card tier-monthly" data-tier="mensual">
-              <span class="pricing-badge">Recur.</span>
-              <div class="pricing-card-head">
-                <h3>📱 TRAFFICKER ADV.</h3>
-              </div>
-              <p class="pricing-amount">$1.500.000/mes</p>
-              <ul class="pricing-includes">
-                <li>Estrategia de contenido</li>
-                <li>Instagram automatizado</li>
-                <li>Pauta optimizada con IA</li>
-              </ul>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20con%20Trafficker%20Advanced.%20Mi%20meta%20es%20aumentar%20ventas%20y%20reputaci%C3%B3n%20en%20%5Bciudad%5D." target="_blank" rel="noopener noreferrer">Empezar a crecer →</a>
+              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20cotizar%20un%20sistema%20IA%20a%20medida%20para%20mi%20negocio.%20Mi%20objetivo%20principal%20es%20%5Bobjetivo%5D." target="_blank" rel="noopener noreferrer">Solicitar propuesta personalizada →</a>
             </article>
 
             <article class="pricing-card tier-monthly" data-tier="mensual">
@@ -3468,97 +3496,7 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" aria-labelledby="testimonials-title">
-      <div class="container">
-        <h2 id="testimonials-title" class="reveal section-title">Lo que dicen nuestros clientes</h2>
-        <p class="mobile-auto-hint" aria-hidden="true">Historias reales en movimiento continuo</p>
-        <div class="testimonials-grid" style="margin-top:1rem;">
-          <article class="card glass gradient-border reveal delay-1">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“El bot atiende mientras duermo. Es increíble. Pasamos de perder chats a cerrar reservas todos los días.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">CR</span>
-              <div>
-                <strong>Carlos R.</strong>
-                <div class="muted">Restaurante · Pereira</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal delay-2">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Antes 2-3 pacientes por semana. Hoy 10-12 con agenda más ordenada. Fue rápido y medible desde el inicio.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">AM</span>
-              <div>
-                <strong>Andrea M.</strong>
-                <div class="muted">Clínica Odontológica · Montería</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal delay-3">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Pensé que la IA era complicada. SOLARIS nos mostró un sistema simple y logramos 3x en ventas en menos de dos meses.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">LS</span>
-              <div>
-                <strong>Laura S.</strong>
-                <div class="muted">Tienda de Moda · Colombia</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Lo que más valoro es la claridad: sabemos qué funciona y qué ajustar cada semana.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">FG</span>
-              <div>
-                <strong>Felipe G.</strong>
-                <div class="muted">Inmobiliaria · Medellín</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Pasamos de campañas sueltas a un sistema completo que sí genera ventas cada mes.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">NP</span>
-              <div>
-                <strong>Natalia P.</strong>
-                <div class="muted">Educación · Bogotá</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Automatizar WhatsApp nos liberó tiempo y mejoró la experiencia del cliente.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">PV</span>
-              <div>
-                <strong>Paola V.</strong>
-                <div class="muted">E-commerce Beauty · Cali</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“En 3 semanas ya teníamos citas constantes, y ahora el proceso es mucho más ordenado.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">JM</span>
-              <div>
-                <strong>Julián M.</strong>
-                <div class="muted">Clínica estética · Barranquilla</div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
-
-    <section class="section" aria-labelledby="stack-title">
+    <section class="section section--contrast-a" aria-labelledby="stack-title">
       <div class="container">
         <h2 id="stack-title" class="reveal section-title">Un ecosistema conectado que trabaja al mismo tiempo</h2>
         <p class="reveal">No somos una herramienta. Somos el ecosistema completo trabajando en sincronía para tu negocio.</p>
@@ -3689,7 +3627,7 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" aria-labelledby="faq-title">
+    <section class="section section--contrast-b" aria-labelledby="faq-title">
       <div class="container">
         <h2 id="faq-title" class="reveal section-title">Preguntas frecuentes</h2>
         <div class="faq-list reveal">
@@ -3737,7 +3675,7 @@
           </article>
         </div>
         <div class="faq-cta-inline reveal">
-          <span>¿Prefieres resolverlo en una llamada rápida?</span>
+          <span>¿Prefieres resolverlo por WhatsApp, rápido y sin fricción?</span>
           <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20resolver%20unas%20dudas%20r%C3%A1pidas%20antes%20de%20iniciar.%20%C2%BFPodemos%20hablar%20hoy%3F" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp ahora →</a>
         </div>
       </div>
@@ -3747,7 +3685,97 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section" id="contacto" aria-labelledby="cta-final-title">
+    <section class="section section--contrast-c" aria-labelledby="testimonials-title">
+      <div class="container">
+        <h2 id="testimonials-title" class="reveal section-title">Clientes que ya están vendiendo mejor con SOLARIS</h2>
+        <p class="mobile-auto-hint" aria-hidden="true">Resultados reales en movimiento continuo</p>
+        <div class="testimonials-grid" style="margin-top:1rem;">
+          <article class="card glass gradient-border reveal delay-1">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“El bot atiende mientras duermo. Es increíble. Pasamos de perder chats a cerrar reservas todos los días.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">CR</span>
+              <div>
+                <strong>Carlos R.</strong>
+                <div class="muted">Restaurante · Pereira</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal delay-2">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“Antes 2-3 pacientes por semana. Hoy 10-12 con agenda más ordenada. Fue rápido y medible desde el inicio.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">AM</span>
+              <div>
+                <strong>Andrea M.</strong>
+                <div class="muted">Clínica Odontológica · Montería</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal delay-3">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“Pensé que la IA era complicada. SOLARIS nos mostró un sistema simple y logramos 3x en ventas en menos de dos meses.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">LS</span>
+              <div>
+                <strong>Laura S.</strong>
+                <div class="muted">Tienda de Moda · Colombia</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“Lo que más valoro es la claridad: sabemos qué funciona y qué ajustar cada semana.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">FG</span>
+              <div>
+                <strong>Felipe G.</strong>
+                <div class="muted">Inmobiliaria · Medellín</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“Pasamos de campañas sueltas a un sistema completo que sí genera ventas cada mes.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">NP</span>
+              <div>
+                <strong>Natalia P.</strong>
+                <div class="muted">Educación · Bogotá</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“Automatizar WhatsApp nos liberó tiempo y mejoró la experiencia del cliente.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">PV</span>
+              <div>
+                <strong>Paola V.</strong>
+                <div class="muted">E-commerce Beauty · Cali</div>
+              </div>
+            </div>
+          </article>
+          <article class="card glass gradient-border reveal">
+            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p>“En 3 semanas ya teníamos citas constantes, y ahora el proceso es mucho más ordenado.”</p>
+            <div class="author">
+              <span class="avatar" aria-hidden="true">JM</span>
+              <div>
+                <strong>Julián M.</strong>
+                <div class="muted">Clínica estética · Barranquilla</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <div class="divider-glow"></div>
+    </div>
+
+    <section class="section section--contrast-c" id="contacto" aria-labelledby="cta-final-title">
       <div class="container">
         <div class="cta-final reveal-scale">
           <h2 id="cta-final-title" class="section-title">Tu negocio. Potenciado por IA.</h2>
@@ -4152,7 +4180,7 @@
 
         let marqueeRaf = 0;
         let offset = 0;
-        const speed = 0.72;
+        const speed = 1.2;
 
         const loopTestimonials = function () {
           const resetPoint = testimonialsTrack.scrollWidth / 2;
