@@ -837,8 +837,8 @@
       border-radius: 11px;
       border: 1px solid rgba(255, 255, 255, 0.14);
       background: rgba(255, 255, 255, 0.03);
-      padding: 0.5rem 0.58rem;
-      font-size: 0.82rem;
+      padding: 0.38rem 0.52rem;
+      font-size: 0.74rem;
       color: #e8e8e8;
       font-weight: 620;
       text-align: center;
@@ -970,24 +970,34 @@
       border-top: 1px solid rgba(255, 255, 255, 0.07);
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       overflow: hidden;
-      padding: 0.9rem 0;
+      padding: 0.72rem 0;
     }
 
-    .ticker-track {
-      width: max-content;
-      display: flex;
-      animation: ticker 36s linear infinite;
+    .ticker-rotator {
+      position: relative;
+      min-height: 1.55rem;
+      display: grid;
+      align-items: center;
     }
 
-    .ticker-content {
-      display: flex;
-      gap: 2.1rem;
-      padding-right: 2.1rem;
-      white-space: nowrap;
+    .ticker-item {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(calc(-50% + 9px));
+      opacity: 0;
+      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+      text-align: center;
       font-size: 0.86rem;
       letter-spacing: 0.06em;
       font-weight: 700;
       text-transform: uppercase;
+    }
+
+    .ticker-item.active {
+      opacity: 1;
+      transform: translateY(-50%);
     }
 
     .ticker-live-pill {
@@ -1005,11 +1015,6 @@
     @keyframes tickerPulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.06); }
       50% { box-shadow: 0 0 0 8px rgba(255, 107, 0, 0); }
-    }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
     }
 
     .grid-4 {
@@ -2412,6 +2417,11 @@
         max-width: 100%;
       }
 
+      .hero-trust-item {
+        font-size: 0.7rem;
+        padding: 0.34rem 0.48rem;
+      }
+
       .hero-ctas,
       .hero-metrics {
         justify-content: flex-start;
@@ -2483,8 +2493,8 @@
         font-size: min(1.8rem, 8vw);
       }
 
-      .ticker-content {
-        font-size: 0.75rem;
+      .ticker-item {
+        font-size: 0.72rem;
       }
 
       .mobile-swipe-hint {
@@ -2927,20 +2937,13 @@
     </section>
 
     <section class="ticker-wrap" aria-label="Resultados de clientes SOLARIS">
-      <div class="ticker-track">
-        <div class="ticker-content gradient-text" role="text">
-          <span>✦ +320% ventas en 60 días — Retail, Montería</span>
-          <span>✦ 40 pacientes nuevos — Clínica, Montería</span>
-          <span>✦ 3x conversión — Restaurante, Pereira</span>
-          <span>✦ Bot WhatsApp 24/7 — Tienda de Ropa</span>
-          <span class="ticker-live-pill">✦ Caso activo: reputación + IA local en modo crecimiento</span>
-        </div>
-        <div class="ticker-content gradient-text" aria-hidden="true">
-          <span>✦ +320% ventas en 60 días — Retail, Montería</span>
-          <span>✦ 40 pacientes nuevos — Clínica, Montería</span>
-          <span>✦ 3x conversión — Restaurante, Pereira</span>
-          <span>✦ Bot WhatsApp 24/7 — Tienda de Ropa</span>
-          <span class="ticker-live-pill">✦ Caso activo: reputación + IA local en modo crecimiento</span>
+      <div class="container">
+        <div class="ticker-rotator gradient-text" id="tickerRotator" role="status" aria-live="polite">
+          <div class="ticker-item active">✦ +320% ventas en 60 días — Retail, Montería</div>
+          <div class="ticker-item">✦ 40 pacientes nuevos — Clínica, Montería</div>
+          <div class="ticker-item">✦ 3x conversión — Restaurante, Pereira</div>
+          <div class="ticker-item">✦ Bot WhatsApp 24/7 — Tienda de Ropa</div>
+          <div class="ticker-item"><span class="ticker-live-pill">✦ Caso activo: reputación + IA local en modo crecimiento</span></div>
         </div>
       </div>
     </section>
@@ -3961,6 +3964,28 @@
         { threshold: 0.45 }
       );
       countEls.forEach(function (el) { countObserver.observe(el); });
+
+      const tickerRotator = document.getElementById("tickerRotator");
+      if (tickerRotator) {
+        const tickerItems = Array.from(tickerRotator.querySelectorAll(".ticker-item"));
+        if (tickerItems.length > 1) {
+          let tickerIndex = 0;
+          const setTickerItem = function (nextIndex) {
+            tickerItems.forEach(function (item, idx) {
+              item.classList.toggle("active", idx === nextIndex);
+            });
+          };
+
+          if (!prefersReducedMotion) {
+            setInterval(function () {
+              tickerIndex = (tickerIndex + 1) % tickerItems.length;
+              setTickerItem(tickerIndex);
+            }, 2400);
+          } else {
+            setTickerItem(0);
+          }
+        }
+      }
 
       const timelineFill = document.getElementById("timelineFill");
       const timelineOrb = document.getElementById("timelineOrb");
