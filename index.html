@@ -94,7 +94,8 @@
       height: 100%;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.35;
+      opacity: 0.5;
+      mix-blend-mode: screen;
     }
 
     .section-divider {
@@ -3462,73 +3463,111 @@
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      window.addEventListener('resize', () => {
+      function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-      }, { passive: true });
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas, { passive: true });
 
       const COLORS = ['#FF6B00', '#FFB800', '#FF3CAC', '#FF8C30', '#FFD700'];
 
-      const particles = Array.from({ length: 80 }, () => ({
+      const particles = Array.from({ length: 120 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2.5 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.4,
-        speedY: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 3.2 + 0.8,
+        speedX: (Math.random() - 0.5) * 0.45,
+        speedY: (Math.random() - 0.5) * 0.45,
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        opacity: Math.random() * 0.6 + 0.1,
+        opacity: Math.random() * 0.7 + 0.15,
         pulse: Math.random() * Math.PI * 2,
-        pulseSpeed: Math.random() * 0.02 + 0.005
+        pulseSpeed: Math.random() * 0.024 + 0.007
       }));
+
+      const nebulaClouds = Array.from({ length: 6 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 220 + 140,
+        driftX: (Math.random() - 0.5) * 0.12,
+        driftY: (Math.random() - 0.5) * 0.12,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        opacity: Math.random() * 0.08 + 0.04
+      }));
+
+      function drawNebula() {
+        nebulaClouds.forEach((cloud) => {
+          cloud.x += cloud.driftX;
+          cloud.y += cloud.driftY;
+
+          if (cloud.x < -cloud.radius) cloud.x = canvas.width + cloud.radius;
+          if (cloud.x > canvas.width + cloud.radius) cloud.x = -cloud.radius;
+          if (cloud.y < -cloud.radius) cloud.y = canvas.height + cloud.radius;
+          if (cloud.y > canvas.height + cloud.radius) cloud.y = -cloud.radius;
+
+          const gradient = ctx.createRadialGradient(
+            cloud.x, cloud.y, cloud.radius * 0.15,
+            cloud.x, cloud.y, cloud.radius
+          );
+          gradient.addColorStop(0, cloud.color + '30');
+          gradient.addColorStop(1, 'transparent');
+
+          ctx.globalAlpha = cloud.opacity;
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(cloud.x, cloud.y, cloud.radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      function drawParticle(p) {
+        p.pulse += p.pulseSpeed;
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        const currentOpacity = p.opacity * (0.72 + Math.sin(p.pulse) * 0.28);
+        const currentSize = p.size * (0.85 + Math.sin(p.pulse) * 0.22);
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = currentOpacity;
+        ctx.fill();
+
+        const glow = ctx.createRadialGradient(
+          p.x, p.y, 0,
+          p.x, p.y, currentSize * 4.2
+        );
+        glow.addColorStop(0, p.color + '55');
+        glow.addColorStop(1, 'transparent');
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, currentSize * 4.2, 0, Math.PI * 2);
+        ctx.fillStyle = glow;
+        ctx.globalAlpha = currentOpacity * 0.38;
+        ctx.fill();
+      }
 
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        particles.forEach(p => {
-          p.pulse += p.pulseSpeed;
-          p.x += p.speedX;
-          p.y += p.speedY;
-
-          if (p.x < 0) p.x = canvas.width;
-          if (p.x > canvas.width) p.x = 0;
-          if (p.y < 0) p.y = canvas.height;
-          if (p.y > canvas.height) p.y = 0;
-
-          const currentOpacity = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
-          const currentSize = p.size * (0.8 + Math.sin(p.pulse) * 0.2);
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.globalAlpha = currentOpacity;
-          ctx.fill();
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, currentSize * 3, 0, Math.PI * 2);
-          const gradient = ctx.createRadialGradient(
-            p.x, p.y, 0,
-            p.x, p.y, currentSize * 3
-          );
-          gradient.addColorStop(0, p.color + '40');
-          gradient.addColorStop(1, 'transparent');
-          ctx.fillStyle = gradient;
-          ctx.globalAlpha = currentOpacity * 0.3;
-          ctx.fill();
-        });
-
+        drawNebula();
+        particles.forEach(drawParticle);
         ctx.globalAlpha = 1;
         requestAnimationFrame(animate);
       }
 
-      animate();
-
       if (window.innerWidth < 768) {
-        particles.splice(50);
-        canvas.style.opacity = '0.2';
+        particles.splice(70);
+        nebulaClouds.splice(3);
+        canvas.style.opacity = '0.28';
       }
+
+      animate();
     })();
   </script>
 </body>
