@@ -147,7 +147,7 @@
       background: var(--orange);
       color: #F5F5F5;
       padding: 0.88rem 1.18rem;
-      box-shadow: 0 12px 30px rgba(255, 107, 0, 0.28);
+      box-shadow: 0 10px 24px rgba(255, 107, 0, 0.22);
     }
 
     .hamburger {
@@ -223,11 +223,8 @@
     }
     .hero-copy {
       max-width: 780px;
-      border: 1px solid rgba(255, 184, 0, 0.26);
-      border-radius: 22px;
-      background: linear-gradient(150deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
-      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.36);
-      padding: clamp(1.2rem, 3vw, 2rem);
+      border-left: 3px solid rgba(255, 184, 0, 0.55);
+      padding: clamp(0.35rem, 1.2vw, 0.5rem) 0 clamp(0.35rem, 1.2vw, 0.5rem) clamp(1rem, 2.4vw, 1.35rem);
     }
     .hero-copy p {
       font-size: clamp(1.12rem, 2vw, 1.6rem);
@@ -274,12 +271,16 @@
       inset: 0;
       opacity: 0;
       background: #0A0A0A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       animation: heroFade 18s infinite;
     }
     .hero-slide img {
-      width: 100%;
+      width: auto;
+      max-width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center center;
       display: block;
     }
@@ -351,21 +352,28 @@
       background: rgba(255, 184, 0, 0.12);
       color: #6B3900;
     }
-    .section-panel {
-      border-radius: 22px;
-      padding: clamp(1rem, 2.6vw, 1.5rem);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .section-body {
+      padding: clamp(0.25rem, 1.2vw, 0.5rem) 0 clamp(0.25rem, 1.2vw, 0.75rem);
+      border-left: 3px solid var(--orange);
+      padding-left: clamp(1rem, 2.4vw, 1.6rem);
+      margin-left: 0;
     }
-    .section-panel--light {
-      background: linear-gradient(155deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 232, 0.9));
-      border-color: rgba(255, 184, 0, 0.22);
-      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.07);
+    .section-body--light {
+      border-left-color: #E85A00;
     }
-    .section-panel--dark {
-      background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-      border-color: rgba(255, 255, 255, 0.14);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.26);
+    .section-body--dark {
+      border-left-color: #FFB800;
     }
+    .section-lead {
+      max-width: 52ch;
+      margin-bottom: 1.35rem;
+      font-size: clamp(1rem, 1.35vw, 1.12rem);
+      line-height: 1.62;
+    }
+    .section--light .section-lead { color: #333; }
+    .section--surface-2 .section-lead,
+    .section--base-dark .section-lead,
+    .section--surface .section-lead { color: #C8C2B8; }
 
     .section-tag {
       display: inline-block;
@@ -387,146 +395,178 @@
         radial-gradient(circle at 16% 82%, rgba(255, 107, 0, 0.16), rgba(255, 107, 0, 0)),
         #111111;
     }
-    .context-brief .context-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      border: 1px solid rgba(255, 184, 0, 0.26);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.02);
-      padding: clamp(1rem, 2.4vw, 1.5rem);
-    }
-    .context-brief p { color: #E3DBCF; }
-    .context-points {
+    .context-split {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.7rem;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: clamp(1.2rem, 4vw, 2.5rem);
+      align-items: start;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: clamp(0.5rem, 2vw, 1rem) 0;
+    }
+    .context-brief p { color: #E3DBCF; max-width: 58ch; }
+    .context-brief h2 { max-width: 20ch; }
+    .context-list {
       margin: 0;
       padding: 0;
       list-style: none;
-    }
-    .context-points li {
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 12px;
-      background: rgba(10, 10, 10, 0.42);
-      padding: 0.68rem 0.72rem;
-      color: #F1E8D6;
-      font-weight: 700;
-      font-size: 0.9rem;
-      line-height: 1.42;
-    }
-
-    .needs-intro { max-width: 62ch; margin-bottom: 1rem; }
-    .needs-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
     }
-    .need-card {
-      border-radius: var(--radius);
-      border: 1px solid rgba(255, 107, 0, 0.24);
-      background: #fff;
-      padding: 1rem;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-    .need-card:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(255, 107, 0, 0.15); }
-    .need-card h3 { font-size: clamp(1.05rem, 2vw, 1.24rem); margin-bottom: 0.55rem; }
-    .need-card p { color: #3A3A3A; margin-bottom: 0.7rem; }
-    .need-cta { color: #A94E00; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
-
-    .services-subcopy { margin-bottom: 1rem; }
-    .services-grid {
+    .context-list li {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      padding: 0.95rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: #EDE4D4;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
-    .service-card {
-      border-radius: var(--radius);
-      border: 1px solid rgba(255, 201, 123, 0.28);
-      background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)),
-        rgba(22, 22, 22, 0.86);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      padding: 1rem;
-      display: grid;
-      gap: 0.65rem;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-    }
-    .service-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255, 184, 0, 0.42);
-      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
-    }
-    .service-card p { color: #DDD3C6; margin: 0; }
-    .service-invest {
-      color: #FFD9A3;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      font-weight: 700;
-    }
-    .services-final-cta { margin-top: 1rem; }
-
-    .process-wrap { margin-top: 1rem; }
-    .timeline-line {
-      height: 3px;
-      background: rgba(16, 16, 16, 0.14);
-      border-radius: 999px;
-      position: relative;
-      margin-bottom: 1rem;
-    }
-    .timeline-fill {
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 0%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #FF6B00, #FFB800);
-      transition: width 240ms ease;
-    }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.85rem;
-    }
-    .step {
-      border-radius: var(--radius);
-      border: 1px solid rgba(16, 16, 16, 0.14);
-      background: #fff;
-      padding: 1rem;
-      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
-    }
-    .step:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255, 184, 0, 0.42);
-      box-shadow: 0 16px 34px rgba(255, 107, 0, 0.14);
-    }
-    .step-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      display: inline-grid;
-      place-content: center;
-      color: #120B07;
-      background: linear-gradient(120deg, #FF6B00, #FFB800);
+    .context-list-index {
+      font-size: 1.65rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      color: rgba(255, 184, 0, 0.55);
+      line-height: 1;
+      letter-spacing: -0.04em;
     }
-    .step h3 { color: #121212; font-size: clamp(1.02rem, 1.6vw, 1.22rem); }
+
+    .needs-stack {
+      display: grid;
+      gap: 0;
+      margin-top: 0.5rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
+    .need-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(0.85rem, 3vw, 1.6rem);
+      padding: clamp(1.1rem, 2.5vw, 1.45rem) 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      align-items: start;
+    }
+    .need-index {
+      font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+      font-weight: 800;
+      color: rgba(255, 107, 0, 0.35);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    .need-body h3 {
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      margin-bottom: 0.45rem;
+      color: #0A0A0A;
+    }
+    .need-body p {
+      color: #3A3A3A;
+      margin-bottom: 0.55rem;
+      max-width: 60ch;
+    }
+    .need-cta {
+      color: #A94E00;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(255, 107, 0, 0.45);
+      padding-bottom: 0.06rem;
+      width: fit-content;
+      display: inline-block;
+    }
+    .need-cta:hover { border-bottom-color: #FF6B00; }
+
+    .services-subcopy { margin-bottom: 0.35rem; }
+    .services-list {
+      display: grid;
+      gap: 0;
+      margin-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .service-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.55fr) auto;
+      gap: clamp(0.75rem, 2vw, 1.25rem);
+      align-items: baseline;
+      padding: clamp(1rem, 2.2vw, 1.35rem) 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .service-row h3 {
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      margin-bottom: 0.35rem;
+      color: #F5F5F5;
+    }
+    .service-row .service-main p {
+      color: #C9C2B6;
+      margin: 0;
+      max-width: 62ch;
+      font-size: 0.94rem;
+      line-height: 1.58;
+    }
+    .service-invest {
+      color: #D4B896;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .service-cta {
+      font-weight: 700;
+      color: #FFB800;
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(255, 184, 0, 0.5);
+      padding-bottom: 0.12rem;
+      align-self: center;
+    }
+    .service-cta:hover { color: #FFD189; border-bottom-color: #FFD189; }
+    .services-final-cta { margin-top: 1.35rem; padding-top: 0.5rem; }
+
+    .process-wrap { margin-top: 0.75rem; }
+    .timeline-vertical {
+      margin: 0;
+      padding: 0 0 0 0.5rem;
+      list-style: none;
+      position: relative;
+      border-left: 2px solid rgba(0, 0, 0, 0.12);
+    }
+    .timeline-step {
+      position: relative;
+      padding: 0 0 1.6rem 1.35rem;
+    }
+    .timeline-step:last-child { padding-bottom: 0.25rem; }
+    .timeline-node {
+      position: absolute;
+      left: calc(-0.5rem - 7px);
+      top: 0.15rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #FF6B00;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+    .timeline-step h3 {
+      color: #121212;
+      font-size: clamp(1.05rem, 1.7vw, 1.22rem);
+      margin-bottom: 0.35rem;
+    }
     .step-time {
       font-size: var(--caption);
-      border: 1px solid rgba(208, 97, 0, 0.24);
-      border-radius: 999px;
-      padding: 0.16rem 0.42rem;
-      margin-left: 0.35rem;
-      color: #8A4B00;
-      background: rgba(255, 184, 0, 0.12);
       font-weight: 700;
+      color: #6B3900;
+      margin-left: 0.4rem;
     }
+    .timeline-step p { color: #333; margin: 0; max-width: 58ch; line-height: 1.58; }
     .step-inline { color: #333; }
 
-    .faq-list { display: grid; gap: 0.72rem; }
+    .faq-list {
+      display: grid;
+      gap: 0.72rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 900px) {
+      .faq-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem 1.1rem; }
+    }
     .faq-item {
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius);
@@ -588,10 +628,8 @@
       align-items: stretch;
     }
     .contact-side {
-      border-radius: 18px;
-      border: 1px solid rgba(255, 184, 0, 0.24);
-      background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-      padding: 1rem;
+      border-left: 2px solid rgba(255, 184, 0, 0.45);
+      padding: 0.35rem 0 0.35rem 1rem;
       display: grid;
       gap: 0.55rem;
       align-content: start;
@@ -646,19 +684,60 @@
     .cases-track::-webkit-scrollbar { display: none; }
     .case-card {
       scroll-snap-align: start;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(8, 8, 8, 0.35);
+      padding: clamp(1rem, 2.4vw, 1.35rem);
       display: grid;
-      gap: 0.55rem;
-      min-height: 260px;
-      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      gap: 0.85rem;
+      min-height: 280px;
+      align-content: start;
     }
-    .case-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255, 184, 0, 0.44);
-      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+    .case-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .case-head .case-meta { width: 100%; }
+    .case-pull {
+      margin: 0;
+      padding: 0 0 0 1rem;
+      border-left: 3px solid rgba(255, 184, 0, 0.65);
+    }
+    .case-pull p { margin: 0; }
+    .case-pull .case-summary {
+      font-size: clamp(0.98rem, 1.5vw, 1.08rem);
+      line-height: 1.55;
+      color: #E8E0D2;
+      font-style: italic;
+    }
+    .case-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.25rem;
+      align-items: start;
+    }
+    .case-col-label {
+      margin: 0 0 0.4rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 184, 0, 0.75);
+    }
+    .case-col--how .case-actions {
+      margin: 0;
+      padding-left: 1rem;
+      color: #D8D0C4;
+      font-size: 0.88rem;
+      line-height: 1.48;
+    }
+    .case-col--out .case-result {
+      margin: 0 0 0.65rem;
+      font-size: 1rem;
     }
     .case-meta {
       display: flex;
@@ -843,34 +922,55 @@
       font-size: 1.1rem;
       cursor: pointer;
     }
-    .preview-frame-wrap {
-      position: relative;
-      background: #0A0A0A;
+    .preview-content {
+      padding: 1rem;
+      overflow-y: auto;
+      display: grid;
+      gap: 0.7rem;
+      align-content: start;
     }
-    .preview-frame {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: #0A0A0A;
+    .preview-meta {
+      display: inline-flex;
+      width: fit-content;
+      border: 1px solid rgba(255, 184, 0, 0.34);
+      border-radius: 999px;
+      background: rgba(255, 184, 0, 0.12);
+      color: #FFE0A8;
+      padding: 0.2rem 0.56rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
-    .preview-fallback {
-      position: absolute;
-      left: 0.8rem;
-      right: 0.8rem;
-      bottom: 0.8rem;
-      border: 1px solid rgba(255, 184, 0, 0.28);
-      border-radius: 10px;
-      background: rgba(10, 10, 10, 0.84);
-      padding: 0.58rem 0.68rem;
-      font-size: 0.78rem;
-      color: #EEDBB7;
+    .preview-summary { color: #E6DCCB; margin: 0; }
+    .preview-list {
+      margin: 0;
+      padding-left: 1.05rem;
+      color: #F0E5CF;
+      display: grid;
+      gap: 0.35rem;
+    }
+    .preview-result {
+      margin: 0;
+      font-weight: 800;
+      color: #FFD89B;
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+    .preview-actions {
       display: flex;
       flex-wrap: wrap;
+      gap: 0.6rem;
       align-items: center;
       justify-content: space-between;
-      gap: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.65rem 0.72rem;
+      font-size: 0.84rem;
+      color: #EEDBB7;
     }
-    .preview-fallback a {
+    .preview-actions a {
       color: #FFD17D;
       text-decoration: underline;
       text-underline-offset: 2px;
@@ -884,15 +984,16 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: inline-grid; place-content: center; }
       .mobile-menu { display: block; }
-      .context-points,
-      .needs-grid,
-      .services-grid,
-      .steps,
+      .context-split,
+      .service-row,
+      .case-split,
       .footer-grid,
       .contact-layout { grid-template-columns: 1fr; }
+      .service-row { align-items: start; }
+      .service-cta { white-space: normal; justify-self: start; }
       .hero-strip { margin-top: 74px; height: clamp(200px, 58vw, 320px); }
       .hero-intro-grid { min-height: auto; padding: 1.6rem 0 1.9rem; }
-      .hero-copy { padding: 1rem; border-radius: 16px; }
+      .hero-copy { padding-left: 1rem; border-left-width: 2px; }
       .hero-kicker { margin-bottom: 0.52rem; }
       .hero-media { width: 100%; height: 100%; }
       .context-brief { padding: 40px 0 28px; }
@@ -983,15 +1084,17 @@
 
     <section class="context-brief" aria-labelledby="context-title">
       <div class="container">
-        <div class="context-inner reveal">
-          <div class="section-tag">Antes de Continuar</div>
-          <h2 id="context-title">¿Qué es SOLARIS y qué hace por tu negocio?</h2>
-          <p>SOLARIS es una agencia de IA y crecimiento que diseña sistemas completos para vender más, operar con menos fricción y escalar con claridad. No entregamos piezas sueltas: construimos la estrategia, la ejecución y la optimización continua.</p>
-          <ul class="context-points">
-            <li>Estrategia comercial y de marketing orientada a ROI.</li>
-            <li>Automatización y procesos para ahorrar tiempo operativo.</li>
-            <li>Implementación rápida con KPIs claros y seguimiento real.</li>
-          </ul>
+        <div class="context-split reveal">
+          <div>
+            <div class="section-tag">Antes de Continuar</div>
+            <h2 id="context-title">¿Qué es SOLARIS y qué hace por tu negocio?</h2>
+            <p>SOLARIS es una agencia de IA y crecimiento que diseña sistemas completos para vender más, operar con menos fricción y escalar con claridad. No entregamos piezas sueltas: construimos la estrategia, la ejecución y la optimización continua.</p>
+          </div>
+          <ol class="context-list">
+            <li><span class="context-list-index">01</span><span>Estrategia comercial y de marketing orientada a ROI.</span></li>
+            <li><span class="context-list-index">02</span><span>Automatización y procesos para ahorrar tiempo operativo.</span></li>
+            <li><span class="context-list-index">03</span><span>Implementación rápida con KPIs claros y seguimiento real.</span></li>
+          </ol>
         </div>
       </div>
     </section>
@@ -999,25 +1102,34 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--light" aria-labelledby="why-solaris">
-      <div class="container section-panel section-panel--light">
+      <div class="container section-body section-body--light">
         <div class="section-tag reveal">Navegación por Resultados</div>
         <h2 id="why-solaris" class="reveal">¿Qué Problema Quieres Resolver HOY en tu Negocio?</h2>
-        <p class="needs-intro reveal">Conecta tu necesidad con una solución concreta y accionable.</p>
-        <div class="needs-grid reveal">
-          <article class="need-card">
-            <h3>Quiero Digitalizar mi Captación de Clientes</h3>
-            <p>Necesitas más leads, más llamadas, más ventas online. Tu negocio no puede esperar.</p>
-            <a class="need-cta" href="#servicios">Ver Soluciones de Captación →</a>
+        <p class="section-lead reveal">Conecta tu necesidad con una solución concreta y accionable.</p>
+        <div class="needs-stack reveal">
+          <article class="need-item">
+            <span class="need-index" aria-hidden="true">01</span>
+            <div class="need-body">
+              <h3>Quiero Digitalizar mi Captación de Clientes</h3>
+              <p>Necesitas más leads, más llamadas, más ventas online. Tu negocio no puede esperar.</p>
+              <a class="need-cta" href="#servicios">Ver Soluciones de Captación →</a>
+            </div>
           </article>
-          <article class="need-card">
-            <h3>Quiero Liberar Tiempo y Optimizar mi Operación</h3>
-            <p>Tu equipo está ahogado en tareas repetitivas. Necesitas eficiencia, automatización y menos errores humanos.</p>
-            <a class="need-cta" href="#servicios">Ver Soluciones de Eficiencia →</a>
+          <article class="need-item">
+            <span class="need-index" aria-hidden="true">02</span>
+            <div class="need-body">
+              <h3>Quiero Liberar Tiempo y Optimizar mi Operación</h3>
+              <p>Tu equipo está ahogado en tareas repetitivas. Necesitas eficiencia, automatización y menos errores humanos.</p>
+              <a class="need-cta" href="#servicios">Ver Soluciones de Eficiencia →</a>
+            </div>
           </article>
-          <article class="need-card">
-            <h3>Quiero Expandirme a Nuevos Mercados</h3>
-            <p>Tu negocio está listo para crecer más allá de las fronteras. Necesitas una estrategia global y clientes internacionales.</p>
-            <a class="need-cta" href="#servicios">Ver Soluciones de Expansión →</a>
+          <article class="need-item">
+            <span class="need-index" aria-hidden="true">03</span>
+            <div class="need-body">
+              <h3>Quiero Expandirme a Nuevos Mercados</h3>
+              <p>Tu negocio está listo para crecer más allá de las fronteras. Necesitas una estrategia global y clientes internacionales.</p>
+              <a class="need-cta" href="#servicios">Ver Soluciones de Expansión →</a>
+            </div>
           </article>
         </div>
       </div>
@@ -1026,52 +1138,66 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--surface-2" id="servicios" aria-labelledby="services-title">
-      <div class="container section-panel section-panel--dark">
+      <div class="container section-body section-body--dark">
         <div class="section-tag reveal">Servicios</div>
         <h2 id="services-title" class="reveal">Servicios Solaris: Tu Inversión, Tu Retorno.</h2>
-        <p class="services-subcopy reveal">Cada solución está diseñada para resolver un problema real con impacto medible.</p>
-        <div class="services-grid reveal">
-          <article class="service-card">
-            <h3>Landing Page que Vende</h3>
-            <p>Diseñamos tu primera máquina de ventas digital. Lista en 7 días, optimizada para convertir visitantes en clientes.</p>
-            <span class="service-invest">Inversión: Desde $1.500.000</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Landing%20Page%20que%20vende." target="_blank" rel="noopener noreferrer">Quiero mi Landing →</a>
+        <p class="section-lead reveal services-subcopy">Cada solución está diseñada para resolver un problema real con impacto medible.</p>
+        <div class="services-list reveal">
+          <article class="service-row">
+            <div class="service-main">
+              <h3>Landing Page que Vende</h3>
+              <p>Diseñamos tu primera máquina de ventas digital. Lista en 7 días, optimizada para convertir visitantes en clientes.</p>
+            </div>
+            <div class="service-meta"><span class="service-invest">Inversión: Desde $1.500.000</span></div>
+            <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Landing%20Page%20que%20vende." target="_blank" rel="noopener noreferrer">Quiero mi Landing →</a>
           </article>
-          <article class="service-card">
-            <h3>Tu Tienda Online 24/7</h3>
-            <p>Tu negocio online con plataforma de pagos propia. Ahorra comisiones y gestiona todo desde un panel intuitivo.</p>
-            <span class="service-invest">Inversión: Desde $3.000.000</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Tienda%20Online%2024%2F7." target="_blank" rel="noopener noreferrer">Quiero mi Tienda →</a>
+          <article class="service-row">
+            <div class="service-main">
+              <h3>Tu Tienda Online 24/7</h3>
+              <p>Tu negocio online con plataforma de pagos propia. Ahorra comisiones y gestiona todo desde un panel intuitivo.</p>
+            </div>
+            <div class="service-meta"><span class="service-invest">Inversión: Desde $3.000.000</span></div>
+            <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Tienda%20Online%2024%2F7." target="_blank" rel="noopener noreferrer">Quiero mi Tienda →</a>
           </article>
-          <article class="service-card">
-            <h3>Citas en Automático. Cero Errores.</h3>
-            <p>Automatiza agenda, recordatorios y disponibilidad. Sin mensualidades. Libera tu tiempo y optimiza tu operación.</p>
-            <span class="service-invest">Inversión: Desde $2.500.000</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Sistema%20de%20Agendamiento%20Inteligente." target="_blank" rel="noopener noreferrer">Quiero mi Sistema →</a>
+          <article class="service-row">
+            <div class="service-main">
+              <h3>Citas en Automático. Cero Errores.</h3>
+              <p>Automatiza agenda, recordatorios y disponibilidad. Sin mensualidades. Libera tu tiempo y optimiza tu operación.</p>
+            </div>
+            <div class="service-meta"><span class="service-invest">Inversión: Desde $2.500.000</span></div>
+            <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Sistema%20de%20Agendamiento%20Inteligente." target="_blank" rel="noopener noreferrer">Quiero mi Sistema →</a>
           </article>
-          <article class="service-card">
-            <h3>Redes Sociales que Duplican Ventas</h3>
-            <p>Estrategias de IA para duplicar ventas y seguidores, con piezas creativas y Meta Ads de alto impacto.</p>
-            <span class="service-invest">Inversión: Desde $2.000.000</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20duplicar%20mis%20ventas%20con%20redes%20sociales." target="_blank" rel="noopener noreferrer">Quiero Duplicar mis Ventas →</a>
+          <article class="service-row">
+            <div class="service-main">
+              <h3>Redes Sociales que Duplican Ventas</h3>
+              <p>Estrategias de IA para duplicar ventas y seguidores, con piezas creativas y Meta Ads de alto impacto.</p>
+            </div>
+            <div class="service-meta"><span class="service-invest">Inversión: Desde $2.000.000</span></div>
+            <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20duplicar%20mis%20ventas%20con%20redes%20sociales." target="_blank" rel="noopener noreferrer">Quiero Duplicar mis Ventas →</a>
           </article>
-          <article class="service-card">
-            <h3>Clientes Internacionales. Sin Fronteras.</h3>
-            <p>Implementamos CRM con IA, marketing digital global y un equipo de closers especializados.</p>
-            <span class="service-invest">Inversión: Desde $15.000.000 (Cotización personalizada)</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20clientes%20internacionales%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Clientes Globales →</a>
+          <article class="service-row">
+            <div class="service-main">
+              <h3>Clientes Internacionales. Sin Fronteras.</h3>
+              <p>Implementamos CRM con IA, marketing digital global y un equipo de closers especializados.</p>
+            </div>
+            <div class="service-meta"><span class="service-invest">Inversión: Desde $15.000.000 (Cotización personalizada)</span></div>
+            <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20clientes%20internacionales%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Clientes Globales →</a>
           </article>
-          <article class="service-card">
-            <h3>Tu Negocio en Piloto Automático</h3>
-            <p>Optimizamos flujos de trabajo, integramos herramientas y creamos bots inteligentes para procesos internos y atención.</p>
-            <span class="service-invest">Inversión: Cotización Personalizada</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20automatizar%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Automatizar mi Negocio →</a>
+          <article class="service-row">
+            <div class="service-main">
+              <h3>Tu Negocio en Piloto Automático</h3>
+              <p>Optimizamos flujos de trabajo, integramos herramientas y creamos bots inteligentes para procesos internos y atención.</p>
+            </div>
+            <div class="service-meta"><span class="service-invest">Inversión: Cotización Personalizada</span></div>
+            <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20automatizar%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Automatizar mi Negocio →</a>
           </article>
-          <article class="service-card">
-            <h3>Importaciones Rentables con IA</h3>
-            <p>Asesoría experta y optimización de importación/negociación global, apalancada en IA para análisis de mercados y logística.</p>
-            <span class="service-invest">Inversión: Cotización Personalizada</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20importaciones%20m%C3%A1s%20rentables%20con%20IA." target="_blank" rel="noopener noreferrer">Quiero Importaciones Más Rentables →</a>
+          <article class="service-row">
+            <div class="service-main">
+              <h3>Importaciones Rentables con IA</h3>
+              <p>Asesoría experta y optimización de importación/negociación global, apalancada en IA para análisis de mercados y logística.</p>
+            </div>
+            <div class="service-meta"><span class="service-invest">Inversión: Cotización Personalizada</span></div>
+            <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20importaciones%20m%C3%A1s%20rentables%20con%20IA." target="_blank" rel="noopener noreferrer">Quiero Importaciones Más Rentables →</a>
           </article>
         </div>
         <p class="services-final-cta reveal"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20necesito%20algo%20m%C3%A1s%20personalizado%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">¿Necesitas algo más? Hablemos de tu Proyecto Único →</a></p>
@@ -1081,7 +1207,7 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--base-dark" id="casos" aria-labelledby="cases-title">
-      <div class="container section-panel section-panel--dark">
+      <div class="container section-body section-body--dark">
         <div class="cases-head">
           <div>
             <div class="section-tag reveal">Casos Reales</div>
@@ -1096,98 +1222,148 @@
 
         <div class="cases-track reveal" id="casesTrack" aria-label="Carrusel de casos de clientes">
           <article class="case-card">
-            <div class="case-meta">
-              <strong>Mirador Ébano · Pereira</strong>
-              <span class="case-pill">Restaurante</span>
-            </div>
-            <p class="case-summary">De crisis comercial y audiencia inflada sin interacción a una operación con agenda llena y eventos semanales.</p>
+            <header class="case-head">
+              <div class="case-meta">
+                <strong>Mirador Ébano · Pereira</strong>
+                <span class="case-pill">Restaurante</span>
+              </div>
+            </header>
+            <blockquote class="case-pull"><p class="case-summary">De crisis comercial y audiencia inflada sin interacción a una operación con agenda llena y eventos semanales.</p></blockquote>
             <div class="case-actions-row">
               <a class="case-link" href="https://www.instagram.com/miradorebanopereira/" target="_blank" rel="noopener noreferrer">@miradorebanopereira</a>
               <button class="case-preview-btn" type="button" data-preview-url="https://www.instagram.com/miradorebanopereira/" data-preview-title="Mirador Ébano · Instagram">Ver sin salir</button>
             </div>
-            <ul class="case-actions">
-              <li>Modernización total de branding, carta, servicios y presencia digital.</li>
-              <li>Estrategia de contenido + creativos + pauta Meta Ads orientada a conversión.</li>
-              <li>Automatizaciones con ManyChat, web y sistema para convertir seguidores en leads.</li>
-            </ul>
-            <p class="case-result">Resultado: en menos de 90 días, negocio sold out y comunidad activa que reduce dependencia de pauta.</p>
-            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20resultado%20como%20Mirador%20%C3%89bano%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+            <div class="case-split">
+              <div class="case-col case-col--how">
+                <p class="case-col-label">Qué hicimos</p>
+                <ul class="case-actions">
+                  <li>Modernización total de branding, carta, servicios y presencia digital.</li>
+                  <li>Estrategia de contenido + creativos + pauta Meta Ads orientada a conversión.</li>
+                  <li>Automatizaciones con ManyChat, web y sistema para convertir seguidores en leads.</li>
+                </ul>
+              </div>
+              <div class="case-col case-col--out">
+                <p class="case-col-label">Resultado</p>
+                <p class="case-result">Resultado: en menos de 90 días, negocio sold out y comunidad activa que reduce dependencia de pauta.</p>
+                <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20resultado%20como%20Mirador%20%C3%89bano%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+              </div>
+            </div>
           </article>
 
           <article class="case-card">
-            <div class="case-meta">
-              <strong>Deer Burgers · Pereira</strong>
-              <span class="case-pill">Fast Food</span>
-            </div>
-            <p class="case-summary">Hamburguesería nueva que necesitaba posicionamiento acelerado desde su apertura para ganar mercado rápido.</p>
+            <header class="case-head">
+              <div class="case-meta">
+                <strong>Deer Burgers · Pereira</strong>
+                <span class="case-pill">Fast Food</span>
+              </div>
+            </header>
+            <blockquote class="case-pull"><p class="case-summary">Hamburguesería nueva que necesitaba posicionamiento acelerado desde su apertura para ganar mercado rápido.</p></blockquote>
             <div class="case-actions-row">
               <a class="case-link" href="https://www.instagram.com/deerburgers.co/" target="_blank" rel="noopener noreferrer">@deerburgers.co</a>
               <button class="case-preview-btn" type="button" data-preview-url="https://www.instagram.com/deerburgers.co/" data-preview-title="Deer Burgers · Instagram">Ver sin salir</button>
             </div>
-            <ul class="case-actions">
-              <li>Construcción de marca con identidad fuerte y diferenciada.</li>
-              <li>Estrategia de posicionamiento local y contenido comercial de alto impacto.</li>
-              <li>Implementación del mismo framework de crecimiento usado en Ébano.</li>
-            </ul>
-            <p class="case-result">Resultado: tracción temprana y posicionamiento rápido en Pereira en su primer mes.</p>
-            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20lanzamiento%20acelerado%20como%20Deer%20Burgers." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+            <div class="case-split">
+              <div class="case-col case-col--how">
+                <p class="case-col-label">Qué hicimos</p>
+                <ul class="case-actions">
+                  <li>Construcción de marca con identidad fuerte y diferenciada.</li>
+                  <li>Estrategia de posicionamiento local y contenido comercial de alto impacto.</li>
+                  <li>Implementación del mismo framework de crecimiento usado en Ébano.</li>
+                </ul>
+              </div>
+              <div class="case-col case-col--out">
+                <p class="case-col-label">Resultado</p>
+                <p class="case-result">Resultado: tracción temprana y posicionamiento rápido en Pereira en su primer mes.</p>
+                <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20lanzamiento%20acelerado%20como%20Deer%20Burgers." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+              </div>
+            </div>
           </article>
 
           <article class="case-card">
-            <div class="case-meta">
-              <strong>Odontología AVM · Cali</strong>
-              <span class="case-pill">Salud</span>
-            </div>
-            <p class="case-summary">Dependían del voz a voz local. Necesitaban visibilidad y un sistema para captar pacientes de turismo dental internacional.</p>
+            <header class="case-head">
+              <div class="case-meta">
+                <strong>Odontología AVM · Cali</strong>
+                <span class="case-pill">Salud</span>
+              </div>
+            </header>
+            <blockquote class="case-pull"><p class="case-summary">Dependían del voz a voz local. Necesitaban visibilidad y un sistema para captar pacientes de turismo dental internacional.</p></blockquote>
             <div class="case-actions-row">
               <a class="case-link" href="https://www.instagram.com/odontologia_avm/" target="_blank" rel="noopener noreferrer">@odontologia_avm</a>
               <button class="case-preview-btn" type="button" data-preview-url="https://www.instagram.com/odontologia_avm/" data-preview-title="Odontología AVM · Instagram">Ver sin salir</button>
             </div>
-            <ul class="case-actions">
-              <li>Estrategia internacional para diseños de sonrisa y captación fuera de Colombia.</li>
-              <li>Modernización de marca y stack inteligente de atracción y seguimiento.</li>
-              <li>Capacitación en internacionalización, closers y soporte operativo integral.</li>
-            </ul>
-            <p class="case-result">Resultado: con 1 paciente internacional semanal generan ingresos equivalentes a un mes local completo.</p>
-            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20atraer%20clientes%20internacionales%20como%20Odontolog%C3%ADa%20AVM." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+            <div class="case-split">
+              <div class="case-col case-col--how">
+                <p class="case-col-label">Qué hicimos</p>
+                <ul class="case-actions">
+                  <li>Estrategia internacional para diseños de sonrisa y captación fuera de Colombia.</li>
+                  <li>Modernización de marca y stack inteligente de atracción y seguimiento.</li>
+                  <li>Capacitación en internacionalización, closers y soporte operativo integral.</li>
+                </ul>
+              </div>
+              <div class="case-col case-col--out">
+                <p class="case-col-label">Resultado</p>
+                <p class="case-result">Resultado: con 1 paciente internacional semanal generan ingresos equivalentes a un mes local completo.</p>
+                <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20atraer%20clientes%20internacionales%20como%20Odontolog%C3%ADa%20AVM." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+              </div>
+            </div>
           </article>
 
           <article class="case-card">
-            <div class="case-meta">
-              <strong>Batido · Medellín</strong>
-              <span class="case-pill">Bebidas</span>
-            </div>
-            <p class="case-summary">Empresa de jugos pressed con bajo nivel de ventas y sin sistema de adquisición consistente.</p>
+            <header class="case-head">
+              <div class="case-meta">
+                <strong>Batido · Medellín</strong>
+                <span class="case-pill">Bebidas</span>
+              </div>
+            </header>
+            <blockquote class="case-pull"><p class="case-summary">Empresa de jugos pressed con bajo nivel de ventas y sin sistema de adquisición consistente.</p></blockquote>
             <div class="case-actions-row">
               <a class="case-link" href="https://www.instagram.com/batido_co/" target="_blank" rel="noopener noreferrer">@batido_co</a>
               <button class="case-preview-btn" type="button" data-preview-url="https://www.instagram.com/batido_co/" data-preview-title="Batido · Instagram">Ver sin salir</button>
             </div>
-            <ul class="case-actions">
-              <li>Pauta Andrómeda y segmentación avanzada por perfil de cliente ideal.</li>
-              <li>Contenido hiperrealista y asesoramiento estratégico de Meta Ads.</li>
-              <li>Landing conectada a píxeles para trazabilidad y leads listos para cierre.</li>
-            </ul>
-            <p class="case-result">Resultado: facturación x3 en menos de 1 mes con leads más calificados.</p>
-            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20triplicar%20facturaci%C3%B3n%20como%20Batido." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+            <div class="case-split">
+              <div class="case-col case-col--how">
+                <p class="case-col-label">Qué hicimos</p>
+                <ul class="case-actions">
+                  <li>Pauta Andrómeda y segmentación avanzada por perfil de cliente ideal.</li>
+                  <li>Contenido hiperrealista y asesoramiento estratégico de Meta Ads.</li>
+                  <li>Landing conectada a píxeles para trazabilidad y leads listos para cierre.</li>
+                </ul>
+              </div>
+              <div class="case-col case-col--out">
+                <p class="case-col-label">Resultado</p>
+                <p class="case-result">Resultado: facturación x3 en menos de 1 mes con leads más calificados.</p>
+                <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20triplicar%20facturaci%C3%B3n%20como%20Batido." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+              </div>
+            </div>
           </article>
 
           <article class="case-card">
-            <div class="case-meta">
-              <strong>La Guaca · Montería</strong>
-              <span class="case-pill">Moda</span>
-            </div>
-            <p class="case-summary">Tienda multimarca que necesitaba digitalizar su operación comercial sin depender de terceros.</p>
+            <header class="case-head">
+              <div class="case-meta">
+                <strong>La Guaca · Montería</strong>
+                <span class="case-pill">Moda</span>
+              </div>
+            </header>
+            <blockquote class="case-pull"><p class="case-summary">Tienda multimarca que necesitaba digitalizar su operación comercial sin depender de terceros.</p></blockquote>
             <div class="case-actions-row">
               <a class="case-link" href="https://www.instagram.com/boutiquelaguaca1/" target="_blank" rel="noopener noreferrer">@boutiquelaguaca1</a>
               <button class="case-preview-btn" type="button" data-preview-url="https://www.instagram.com/boutiquelaguaca1/" data-preview-title="La Guaca · Instagram">Ver sin salir</button>
             </div>
-            <ul class="case-actions">
-              <li>Tienda virtual a medida con plataforma de pagos y administración total del catálogo.</li>
-              <li>Base de datos de clientes y CRM operativo para eficiencia de mensajes.</li>
-              <li>Estrategia de alcance con Meta Ads integrada al día a día de ventas.</li>
-            </ul>
-            <p class="case-result">Resultado: canal digital escalable, sin comisiones de terceros y con control completo de precios/producto.</p>
-            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20digitalizar%20mi%20tienda%20como%20La%20Guaca." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+            <div class="case-split">
+              <div class="case-col case-col--how">
+                <p class="case-col-label">Qué hicimos</p>
+                <ul class="case-actions">
+                  <li>Tienda virtual a medida con plataforma de pagos y administración total del catálogo.</li>
+                  <li>Base de datos de clientes y CRM operativo para eficiencia de mensajes.</li>
+                  <li>Estrategia de alcance con Meta Ads integrada al día a día de ventas.</li>
+                </ul>
+              </div>
+              <div class="case-col case-col--out">
+                <p class="case-col-label">Resultado</p>
+                <p class="case-result">Resultado: canal digital escalable, sin comisiones de terceros y con control completo de precios/producto.</p>
+                <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20digitalizar%20mi%20tienda%20como%20La%20Guaca." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -1196,32 +1372,31 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--light" id="proceso" aria-labelledby="process-title">
-      <div class="container section-panel section-panel--light">
+      <div class="container section-body section-body--light">
         <h2 id="process-title" class="reveal">Tu Éxito es Nuestro Proceso. Así Trabajamos en Solaris.</h2>
         <div class="process-wrap reveal">
-          <div class="timeline-line"><div class="timeline-fill" id="timelineFill"></div></div>
-          <div class="steps">
-            <article class="step">
-              <div class="step-badge">1</div>
+          <ol class="timeline-vertical" aria-label="Pasos del proceso SOLARIS">
+            <li class="timeline-step">
+              <span class="timeline-node" aria-hidden="true"></span>
               <h3>Diagnóstico Estratégico <span class="step-time">30 min</span></h3>
               <p class="step-inline">Identificamos tus desafíos clave y las oportunidades de crecimiento con IA. Sin rodeos, solo un plan claro para tu negocio.</p>
-            </article>
-            <article class="step">
-              <div class="step-badge">2</div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-node" aria-hidden="true"></span>
               <h3>Roadmap Personalizado <span class="step-time">24h</span></h3>
               <p class="step-inline">Diseñamos un plan de acción detallado con metas medibles y la tecnología ideal para que veas resultados rápidos.</p>
-            </article>
-            <article class="step">
-              <div class="step-badge">3</div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-node" aria-hidden="true"></span>
               <h3>Implementación Ágil <span class="step-time">Desde 7 días</span></h3>
               <p class="step-inline">Activamos sistemas, campañas y automatizaciones. Te sorprenderá la velocidad con la que tu negocio empieza a transformarse.</p>
-            </article>
-            <article class="step">
-              <div class="step-badge">4</div>
+            </li>
+            <li class="timeline-step">
+              <span class="timeline-node" aria-hidden="true"></span>
               <h3>Escala Continua <span class="step-time">Mes a mes</span></h3>
               <p class="step-inline">Optimizamos con datos, ajustamos estrategias y aseguramos un crecimiento constante y rentable. Tu éxito es nuestra prioridad.</p>
-            </article>
-          </div>
+            </li>
+          </ol>
         </div>
         <p style="margin-top:1rem;"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20mi%20transformaci%C3%B3n%20con%20un%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener noreferrer">Empieza tu Transformación con un Diagnóstico Gratuito →</a></p>
       </div>
@@ -1230,7 +1405,7 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--base-dark" id="faq" aria-labelledby="faq-title">
-      <div class="container section-panel section-panel--dark">
+      <div class="container section-body section-body--dark">
         <h2 id="faq-title" class="reveal">¿Tienes Preguntas? Tenemos Respuestas Claras.</h2>
         <div class="faq-list reveal">
           <article class="faq-item">
@@ -1264,7 +1439,7 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--surface" id="contacto" aria-labelledby="cta-final-title">
-      <div class="container section-panel section-panel--dark">
+      <div class="container section-body section-body--dark">
         <div class="contact-layout reveal">
           <div class="cta-final">
             <h2 id="cta-final-title">Listo para Acelerar tu Negocio? Hablemos.</h2>
@@ -1333,10 +1508,13 @@
         <strong id="previewTitle">Vista rápida</strong>
         <button class="preview-close" id="previewClose" aria-label="Cerrar vista rápida">×</button>
       </div>
-      <div class="preview-frame-wrap">
-        <iframe class="preview-frame" id="previewFrame" title="Vista de caso real"></iframe>
-        <div class="preview-fallback">
-          <span>Si la red social bloquea la vista embebida, abre el perfil en una pestaña nueva.</span>
+      <div class="preview-content" id="previewContent">
+        <span class="preview-meta" id="previewMeta">Caso real</span>
+        <p class="preview-summary" id="previewSummary"></p>
+        <ul class="preview-list" id="previewList"></ul>
+        <p class="preview-result" id="previewResult"></p>
+        <div class="preview-actions">
+          <span>Ver más del caso en Instagram</span>
           <a id="previewOpenNew" href="#" target="_blank" rel="noopener noreferrer">Abrir perfil</a>
         </div>
       </div>
@@ -1356,8 +1534,11 @@
       const casesPrev = document.getElementById("casesPrev");
       const casesNext = document.getElementById("casesNext");
       const previewModal = document.getElementById("previewModal");
-      const previewFrame = document.getElementById("previewFrame");
       const previewTitle = document.getElementById("previewTitle");
+      const previewMeta = document.getElementById("previewMeta");
+      const previewSummary = document.getElementById("previewSummary");
+      const previewList = document.getElementById("previewList");
+      const previewResult = document.getElementById("previewResult");
       const previewOpenNew = document.getElementById("previewOpenNew");
       const previewClose = document.getElementById("previewClose");
 
@@ -1420,19 +1601,43 @@
       }
 
       function closePreview() {
-        if (!previewModal || !previewFrame) return;
+        if (!previewModal) return;
         previewModal.classList.remove("open");
-        previewFrame.src = "about:blank";
       }
 
-      if (previewModal && previewFrame && previewTitle && previewOpenNew && previewClose) {
+      if (previewModal && previewTitle && previewMeta && previewSummary && previewList && previewResult && previewOpenNew && previewClose) {
         document.querySelectorAll(".case-preview-btn").forEach(function (btn) {
           btn.addEventListener("click", function () {
             const url = btn.getAttribute("data-preview-url");
             const title = btn.getAttribute("data-preview-title") || "Vista rápida";
+            const card = btn.closest(".case-card");
             if (!url) return;
-            previewTitle.textContent = title;
-            previewFrame.src = url;
+
+            if (card) {
+              const business = card.querySelector(".case-meta strong");
+              const category = card.querySelector(".case-pill");
+              const summary = card.querySelector(".case-summary");
+              const actions = card.querySelectorAll(".case-actions li");
+              const result = card.querySelector(".case-result");
+
+              previewMeta.textContent = category ? category.textContent : "Caso real";
+              previewSummary.textContent = summary ? summary.textContent : "";
+              previewList.innerHTML = "";
+              actions.forEach(function (item) {
+                const li = document.createElement("li");
+                li.textContent = item.textContent;
+                previewList.appendChild(li);
+              });
+              previewResult.textContent = result ? result.textContent : "";
+              previewTitle.textContent = business ? business.textContent : title;
+            } else {
+              previewTitle.textContent = title;
+              previewMeta.textContent = "Caso real";
+              previewSummary.textContent = "";
+              previewList.innerHTML = "";
+              previewResult.textContent = "";
+            }
+
             previewOpenNew.href = url;
             previewModal.classList.add("open");
           });
