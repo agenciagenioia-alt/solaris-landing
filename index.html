@@ -430,6 +430,120 @@
         #111111;
     }
 
+    .services-bridge {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(2rem, 5vw, 3.25rem) 0 clamp(1.75rem, 4vw, 2.75rem);
+      background:
+        radial-gradient(ellipse 80% 55% at 18% 35%, rgba(255, 107, 0, 0.11), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 88% 75%, rgba(255, 60, 172, 0.09), transparent 50%),
+        #1A1A1A;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .services-bridge::before {
+      content: "";
+      display: block;
+      width: min(220px, 55%);
+      height: 3px;
+      margin: 0 auto clamp(1.15rem, 3vw, 1.6rem);
+      border-radius: 999px;
+      background: linear-gradient(90deg, #FF6B00, #FFB800, #FF3CAC);
+      opacity: 0.9;
+    }
+    .services-bridge::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(245, 245, 245, 0.2) 0%, rgba(26, 26, 26, 0) min(72px, 12%));
+      pointer-events: none;
+    }
+    .services-bridge .container {
+      position: relative;
+      z-index: 1;
+    }
+    .services-bridge-kicker {
+      display: inline-block;
+      margin: 0 0 0.55rem;
+      padding: 0.32rem 0.65rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #FFD189;
+      border: 1px solid rgba(255, 184, 0, 0.36);
+      border-radius: 999px;
+      background: rgba(255, 184, 0, 0.08);
+    }
+    .services-bridge-heading {
+      margin: 0 0 1.25rem;
+      max-width: 22ch;
+      font-size: clamp(1.35rem, 3.2vw, 2rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #F5F5F5;
+    }
+    .services-bridge-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.65rem, 2vw, 1rem);
+      align-items: stretch;
+    }
+    .services-bridge-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem 0.85rem;
+      align-items: start;
+      padding: clamp(0.85rem, 2vw, 1.1rem);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+    .services-bridge-icon {
+      grid-row: span 2;
+      display: grid;
+      place-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(255, 107, 0, 0.25), rgba(255, 60, 172, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FFD89B;
+    }
+    .services-bridge-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+    .services-bridge-card h3 {
+      margin: 0;
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .services-bridge-card p {
+      margin: 0;
+      grid-column: 2;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      color: #C8C2B8;
+    }
+    .services-bridge-jump {
+      margin: 1.1rem 0 0;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .services-bridge-jump a {
+      color: #FFD17E;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .services-bridge-jump a:hover { color: #FFE8B8; }
+
     .section--light h2,
     .section--light h3,
     .section--light p,
@@ -957,21 +1071,37 @@
     .mobile-sticky-cta {
       display: none;
       position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      right: max(1rem, env(safe-area-inset-right, 0px));
+      bottom: max(1rem, env(safe-area-inset-bottom, 0px));
       z-index: 999;
-      background: #FF6B00;
+      pointer-events: none;
     }
     .mobile-sticky-cta a {
+      pointer-events: auto;
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 56px;
       height: 56px;
+      border-radius: 999px;
       color: #fff;
-      font-weight: 800;
-      text-align: center;
-      padding: 0 0.8rem;
+      background: linear-gradient(135deg, #FF6B00, #E85A00);
+      box-shadow:
+        0 4px 20px rgba(255, 107, 0, 0.45),
+        0 2px 8px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .mobile-sticky-cta a:hover {
+      transform: scale(1.06);
+      box-shadow:
+        0 6px 28px rgba(255, 107, 0, 0.55),
+        0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+    .mobile-sticky-cta a svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
     }
 
     footer {
@@ -1184,12 +1314,13 @@
       .section-divider { height: 30px; }
       .section { padding: 50px 0; }
       .mobile-sticky-cta { display: block; }
-      body { padding-bottom: 70px; }
       .cases-head { align-items: flex-start; }
       .cases-controls { order: 2; }
       .cases-track { grid-auto-columns: minmax(84%, 1fr); }
       .footer-links { grid-template-columns: 1fr; }
       .preview-dialog { height: min(86vh, 680px); }
+      .services-bridge-steps { grid-template-columns: 1fr; }
+      .services-bridge-heading { max-width: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1329,7 +1460,36 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
+    <section class="services-bridge" aria-labelledby="services-bridge-title">
+      <div class="container">
+        <p class="services-bridge-kicker reveal">Camino claro</p>
+        <h2 id="services-bridge-title" class="services-bridge-heading reveal">De tu problema a un plan que se mide</h2>
+        <div class="services-bridge-steps reveal">
+          <article class="services-bridge-card">
+            <div class="services-bridge-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v4l2.5 1.5"/></svg>
+            </div>
+            <h3>Diagnóstico</h3>
+            <p>30 minutos para ubicar el cuello de botella y lo que más te está costando crecer.</p>
+          </article>
+          <article class="services-bridge-card">
+            <div class="services-bridge-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3>Implementación</h3>
+            <p>Entregas concretas en días, no promesas a largo plazo. IA y ejecución alineadas a tu operación.</p>
+          </article>
+          <article class="services-bridge-card">
+            <div class="services-bridge-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 12l4-4 4 4 6-6"/><path d="M21 16v5h-5"/></svg>
+            </div>
+            <h3>KPIs y ritmo</h3>
+            <p>Números claros y seguimiento semanal para ajustar lo que no está rindiendo.</p>
+          </article>
+        </div>
+        <p class="services-bridge-jump reveal"><a href="#servicios">Ver soluciones y precios →</a></p>
+      </div>
+    </section>
 
     <section class="section section--surface-2" id="servicios" aria-labelledby="services-title">
       <div class="container section-body section-body--dark">
@@ -1664,8 +1824,17 @@
     </section>
   </main>
 
-  <div class="mobile-sticky-cta">
-    <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico GRATUITO por WhatsApp →</a>
+  <div class="mobile-sticky-cta" role="complementary" aria-label="Acceso rápido a WhatsApp">
+    <a
+      href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos."
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Abrir WhatsApp con SOLARIS para agendar diagnóstico gratuito"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
   </div>
 
   <footer>
