@@ -692,10 +692,31 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .service-row h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
       font-size: clamp(1.02rem, 1.6vw, 1.18rem);
       margin-bottom: 0.35rem;
       color: #F5F5F5;
     }
+    .service-icon {
+      flex-shrink: 0;
+      display: grid;
+      place-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(255, 107, 0, 0.22), rgba(255, 60, 172, 0.1));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FFD89B;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+    .service-title-text { min-width: 0; line-height: 1.25; }
     .service-row .service-main p {
       color: #C9C2B6;
       margin: 0;
@@ -950,15 +971,82 @@
       align-content: start;
     }
     .case-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.5rem 1rem;
       padding-bottom: 0.65rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .case-head .case-meta { width: 100%; }
+    .case-head--ig {
+      padding-bottom: 0.75rem;
+      margin: calc(-1 * clamp(1rem, 2.4vw, 1.35rem));
+      margin-bottom: 0;
+      padding-top: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .case-ig-cover {
+      position: relative;
+      height: clamp(64px, 18vw, 80px);
+      overflow: hidden;
+      background: #101010;
+    }
+    .case-ig-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+      transform: scale(1.08);
+    }
+    .case-ig-cover--fallback img {
+      transform: none;
+      object-fit: contain;
+      object-position: center;
+      padding: 0.5rem;
+      background: #141414;
+    }
+    .case-ig-cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(10, 10, 10, 0.75) 100%);
+      pointer-events: none;
+    }
+    .case-head--ig .case-brand {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.75rem;
+      width: 100%;
+      margin-top: -28px;
+      position: relative;
+      z-index: 1;
+      padding: 0 clamp(1rem, 2.4vw, 1.35rem) 0;
+    }
+    .case-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+    }
+    .case-logo {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.06);
+      border: 3px solid #0a0a0a;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+    .case-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .case-head .case-meta,
+    .case-head--ig .case-meta {
+      flex: 1;
+      min-width: 0;
+      padding-bottom: 0.15rem;
+    }
     .case-pull {
       margin: 0;
       padding: 0 0 0 1rem;
@@ -1330,6 +1418,7 @@
         transition: none !important;
       }
       .reveal { opacity: 1 !important; transform: none !important; }
+      .case-ig-cover img { transform: none !important; }
     }
   </style>
 </head>
@@ -1499,7 +1588,7 @@
         <div class="services-list reveal">
           <article class="service-row">
             <div class="service-main">
-              <h3>Landing Page que Vende</h3>
+              <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg></span><span class="service-title-text">Landing Page que Vende</span></h3>
               <p>Diseñamos tu primera máquina de ventas digital. Lista en 7 días, optimizada para convertir visitantes en clientes.</p>
             </div>
             <div class="service-meta"><span class="service-invest">Inversión: Desde $1.500.000</span></div>
@@ -1507,7 +1596,7 @@
           </article>
           <article class="service-row">
             <div class="service-main">
-              <h3>Tu Tienda Online 24/7</h3>
+              <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5"/><path d="M3.375 9.757l1.049 11.28c.082.884.82 1.563 1.706 1.563h12.74c.886 0 1.624-.68 1.706-1.563l1.049-11.28A1.125 1.125 0 0020.625 8.5H3.375a1.125 1.125 0 00-1.119 1.257z"/></svg></span><span class="service-title-text">Tu Tienda Online 24/7</span></h3>
               <p>Tu negocio online con plataforma de pagos propia. Ahorra comisiones y gestiona todo desde un panel intuitivo.</p>
             </div>
             <div class="service-meta"><span class="service-invest">Inversión: Desde $3.000.000</span></div>
@@ -1515,7 +1604,7 @@
           </article>
           <article class="service-row">
             <div class="service-main">
-              <h3>Citas en Automático. Cero Errores.</h3>
+              <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></span><span class="service-title-text">Citas en Automático. Cero Errores.</span></h3>
               <p>Automatiza agenda, recordatorios y disponibilidad. Sin mensualidades. Libera tu tiempo y optimiza tu operación.</p>
             </div>
             <div class="service-meta"><span class="service-invest">Inversión: Desde $2.500.000</span></div>
@@ -1523,7 +1612,7 @@
           </article>
           <article class="service-row">
             <div class="service-main">
-              <h3>Redes Sociales que Duplican Ventas</h3>
+              <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg></span><span class="service-title-text">Redes Sociales que Duplican Ventas</span></h3>
               <p>Estrategias de IA para duplicar ventas y seguidores, con piezas creativas y Meta Ads de alto impacto.</p>
             </div>
             <div class="service-meta"><span class="service-invest">Inversión: Desde $2.000.000</span></div>
@@ -1531,7 +1620,7 @@
           </article>
           <article class="service-row">
             <div class="service-main">
-              <h3>Clientes Internacionales. Sin Fronteras.</h3>
+              <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg></span><span class="service-title-text">Clientes Internacionales. Sin Fronteras.</span></h3>
               <p>Implementamos CRM con IA, marketing digital global y un equipo de closers especializados.</p>
             </div>
             <div class="service-meta"><span class="service-invest">Inversión: Desde $15.000.000 (Cotización personalizada)</span></div>
@@ -1539,7 +1628,7 @@
           </article>
           <article class="service-row">
             <div class="service-main">
-              <h3>Tu Negocio en Piloto Automático</h3>
+              <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/></svg></span><span class="service-title-text">Tu Negocio en Piloto Automático</span></h3>
               <p>Optimizamos flujos de trabajo, integramos herramientas y creamos bots inteligentes para procesos internos y atención.</p>
             </div>
             <div class="service-meta"><span class="service-invest">Inversión: Cotización Personalizada</span></div>
@@ -1547,7 +1636,7 @@
           </article>
           <article class="service-row">
             <div class="service-main">
-              <h3>Importaciones Rentables con IA</h3>
+              <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.25 18.75a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25zm6 0a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25zm-10.5-1.125a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25zm6 0a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25zm3.75 0a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25M4.5 5.625v10.125a1.125 1.125 0 001.125 1.125h1.125m10.5-11.25v10.125a1.125 1.125 0 001.125 1.125h1.125m-13.5 0h9.75m-9.75 0a1.125 1.125 0 01-1.125-1.125V9.375m0 0a1.125 1.125 0 011.125-1.125h3.75m0 0H15m4.5 0h1.125a1.125 1.125 0 011.125 1.125v8.25m-16.5 0V6.75a1.125 1.125 0 011.125-1.125h3.75m0 0h9.75"/></svg></span><span class="service-title-text">Importaciones Rentables con IA</span></h3>
               <p>Asesoría experta y optimización de importación/negociación global, apalancada en IA para análisis de mercados y logística.</p>
             </div>
             <div class="service-meta"><span class="service-invest">Inversión: Cotización Personalizada</span></div>
@@ -1576,10 +1665,18 @@
 
         <div class="cases-track reveal" id="casesTrack" aria-label="Carrusel de casos de clientes">
           <article class="case-card">
-            <header class="case-head">
-              <div class="case-meta">
-                <strong>Mirador Ébano · Pereira</strong>
-                <span class="case-pill">Restaurante</span>
+            <header class="case-head case-head--ig">
+              <div class="case-ig-cover" aria-hidden="true">
+                <img src="https://unavatar.io/instagram/miradorebanopereira" alt="" width="400" height="120" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/mirador-ebano.svg';this.parentElement.classList.add('case-ig-cover--fallback')">
+              </div>
+              <div class="case-brand">
+                <div class="case-logo">
+                  <img src="https://unavatar.io/instagram/miradorebanopereira" alt="Foto de perfil de @miradorebanopereira en Instagram" width="56" height="56" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/mirador-ebano.svg'">
+                </div>
+                <div class="case-meta">
+                  <strong>Mirador Ébano · Pereira</strong>
+                  <span class="case-pill">Restaurante</span>
+                </div>
               </div>
             </header>
             <blockquote class="case-pull"><p class="case-summary">De crisis comercial y audiencia inflada sin interacción a una operación con agenda llena y eventos semanales.</p></blockquote>
@@ -1598,17 +1695,25 @@
               </div>
               <div class="case-col case-col--out">
                 <p class="case-col-label">Resultado</p>
-                <p class="case-result">Resultado: en menos de 90 días, negocio sold out y comunidad activa que reduce dependencia de pauta.</p>
+                <p class="case-result">En menos de 90 días, negocio sold out y comunidad activa que reduce dependencia de pauta.</p>
                 <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20resultado%20como%20Mirador%20%C3%89bano%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
               </div>
             </div>
           </article>
 
           <article class="case-card">
-            <header class="case-head">
-              <div class="case-meta">
-                <strong>Deer Burgers · Pereira</strong>
-                <span class="case-pill">Fast Food</span>
+            <header class="case-head case-head--ig">
+              <div class="case-ig-cover" aria-hidden="true">
+                <img src="https://unavatar.io/instagram/deerburgers.co" alt="" width="400" height="120" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/deer-burgers.svg';this.parentElement.classList.add('case-ig-cover--fallback')">
+              </div>
+              <div class="case-brand">
+                <div class="case-logo">
+                  <img src="https://unavatar.io/instagram/deerburgers.co" alt="Foto de perfil de @deerburgers.co en Instagram" width="56" height="56" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/deer-burgers.svg'">
+                </div>
+                <div class="case-meta">
+                  <strong>Deer Burgers · Pereira</strong>
+                  <span class="case-pill">Fast Food</span>
+                </div>
               </div>
             </header>
             <blockquote class="case-pull"><p class="case-summary">Hamburguesería nueva que necesitaba posicionamiento acelerado desde su apertura para ganar mercado rápido.</p></blockquote>
@@ -1627,17 +1732,25 @@
               </div>
               <div class="case-col case-col--out">
                 <p class="case-col-label">Resultado</p>
-                <p class="case-result">Resultado: tracción temprana y posicionamiento rápido en Pereira en su primer mes.</p>
+                <p class="case-result">Tracción temprana y posicionamiento rápido en Pereira en su primer mes.</p>
                 <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20lanzamiento%20acelerado%20como%20Deer%20Burgers." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
               </div>
             </div>
           </article>
 
           <article class="case-card">
-            <header class="case-head">
-              <div class="case-meta">
-                <strong>Odontología AVM · Cali</strong>
-                <span class="case-pill">Salud</span>
+            <header class="case-head case-head--ig">
+              <div class="case-ig-cover" aria-hidden="true">
+                <img src="https://unavatar.io/instagram/odontologia_avm" alt="" width="400" height="120" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/odontologia-avm.svg';this.parentElement.classList.add('case-ig-cover--fallback')">
+              </div>
+              <div class="case-brand">
+                <div class="case-logo">
+                  <img src="https://unavatar.io/instagram/odontologia_avm" alt="Foto de perfil de @odontologia_avm en Instagram" width="56" height="56" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/odontologia-avm.svg'">
+                </div>
+                <div class="case-meta">
+                  <strong>Odontología AVM · Cali</strong>
+                  <span class="case-pill">Salud</span>
+                </div>
               </div>
             </header>
             <blockquote class="case-pull"><p class="case-summary">Dependían del voz a voz local. Necesitaban visibilidad y un sistema para captar pacientes de turismo dental internacional.</p></blockquote>
@@ -1656,17 +1769,25 @@
               </div>
               <div class="case-col case-col--out">
                 <p class="case-col-label">Resultado</p>
-                <p class="case-result">Resultado: con 1 paciente internacional semanal generan ingresos equivalentes a un mes local completo.</p>
+                <p class="case-result">Con 1 paciente internacional semanal generan ingresos equivalentes a un mes local completo.</p>
                 <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20atraer%20clientes%20internacionales%20como%20Odontolog%C3%ADa%20AVM." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
               </div>
             </div>
           </article>
 
           <article class="case-card">
-            <header class="case-head">
-              <div class="case-meta">
-                <strong>Batido · Medellín</strong>
-                <span class="case-pill">Bebidas</span>
+            <header class="case-head case-head--ig">
+              <div class="case-ig-cover" aria-hidden="true">
+                <img src="https://unavatar.io/instagram/batido_co" alt="" width="400" height="120" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/batido.svg';this.parentElement.classList.add('case-ig-cover--fallback')">
+              </div>
+              <div class="case-brand">
+                <div class="case-logo">
+                  <img src="https://unavatar.io/instagram/batido_co" alt="Foto de perfil de @batido_co en Instagram" width="56" height="56" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/batido.svg'">
+                </div>
+                <div class="case-meta">
+                  <strong>Batido · Medellín</strong>
+                  <span class="case-pill">Bebidas</span>
+                </div>
               </div>
             </header>
             <blockquote class="case-pull"><p class="case-summary">Empresa de jugos pressed con bajo nivel de ventas y sin sistema de adquisición consistente.</p></blockquote>
@@ -1685,17 +1806,25 @@
               </div>
               <div class="case-col case-col--out">
                 <p class="case-col-label">Resultado</p>
-                <p class="case-result">Resultado: facturación x3 en menos de 1 mes con leads más calificados.</p>
+                <p class="case-result">Facturación x3 en menos de 1 mes con leads más calificados.</p>
                 <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20triplicar%20facturaci%C3%B3n%20como%20Batido." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
               </div>
             </div>
           </article>
 
           <article class="case-card">
-            <header class="case-head">
-              <div class="case-meta">
-                <strong>La Guaca · Montería</strong>
-                <span class="case-pill">Moda</span>
+            <header class="case-head case-head--ig">
+              <div class="case-ig-cover" aria-hidden="true">
+                <img src="https://unavatar.io/instagram/boutiquelaguaca1" alt="" width="400" height="120" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/la-guaca.svg';this.parentElement.classList.add('case-ig-cover--fallback')">
+              </div>
+              <div class="case-brand">
+                <div class="case-logo">
+                  <img src="https://unavatar.io/instagram/boutiquelaguaca1" alt="Foto de perfil de @boutiquelaguaca1 en Instagram" width="56" height="56" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/cases/la-guaca.svg'">
+                </div>
+                <div class="case-meta">
+                  <strong>La Guaca · Montería</strong>
+                  <span class="case-pill">Moda</span>
+                </div>
               </div>
             </header>
             <blockquote class="case-pull"><p class="case-summary">Tienda multimarca que necesitaba digitalizar su operación comercial sin depender de terceros.</p></blockquote>
@@ -1714,7 +1843,7 @@
               </div>
               <div class="case-col case-col--out">
                 <p class="case-col-label">Resultado</p>
-                <p class="case-result">Resultado: canal digital escalable, sin comisiones de terceros y con control completo de precios/producto.</p>
+                <p class="case-result">Canal digital escalable, sin comisiones de terceros y con control completo de precios/producto.</p>
                 <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20digitalizar%20mi%20tienda%20como%20La%20Guaca." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
               </div>
             </div>

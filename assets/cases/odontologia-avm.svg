@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#0f1418"/>
+  <defs>
+    <linearGradient id="c" x1="12" y1="8" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5EC8F7"/><stop offset="1" stop-color="#FFB800"/>
+    </linearGradient>
+  </defs>
+  <text x="32" y="40" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="17" font-weight="800" fill="url(#c)">AVM</text>
+</svg>
