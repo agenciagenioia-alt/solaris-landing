@@ -442,6 +442,24 @@
       border-radius: inherit;
       -webkit-tap-highlight-color: transparent;
     }
+    /* Tapa solo la esquina del lienzo (marca Spline); el dedo sigue llegando al iframe (pointer-events: none) */
+    .hero-3d-spline::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: min(34%, 160px);
+      height: min(20%, 76px);
+      z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse 115% 115% at 100% 100%,
+        var(--spline-canvas-base) 0%,
+        rgba(46, 27, 38, 0.55) 48%,
+        transparent 78%
+      );
+      border-bottom-right-radius: inherit;
+    }
     @media (min-width: 1100px) {
       .hero-3d {
         --hero-3d-bleed-r: clamp(1.35rem, 5.5vw, 3.75rem);
@@ -653,8 +671,8 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 152%;
-      height: 152%;
+      width: 160%;
+      height: 160%;
       max-width: none;
       max-height: none;
       border: 0;
@@ -663,7 +681,6 @@
       opacity: 1;
       mix-blend-mode: normal;
       filter: saturate(1.06) contrast(1.04) brightness(1.04);
-      /* -50% = centro real del lienzo en el marco (antes -56% corría el sol a la izquierda) */
       transform: translate(-50%, -50%);
       transform-origin: center center;
       z-index: 1;
@@ -1836,30 +1853,41 @@
         padding: 1.25rem 0 1.5rem;
       }
       .hero-brand-name::after { width: min(9rem, 70vw); }
-      /* Visor más compacto, menos GPU: sin overscale del iframe ni rejilla HUD */
+      /*
+       * Tamaño base fijo en móvil (~43% del alto de pantalla): es lo que todos ven por defecto.
+       * El marco no cambia al interactuar; overscroll evita que el arrastre mueva la página.
+       */
       .hero-3d {
         position: relative;
         top: auto;
         width: min(100%, 400px);
         margin-right: auto;
         margin-left: auto;
-        height: clamp(240px, 42vh, 380px);
-        min-height: 240px;
-        max-height: 380px;
+        height: clamp(268px, 43.5vh, 420px);
+        min-height: 268px;
+        max-height: 420px;
+        flex-shrink: 0;
         border-radius: clamp(16px, 4vw, 22px);
         animation: none !important;
+        overscroll-behavior: contain;
       }
       .hero-3d-spline {
         touch-action: none;
+        overscroll-behavior: contain;
+      }
+      /* Ligero zoom + velo ::after: recorta marca Spline sin volver al 158% (menos lag) */
+      .hero-3d-spline::after {
+        width: min(42%, 150px);
+        height: min(24%, 68px);
       }
       .hero-3d iframe {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        transform: none;
+        left: 50%;
+        top: 50%;
+        width: 122%;
+        height: 124%;
+        max-width: none;
+        max-height: none;
+        transform: translate(-50%, -50%);
         filter: none;
         touch-action: none;
       }
@@ -1974,6 +2002,12 @@
           <span class="hero-3d-corner hero-3d-corner--bl" aria-hidden="true"></span>
           <span class="hero-3d-corner hero-3d-corner--br" aria-hidden="true"></span>
           <div class="hero-3d-spline">
+            <!--
+              Pose al abrir la página: definida en Spline (Export → Play Settings).
+              Main Camera = vista deseada al cargar | Turntable auto = No si no quieres giro solo.
+              Touch: orbit 1 dedo; Page scroll en la escena = No. Soft limit = Ease (suelta → vuelve a la pose inicial).
+              Quitar el texto “Built with Spline”: plan de pago en Spline; aquí solo velo + zoom suave.
+            -->
             <iframe
               id="heroSplineFrame"
               src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
