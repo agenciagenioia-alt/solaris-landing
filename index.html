@@ -448,15 +448,16 @@
       position: absolute;
       right: 0;
       bottom: 0;
-      width: min(34%, 160px);
-      height: min(20%, 76px);
+      width: min(42%, 200px);
+      height: min(28%, 96px);
       z-index: 2;
       pointer-events: none;
       background: radial-gradient(
-        ellipse 115% 115% at 100% 100%,
+        ellipse 125% 125% at 100% 100%,
         var(--spline-canvas-base) 0%,
-        rgba(46, 27, 38, 0.55) 48%,
-        transparent 78%
+        var(--spline-canvas-base) 38%,
+        rgba(46, 27, 38, 0.72) 58%,
+        transparent 85%
       );
       border-bottom-right-radius: inherit;
     }
@@ -529,26 +530,28 @@
     }
     .hero-3d-tag {
       position: absolute;
-      right: clamp(0.65rem, 2vw, 1rem);
-      bottom: clamp(0.65rem, 2vw, 1rem);
-      z-index: 4;
+      right: clamp(0.35rem, 1.4vw, 0.75rem);
+      bottom: clamp(0.2rem, 0.85vw, 0.45rem);
+      z-index: 5;
       margin: 0;
       pointer-events: none;
     }
     .hero-3d-tag-inner {
       display: inline-block;
-      padding: 0.32rem 0.62rem;
+      padding: 0.38rem 0.72rem 0.52rem 0.72rem;
       border-radius: 999px;
       font-size: 0.62rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255, 240, 230, 0.88);
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(255, 107, 0, 0.12);
+      color: rgba(255, 240, 230, 0.92);
+      background: rgba(8, 5, 12, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow:
+        0 6px 22px rgba(0, 0, 0, 0.55),
+        0 0 18px rgba(255, 107, 0, 0.1);
     }
     /* Barra superior tipo “visor / HUD” */
     .hero-3d-chrome {
@@ -1877,8 +1880,15 @@
       }
       /* Ligero zoom + velo ::after: recorta marca Spline sin volver al 158% (menos lag) */
       .hero-3d-spline::after {
-        width: min(42%, 150px);
-        height: min(24%, 68px);
+        width: min(52%, 200px);
+        height: min(32%, 100px);
+      }
+      .hero-3d-tag {
+        right: clamp(0.28rem, 1.2vw, 0.55rem);
+        bottom: clamp(0.12rem, 0.65vw, 0.32rem);
+      }
+      .hero-3d-tag-inner {
+        padding: 0.4rem 0.65rem 0.55rem 0.65rem;
       }
       .hero-3d iframe {
         left: 50%;
