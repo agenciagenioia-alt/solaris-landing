@@ -12,6 +12,11 @@
   <style>
     :root {
       --bg: #0A0A0A;
+      /* Tono del clear-color típico del viewer Spline (marrón–morado un poco más claro que el #080808) */
+      --spline-canvas-base: #2e1b26;
+      --bg-spline-wash: rgba(58, 36, 48, 0.72);
+      --bg-spline-mid: rgba(46, 27, 38, 0.88);
+      --bg-spline-deep: rgba(36, 20, 28, 0.94);
       --surface: #111111;
       --surface-2: #1A1A1A;
       --text: #F5F5F5;
@@ -34,7 +39,10 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: var(--bg);
+      background:
+        radial-gradient(ellipse 128% 92% at 90% 20%, var(--bg-spline-wash), transparent 58%),
+        radial-gradient(ellipse 96% 78% at 72% 50%, var(--bg-spline-mid), transparent 62%),
+        var(--bg);
       color: var(--text);
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       overflow-x: hidden;
@@ -255,6 +263,8 @@
       overflow: hidden;
       margin-top: 0;
       background:
+        radial-gradient(ellipse 105% 96% at 76% 46%, var(--spline-canvas-base) 0%, var(--bg-spline-mid) 38%, rgba(30, 16, 22, 0.65) 58%, transparent 76%),
+        radial-gradient(ellipse 92% 88% at 88% 28%, var(--bg-spline-wash), transparent 56%),
         radial-gradient(circle at 10% 16%, rgba(255, 184, 0, 0.14), rgba(255, 184, 0, 0)),
         radial-gradient(circle at 88% 84%, rgba(255, 60, 172, 0.12), rgba(255, 60, 172, 0)),
         #080808;
@@ -273,10 +283,18 @@
       z-index: 1;
       min-height: auto;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+      grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
+      grid-template-areas:
+        "copy media"
+        "aside media";
       gap: clamp(1.5rem, 4.5vw, 2.75rem);
-      align-items: start;
+      align-items: stretch;
       padding: clamp(1.35rem, 4vw, 2.35rem) 0 clamp(1.75rem, 5vw, 2.85rem);
+    }
+    @media (min-width: 961px) {
+      .hero-intro-grid {
+        gap: clamp(2rem, 5.2vw, 3.5rem);
+      }
     }
     .hero-copy {
       position: relative;
@@ -286,6 +304,7 @@
       padding: 0;
       border-top: none;
       z-index: 0;
+      grid-area: copy;
     }
     .hero-copy::before {
       content: "";
@@ -363,6 +382,291 @@
     .hero-copy .btn-primary {
       margin-top: 0.15rem;
     }
+    /* Visor 3D: el recuadro pasa a ser un marco premium (vidrio + gradiente marca), no un error visual */
+    .hero-3d {
+      /* Sangrado a la derecha; sin margin-left negativo para no invadir copy/aside */
+      --hero-3d-bleed-r: clamp(0.85rem, 4vw, 2.35rem);
+      grid-area: media;
+      width: calc(100% + 8vw + var(--hero-3d-bleed-r));
+      margin-right: calc(-1 * var(--hero-3d-bleed-r));
+      margin-left: 0;
+      margin-top: -0.35rem;
+      position: sticky;
+      top: 92px;
+      align-self: stretch;
+      height: calc(100vh - 120px);
+      min-height: 620px;
+      max-height: 900px;
+      border-radius: clamp(18px, 2.8vw, 26px);
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 85% 55% at 50% -5%, rgba(255, 107, 0, 0.12), transparent 58%),
+        radial-gradient(ellipse 70% 60% at 100% 80%, rgba(255, 60, 172, 0.08), transparent 55%),
+        var(--spline-canvas-base);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.4),
+        0 12px 40px rgba(0, 0, 0, 0.35),
+        0 0 50px rgba(255, 107, 0, 0.14),
+        0 0 90px rgba(255, 60, 172, 0.07);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-3d {
+        animation: hero3dFrameGlow 12s ease-in-out infinite alternate;
+      }
+    }
+    @keyframes hero3dFrameGlow {
+      from {
+        box-shadow:
+          0 0 0 1px rgba(0, 0, 0, 0.4),
+          0 12px 40px rgba(0, 0, 0, 0.35),
+          0 0 45px rgba(255, 107, 0, 0.12),
+          0 0 85px rgba(255, 60, 172, 0.06);
+      }
+      to {
+        box-shadow:
+          0 0 0 1px rgba(0, 0, 0, 0.4),
+          0 12px 40px rgba(0, 0, 0, 0.35),
+          0 0 58px rgba(255, 107, 0, 0.2),
+          0 0 100px rgba(255, 60, 172, 0.1);
+      }
+    }
+    .hero-3d-spline {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: auto;
+      border-radius: inherit;
+    }
+    @media (min-width: 1100px) {
+      .hero-3d {
+        --hero-3d-bleed-r: clamp(1.35rem, 5.5vw, 3.75rem);
+        width: calc(100% + 12vw + var(--hero-3d-bleed-r));
+        margin-right: calc(-1 * var(--hero-3d-bleed-r));
+        margin-left: clamp(0.25rem, 1.2vw, 0.85rem);
+      }
+    }
+    .hero-3d::before {
+      content: "";
+      position: absolute;
+      inset: -12% -8% -12% -8%;
+      border-radius: inherit;
+      background:
+        radial-gradient(ellipse 70% 65% at 100% 100%, rgba(255, 107, 0, 0.12), transparent 55%),
+        radial-gradient(ellipse 55% 50% at 100% 0%, rgba(255, 184, 0, 0.08), transparent 50%),
+        radial-gradient(ellipse 55% 60% at 55% 45%, rgba(255, 107, 0, 0.18), transparent 65%),
+        radial-gradient(ellipse 60% 70% at 70% 70%, rgba(255, 60, 172, 0.12), transparent 66%),
+        radial-gradient(ellipse 70% 85% at 45% 60%, rgba(255, 184, 0, 0.11), transparent 70%);
+      filter: blur(14px);
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Halo interior: refuerza la lectura de “ventana” sin tapar el interactivo */
+    .hero-3d::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 2;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 0 72px rgba(255, 107, 0, 0.07),
+        inset 0 -40px 80px rgba(0, 0, 0, 0.35);
+    }
+    .hero-3d-hint {
+      position: absolute;
+      left: clamp(0.65rem, 2vw, 1rem);
+      top: clamp(1rem, 2.6vw, 1.35rem);
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.38rem 0.58rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 240ms ease, transform 240ms ease;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-3d-hint svg { width: 16px; height: 16px; opacity: 0.95; }
+    .hero-3d-hint.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-3d-tag {
+      position: absolute;
+      right: clamp(0.65rem, 2vw, 1rem);
+      bottom: clamp(0.65rem, 2vw, 1rem);
+      z-index: 4;
+      margin: 0;
+      pointer-events: none;
+    }
+    .hero-3d-tag-inner {
+      display: inline-block;
+      padding: 0.32rem 0.62rem;
+      border-radius: 999px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 240, 230, 0.88);
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(255, 107, 0, 0.12);
+    }
+    /* Barra superior tipo “visor / HUD” */
+    .hero-3d-chrome {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 4;
+      height: 4px;
+      border-radius: inherit;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-3d-chrome-glow {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: var(--grad);
+      opacity: 0.9;
+      box-shadow: 0 0 28px rgba(255, 107, 0, 0.35);
+    }
+    .hero-3d-chrome-meta {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      pointer-events: none;
+    }
+    .hero-3d-chrome-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.52rem;
+      border-radius: 999px;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 235, 220, 0.82);
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .hero-3d-chrome-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #34d399;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.85);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-3d-chrome-dot {
+        animation: hero3dLivePulse 2.2s ease-in-out infinite;
+      }
+    }
+    @keyframes hero3dLivePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.92); }
+    }
+    /* Esquinas tipo bracket (detalle técnico / editorial) */
+    .hero-3d-corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      z-index: 4;
+      pointer-events: none;
+      border-color: rgba(255, 184, 0, 0.38);
+      border-style: solid;
+      border-width: 0;
+    }
+    .hero-3d-corner--tl {
+      top: 12px;
+      left: 12px;
+      border-top-width: 2px;
+      border-left-width: 2px;
+      border-top-left-radius: 6px;
+    }
+    .hero-3d-corner--tr {
+      top: 12px;
+      right: 12px;
+      border-top-width: 2px;
+      border-right-width: 2px;
+      border-top-right-radius: 6px;
+    }
+    .hero-3d-corner--bl {
+      bottom: 12px;
+      left: 12px;
+      border-bottom-width: 2px;
+      border-left-width: 2px;
+      border-bottom-left-radius: 6px;
+    }
+    .hero-3d-corner--br {
+      bottom: 12px;
+      right: 12px;
+      border-bottom-width: 2px;
+      border-right-width: 2px;
+      border-bottom-right-radius: 6px;
+    }
+    /* Micro-rejilla: sensación “laboratorio / producto” sin tapar el 3D */
+    .hero-3d-gridfx {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      border-radius: inherit;
+      opacity: 0.035;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.9) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.9) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mix-blend-mode: overlay;
+    }
+    .hero-3d iframe {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 152%;
+      height: 152%;
+      max-width: none;
+      max-height: none;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      opacity: 1;
+      mix-blend-mode: normal;
+      filter: saturate(1.06) contrast(1.04) brightness(1.04);
+      /* -50% = centro real del lienzo en el marco (antes -56% corría el sol a la izquierda) */
+      transform: translate(-50%, -50%);
+      transform-origin: center center;
+      z-index: 1;
+    }
     .hero-aside {
       display: grid;
       gap: 0;
@@ -372,6 +676,7 @@
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
+      grid-area: aside;
     }
     .hero-aside dt {
       margin: 0;
@@ -1523,9 +1828,30 @@
       .hero-strip { margin-top: 86px; height: clamp(200px, 58vw, 320px); }
       .hero-intro-grid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+          "copy"
+          "media"
+          "aside";
         padding: 1.25rem 0 1.5rem;
       }
       .hero-brand-name::after { width: min(9rem, 70vw); }
+      .hero-3d {
+        position: relative;
+        top: auto;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        height: 62vh;
+        min-height: 380px;
+        max-height: 620px;
+        border-radius: clamp(16px, 4vw, 22px);
+      }
+      .hero-3d iframe {
+        width: 158%;
+        height: 158%;
+        transform: translate(-50%, -50%);
+      }
+      .hero-3d-hint { display: inline-flex; }
       .hero-media { width: 100%; height: 100%; }
       .context-brief { padding: 40px 0 28px; }
       .hero-aside { max-width: 100%; }
@@ -1551,6 +1877,9 @@
       .case-ig-cover img { transform: none !important; }
       .timeline-rail-fill,
       .timeline-car { transition: none !important; }
+      .hero-3d { position: relative; top: auto; animation: none !important; }
+      .hero-3d-hint { transition: none !important; }
+      .hero-3d-chrome-dot { animation: none !important; }
       .hero-brand-name {
         text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
       }
@@ -1620,6 +1949,37 @@
           </h1>
           <p class="hero-lead">Transformamos tu operación. Aceleramos tus ventas.</p>
           <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
+        </div>
+        <div class="hero-3d reveal" aria-label="Modelo 3D SOLARIS (interactivo)">
+          <div class="hero-3d-chrome" aria-hidden="true"><span class="hero-3d-chrome-glow"></span></div>
+          <div class="hero-3d-chrome-meta" aria-hidden="true">
+            <span class="hero-3d-chrome-live"><span class="hero-3d-chrome-dot"></span> Interactivo</span>
+          </div>
+          <span class="hero-3d-corner hero-3d-corner--tl" aria-hidden="true"></span>
+          <span class="hero-3d-corner hero-3d-corner--tr" aria-hidden="true"></span>
+          <span class="hero-3d-corner hero-3d-corner--bl" aria-hidden="true"></span>
+          <span class="hero-3d-corner hero-3d-corner--br" aria-hidden="true"></span>
+          <div class="hero-3d-spline">
+            <iframe
+              src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
+              width="100%"
+              height="100%"
+              loading="lazy"
+              allow="fullscreen"
+              referrerpolicy="no-referrer"
+              title="Modelo 3D interactivo SOLARIS"
+            ></iframe>
+          </div>
+          <div class="hero-3d-gridfx" aria-hidden="true"></div>
+          <div class="hero-3d-hint" id="hero3dHint" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <path d="M8 12h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <path d="M10.5 9.5L8 12l2.5 2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 9.5L16 12l-2.5 2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Arrastra para interactuar
+          </div>
+          <p class="hero-3d-tag" aria-hidden="true"><span class="hero-3d-tag-inner">Experiencia 3D · SOLARIS</span></p>
         </div>
         <aside class="hero-aside" aria-label="Cómo trabajamos">
           <dl>
@@ -2249,6 +2609,22 @@
       updateTimeline();
       window.addEventListener("scroll", updateTimeline, { passive: true });
       window.addEventListener("resize", updateTimeline);
+
+      (function initHero3dHint() {
+        var hint = document.getElementById("hero3dHint");
+        if (!hint) return;
+        if (window.matchMedia("(max-width: 960px)").matches) {
+          hint.classList.add("is-visible");
+          var hide = function () { hint.classList.remove("is-visible"); };
+          var timer = window.setTimeout(hide, 2600);
+          var onFirstTouch = function () {
+            window.clearTimeout(timer);
+            hide();
+            window.removeEventListener("pointerdown", onFirstTouch, { capture: true });
+          };
+          window.addEventListener("pointerdown", onFirstTouch, { capture: true, passive: true, once: true });
+        }
+      })();
 
       if (casesTrack && casesPrev && casesNext) {
         const scrollStep = function () {
