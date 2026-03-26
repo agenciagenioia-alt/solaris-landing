@@ -35,6 +35,8 @@
       --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
       --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --ease-reveal: cubic-bezier(0.76, 0, 0.24, 1);
+      --font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
     * {
@@ -47,7 +49,7 @@
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", "Space Grotesk", "Segoe UI", Roboto, sans-serif;
+      font-family: var(--font-body);
       line-height: 1.5;
       overflow-x: hidden;
       max-width: 100vw;
@@ -474,25 +476,26 @@
       margin: 0 0 0.9rem;
       line-height: 1.08;
       letter-spacing: -0.02em;
-      font-family: "Space Grotesk", "Inter", "Segoe UI", sans-serif;
+      font-family: var(--font-heading);
     }
 
     h1 {
-      font-size: clamp(2.2rem, 7vw, 4.8rem);
+      font-size: clamp(2.25rem, 5.8vw, 4rem);
     }
 
     h2 {
-      font-size: clamp(1.7rem, 5vw, 3rem);
+      font-size: clamp(1.85rem, 4.3vw, 2.7rem);
     }
 
     h3 {
-      font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
     }
 
     p {
       margin: 0 0 1rem;
       color: var(--text-soft);
-      line-height: 1.72;
+      line-height: 1.68;
+      font-size: clamp(0.95rem, 1.03vw, 1.05rem);
     }
 
     .gradient-text {
@@ -866,6 +869,88 @@
       z-index: 2;
     }
 
+    .hero-media-carousel {
+      width: min(100%, 520px);
+      height: min(68vh, 620px);
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      overflow: hidden;
+      box-shadow: 0 26px 64px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(255, 184, 0, 0.14) inset;
+      position: relative;
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-media-carousel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.08) 0%, rgba(10, 10, 10, 0.62) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-media-track {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.05);
+      animation: heroSlideFade 18s infinite;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+      z-index: 1;
+    }
+
+    .hero-media-slide span {
+      display: inline-flex;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #ffe4b1;
+      border: 1px solid rgba(255, 184, 0, 0.36);
+      background: rgba(10, 10, 10, 0.62);
+      padding: 0.4rem 0.64rem;
+      border-radius: 999px;
+      z-index: 3;
+    }
+
+    .hero-media-slide:nth-child(1) {
+      animation-delay: 0s;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255, 184, 0, 0.2), rgba(255, 184, 0, 0)),
+        linear-gradient(135deg, rgba(10, 10, 10, 0.48), rgba(10, 10, 10, 0.72)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .hero-media-slide:nth-child(2) {
+      animation-delay: 6s;
+      background-image:
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 0, 0.25), rgba(255, 107, 0, 0)),
+        linear-gradient(135deg, rgba(10, 10, 10, 0.42), rgba(10, 10, 10, 0.74)),
+        url("https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .hero-media-slide:nth-child(3) {
+      animation-delay: 12s;
+      background-image:
+        radial-gradient(circle at 50% 18%, rgba(255, 60, 172, 0.2), rgba(255, 60, 172, 0)),
+        linear-gradient(135deg, rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.78)),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    @keyframes heroSlideFade {
+      0%, 26% { opacity: 1; transform: scale(1); }
+      33%, 100% { opacity: 0; transform: scale(1.06); }
+    }
+
     .hero-bg-nebula {
       position: absolute;
       top: -15%;
@@ -873,7 +958,8 @@
       width: 130%;
       height: 130%;
       z-index: 0;
-      pointer-events: auto;
+      pointer-events: none;
+      opacity: 0.38;
       overflow: hidden;
       -webkit-mask-image: radial-gradient(
         ellipse 80% 90% at 70% 50%,
@@ -893,7 +979,7 @@
       left: -15%;
       width: 130%;
       height: 130%;
-      pointer-events: auto;
+      pointer-events: none;
       border: none;
       background: transparent;
     }
@@ -978,7 +1064,7 @@
     }
 
     .ticker-wrap {
-      background: var(--surface);
+      background: linear-gradient(90deg, rgba(17, 17, 17, 0.94), rgba(24, 24, 24, 0.9));
       border-top: 1px solid rgba(255, 255, 255, 0.07);
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       overflow: hidden;
@@ -2539,6 +2625,25 @@
         justify-content: flex-start;
       }
 
+      .hero-visual {
+        min-height: 320px;
+      }
+
+      .hero-media-carousel {
+        width: 100%;
+        max-width: 100%;
+        height: 320px;
+        border-radius: 18px;
+      }
+
+      .hero-media-slide {
+        padding: 0.8rem;
+      }
+
+      .hero-media-slide span {
+        font-size: 0.68rem;
+      }
+
       .pricing-filter-nav {
         overflow-x: auto;
         flex-wrap: nowrap;
@@ -2965,15 +3070,16 @@
       </a>
 
       <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#why-solaris">Problemas</a>
         <a href="#servicios">Servicios</a>
-        <a href="#casos">Casos de Éxito</a>
-        <a href="#industrias">Industrias</a>
-        <a href="#precios">Precios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#precios">Inversión</a>
+        <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
       <a class="btn btn-primary nav-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20mi%20objetivo%20es%20%5Bobjetivo%5D." target="_blank" rel="noopener noreferrer" aria-label="Agendar diagnóstico gratuito por WhatsApp">
-        Diagnóstico Estratégico →
+        Agenda Diagnóstico Gratis →
       </a>
 
       <button class="hamburger" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú de navegación">
@@ -2983,13 +3089,14 @@
 
     <div class="mobile-menu" id="mobileMenu">
       <div class="container mobile-menu-inner">
+        <a href="#why-solaris">Problemas</a>
         <a href="#servicios">Servicios</a>
-        <a href="#casos">Casos de Éxito</a>
-        <a href="#industrias">Industrias</a>
-        <a href="#precios">Precios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#precios">Inversión</a>
+        <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
         <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20mi%20objetivo%20es%20%5Bobjetivo%5D." target="_blank" rel="noopener noreferrer">
-          Diagnóstico Estratégico →
+          Agenda Diagnóstico Gratis →
         </a>
       </div>
     </div>
@@ -3026,18 +3133,18 @@
         <div class="hero-copy reveal visible">
           <div class="hero-badge">🔥 Colombia's #1 AI Agency · 2026</div>
           <h1 id="hero-heading">
-            Energía que
-            <span class="gradient-text gradient-animated">transforma negocios.</span>
+            SOLARIS: Tu Negocio, Potenciado.
+            <span class="gradient-text gradient-animated">Resultados Reales.</span>
           </h1>
           <p>
-            Convertimos tu operación en un sistema de crecimiento: más clientes, más cierres y menos desgaste para tu equipo.
+            Transformamos tu operación. Aceleramos tus ventas.
           </p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20vengo%20desde%20la%20landing%20y%20quiero%20hablar%20con%20un%20experto.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20busco%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Hablar con SOLARIS por WhatsApp">
-              💬 Trabajar con los #1 del sector IA
+              Agenda tu Diagnóstico de 30 min (Gratis) →
             </a>
-            <a class="btn btn-secondary" href="#casos" aria-label="Ver casos reales">
-              ▶ Ver casos reales
+            <a class="btn btn-secondary" href="#proceso" aria-label="Ver cómo trabajamos">
+              Ver cómo lo hacemos →
             </a>
           </div>
           <div class="hero-metrics">
@@ -3052,18 +3159,26 @@
           </div>
         </div>
 
-        <div class="hero-visual reveal-right visible" aria-hidden="true"></div>
+        <div class="hero-visual reveal-right visible" aria-hidden="true">
+          <div class="hero-media-carousel">
+            <div class="hero-media-track">
+              <div class="hero-media-slide"><span>Más leads calificados</span></div>
+              <div class="hero-media-slide"><span>Más cierres comerciales</span></div>
+              <div class="hero-media-slide"><span>Más control operativo</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="ticker-wrap" aria-label="Resultados de clientes SOLARIS">
       <div class="container">
         <div class="ticker-rotator" id="tickerRotator" role="status" aria-live="polite">
-          <div class="ticker-item gradient-text active">✦ +320% ventas en 60 días — Retail, Montería</div>
-          <div class="ticker-item gradient-text">✦ 40 pacientes nuevos — Clínica, Montería</div>
-          <div class="ticker-item gradient-text">✦ 3x conversión — Restaurante, Pereira</div>
-          <div class="ticker-item gradient-text">✦ Bot WhatsApp 24/7 — Tienda de Ropa</div>
-          <div class="ticker-item gradient-text"><span class="ticker-live-pill">✦ Caso activo: reputación + IA local en modo crecimiento</span></div>
+          <div class="ticker-item gradient-text active">✦ Estrategia + ejecución + métricas semanales</div>
+          <div class="ticker-item gradient-text">✦ No vendemos humo: vendemos resultados</div>
+          <div class="ticker-item gradient-text">✦ IA aplicada al negocio real, no a la moda</div>
+          <div class="ticker-item gradient-text">✦ Enfoque Latam: contexto local y acción rápida</div>
+          <div class="ticker-item gradient-text"><span class="ticker-live-pill">✦ Diagnóstico accionable desde el día 1</span></div>
         </div>
       </div>
     </section>
@@ -3074,9 +3189,9 @@
 
     <section class="section section--light" aria-labelledby="why-solaris">
       <div class="container">
-        <div class="section-tag reveal">Claridad Radical</div>
-        <h2 id="why-solaris" class="reveal section-title">¿Qué necesitas resolver HOY en tu negocio?</h2>
-        <p class="needs-intro reveal">Elige tu prioridad y te mostramos el camino directo para convertirla en resultados medibles.</p>
+        <div class="section-tag reveal">Empieza aquí</div>
+        <h2 id="why-solaris" class="reveal section-title">¿Qué quieres destrabar primero en tu negocio?</h2>
+        <p class="needs-intro reveal">Selecciona tu prioridad y te mostramos la ruta concreta para pasar de fricción a crecimiento.</p>
         <div class="needs-grid reveal">
           <article class="need-card reveal delay-1">
             <h3>Quiero más clientes y más ventas</h3>
@@ -3184,8 +3299,8 @@
     <section class="section section--contrast-c" id="servicios" aria-labelledby="services-title">
       <div class="container">
         <div class="section-tag reveal">Servicios</div>
-        <h2 id="services-title" class="reveal services-hero-title">SERVICIOS</h2>
-        <p class="reveal services-subcopy">Aquí está el núcleo de crecimiento: lo que activamos para que tu negocio facture más, responda más rápido y escale con control.</p>
+        <h2 id="services-title" class="reveal services-hero-title">Servicios diseñados para resultados, no para likes.</h2>
+        <p class="reveal services-subcopy">Elige el frente que quieres resolver ahora y te mostramos ejecución, tiempos e inversión.</p>
         <div class="services-tabs reveal" style="margin-top:1rem;">
           <p class="mobile-scroll-indicator" aria-hidden="true">↔ Desliza categorías de servicio</p>
           <div class="tabs-nav" role="tablist" aria-label="Tabs de servicios">
@@ -3392,9 +3507,9 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section section--contrast-b" aria-labelledby="process-title">
+    <section class="section section--contrast-b" id="proceso" aria-labelledby="process-title">
       <div class="container">
-        <h2 id="process-title" class="reveal section-title">Un proceso visual. Una ejecucion precisa.</h2>
+        <h2 id="process-title" class="reveal section-title">Tu éxito tiene método: 4 pasos, ejecución total.</h2>
         <div class="process-timeline reveal">
           <div class="timeline-line">
             <div class="timeline-fill" id="timelineFill"></div>
@@ -3438,8 +3553,8 @@
       <div class="container">
         <div class="pricing-impact">
           <div class="pricing-intro reveal">
-            <h2 id="pricing-title" class="section-title">Empieza con una base clara y escala con estrategia.</h2>
-            <p>Precios de entrada para arrancar. Los sistemas avanzados se cotizan según tu operación y objetivos.</p>
+            <h2 id="pricing-title" class="section-title">Inversión clara para crecer sin improvisar.</h2>
+            <p>Arranca con una base sólida y escala con sistemas IA según tu operación y metas comerciales.</p>
             <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza las cards para comparar</p>
           </div>
 
@@ -3681,9 +3796,9 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section section--contrast-b" aria-labelledby="faq-title">
+    <section class="section section--contrast-b" id="faq" aria-labelledby="faq-title">
       <div class="container">
-        <h2 id="faq-title" class="reveal section-title">Preguntas frecuentes</h2>
+        <h2 id="faq-title" class="reveal section-title">¿Tienes preguntas? Te respondemos claro.</h2>
         <div class="faq-list reveal">
           <article class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
@@ -3729,7 +3844,7 @@
           </article>
         </div>
         <div class="faq-cta-inline reveal">
-          <span>¿Prefieres resolverlo por WhatsApp, rápido y sin fricción?</span>
+          <span>¿Quieres resolver dudas en menos de 10 minutos por WhatsApp?</span>
           <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20resolver%20unas%20dudas%20r%C3%A1pidas%20antes%20de%20iniciar.%20%C2%BFPodemos%20hablar%20hoy%3F" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp ahora →</a>
         </div>
       </div>
@@ -3832,11 +3947,11 @@
     <section class="section section--contrast-c" id="contacto" aria-labelledby="cta-final-title">
       <div class="container">
         <div class="cta-final reveal-scale">
-          <h2 id="cta-final-title" class="section-title">Tu negocio. Potenciado por IA.</h2>
-          <p>Agenda un diagnóstico gratuito de 30 minutos. Sin compromiso. Solo oportunidades.</p>
+          <h2 id="cta-final-title" class="section-title">¿Listo para acelerar tu negocio?</h2>
+          <p>Escríbenos por WhatsApp y en 30 minutos tendrás un diagnóstico accionable para vender más y operar mejor.</p>
           <p style="margin-top:1.2rem;">
             <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos.%20Estoy%20interesado%20en%20%5Bservicio%5D." target="_blank" rel="noopener noreferrer" aria-label="Hablar con SOLARIS en WhatsApp">
-              💬 Hablar con SOLARIS en WhatsApp
+              💬 Agendar diagnóstico por WhatsApp
             </a>
           </p>
           <p><strong>o escríbenos a</strong> <a href="mailto:hola@solaris.co">hola@solaris.co</a></p>
@@ -3848,7 +3963,7 @@
 
   <div class="mobile-sticky-cta">
     <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20objetivo%20principal%20es%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Diagnóstico gratuito por WhatsApp">
-      💬 Hablar por WhatsApp y activar mi plan
+      💬 Agenda diagnóstico gratis ahora
     </a>
   </div>
 
@@ -3867,10 +3982,11 @@
         <p class="muted" style="margin:0;">© 2026 SOLARIS AI Agency · Colombia</p>
       </div>
       <nav class="footer-links" aria-label="Links de footer">
+        <a href="#why-solaris">Problemas</a>
         <a href="#servicios">Servicios</a>
-        <a href="#casos">Casos de Éxito</a>
-        <a href="#industrias">Industrias</a>
-        <a href="#precios">Precios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#precios">Inversión</a>
+        <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
         <a href="https://instagram.com/solaris.ia" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://wa.me/573116165784" target="_blank" rel="noopener noreferrer">WhatsApp</a>
