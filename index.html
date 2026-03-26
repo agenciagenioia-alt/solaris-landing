@@ -6,6 +6,9 @@
   <title>SOLARIS — Tu Negocio, Potenciado</title>
   <meta name="description" content="SOLARIS: Tu Negocio, Potenciado. Resultados Reales. Agenda tu diagnóstico estratégico gratuito de 30 minutos.">
   <meta name="theme-color" content="#0A0A0A">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0A0A0A;
@@ -271,35 +274,100 @@
       min-height: auto;
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
-      gap: clamp(1.25rem, 4vw, 2.5rem);
+      gap: clamp(1.5rem, 4.5vw, 2.75rem);
       align-items: start;
-      padding: clamp(0.35rem, 1.5vw, 0.85rem) 0 clamp(1.5rem, 4.5vw, 2.5rem);
+      padding: clamp(1.35rem, 4vw, 2.35rem) 0 clamp(1.75rem, 5vw, 2.85rem);
     }
     .hero-copy {
+      position: relative;
       max-width: none;
       width: 100%;
       border-left: none;
       padding: 0;
-      border-top: 3px solid rgba(255, 184, 0, 0.5);
-      padding-top: 1rem;
+      border-top: none;
+      z-index: 0;
     }
-    .hero-intro h1,
-    #hero-heading {
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      left: -12%;
+      top: -18%;
+      width: min(72%, 26rem);
+      height: 75%;
+      background: radial-gradient(ellipse 70% 60% at 35% 45%, rgba(255, 107, 0, 0.09), transparent 68%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hero-title-block {
+      margin: 0 0 clamp(1rem, 3vw, 1.35rem);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: clamp(0.45rem, 1.5vw, 0.65rem);
+    }
+    .hero-intro h1.hero-title-block,
+    #hero-heading.hero-title-block {
       max-width: 100%;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
+      letter-spacing: inherit;
+      line-height: inherit;
     }
-    .hero-copy p {
-      font-size: clamp(1.05rem, 1.85vw, 1.45rem);
-      color: #D8D8D8;
-      max-width: 48ch;
-      margin-bottom: 1.1rem;
+    .hero-brand-name {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: clamp(3.1rem, 12vw, 6.75rem);
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      line-height: 0.92;
+      color: #FAFAFA;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 80px rgba(255, 107, 0, 0.2),
+        0 0 48px rgba(255, 60, 172, 0.12),
+        0 6px 32px rgba(0, 0, 0, 0.5);
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+    .hero-brand-name::after {
+      content: "";
+      display: block;
+      width: min(11rem, 55vw);
+      height: 4px;
+      margin-top: clamp(0.5rem, 2vw, 0.75rem);
+      border-radius: 3px;
+      background: var(--grad);
+      box-shadow: 0 0 24px rgba(255, 107, 0, 0.35);
+    }
+    .hero-title-sub {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: clamp(1.15rem, 2.9vw, 1.55rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.28;
+      color: #B8B8B8;
+      max-width: 22ch;
+      font-style: normal;
+    }
+    .hero-title-accent {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: clamp(1.28rem, 3.4vw, 1.95rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .hero-lead {
+      font-size: clamp(1rem, 1.65vw, 1.2rem);
+      color: #A8A8A8;
+      max-width: 40ch;
+      line-height: 1.62;
+      margin: 0 0 1.15rem;
+    }
+    .hero-copy .btn-primary {
+      margin-top: 0.15rem;
     }
     .hero-aside {
       display: grid;
       gap: 0;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
       overflow: hidden;
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(20px);
@@ -330,17 +398,17 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      border: 1px solid rgba(255, 184, 0, 0.36);
+      border: 1px solid rgba(255, 184, 0, 0.28);
       border-radius: 999px;
-      background: rgba(255, 184, 0, 0.1);
-      color: #FFE3B2;
-      padding: 0.34rem 0.66rem;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      background: rgba(255, 184, 0, 0.06);
+      color: rgba(255, 227, 178, 0.92);
+      padding: 0.28rem 0.62rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       width: fit-content;
-      margin-bottom: 0.7rem;
+      margin-bottom: clamp(0.85rem, 2.5vw, 1.15rem);
     }
 
     .gradient-text {
@@ -745,21 +813,79 @@
     .services-final-cta { margin-top: 1.35rem; padding-top: 0.5rem; }
 
     .process-wrap { margin-top: 0.75rem; }
+    .process-timeline-wrap {
+      --rail-w: 52px;
+      display: grid;
+      grid-template-columns: var(--rail-w) minmax(0, 1fr);
+      gap: 0 0.35rem;
+      align-items: start;
+    }
+    .timeline-rail-col {
+      position: relative;
+      grid-row: 1;
+      grid-column: 1;
+      align-self: stretch;
+      width: var(--rail-w);
+      min-height: 12rem;
+      --timeline-progress: 0;
+    }
+    .timeline-rail-line {
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      margin-left: -1.5px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
+    .timeline-rail-fill {
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      width: 3px;
+      margin-left: -1.5px;
+      height: calc((100% - 20px) * var(--timeline-progress, 0));
+      max-height: calc(100% - 20px);
+      background: linear-gradient(180deg, #FF6B00, #FFB800);
+      border-radius: 3px;
+      transition: height 100ms linear;
+      pointer-events: none;
+    }
+    .timeline-car {
+      position: absolute;
+      left: 50%;
+      width: 32px;
+      height: 20px;
+      top: calc(10px + (100% - 20px) * var(--timeline-progress, 0));
+      transform: translate(-50%, -50%) rotate(90deg);
+      transform-origin: center center;
+      transition: top 100ms linear;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+      pointer-events: none;
+    }
+    .timeline-car svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
     .timeline-vertical {
       margin: 0;
-      padding: 0 0 0 0.5rem;
+      padding: 0;
       list-style: none;
       position: relative;
-      border-left: 2px solid rgba(0, 0, 0, 0.12);
+      border-left: none;
+      grid-row: 1;
+      grid-column: 2;
     }
     .timeline-step {
       position: relative;
-      padding: 0 0 1.6rem 1.35rem;
+      padding: 0 0 1.6rem 0.25rem;
     }
     .timeline-step:last-child { padding-bottom: 0.25rem; }
     .timeline-node {
       position: absolute;
-      left: calc(-0.5rem - 7px);
+      left: calc(-1 * (var(--rail-w) / 2 + 0.35rem + 7px));
       top: 0.15rem;
       width: 14px;
       height: 14px;
@@ -781,6 +907,10 @@
     }
     .timeline-step p { color: #333; margin: 0; max-width: 58ch; line-height: 1.58; }
     .step-inline { color: #333; }
+    @media (max-width: 520px) {
+      .process-timeline-wrap { --rail-w: 44px; }
+      .timeline-car { width: 28px; height: 18px; }
+    }
 
     .faq-list {
       display: grid;
@@ -1393,9 +1523,9 @@
       .hero-strip { margin-top: 86px; height: clamp(200px, 58vw, 320px); }
       .hero-intro-grid {
         grid-template-columns: 1fr;
-        padding: 1.35rem 0 1.65rem;
+        padding: 1.25rem 0 1.5rem;
       }
-      .hero-kicker { margin-bottom: 0.52rem; }
+      .hero-brand-name::after { width: min(9rem, 70vw); }
       .hero-media { width: 100%; height: 100%; }
       .context-brief { padding: 40px 0 28px; }
       .hero-aside { max-width: 100%; }
@@ -1419,6 +1549,12 @@
       }
       .reveal { opacity: 1 !important; transform: none !important; }
       .case-ig-cover img { transform: none !important; }
+      .timeline-rail-fill,
+      .timeline-car { transition: none !important; }
+      .hero-brand-name {
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+      }
+      .hero-brand-name::after { box-shadow: none; }
     }
   </style>
 </head>
@@ -1477,8 +1613,12 @@
       <div class="container hero-intro-grid">
         <div class="hero-copy reveal visible">
           <div class="hero-kicker">Estrategia + IA + Ejecución</div>
-          <h1 id="hero-heading">SOLARIS: Tu Negocio, Potenciado. <span class="gradient-text">Resultados Reales.</span></h1>
-          <p>Transformamos tu operación. Aceleramos tus ventas.</p>
+          <h1 id="hero-heading" class="hero-title-block">
+            <span class="hero-brand-name">SOLARIS</span>
+            <span class="hero-title-sub">Tu negocio, potenciado.</span>
+            <span class="hero-title-accent gradient-text">Resultados reales.</span>
+          </h1>
+          <p class="hero-lead">Transformamos tu operación. Aceleramos tus ventas.</p>
           <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
         </div>
         <aside class="hero-aside" aria-label="Cómo trabajamos">
@@ -1858,7 +1998,22 @@
       <div class="container section-body section-body--light">
         <h2 id="process-title" class="reveal">Tu Éxito es Nuestro Proceso. Así Trabajamos en Solaris.</h2>
         <div class="process-wrap reveal">
-          <ol class="timeline-vertical" aria-label="Pasos del proceso SOLARIS">
+          <div class="process-timeline-wrap">
+            <div class="timeline-rail-col" id="timelineRail" aria-hidden="true">
+              <div class="timeline-rail-line"></div>
+              <div class="timeline-rail-fill" id="timelineFill"></div>
+              <div class="timeline-car" id="timelineCar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 32" fill="none" aria-hidden="true">
+                  <path fill="#E85A00" d="M4 20h8l3.5-9h22L41 20h9v8H4v-8z"/>
+                  <path fill="#FF6B00" d="M10 20h31l-2.5-6H15.5L13 20z"/>
+                  <rect x="6" y="22" width="44" height="4" rx="1" fill="#1a1a1a"/>
+                  <circle cx="16" cy="26" r="4" fill="#222" stroke="#fff" stroke-width="1.5"/>
+                  <circle cx="38" cy="26" r="4" fill="#222" stroke="#fff" stroke-width="1.5"/>
+                  <path fill="#FFB800" d="M44 14h8l2 6h-6l-1.2-3.6L44 14z"/>
+                </svg>
+              </div>
+            </div>
+            <ol class="timeline-vertical" aria-label="Pasos del proceso SOLARIS">
             <li class="timeline-step">
               <span class="timeline-node" aria-hidden="true"></span>
               <h3>Diagnóstico Estratégico <span class="step-time">30 min</span></h3>
@@ -1879,7 +2034,8 @@
               <h3>Escala Continua <span class="step-time">Mes a mes</span></h3>
               <p class="step-inline">Optimizamos con datos, ajustamos estrategias y aseguramos un crecimiento constante y rentable. Tu éxito es nuestra prioridad.</p>
             </li>
-          </ol>
+            </ol>
+          </div>
         </div>
         <p style="margin-top:1rem;"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20mi%20transformaci%C3%B3n%20con%20un%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener noreferrer">Empieza tu Transformación con un Diagnóstico Gratuito →</a></p>
       </div>
@@ -2030,8 +2186,7 @@
       const menuToggle = document.getElementById("menuToggle");
       const mobileMenu = document.getElementById("mobileMenu");
       const reveals = document.querySelectorAll(".reveal");
-      const timelineFill = document.getElementById("timelineFill");
-      const processSection = document.getElementById("proceso");
+      const timelineRail = document.getElementById("timelineRail");
       const casesTrack = document.getElementById("casesTrack");
       const casesPrev = document.getElementById("casesPrev");
       const casesNext = document.getElementById("casesNext");
@@ -2083,11 +2238,13 @@
       }
 
       function updateTimeline() {
-        if (!timelineFill || !processSection) return;
-        const rect = processSection.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        const p = Math.max(0, Math.min(1, (vh - rect.top) / (rect.height + vh * 0.2)));
-        timelineFill.style.width = (p * 100).toFixed(2) + "%";
+        if (!timelineRail) return;
+        var rect = timelineRail.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var denom = Math.max(rect.height + vh * 0.4, 1);
+        var p = (vh - rect.top) / denom;
+        p = Math.max(0, Math.min(1, p));
+        timelineRail.style.setProperty("--timeline-progress", p.toFixed(4));
       }
       updateTimeline();
       window.addEventListener("scroll", updateTimeline, { passive: true });
