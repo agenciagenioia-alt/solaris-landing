@@ -3,624 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOLARIS — Agencia IA Colombia | Automatización Inteligente</title>
-  <meta name="description" content="Automatizamos y escalamos negocios en Colombia con IA. Más ventas, menos fricción. Agenda tu diagnóstico gratuito con SOLARIS.">
+  <title>SOLARIS — Tu Negocio, Potenciado</title>
+  <meta name="description" content="SOLARIS: Tu Negocio, Potenciado. Resultados Reales. Agenda tu diagnóstico estratégico gratuito de 30 minutos.">
   <meta name="theme-color" content="#0A0A0A">
-  <meta property="og:title" content="SOLARIS — Agencia IA Colombia">
-  <meta property="og:description" content="Tu negocio, potenciado por IA. Diagnóstico gratuito en 30 minutos.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://solaris.co">
-  <meta property="og:image" content="https://solaris.co/og-image.jpg">
-  <link rel="preconnect" href="https://my.spline.design">
   <style>
     :root {
-      --bg: #0a0a0a;
+      --bg: #0A0A0A;
       --surface: #111111;
-      --surface-elevated: #1a1a1a;
-      --text: #f5f5f5;
-      --text-soft: #bdbdbd;
-      --text-muted: #999999;
-      --orange: #ff6b00;
-      --gold: #ffb800;
-      --magenta: #ff3cac;
-      --grad: linear-gradient(90deg, var(--orange) 0%, var(--gold) 50%, var(--magenta) 100%);
-      --grad-diagonal: linear-gradient(135deg, var(--orange) 0%, var(--magenta) 100%);
-      --glass-bg: rgba(255, 255, 255, 0.04);
-      --glass-border: rgba(255, 255, 255, 0.14);
-      --glow: 0 12px 40px rgba(255, 107, 0, 0.2);
-      --radius: 16px;
-      --radius-lg: 22px;
-      --max-width: 1200px;
-      --ease-out: cubic-bezier(0, 0, 0.2, 1);
-      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --ease-reveal: cubic-bezier(0.76, 0, 0.24, 1);
-      --font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --surface-2: #1A1A1A;
+      --text: #F5F5F5;
+      --muted: #888888;
+      --orange: #FF6B00;
+      --gold: #FFB800;
+      --magenta: #FF3CAC;
+      --grad: linear-gradient(90deg, var(--orange), var(--gold), var(--magenta));
+      --radius: 18px;
+      --border: rgba(255, 255, 255, 0.14);
+      --max: 1160px;
+      --h1: clamp(2.35rem, 5.4vw, 4rem);
+      --h2: clamp(1.8rem, 3.8vw, 2.67rem);
+      --h3: clamp(1.2rem, 2.4vw, 2rem);
+      --body: clamp(0.92rem, 0.86rem + 0.2vw, 0.98rem);
+      --caption: 0.75rem;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
+    * { box-sizing: border-box; }
+    html, body {
       margin: 0;
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: var(--font-body);
-      line-height: 1.5;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       overflow-x: hidden;
-      max-width: 100vw;
       scroll-behavior: smooth;
-    }
-
-    body.is-loading {
-      overflow: hidden;
-    }
-
-    body header,
-    body main,
-    body footer,
-    body .mobile-sticky-cta,
-    body #particles-bg {
-      transition: opacity 0.9s var(--ease-out), filter 0.9s var(--ease-out), transform 0.9s var(--ease-out);
-    }
-
-    body.is-loading header,
-    body.is-loading main,
-    body.is-loading footer,
-    body.is-loading .mobile-sticky-cta,
-    body.is-loading #particles-bg {
-      opacity: 0;
-      filter: blur(10px);
-      transform: scale(1.01);
-      pointer-events: none;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 3.5vw, 2rem);
-    }
-
-    .section {
-      padding: 100px 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section--contrast-a {
-      background: linear-gradient(180deg, rgba(255, 107, 0, 0.06) 0%, rgba(255, 107, 0, 0) 38%, rgba(255, 255, 255, 0) 100%);
-    }
-
-    .section--contrast-b {
-      background: linear-gradient(180deg, rgba(255, 184, 0, 0.05) 0%, rgba(255, 184, 0, 0) 45%, rgba(255, 255, 255, 0) 100%);
-    }
-
-    .section--contrast-c {
-      background: linear-gradient(180deg, rgba(255, 60, 172, 0.06) 0%, rgba(255, 60, 172, 0) 42%, rgba(255, 255, 255, 0) 100%);
-    }
-
-    .section--surface-2 {
-      background: #1A1A1A;
-    }
-
-    .section--surface {
-      background: #111111;
-    }
-
-    .section--base-dark {
-      background: #0A0A0A;
-    }
-
-    main,
-    .hero,
-    .ticker-wrap,
-    .section,
-    footer {
-      position: relative;
-      z-index: 1;
-    }
-
-    #particles-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.5;
-      mix-blend-mode: screen;
-    }
-
-    #solar-loader {
-      position: fixed;
-      inset: 0;
-      z-index: 12000;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(255, 184, 0, 0.16), rgba(255, 107, 0, 0.08) 26%, rgba(10, 10, 10, 0.98) 62%),
-        #0A0A0A;
-      transition: opacity 0.95s var(--ease-out), visibility 0.95s var(--ease-out);
-      opacity: 1;
-      visibility: visible;
-      overflow: hidden;
-    }
-
-    #solar-loader::before {
-      content: "";
-      position: absolute;
-      inset: -20%;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255, 107, 0, 0.18), transparent 40%),
-        radial-gradient(circle at 70% 60%, rgba(255, 184, 0, 0.14), transparent 38%),
-        radial-gradient(circle at 50% 80%, rgba(255, 60, 172, 0.1), transparent 42%);
-      filter: blur(20px);
-      animation: loaderNebulaDrift 8s linear infinite;
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    #solar-loader.is-exit {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    #solar-loader.is-exit .solar-loader__scene {
-      animation: sceneExit 0.9s var(--ease-out) both;
-    }
-
-    .solar-loader__scene {
-      position: relative;
-      width: min(56vw, 420px);
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      filter: drop-shadow(0 0 30px rgba(255, 107, 0, 0.28));
-      perspective: 1200px;
-      animation: sceneFloat 1.8s ease-in-out infinite alternate;
-      z-index: 2;
-    }
-
-    .solar-loader__halo {
-      position: absolute;
-      width: 24%;
-      height: 24%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 184, 0, 0.5) 0%, rgba(255, 107, 0, 0.2) 55%, transparent 100%);
-      filter: blur(8px);
-      animation: haloBreath 1.4s ease-in-out 0.2s infinite;
-      z-index: 1;
-    }
-
-    .solar-loader__core {
-      width: clamp(42px, 8.8vw, 76px);
-      height: clamp(42px, 8.8vw, 76px);
-      border-radius: 50%;
-      background: radial-gradient(circle at 36% 34%, #FFF1A0 0%, #FFD700 26%, #FFB800 52%, #FF6B00 100%);
-      box-shadow: 0 0 0 rgba(255, 107, 0, 0.5);
-      animation: coreBirth 0.95s var(--ease-spring) 0.1s both, corePulse 1.25s ease-in-out 1.05s infinite;
-      z-index: 4;
-    }
-
-    .solar-loader__ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1.4px solid rgba(255, 184, 0, 0.4);
-      opacity: 0;
-      transform: scale(0.6);
-      animation: ringAppear 0.7s var(--ease-out) forwards;
-    }
-
-    .solar-loader__ring.r1 {
-      width: 34%;
-      height: 34%;
-      border-color: rgba(255, 107, 0, 0.66);
-      animation-delay: 0.45s;
-    }
-
-    .solar-loader__ring.r2 {
-      width: 56%;
-      height: 56%;
-      border-color: rgba(255, 184, 0, 0.48);
-      animation-delay: 0.62s;
-    }
-
-    .solar-loader__ring.r3 {
-      width: 78%;
-      height: 78%;
-      border-color: rgba(255, 60, 172, 0.38);
-      animation-delay: 0.78s;
-    }
-
-    .solar-loader__ring.spin-a { animation-name: ringAppear, orbitSpin; animation-duration: 0.7s, 4.2s; animation-delay: 0.45s, 1.2s; animation-iteration-count: 1, infinite; }
-    .solar-loader__ring.spin-b { animation-name: ringAppear, orbitSpinRev; animation-duration: 0.7s, 4.8s; animation-delay: 0.62s, 1.2s; animation-iteration-count: 1, infinite; }
-    .solar-loader__ring.spin-c { animation-name: ringAppear, orbitSpin; animation-duration: 0.7s, 5.6s; animation-delay: 0.78s, 1.2s; animation-iteration-count: 1, infinite; }
-
-    .solar-loader__shockwave {
-      position: absolute;
-      width: 16%;
-      height: 16%;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 184, 0, 0.45);
-      opacity: 0;
-      z-index: 2;
-    }
-
-    .solar-loader__shockwave.wave-a {
-      animation: shockwave 0.95s ease-out 1.46s forwards;
-    }
-
-    .solar-loader__shockwave.wave-b {
-      animation: shockwave 1.05s ease-out 1.62s forwards;
-      border-color: rgba(255, 107, 0, 0.42);
-    }
-
-    .solar-loader__nova {
-      position: absolute;
-      width: 18%;
-      height: 18%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 184, 0, 1), rgba(255, 107, 0, 0.72) 42%, rgba(255, 60, 172, 0.1) 74%, transparent 100%);
-      transform: scale(0);
-      opacity: 0;
-      animation: novaBlast 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.45s forwards;
-      z-index: 3;
-    }
-
-    .solar-loader__flash {
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle, rgba(255, 230, 185, 0.95), rgba(255, 184, 0, 0.45) 20%, transparent 55%);
-      opacity: 0;
-      mix-blend-mode: screen;
-      animation: solarFlash 0.58s ease-out 1.6s forwards;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .solar-loader__spark {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #FFB800;
-      box-shadow: 0 0 14px rgba(255, 107, 0, 0.86);
-      transform: rotate(calc(var(--i) * 20deg)) translateY(0);
-      opacity: 0;
-      animation: sparkBurst 1.05s var(--ease-out) 1.5s forwards;
-      z-index: 4;
-    }
-
-    .solar-loader__caption {
-      position: absolute;
-      top: calc(100% + 14px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: max-content;
-      text-align: center;
-      display: grid;
-      gap: 0.16rem;
-    }
-
-    .solar-loader__brand {
-      letter-spacing: 0.32em;
-      font-size: clamp(0.72rem, 1.5vw, 0.92rem);
-      font-weight: 800;
-      color: rgba(255, 240, 220, 0.92);
-      text-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
-      opacity: 0;
-      animation: brandIn 0.65s var(--ease-out) 1.05s forwards;
-    }
-
-    .solar-loader__subtitle {
-      font-size: clamp(0.62rem, 1.2vw, 0.76rem);
-      letter-spacing: 0.12em;
-      color: rgba(255, 215, 168, 0.7);
-      text-transform: uppercase;
-      opacity: 0;
-      animation: subtitleIn 0.65s var(--ease-out) 1.22s forwards;
-    }
-
-    @keyframes coreBirth {
-      0% { transform: scale(0.1); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes corePulse {
-      0%, 100% { box-shadow: 0 0 0 rgba(255, 107, 0, 0.15), 0 0 25px rgba(255, 107, 0, 0.24); }
-      50% { box-shadow: 0 0 0 12px rgba(255, 107, 0, 0), 0 0 40px rgba(255, 184, 0, 0.35); }
-    }
-
-    @keyframes haloBreath {
-      0%, 100% { transform: scale(0.8); opacity: 0.65; }
-      50% { transform: scale(1.25); opacity: 0.95; }
-    }
-
-    @keyframes ringAppear {
-      0% { opacity: 0; transform: scale(0.6); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes orbitSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes orbitSpinRev {
-      from { transform: rotate(360deg); }
-      to { transform: rotate(0deg); }
-    }
-
-    @keyframes novaBlast {
-      0% { transform: scale(0.35); opacity: 0.8; }
-      58% { transform: scale(5.2); opacity: 0.62; }
-      100% { transform: scale(9.5); opacity: 0; }
-    }
-
-    @keyframes shockwave {
-      0% { transform: scale(0.45); opacity: 0.75; }
-      100% { transform: scale(8.5); opacity: 0; }
-    }
-
-    @keyframes solarFlash {
-      0% { opacity: 0; }
-      20% { opacity: 0.92; }
-      100% { opacity: 0; }
-    }
-
-    @keyframes sparkBurst {
-      0% { opacity: 0; transform: rotate(calc(var(--i) * 30deg)) translateY(0) scale(0.4); }
-      20% { opacity: 1; }
-      100% { opacity: 0; transform: rotate(calc(var(--i) * 30deg)) translateY(-145px) scale(0.9); }
-    }
-
-    @keyframes brandIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes subtitleIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes loaderNebulaDrift {
-      0% { transform: translate3d(-2%, -1%, 0) scale(1); }
-      50% { transform: translate3d(2%, 1.5%, 0) scale(1.04); }
-      100% { transform: translate3d(-2%, -1%, 0) scale(1); }
-    }
-
-    @keyframes sceneFloat {
-      from { transform: translateY(-4px) rotateX(1deg); }
-      to { transform: translateY(4px) rotateX(-1deg); }
-    }
-
-    @keyframes sceneExit {
-      from { transform: scale(1); opacity: 1; filter: blur(0); }
-      to { transform: scale(1.15); opacity: 0; filter: blur(8px); }
-    }
-
-    .section-divider {
-      position: relative;
-      height: 120px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-
-    .divider-glow {
-      width: 60%;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        #FF6B00 30%,
-        #FFB800 50%,
-        #FF3CAC 70%,
-        transparent 100%
-      );
-      opacity: 0.4;
-      position: relative;
-    }
-
-    .divider-glow::before {
-      content: '';
-      position: absolute;
-      top: -20px;
-      left: 10%;
-      right: 10%;
-      height: 40px;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(255, 107, 0, 0.08) 0%,
-        transparent 70%
-      );
-    }
-
-    .section + .section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: clamp(1rem, 3.5vw, 2rem);
-      right: clamp(1rem, 3.5vw, 2rem);
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255, 107, 0, 0), rgba(255, 107, 0, 0.45), rgba(255, 184, 0, 0.35), rgba(255, 107, 0, 0));
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid rgba(255, 184, 0, 0.3);
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-      font-weight: 700;
-      background: rgba(255, 184, 0, 0.08);
-    }
-
-    h1,
-    h2,
-    h3 {
-      margin: 0 0 0.9rem;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      font-family: var(--font-heading);
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 6.2vw, 4rem);
-    }
-
-    h2 {
-      font-size: clamp(1.7rem, 4.1vw, 2.67rem);
-    }
-
-    h3 {
-      font-size: clamp(1.2rem, 2.7vw, 2rem);
-    }
-
-    p {
-      margin: 0 0 1rem;
-      color: var(--text-soft);
-      line-height: 1.64;
-      font-size: clamp(0.92rem, 0.88rem + 0.2vw, 0.98rem);
-    }
-
-    .gradient-text {
-      background: var(--grad);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .gradient-animated {
-      animation: shimmer 4.2s linear infinite;
-    }
-
-    @keyframes shimmer {
-      from { background-position: 0% center; }
-      to { background-position: 200% center; }
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.55rem;
-      min-height: 44px;
-      min-width: 44px;
-      border-radius: 10px;
-      font-weight: 700;
-      padding: 0.88rem 1.15rem;
-      border: 1px solid transparent;
-      transition: transform 0.25s var(--ease-spring), box-shadow 0.3s var(--ease-out), background-position 0.4s var(--ease-out), border-color 0.25s var(--ease-out), background 0.25s var(--ease-out);
-      cursor: pointer;
-      touch-action: manipulation;
-      letter-spacing: 0.01em;
-    }
-
-    .btn-primary {
-      background: var(--grad);
-      background-size: 220% auto;
-      color: #090909;
-      box-shadow: var(--glow);
-    }
-
-    .btn-primary:hover {
-      background-position: right center;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 16px 42px rgba(255, 107, 0, 0.35);
-    }
-
-    .btn-secondary {
-      border-color: rgba(255, 184, 0, 0.45);
-      color: var(--text);
-      background: rgba(255, 184, 0, 0.03);
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: var(--gold);
-      background: rgba(255, 184, 0, 0.09);
-    }
-
-    .glass {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: var(--radius);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
-    }
-
-    .gradient-border {
-      position: relative;
-      isolation: isolate;
-    }
-
-    .gradient-border::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(120deg, rgba(255, 107, 0, 0.6), rgba(255, 184, 0, 0.5), rgba(255, 60, 172, 0.45));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
     }
 
     .skip-link {
       position: absolute;
-      top: -100%;
-      left: 1rem;
-      background: var(--gold);
-      color: #0a0a0a;
-      padding: 0.5rem 0.85rem;
-      border-radius: 8px;
+      left: -9999px;
+      top: 0;
       z-index: 9999;
+      background: #fff;
+      color: #000;
+      padding: 0.4rem 0.6rem;
+    }
+    .skip-link:focus { left: 0.75rem; top: 0.75rem; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    a { color: inherit; text-decoration: none; }
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.3vw, 1.8rem);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 0.85rem;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
       font-weight: 700;
-      transition: top 0.2s var(--ease-out);
+      color: var(--text);
+    }
+    h1 { font-size: var(--h1); max-width: 13ch; }
+    h2 { font-size: var(--h2); }
+    h3 { font-size: var(--h3); }
+    p {
+      margin: 0 0 1rem;
+      font-size: var(--body);
+      line-height: 1.64;
+      color: #D6D6D6;
     }
 
-    .skip-link:focus {
-      top: 1rem;
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.08rem;
     }
-
-    :focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 2px;
+    .brand-main {
+      font-size: 1.02rem;
+      line-height: 1;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      color: #F5F5F5;
     }
-
-    :focus:not(:focus-visible) {
-      outline: none;
+    .brand-sub {
+      font-size: 0.58rem;
+      line-height: 1;
+      letter-spacing: 0.26em;
+      color: #BCBCBC;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     .nav-wrap {
@@ -629,418 +103,478 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      transition: background 0.35s var(--ease-out), border-color 0.35s var(--ease-out), backdrop-filter 0.35s var(--ease-out);
       border-bottom: 1px solid transparent;
+      transition: all 240ms ease;
     }
-
     .nav-wrap.scrolled {
       background: rgba(10, 10, 10, 0.72);
       border-bottom-color: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
-
     .nav {
-      min-height: 78px;
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
-
-    .brand {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.08rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-    }
-
-    .brand-main {
-      font-family: var(--font-heading);
-      font-size: 1.02rem;
-      line-height: 1;
-      letter-spacing: 0.12em;
-      font-weight: 800;
-      color: #f5f5f5;
-    }
-
-    .brand-sub {
-      font-size: 0.58rem;
-      line-height: 1;
-      letter-spacing: 0.26em;
-      color: #bcbcbc;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
     .nav-links {
       display: flex;
-      gap: 1.2rem;
       align-items: center;
+      gap: 1rem;
     }
-
     .nav-links a {
-      color: var(--text-soft);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.25s var(--ease-out);
-      position: relative;
-      padding-bottom: 0.18rem;
+      color: #D1D1D1;
+      font-size: 0.94rem;
+      font-weight: 700;
     }
+    .nav-links a:hover { color: #fff; }
 
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0;
-      height: 1.5px;
-      background: linear-gradient(90deg, #FF6B00, #FFB800);
-      transition: width 0.25s var(--ease-out);
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      border: 0;
+      cursor: pointer;
     }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--orange);
+      color: #F5F5F5;
+      padding: 0.88rem 1.18rem;
+      box-shadow: 0 12px 30px rgba(255, 107, 0, 0.28);
     }
 
     .hamburger {
       display: none;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
       background: rgba(255, 255, 255, 0.04);
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-weight: 800;
     }
-
-    .hamburger span {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 999px;
-      position: relative;
-      transition: transform 0.28s var(--ease-in-out), background 0.2s var(--ease-out);
-    }
-
-    .hamburger span::before,
-    .hamburger span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 18px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 999px;
-      transition: transform 0.28s var(--ease-in-out), top 0.28s var(--ease-in-out), opacity 0.22s var(--ease-out);
-    }
-
-    .hamburger span::before { top: -6px; }
-    .hamburger span::after { top: 6px; }
-    .hamburger[aria-expanded="true"] span { background: transparent; }
-    .hamburger[aria-expanded="true"] span::before { top: 0; transform: rotate(45deg); }
-    .hamburger[aria-expanded="true"] span::after { top: 0; transform: rotate(-45deg); }
-
     .mobile-menu {
       display: none;
-      overflow: hidden;
       max-height: 0;
-      transition: max-height 0.35s var(--ease-out);
+      overflow: hidden;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
+      transition: max-height 260ms ease;
+      background: rgba(10, 10, 10, 0.96);
     }
-
     .mobile-menu-inner {
       display: grid;
       gap: 0.25rem;
-      padding: 1rem 0 1.2rem;
+      padding: 0.9rem 0 1.1rem;
     }
-
     .mobile-menu a {
-      color: var(--text-soft);
-      font-weight: 600;
-      padding: 0.7rem 0;
+      color: #DFDFDF;
+      font-weight: 700;
+      padding: 0.62rem 0;
     }
 
     .hero {
-      padding-top: clamp(6.5rem, 12vw, 8.3rem);
       min-height: 100vh;
       display: grid;
       align-items: center;
       background: #0A0A0A;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
+      padding-top: clamp(6.3rem, 12vw, 8rem);
     }
-
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: clamp(2rem, 5vw, 4rem);
+      gap: clamp(1.4rem, 4.2vw, 3rem);
       align-items: center;
-      position: relative;
-      z-index: 2;
     }
-
-    .hero-copy {
-      position: relative;
-      z-index: 2;
-      padding: clamp(1rem, 2.6vw, 1.6rem);
-      border-radius: 18px;
-      background: linear-gradient(90deg, rgba(10, 10, 10, 0.86) 0%, rgba(10, 10, 10, 0.62) 62%, rgba(10, 10, 10, 0) 100%);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.82rem;
-      letter-spacing: 0.05em;
-      border-radius: 999px;
-      padding: 0.45rem 0.8rem;
-      font-weight: 700;
-      color: #ffd684;
-      border: 1px solid rgba(255, 184, 0, 0.35);
-      background: rgba(255, 184, 0, 0.07);
-      margin-bottom: 1rem;
-      width: fit-content;
-    }
-
-    .hero-copy h1 {
-      letter-spacing: -0.03em;
-      line-height: 1.04;
-      max-width: 13ch;
-    }
-
-    .hero p {
-      max-width: 64ch;
+    .hero-copy p {
       font-size: clamp(1.12rem, 2vw, 1.6rem);
-      color: var(--text-soft);
-      text-wrap: pretty;
+      color: #E4E4E4;
+      max-width: 36ch;
+      margin-bottom: 1.35rem;
     }
 
-    @keyframes heroIn {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+    .gradient-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      .hero-copy .hero-badge { animation: heroIn 0.58s var(--ease-spring) 0ms both; }
-      .hero-copy h1 { animation: heroIn 0.72s var(--ease-out) 120ms both; }
-      .hero-copy p { animation: heroIn 0.66s var(--ease-out) 240ms both; }
-      .hero-copy .hero-ctas { animation: heroIn 0.64s var(--ease-spring) 360ms both; }
-      .hero-copy .hero-metrics { animation: heroIn 0.58s var(--ease-out) 480ms both; }
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.4rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .hero-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.93rem;
-      color: #d8d8d8;
-      font-weight: 600;
-    }
-
-    .hero-metrics span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.4rem 0.64rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .hero-trust-strip {
-      margin-top: 1rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.55rem;
-      max-width: 720px;
-    }
-
-    .hero-trust-item {
-      border-radius: 11px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.38rem 0.52rem;
-      font-size: 0.74rem;
-      color: #e8e8e8;
-      font-weight: 620;
-      text-align: center;
-    }
-
-    .hero-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 620px;
-      position: relative;
-      overflow: hidden;
-      z-index: 2;
-    }
-
-    .hero-media-carousel {
+    .hero-media {
       width: min(100%, 520px);
       height: min(68vh, 620px);
-      border-radius: 26px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 26px 64px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(255, 184, 0, 0.14) inset;
+      border: 1px solid var(--border);
+      background: #111;
       position: relative;
-      backdrop-filter: blur(3px);
+      margin-inline: auto;
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.38);
     }
-
-    .hero-media-carousel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.08) 0%, rgba(10, 10, 10, 0.62) 100%);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .hero-media-track {
-      position: absolute;
-      inset: 0;
-    }
-
-    .hero-media-slide {
+    .hero-slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transform: scale(1.05);
-      animation: heroSlideFade 18s infinite;
       background-size: cover;
       background-position: center;
-      display: flex;
-      align-items: flex-end;
-      padding: 1.2rem;
-      z-index: 1;
+      animation: heroFade 18s infinite;
     }
-
-    .hero-media-slide span {
-      display: inline-flex;
-      font-size: 0.78rem;
+    .hero-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.15), rgba(10, 10, 10, 0.6));
+    }
+    .hero-slide span {
+      position: absolute;
+      left: 0.9rem;
+      bottom: 0.9rem;
+      z-index: 1;
+      font-size: var(--caption);
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: #ffe4b1;
-      border: 1px solid rgba(255, 184, 0, 0.36);
-      background: rgba(10, 10, 10, 0.62);
-      padding: 0.4rem 0.64rem;
+      color: #FFE6BA;
+      border: 1px solid rgba(255, 184, 0, 0.38);
       border-radius: 999px;
-      z-index: 3;
+      padding: 0.36rem 0.56rem;
+      background: rgba(10, 10, 10, 0.65);
+    }
+    .hero-slide.s1 { background-image: url("assets/hero-optimized/1.webp"); animation-delay: 0s; }
+    .hero-slide.s2 { background-image: url("assets/hero-optimized/2.webp"); animation-delay: 6s; }
+    .hero-slide.s3 { background-image: url("assets/hero-optimized/3.webp"); animation-delay: 12s; }
+    @keyframes heroFade {
+      0%, 27% { opacity: 1; }
+      34%, 100% { opacity: 0; }
     }
 
-    .hero-media-slide:nth-child(1) {
-      animation-delay: 0s;
-      background-image:
-        radial-gradient(circle at 22% 24%, rgba(255, 184, 0, 0.26), rgba(255, 184, 0, 0)),
-        linear-gradient(135deg, rgba(10, 10, 10, 0.48), rgba(10, 10, 10, 0.72)),
-        url("https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1400&q=80");
+    .section-divider {
+      height: 74px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(255, 184, 0, 0.04), rgba(255, 184, 0, 0));
+    }
+    .divider-glow {
+      width: min(88%, 780px);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 107, 0, 0), rgba(255, 107, 0, 0.42), rgba(255, 184, 0, 0.36), rgba(255, 107, 0, 0));
     }
 
-    .hero-media-slide:nth-child(2) {
-      animation-delay: 6s;
-      background-image:
-        radial-gradient(circle at 80% 20%, rgba(255, 107, 0, 0.3), rgba(255, 107, 0, 0)),
-        linear-gradient(135deg, rgba(10, 10, 10, 0.42), rgba(10, 10, 10, 0.74)),
-        url("https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80");
+    .section { padding: 92px 0; }
+    .section--light {
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255, 184, 0, 0.08), rgba(255, 184, 0, 0)),
+        #F5F5F5;
+      color: #0A0A0A;
+    }
+    .section--surface-2 {
+      background:
+        radial-gradient(circle at 82% 14%, rgba(255, 107, 0, 0.13), rgba(255, 107, 0, 0)),
+        #1A1A1A;
+    }
+    .section--base-dark {
+      background:
+        radial-gradient(circle at 12% 86%, rgba(255, 60, 172, 0.1), rgba(255, 60, 172, 0)),
+        #0A0A0A;
+    }
+    .section--surface {
+      background:
+        radial-gradient(circle at 86% 22%, rgba(255, 184, 0, 0.12), rgba(255, 184, 0, 0)),
+        #111111;
     }
 
-    .hero-media-slide:nth-child(3) {
-      animation-delay: 12s;
-      background-image:
-        radial-gradient(circle at 50% 18%, rgba(255, 60, 172, 0.24), rgba(255, 60, 172, 0)),
-        linear-gradient(135deg, rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.78)),
-        url("https://images.unsplash.com/photo-1516110833967-0b5716ca1387?auto=format&fit=crop&w=1400&q=80");
+    .section--light h2,
+    .section--light h3,
+    .section--light p,
+    .section--light .section-tag,
+    .section--light .step-inline { color: #111; }
+    .section--light .section-tag {
+      border-color: rgba(255, 107, 0, 0.35);
+      background: rgba(255, 184, 0, 0.12);
+      color: #6B3900;
     }
 
-    @keyframes heroSlideFade {
-      0%, 26% { opacity: 1; transform: scale(1); }
-      33%, 100% { opacity: 0; transform: scale(1.06); }
+    .section-tag {
+      display: inline-block;
+      margin-bottom: 0.85rem;
+      border: 1px solid rgba(255, 184, 0, 0.36);
+      background: rgba(255, 184, 0, 0.08);
+      color: #FFD189;
+      border-radius: 999px;
+      padding: 0.42rem 0.72rem;
+      font-size: var(--caption);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
-    .hero-bg-nebula {
+    .needs-intro { max-width: 62ch; margin-bottom: 1rem; }
+    .needs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+    .need-card {
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 107, 0, 0.24);
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .need-card:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(255, 107, 0, 0.15); }
+    .need-card h3 { font-size: clamp(1.05rem, 2vw, 1.24rem); margin-bottom: 0.55rem; }
+    .need-card p { color: #3A3A3A; margin-bottom: 0.7rem; }
+    .need-cta { color: #A94E00; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+    .services-subcopy { margin-bottom: 1rem; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+    .service-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1rem;
+      display: grid;
+      gap: 0.65rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 184, 0, 0.42);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+    }
+    .service-card p { color: #DDD3C6; margin: 0; }
+    .service-invest {
+      color: #FFD9A3;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+    .services-final-cta { margin-top: 1rem; }
+
+    .process-wrap { margin-top: 1rem; }
+    .timeline-line {
+      height: 3px;
+      background: rgba(16, 16, 16, 0.14);
+      border-radius: 999px;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .timeline-fill {
       position: absolute;
-      top: -15%;
-      left: -15%;
-      width: 130%;
-      height: 130%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.38;
+      inset: 0 auto 0 0;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #FF6B00, #FFB800);
+      transition: width 240ms ease;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+    .step {
+      border-radius: var(--radius);
+      border: 1px solid rgba(16, 16, 16, 0.14);
+      background: #fff;
+      padding: 1rem;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+    .step:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 184, 0, 0.42);
+      box-shadow: 0 16px 34px rgba(255, 107, 0, 0.14);
+    }
+    .step-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-content: center;
+      color: #120B07;
+      background: linear-gradient(120deg, #FF6B00, #FFB800);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .step h3 { color: #121212; font-size: clamp(1.02rem, 1.6vw, 1.22rem); }
+    .step-time {
+      font-size: var(--caption);
+      border: 1px solid rgba(208, 97, 0, 0.24);
+      border-radius: 999px;
+      padding: 0.16rem 0.42rem;
+      margin-left: 0.35rem;
+      color: #8A4B00;
+      background: rgba(255, 184, 0, 0.12);
+      font-weight: 700;
+    }
+    .step-inline { color: #333; }
+
+    .faq-list { display: grid; gap: 0.72rem; }
+    .faq-item {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.03);
       overflow: hidden;
-      -webkit-mask-image: radial-gradient(
-        ellipse 80% 90% at 70% 50%,
-        black 30%,
-        transparent 75%
-      );
-      mask-image: radial-gradient(
-        ellipse 80% 90% at 70% 50%,
-        black 30%,
-        transparent 75%
-      );
+      transition: border-color 180ms ease, background 180ms ease;
     }
-
-    .hero-bg-nebula iframe {
-      position: absolute;
-      top: -15%;
-      left: -15%;
-      width: 130%;
-      height: 130%;
-      pointer-events: none;
-      border: none;
+    .faq-item:hover { border-color: rgba(255, 184, 0, 0.38); background: rgba(255, 184, 0, 0.04); }
+    .faq-trigger {
+      width: 100%;
+      border: 0;
       background: transparent;
+      color: #F5F5F5;
+      text-align: left;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.9rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .faq-icon::before { content: "+"; color: #FFC877; font-size: 1.1rem; }
+    .faq-item.open .faq-icon::before { content: "−"; }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 220ms ease;
+      padding: 0 1rem;
+    }
+    .faq-body p { color: #D8D8D8; margin-bottom: 0.9rem; }
+    .faq-cta-inline {
+      margin-top: 1rem;
+      border: 1px solid rgba(255, 184, 0, 0.3);
+      background: rgba(255, 184, 0, 0.08);
+      border-radius: 14px;
+      padding: 0.8rem 0.95rem;
+      color: #F5E4C7;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+      font-weight: 700;
+    }
+    .faq-cta-inline a { color: #FFD17E; text-decoration: underline; text-underline-offset: 2px; }
+
+    .cta-final {
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.14), rgba(255, 60, 172, 0.09) 60%, rgba(255, 255, 255, 0.03));
+      padding: clamp(1rem, 3.2vw, 1.8rem);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.24);
     }
 
-    @media (max-width: 1366px) and (min-width: 769px) {
-      .hero-bg-nebula {
-        top: -10%;
-        left: -10%;
-        width: 120%;
-        height: 120%;
-      }
-
-      .hero-bg-nebula iframe {
-        top: -10%;
-        left: -10%;
-        width: 120%;
-        height: 120%;
-      }
+    .cases-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
     }
-
-    @media (min-width: 1600px) {
-      .hero-bg-nebula {
-        top: -22%;
-        left: -10%;
-        width: 120%;
-        height: 145%;
-      }
-
-      .hero-bg-nebula iframe {
-        top: -22%;
-        left: -10%;
-        width: 120%;
-        height: 145%;
-      }
+    .cases-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .cases-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .cases-btn:hover { border-color: rgba(255, 184, 0, 0.45); }
+    .cases-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(320px, 1fr);
+      gap: 0.85rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding-bottom: 0.3rem;
+    }
+    .cases-track::-webkit-scrollbar { display: none; }
+    .case-card {
+      scroll-snap-align: start;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      padding: 1rem;
+      display: grid;
+      gap: 0.55rem;
+      min-height: 260px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+    .case-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 184, 0, 0.44);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+    }
+    .case-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      color: #D7D7D7;
+      font-size: 0.84rem;
+    }
+    .case-meta strong { font-size: 1rem; color: #F4F4F4; }
+    .case-summary { color: #D5D5D5; margin: 0; }
+    .case-pill {
+      border-radius: 999px;
+      padding: 0.2rem 0.52rem;
+      border: 1px solid rgba(255, 184, 0, 0.34);
+      background: rgba(255, 184, 0, 0.12);
+      color: #FFE0AA;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .case-link {
+      color: #FFD17D;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 700;
+      width: fit-content;
+    }
+    .case-actions {
+      margin: 0;
+      padding-left: 1rem;
+      color: #E4DCCF;
+      display: grid;
+      gap: 0.32rem;
+    }
+    .case-result {
+      margin-top: auto;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #FFD89B;
+    }
+    .case-cta {
+      margin-top: 0.2rem;
+      width: fit-content;
+      font-size: 0.84rem;
+      padding: 0.62rem 0.92rem;
     }
 
     .mobile-sticky-cta {
@@ -1050,2121 +584,68 @@
       right: 0;
       bottom: 0;
       z-index: 999;
-      height: calc(56px + env(safe-area-inset-bottom));
-      background: linear-gradient(90deg, #FF6B00, #FFB800);
-      box-shadow: 0 -10px 28px rgba(255, 107, 0, 0.22);
+      background: #FF6B00;
     }
-
     .mobile-sticky-cta a {
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 56px;
-      width: 100%;
-      padding: 0 1rem;
-      color: #130a06;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      text-align: center;
-    }
-
-    .faq-cta-inline {
-      margin-top: 1rem;
-      border: 1px solid rgba(255, 184, 0, 0.3);
-      border-radius: 14px;
-      background: rgba(255, 184, 0, 0.08);
-      padding: 0.85rem 0.95rem;
-      color: #f2deb5;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .faq-cta-inline a {
-      font-weight: 800;
-      color: #ffd27a;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    .ticker-wrap {
-      background: linear-gradient(90deg, rgba(17, 17, 17, 0.94), rgba(24, 24, 24, 0.9));
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      overflow: hidden;
-      padding: 0.72rem 0;
-    }
-
-    .ticker-rotator {
-      position: relative;
-      min-height: 1.55rem;
-      display: grid;
-      align-items: center;
-    }
-
-    .ticker-item {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      transform: translateY(calc(-50% + 9px));
-      opacity: 0;
-      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
-      text-align: center;
-      font-size: 0.86rem;
-      letter-spacing: 0.06em;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .ticker-item.active {
-      opacity: 1;
-      transform: translateY(-50%);
-    }
-
-    .ticker-live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.28rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 184, 0, 0.45);
-      background: rgba(255, 184, 0, 0.08);
-      box-shadow: 0 0 0 rgba(255, 107, 0, 0.2);
-      animation: tickerPulse 2.2s ease-in-out infinite;
-    }
-
-    @keyframes tickerPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.06); }
-      50% { box-shadow: 0 0 0 8px rgba(255, 107, 0, 0); }
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .card {
-      border-radius: var(--radius);
-      padding: 1.1rem;
-      position: relative;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(255, 107, 0, 0.15);
-    }
-
-    .icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 184, 0, 0.1);
-      border: 1px solid rgba(255, 184, 0, 0.35);
-      margin-bottom: 0.8rem;
-      color: #ffd777;
-      font-size: 1.35rem;
-    }
-
-    .muted {
-      color: var(--text-muted);
-    }
-
-    .cases-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.2rem;
-    }
-
-    .case-card {
-      background: #111111;
-      border: 1px solid rgba(255, 255, 255, 0.11);
-      border-radius: var(--radius-lg);
-      padding: 1.2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #servicios .card,
-    #casos .case-card {
-      background: rgba(255, 107, 0, 0.03);
-      backdrop-filter: blur(20px) saturate(1.2);
-      -webkit-backdrop-filter: blur(20px) saturate(1.2);
-      border: 1px solid rgba(255, 184, 0, 0.12);
-      border-radius: 16px;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      min-height: 250px;
-    }
-
-    #servicios .card:hover,
-    #casos .case-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(255, 107, 0, 0.15);
-      border-color: rgba(255, 107, 0, 0.4);
-    }
-
-    #servicios .card {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
-    #servicios .card p {
-      flex: 1;
-    }
-
-    @keyframes icon-bounce {
-      0% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-4px) scale(1.06); }
-      100% { transform: translateY(0) scale(1); }
-    }
-
-    #servicios .card:hover .icon {
-      animation: icon-bounce 0.3s ease-out;
-    }
-
-    .card-grad-border {
-      position: relative;
-      background: #111111;
-      border-radius: 16px;
-      isolation: isolate;
-    }
-
-    .card-grad-border::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 17px;
-      background: linear-gradient(135deg, #FF6B00, #FFB800, #FF3CAC);
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-    }
-
-    .card-grad-border:hover::before {
-      opacity: 1;
-    }
-
-    .case-big {
-      font-size: clamp(2.1rem, 5.2vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 0.35rem;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      border-radius: 999px;
-      padding: 0.33rem 0.62rem;
-      font-size: 0.78rem;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #dfdfdf;
-      margin: 0.2rem 0.2rem 0 0;
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .services-grid .card h3 {
-      margin-bottom: 0.55rem;
-    }
-
-    .link-grad {
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      margin-top: 0.35rem;
-    }
-
-    .industries-scroll {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .industry-card ul {
-      margin: 0.45rem 0 0;
-      padding-left: 1rem;
-      color: #cecece;
-    }
-
-    .timeline {
-      position: relative;
-      margin-top: 1rem;
-      padding-top: 1.6rem;
-    }
-
-    .timeline-line {
-      position: absolute;
-      top: 0.8rem;
-      left: 8%;
-      right: 8%;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.16);
-      overflow: hidden;
-      border-radius: 999px;
-    }
-
-    .timeline-fill {
-      width: 0%;
-      height: 100%;
-      background: var(--grad);
-      transition: width 1.35s var(--ease-reveal);
-      position: relative;
-    }
-
-    .timeline-fill.animated {
-      width: 100%;
-    }
-
-    .timeline-steps {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
-      position: relative;
-    }
-
-    .step .num {
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: #0a0a0a;
-      background: var(--grad);
-      margin-bottom: 0.55rem;
-    }
-
-    .tech-category {
-      margin-bottom: 1rem;
-    }
-
-    .tech-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-    }
-
-    .tech-pill {
-      border-radius: 999px;
-      padding: 0.4rem 0.72rem;
-      font-size: 0.84rem;
-      border: 1px solid;
-      background: rgba(255, 255, 255, 0.03);
-      color: #ececec;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
-    }
-
-    .tech-pill.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .b-ai { border-color: rgba(255, 107, 0, 0.45); }
-    .b-design { border-color: rgba(255, 184, 0, 0.5); }
-    .b-dev { border-color: rgba(255, 60, 172, 0.45); }
-    .b-marketing { border-color: rgba(255, 146, 0, 0.55); }
-    .b-ops { border-color: rgba(255, 255, 255, 0.28); }
-
-    .case-big,
-    .metric-big,
-    .industry-number {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-    }
-
-    .why-metrics {
-      background:
-        radial-gradient(circle at 50% 48%, rgba(255, 107, 0, 0.16), rgba(255, 184, 0, 0.06) 35%, rgba(10, 10, 10, 0.92) 68%),
-        #0A0A0A;
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 22px;
-      padding: clamp(1rem, 3vw, 1.6rem);
-    }
-
-    .why-metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.85rem;
-    }
-
-    .why-metric {
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.02);
-      padding: 1rem;
-      min-height: 220px;
-      display: grid;
-      align-content: center;
-      gap: 0.5rem;
-    }
-
-    .why-metric-label {
-      font-size: 0.85rem;
-      color: #c5c5c5;
-      letter-spacing: 0.01em;
-    }
-
-    .why-metric-context {
-      margin: 0;
-      color: rgba(255, 184, 0, 0.66);
-      font-size: 0.82rem;
-      line-height: 1.5;
-    }
-
-    .why-metrics-claim {
-      margin: 1.2rem 0 0;
-      text-align: center;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      font-size: clamp(1rem, 2.4vw, 1.28rem);
-    }
-
-    .section--light {
-      background: #F5F5F5;
-      color: #0A0A0A;
-    }
-
-    .section--light .section-tag {
-      color: #6a3b00;
-      border-color: rgba(255, 107, 0, 0.35);
-      background: rgba(255, 184, 0, 0.1);
-    }
-
-    .section--light .section-title,
-    .section--light p,
-    .section--light li,
-    .section--light .muted {
-      color: #101010;
-    }
-
-    .needs-intro {
-      max-width: 760px;
-      color: #252525;
-      font-weight: 560;
-    }
-
-    .needs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    .need-card {
-      border-radius: 18px;
-      border: 1px solid rgba(255, 107, 0, 0.24);
-      background: #FFFFFF;
-      padding: 1rem;
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
-      display: grid;
-      gap: 0.62rem;
-      align-content: start;
-    }
-
-    .need-card h3 {
-      margin: 0;
-      color: #101010;
-      font-size: 1.08rem;
-    }
-
-    .need-card p {
-      margin: 0;
-      color: #3a3a3a;
-      line-height: 1.55;
-    }
-
-    .need-card .need-cta {
-      margin-top: 0.2rem;
-      font-weight: 800;
-      color: #b45100;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .services-tabs {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .services-hero-title {
-      font-size: clamp(2.2rem, 9vw, 5.2rem);
-      line-height: 0.9;
-      letter-spacing: 0.08em;
-      margin: 0;
-      font-weight: 900;
-      text-transform: uppercase;
-      background: linear-gradient(120deg, #FF6B00, #FFB800 55%, #FFF0B8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 24px rgba(255, 107, 0, 0.2);
-    }
-
-    .services-subcopy {
-      margin: 0.45rem 0 0;
-      max-width: 760px;
-      color: #f2dfc4;
-      font-weight: 600;
-    }
-
-    .services-radical-grid {
-      margin-top: 1rem;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-    }
-
-    .service-radical-card {
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      padding: 1rem;
-      display: grid;
-      gap: 0.7rem;
-      align-content: start;
-    }
-
-    .service-radical-card h3 {
-      margin: 0;
-      color: #fff5e4;
-      font-size: clamp(1.12rem, 2.2vw, 1.45rem);
-    }
-
-    .service-radical-card p {
-      margin: 0;
-      color: #ddd3c6;
-    }
-
-    .service-invest {
-      font-size: 0.8rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #ffd79d;
-      font-weight: 700;
-    }
-
-    .services-final-cta {
-      margin-top: 1rem;
-    }
-
-    .tabs-nav {
-      display: flex;
-      gap: 0.6rem;
-      overflow-x: auto;
-      padding-bottom: 0.4rem;
-      scrollbar-width: thin;
-    }
-
-    .tab-btn {
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.03);
-      color: #dedede;
-      border-radius: 999px;
-      padding: 0.6rem 0.95rem;
-      font-weight: 700;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: all 0.3s var(--ease-out);
-    }
-
-    .tab-btn.active {
-      background: linear-gradient(120deg, rgba(255, 107, 0, 0.35), rgba(255, 184, 0, 0.3));
-      border-color: rgba(255, 184, 0, 0.45);
-      color: #fff4e7;
-      box-shadow: 0 10px 24px rgba(255, 107, 0, 0.15);
-    }
-
-    .tab-panel {
-      display: none;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.02);
-      padding: 1.2rem;
-      animation: panelFade 0.3s var(--ease-out);
-    }
-
-    .tab-panel.active {
-      display: grid;
-    }
-
-    @keyframes panelFade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .service-result {
-      margin-top: 0.65rem;
-      font-weight: 700;
-      color: #ffe2be;
-    }
-
-    .service-metric {
-      border-radius: 16px;
-      border: 1px solid rgba(255, 184, 0, 0.28);
-      background: radial-gradient(circle at 25% 20%, rgba(255, 184, 0, 0.16), rgba(255, 107, 0, 0.05) 55%, rgba(255, 255, 255, 0.03));
-      display: grid;
-      place-content: center;
-      text-align: center;
-      min-height: 190px;
-      padding: 1rem;
-      animation: metricPulse 3s ease-in-out infinite;
-    }
-
-    .service-metric p {
-      margin: 0.6rem 0 0;
-      color: #ffd8ad;
-      font-weight: 600;
-    }
-
-    @keyframes metricPulse {
-      0%, 100% { box-shadow: 0 0 0 rgba(255, 107, 0, 0); }
-      50% { box-shadow: 0 12px 30px rgba(255, 107, 0, 0.2); }
-    }
-
-    .industries-selector {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .industry-nav {
-      display: flex;
-      gap: 0.75rem;
-      overflow-x: auto;
-      padding-bottom: 0.4rem;
-    }
-
-    .industry-btn {
-      min-width: 128px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.03);
-      color: #ececec;
-      font-weight: 700;
-      padding: 0.62rem 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      cursor: pointer;
-      transition: all 0.25s var(--ease-out);
-      white-space: nowrap;
-    }
-
-    .industry-btn.active {
-      background: linear-gradient(135deg, rgba(255, 107, 0, 0.42), rgba(255, 184, 0, 0.34));
-      border-color: rgba(255, 184, 0, 0.5);
       color: #fff;
-    }
-
-    .industry-panel {
-      display: none;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: radial-gradient(circle at 12% 10%, rgba(255, 184, 0, 0.14), rgba(255, 107, 0, 0.05) 45%, rgba(255, 255, 255, 0.02));
-      padding: 1.1rem;
-      animation: industrySlide 0.3s var(--ease-out);
-    }
-
-    .industry-panel.active {
-      display: grid;
-      box-shadow: 0 18px 42px rgba(255, 107, 0, 0.14);
-      border-color: rgba(255, 184, 0, 0.38);
-    }
-
-    .industry-proof {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 184, 0, 0.45);
-      background: rgba(255, 184, 0, 0.1);
-      color: #ffe4bb;
       font-weight: 800;
-      font-size: 0.77rem;
-      padding: 0.34rem 0.62rem;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.6rem;
-    }
-
-    @keyframes industrySlide {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .industry-services {
-      margin: 0.75rem 0 0;
-      padding-left: 1rem;
-      color: #dfdfdf;
-    }
-
-    .industry-services li + li {
-      margin-top: 0.35rem;
-    }
-
-    .industry-meta {
-      display: grid;
-      align-content: center;
-      gap: 0.65rem;
-      border-left: 1px solid rgba(255, 255, 255, 0.08);
-      padding-left: 1rem;
-    }
-
-    .process-timeline {
-      margin-top: 1rem;
-      position: relative;
-      padding-top: 1.5rem;
-    }
-
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.9rem;
-      position: relative;
-    }
-
-    .process-step {
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.02);
-      padding: 1rem;
-      transition: border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), transform 0.35s var(--ease-out), background 0.35s var(--ease-out), opacity 0.35s var(--ease-out);
-    }
-
-    .process-step h3 {
-      color: #f5f5f5;
-      font-size: clamp(1.03rem, 2vw, 1.32rem);
-    }
-
-    .process-step.active {
-      border-color: rgba(255, 184, 0, 0.55);
-      background: radial-gradient(circle at 20% 15%, rgba(255, 184, 0, 0.15), rgba(255, 107, 0, 0.05) 58%, rgba(255, 255, 255, 0.03));
-      box-shadow: 0 16px 30px rgba(255, 107, 0, 0.16);
-      transform: translateY(-3px);
-    }
-
-    .timeline-energy-orb {
-      display: none;
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff0b8 0%, #FFB800 48%, #FF6B00 100%);
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2), 0 0 18px rgba(255, 184, 0, 0.42);
-      top: 50%;
-      left: 0%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      transition: top 0.12s linear, left 0.12s linear;
-    }
-
-    .step-badge {
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: #140b06;
-      background: var(--grad);
-      margin-bottom: 0.55rem;
-      font-size: 1.25rem;
-    }
-
-    .step-time {
-      display: inline-flex;
-      margin-left: 0.4rem;
-      font-size: 0.8rem;
-      color: #ffd7ad;
-      border: 1px solid rgba(255, 184, 0, 0.28);
-      padding: 0.2rem 0.45rem;
-      border-radius: 999px;
-    }
-
-    .step-icon {
-      width: 24px;
-      height: 24px;
-      color: #ffbe63;
-      margin-bottom: 0.35rem;
-    }
-
-    .step-inline {
-      margin: 0;
-      color: #d9d9d9;
-    }
-
-    .process-radical .process-step {
-      border-color: rgba(16, 16, 16, 0.14);
-      background: #ffffff;
-    }
-
-    .process-radical .process-step h3 {
-      color: #101010;
-    }
-
-    .process-radical .step-inline {
-      color: #2f2f2f;
-    }
-
-    .process-radical .step-icon {
-      color: #d06100;
-    }
-
-    .process-radical .step-time {
-      color: #8b4b00;
-      border-color: rgba(208, 97, 0, 0.24);
-      background: rgba(255, 184, 0, 0.1);
-    }
-
-    .process-radical .timeline-line {
-      background: rgba(16, 16, 16, 0.13);
-    }
-
-    .ecosystem-map {
-      position: relative;
-      min-height: 620px;
-      border-radius: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background:
-        radial-gradient(circle at 50% 50%, rgba(255, 184, 0, 0.14), rgba(255, 107, 0, 0.05) 35%, rgba(255, 255, 255, 0.01) 62%),
-        rgba(255, 255, 255, 0.02);
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .ecosystem-svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    .flow-line {
-      fill: none;
-      stroke-width: 1.6;
-      opacity: 0.3;
-      stroke-linecap: round;
-      stroke-dasharray: 100;
-      stroke-dashoffset: 100;
-      transition: opacity 0.22s ease, stroke-width 0.22s ease;
-    }
-
-    .ecosystem-map.is-drawn .flow-line {
-      animation: drawLine 1s var(--ease-out) forwards;
-    }
-
-    .flow-line.delay-1 { animation-delay: 40ms !important; }
-    .flow-line.delay-2 { animation-delay: 90ms !important; }
-    .flow-line.delay-3 { animation-delay: 140ms !important; }
-    .flow-line.delay-4 { animation-delay: 190ms !important; }
-    .flow-line.delay-5 { animation-delay: 240ms !important; }
-    .flow-line.delay-6 { animation-delay: 290ms !important; }
-    .flow-line.delay-7 { animation-delay: 340ms !important; }
-    .flow-line.delay-8 { animation-delay: 390ms !important; }
-    .flow-line.delay-9 { animation-delay: 440ms !important; }
-    .flow-line.delay-10 { animation-delay: 490ms !important; }
-    .flow-line.delay-11 { animation-delay: 540ms !important; }
-    .flow-line.delay-12 { animation-delay: 590ms !important; }
-
-    @keyframes drawLine {
-      from { stroke-dashoffset: 100; }
-      to { stroke-dashoffset: 0; }
-    }
-
-    .flow-line.active {
-      opacity: 0.8;
-      stroke-width: 2.2;
-    }
-
-    .flow-dot {
-      fill: #FF9A1F;
-      opacity: 0.9;
-      filter: drop-shadow(0 0 5px rgba(255, 107, 0, 0.65));
-    }
-
-    .ecosystem-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 130px;
-      height: 130px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 184, 0, 0.42);
-      background: rgba(10, 10, 10, 0.92);
-      display: grid;
-      place-content: center;
       text-align: center;
-      z-index: 3;
-      box-shadow: 0 0 0 rgba(255, 107, 0, 0.35);
-      animation: corePulse 2.8s ease-in-out infinite;
-    }
-
-    @keyframes corePulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.15), 0 0 38px rgba(255, 107, 0, 0.16); }
-      50% { box-shadow: 0 0 0 8px rgba(255, 107, 0, 0), 0 0 60px rgba(255, 184, 0, 0.32); }
-    }
-
-    .solaris-core {
-      width: 80px;
-      height: 80px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .ecosystem-center .brand-main {
-      letter-spacing: 0.14em;
-      font-size: 1.12rem;
-      color: #f5f5f5;
-    }
-
-    .ecosystem-center .brand-sub {
-      letter-spacing: 0.22em;
-      color: #d5d5d5;
-    }
-
-    .tech-node {
-      position: absolute;
-      left: calc(var(--x) * 1px);
-      top: calc(var(--y) * 1px);
-      transform: translate(-50%, -50%);
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
-      background: #111111;
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
-      color: #f0f0f0;
-      font-size: 10px;
-      line-height: 1.08;
-      font-weight: 700;
-      text-align: center;
-      display: grid;
-      place-content: center;
-      padding: 0.2rem;
-      cursor: pointer;
-      z-index: 2;
-      transition: transform 0.24s var(--ease-out), box-shadow 0.24s var(--ease-out), border-color 0.24s var(--ease-out);
-    }
-
-    .tech-node:focus-visible,
-    .tech-node:hover {
-      transform: translate(-50%, -50%) scale(1.15);
-      box-shadow: 0 12px 26px rgba(255, 107, 0, 0.25);
-    }
-
-    .tech-node::after {
-      content: attr(data-tip);
-      position: absolute;
-      left: 50%;
-      top: -42px;
-      transform: translateX(-50%);
-      font-size: 0.67rem;
-      line-height: 1.2;
-      min-width: 150px;
-      background: rgba(12, 12, 12, 0.94);
-      border: 1px solid rgba(255, 184, 0, 0.36);
-      border-radius: 8px;
-      padding: 0.35rem 0.45rem;
-      color: #f6ddbe;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .tech-node:hover::after,
-    .tech-node:focus-visible::after {
-      opacity: 1;
-    }
-
-    .tech-node.cat-ai { border-color: #FF6B00; }
-    .tech-node.cat-auto { border-color: #FFB800; }
-    .tech-node.cat-mkt { border-color: #FF3CAC; }
-    .tech-node.cat-dev { border-color: rgba(255, 255, 255, 0.75); }
-
-    .ecosystem-legend {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 0.9rem;
-      color: #d6d6d6;
-      font-size: 0.9rem;
-      font-weight: 650;
-    }
-
-    .ecosystem-mobile {
-      display: none;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.7rem;
-    }
-
-    .ecosystem-mobile .tech-pill {
-      opacity: 1;
-      transform: none;
-      text-align: center;
-      font-weight: 700;
-      border-radius: 12px;
-      padding: 0.6rem 0.5rem;
-      font-size: 0.82rem;
-    }
-
-    .ecosystem-mobile-note {
-      display: none;
-      margin-top: 0.8rem;
-      color: #e8d6be;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .stars {
-      color: #ffd66d;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.6rem;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    .author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: 0.9rem;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .plan {
-      padding: 1.2rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      position: relative;
-      overflow: hidden;
-      min-height: 370px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .plan.featured {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 184, 0, 0.55);
-      box-shadow: 0 14px 40px rgba(255, 107, 0, 0.2);
-    }
-
-    .badge-pop {
-      position: absolute;
-      top: 0.8rem;
-      right: 0.8rem;
-      border-radius: 999px;
-      padding: 0.3rem 0.6rem;
-      background: rgba(255, 107, 0, 0.18);
-      border: 1px solid rgba(255, 107, 0, 0.42);
-      color: #ffd9a8;
-      font-size: 0.76rem;
-      font-weight: 700;
-    }
-
-    .price {
-      font-size: clamp(1.3rem, 3vw, 1.9rem);
-      font-weight: 800;
-      margin: 0.45rem 0 0.8rem;
-    }
-
-    .plan ul {
-      margin: 0;
-      padding-left: 0;
-      color: #dddddd;
-      list-style: none;
-      display: grid;
-      gap: 0.45rem;
-      flex: 1;
-    }
-
-    .plan ul li {
-      position: relative;
-      padding-left: 1.35rem;
-    }
-
-    .plan ul li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #FFB800;
-      font-weight: 800;
-    }
-
-    .pricing-impact {
-      display: grid;
-      gap: 1.2rem;
-    }
-
-    .pricing-impact .pricing-intro {
-      max-width: 760px;
-    }
-
-    .pricing-filter-nav {
-      display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-    }
-
-    .pricing-filter-btn {
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.03);
-      color: #f0f0f0;
-      border-radius: 999px;
-      padding: 0.62rem 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.25s var(--ease-out);
-    }
-
-    .pricing-filter-btn.active {
-      border-color: rgba(255, 184, 0, 0.45);
-      background: linear-gradient(120deg, rgba(255, 107, 0, 0.34), rgba(255, 184, 0, 0.26));
-      box-shadow: 0 10px 26px rgba(255, 107, 0, 0.16);
-    }
-
-    .pricing-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .pricing-card {
-      grid-column: span 4;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-left: 3px solid var(--tier-color, #FF6B00);
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 1rem 1rem 1.05rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      min-height: 320px;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
-    }
-
-    .pricing-card.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .pricing-card.tier-presence { --tier-color: #FF6B00; }
-    .pricing-card.tier-monthly { --tier-color: #FFB800; }
-    .pricing-card.tier-enterprise { --tier-color: #FF3CAC; }
-
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 22px 44px color-mix(in srgb, var(--tier-color) 30%, transparent);
-    }
-
-    .pricing-card-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.8rem;
-      padding-right: 6.4rem;
-    }
-
-    .pricing-card h3 {
-      margin: 0;
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: 0.8rem;
-      right: 0.8rem;
-      border-radius: 999px;
-      border: 1px solid color-mix(in srgb, var(--tier-color) 65%, white 20%);
-      background: color-mix(in srgb, var(--tier-color) 20%, transparent);
-      color: #ffe5c8;
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 0.28rem 0.54rem;
-      white-space: nowrap;
-    }
-
-    .pricing-amount {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      margin: 0.2rem 0 0;
-      background: linear-gradient(120deg, #FF6B00, #FFB800);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .pricing-includes {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 0.45rem;
-      flex: 1;
-      color: #d9d9d9;
-    }
-
-    .pricing-includes li {
-      position: relative;
-      padding-left: 1.2rem;
-    }
-
-    .pricing-includes li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #FF9A1F;
-      font-weight: 800;
-    }
-
-    .pricing-cta {
-      width: fit-content;
-      border-radius: 10px;
-      border: 0;
-      color: #100a06;
-      font-weight: 800;
-      padding: 0.74rem 0.95rem;
-      transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), filter 0.25s var(--ease-out);
-    }
-
-    .tier-presence .pricing-cta {
-      background: #FF6B00;
-      color: #1a0f08;
-      box-shadow: 0 12px 28px rgba(255, 107, 0, 0.25);
-    }
-
-    .tier-monthly .pricing-cta {
-      background: #FFB800;
-      color: #1a1205;
-      box-shadow: 0 12px 28px rgba(255, 184, 0, 0.22);
-    }
-
-    .tier-enterprise .pricing-cta {
-      background: #FF3CAC;
-      color: #250817;
-      box-shadow: 0 12px 30px rgba(255, 60, 172, 0.28);
-    }
-
-    .pricing-cta:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
-
-    .pricing-card.enterprise-card {
-      grid-column: 1 / -1;
-      background: linear-gradient(110deg, rgba(255, 107, 0, 0.95), rgba(255, 60, 172, 0.92));
-      border-color: rgba(255, 184, 0, 0.35);
-      border-left-color: #FF3CAC;
-      color: #180b12;
-      min-height: 0;
-    }
-
-    .enterprise-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: baseline;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.32);
-      padding-bottom: 0.75rem;
-      margin-bottom: 0.55rem;
-    }
-
-    .enterprise-card h3,
-    .enterprise-card p,
-    .enterprise-card li {
-      color: #1a0d15;
-    }
-
-    .enterprise-amount {
-      font-size: clamp(1.8rem, 4.5vw, 3rem);
-      font-weight: 800;
-      line-height: 1;
-      color: #1a0d15;
-      margin: 0;
-    }
-
-    .enterprise-agents {
-      font-size: clamp(1.2rem, 3.2vw, 1.7rem);
-      font-weight: 800;
-      margin: 0 0 0.3rem;
-    }
-
-    .enterprise-modules {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.5rem;
-      margin: 0.6rem 0 0.95rem;
-    }
-
-    .enterprise-modules span {
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      background: rgba(255, 255, 255, 0.16);
-      border-radius: 12px;
-      padding: 0.55rem 0.65rem;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .guarantee-box {
-      border: 1px solid rgba(255, 184, 0, 0.55);
-      border-radius: 16px;
-      background: rgba(255, 184, 0, 0.08);
-      padding: 1rem 1.1rem;
-      color: #f0d9a5;
-      line-height: 1.7;
-      font-weight: 700;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .guarantee-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(110deg, transparent 0%, rgba(255, 184, 0, 0.05) 35%, rgba(255, 184, 0, 0.6) 50%, rgba(255, 184, 0, 0.05) 65%, transparent 100%);
-      background-size: 220% 100%;
-      animation: shimmerBorder 3s linear infinite;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      z-index: -1;
-    }
-
-    .mobile-swipe-hint {
-      display: none;
-      margin: -0.1rem 0 0.7rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 184, 0, 0.74);
-      font-weight: 700;
-    }
-
-    .mobile-scroll-indicator {
-      display: none;
-      margin: -0.18rem 0 0.55rem;
-      width: fit-content;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 184, 0, 0.8);
-      font-weight: 750;
-      border: 1px dashed rgba(255, 184, 0, 0.4);
-      border-radius: 999px;
-      padding: 0.32rem 0.62rem;
-      animation: hintShift 1.6s ease-in-out infinite;
-    }
-
-    .mobile-auto-hint {
-      display: none;
-      margin: -0.08rem 0 0.7rem;
-      font-size: 0.73rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 184, 0, 0.78);
-      font-weight: 720;
-    }
-
-    @keyframes hintShift {
-      0%, 100% { transform: translateX(0); opacity: 0.9; }
-      50% { transform: translateX(5px); opacity: 1; }
-    }
-
-    @keyframes shimmerBorder {
-      from { background-position: 0% 0%; }
-      to { background-position: 200% 0%; }
-    }
-
-    .faq-list {
-      max-width: 900px;
-      margin: 0;
-      display: grid;
-      gap: 1rem;
-    }
-
-    .faq-item {
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      overflow: hidden;
-    }
-
-    .faq-trigger {
-      width: 100%;
-      text-align: left;
-      background: none;
-      color: var(--text);
-      border: 0;
-      padding: 0.88rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      font-size: 1rem;
-      font-weight: 650;
-      cursor: pointer;
-    }
-
-    .faq-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 184, 0, 0.35);
-      position: relative;
-      flex-shrink: 0;
-      transition: transform 0.35s var(--ease-spring);
-    }
-
-    .faq-icon::before,
-    .faq-icon::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      background: var(--gold);
-      transform: translate(-50%, -50%);
-      transition: transform 0.35s var(--ease-spring), opacity 0.25s var(--ease-out);
-    }
-
-    .faq-icon::before { width: 12px; height: 2px; }
-    .faq-icon::after { width: 2px; height: 12px; }
-
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-    }
-
-    .faq-item.open .faq-icon::after {
-      opacity: 0;
-    }
-
-    .faq-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.45s var(--ease-out);
-    }
-
-    .faq-body p {
-      padding: 0 1rem 0.95rem;
-      margin: 0;
-      color: #cfcfcf;
-    }
-
-    .cta-final {
-      background: var(--grad-diagonal);
-      color: #100b09;
-      text-align: center;
-      border-radius: 24px;
-      padding: clamp(2rem, 8vw, 4rem);
-      box-shadow: 0 24px 50px rgba(255, 107, 0, 0.25);
-    }
-
-    .cta-final h2,
-    .cta-final p {
-      color: #130d0a;
-    }
-
-    .cta-final .btn-primary {
-      background: #0a0a0a;
-      color: #f5f5f5;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      padding: 0 0.8rem;
     }
 
     footer {
-      padding: 2rem 0 2.6rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.09);
-      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: #0D0D0D;
+      padding: 2.3rem 0;
     }
-
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1fr 1fr;
-      gap: 1.2rem;
-      align-items: start;
+      grid-template-columns: 1.2fr 1fr 0.8fr;
+      gap: 1rem;
     }
-
     .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem 1rem;
-      justify-content: flex-start;
-      color: #d8d8d8;
-      font-size: 0.94rem;
+      display: grid;
+      gap: 0.35rem;
     }
-
-    .footer-contact {
-      color: #cfcfcf;
-      font-size: 0.93rem;
-      line-height: 1.7;
-    }
-
-    .reveal,
-    .reveal-left,
-    .reveal-right,
-    .reveal-scale {
-      opacity: 0;
-      transform: translateY(40px) rotateX(8deg);
-      transform-origin: top center;
-      perspective: 1000px;
-      transition:
-        opacity 0.7s cubic-bezier(0.0, 0.0, 0.2, 1),
-        transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .reveal-left { transform: translateX(-34px); }
-    .reveal-right { transform: translateX(34px); }
-    .reveal-scale { transform: scale(0.94); }
-    .visible.reveal,
-    .visible.reveal-left,
-    .visible.reveal-right,
-    .visible.reveal-scale {
-      opacity: 1;
-      transform: none;
-    }
-
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-    .delay-5 { transition-delay: 0.5s; }
-
-    #custom-cursor {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: screen;
-      left: 0;
-      top: 0;
-    }
-
-    .cursor-dot {
-      width: 8px;
-      height: 8px;
-      background: #FFB800;
-      border-radius: 50%;
-      position: absolute;
-      top: -4px;
-      left: -4px;
-      transition: transform 0.1s;
-    }
-
-    .cursor-halo {
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255, 107, 0, 0.5);
-      border-radius: 50%;
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      transition: transform 0.15s, width 0.3s, height 0.3s, border-color 0.3s;
-    }
-
-    @media (max-width: 1024px) {
-      .grid-4 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .cases-grid,
-      .testimonials-grid,
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .pricing-card {
-        grid-column: span 6;
-      }
-
-      .enterprise-modules {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .timeline-steps {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .timeline-line {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links,
-      .nav .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: inline-flex;
-      }
-
-      .mobile-menu {
-        display: block;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        display: none;
-        min-height: 0;
-      }
-
-      .hero-bg-nebula {
-        position: absolute !important;
-        top: 0 !important;
-        left: -8% !important;
-        width: 116% !important;
-        height: min(78vh, 620px) !important;
-        max-height: none !important;
-        z-index: 0 !important;
-        pointer-events: none !important;
-        opacity: 0.94 !important;
-        -webkit-mask-image: radial-gradient(ellipse 95% 82% at 68% 38%, black 28%, transparent 78%) !important;
-        mask-image: radial-gradient(ellipse 95% 82% at 68% 38%, black 28%, transparent 78%) !important;
-      }
-
-      .hero-bg-nebula iframe {
-        top: -10% !important;
-        left: -6% !important;
-        width: 112% !important;
-        height: 122% !important;
-        pointer-events: none !important;
-      }
-
-      .hero {
-        text-align: left;
-        min-height: 100vh;
-      }
-
-      .hero-copy {
-        background: transparent;
-        padding: 0;
-        position: relative;
-        z-index: 2;
-        padding-top: clamp(1.3rem, 6vh, 3rem);
-      }
-
-      .hero-badge {
-        margin-inline: 0;
-      }
-
-      .hero-trust-strip {
-        grid-template-columns: 1fr;
-        max-width: 100%;
-      }
-
-      .hero-trust-item {
-        font-size: 0.7rem;
-        padding: 0.34rem 0.48rem;
-      }
-
-      .hero-ctas,
-      .hero-metrics {
-        justify-content: flex-start;
-      }
-
-      .hero-visual {
-        min-height: 320px;
-      }
-
-      .hero-media-carousel {
-        width: 100%;
-        max-width: 100%;
-        height: 320px;
-        border-radius: 18px;
-      }
-
-      .hero-media-slide {
-        padding: 0.8rem;
-      }
-
-      .hero-media-slide span {
-        font-size: 0.68rem;
-      }
-
-      .pricing-filter-nav {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        padding-bottom: 0.35rem;
-      }
-
-      .pricing-filter-btn {
-        white-space: nowrap;
-      }
-
-      .pricing-card {
-        grid-column: auto;
-      }
-
-      .pricing-amount {
-        font-size: clamp(2.2rem, 10vw, 3.3rem);
-      }
-
-      .pricing-card.enterprise-card {
-        background: linear-gradient(180deg, rgba(255, 107, 0, 0.95), rgba(255, 60, 172, 0.92));
-      }
-
-      .enterprise-modules {
-        grid-template-columns: 1fr;
-      }
-
-      .industries-scroll {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 0.25rem;
-      }
-
-      .industry-card {
-        min-width: 78%;
-        scroll-snap-align: start;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-links {
-        justify-content: flex-start;
-      }
-
-      .mobile-sticky-cta {
-        display: block;
-      }
-
-      body {
-        padding-bottom: calc(72px + env(safe-area-inset-bottom));
-      }
-
-      .section {
-        padding: 60px 0;
-      }
-
-      .section-divider {
-        height: 72px;
-      }
-
-      h2 {
-        font-size: min(1.8rem, 8vw);
-      }
-
-      .ticker-item {
-        font-size: 0.72rem;
-      }
-
-      .mobile-swipe-hint {
-        display: block;
-      }
-
-      .mobile-scroll-indicator,
-      .mobile-auto-hint {
-        display: inline-flex;
-      }
-
-      .faq-cta-inline {
-        align-items: flex-start;
-      }
-
-      .why-metrics-grid {
-        grid-template-columns: none;
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: minmax(84%, 1fr);
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory;
-        gap: 0.85rem;
-        padding-bottom: 0.3rem;
-      }
-
-      .needs-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .need-card {
-        padding: 0.9rem;
-      }
-
-      .services-radical-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .why-metrics-grid,
-      .cases-grid,
-      .pricing-cards-grid,
-      .testimonials-grid {
-        scrollbar-width: none;
-      }
-
-      .why-metrics-grid::-webkit-scrollbar,
-      .cases-grid::-webkit-scrollbar,
-      .pricing-cards-grid::-webkit-scrollbar,
-      .testimonials-grid::-webkit-scrollbar {
-        display: none;
-      }
-
-      .why-metric {
-        min-height: 0;
-        scroll-snap-align: start;
-      }
-
-      .cases-grid,
-      .testimonials-grid {
-        display: grid;
-        grid-template-columns: none;
-        grid-auto-flow: column;
-        grid-auto-columns: minmax(86%, 1fr);
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory;
-        gap: 0.85rem;
-        padding-bottom: 0.3rem;
-      }
-
-      .testimonials-grid {
-        scroll-snap-type: none;
-        overflow-x: hidden;
-        pointer-events: none;
-        touch-action: none;
-      }
-
-      .case-card,
-      .testimonials-grid article {
-        scroll-snap-align: start;
-      }
-
-      .testimonials-grid article {
-        scroll-snap-align: none;
-        pointer-events: none;
-        user-select: none;
-      }
-
-      .tab-panel,
-      .industry-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .tab-panel {
-        padding: 0.95rem;
-        gap: 0.8rem;
-      }
-
-      .tab-panel p {
-        line-height: 1.55;
-      }
-
-      .service-result {
-        margin-top: 0.25rem;
-      }
-
-      .service-metric {
-        min-height: 116px;
-        padding: 0.75rem;
-      }
-
-      .metric-big {
-        font-size: clamp(2.2rem, 13vw, 3rem);
-      }
-
-      .industries-selector {
-        gap: 0.85rem;
-      }
-
-      .industry-meta {
-        border-left: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        padding-left: 0;
-        padding-top: 0.8rem;
-      }
-
-      .industry-panel {
-        padding: 0.95rem;
-        gap: 0.75rem;
-      }
-
-      .process-timeline {
-        padding-top: 0.4rem;
-        padding-left: 1rem;
-      }
-
-      .timeline-line {
-        top: 0;
-        bottom: 0;
-        left: 0.25rem;
-        width: 3px;
-        height: auto;
-        right: auto;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.08);
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-      }
-
-      .timeline-fill {
-        width: 100%;
-        height: 0%;
-        transition: height 1.1s var(--ease-reveal);
-        background: linear-gradient(180deg, #FF6B00 0%, #FFB800 55%, #FFF0B8 100%);
-        box-shadow: 0 0 16px rgba(255, 107, 0, 0.35);
-      }
-
-      .timeline-energy-orb {
-        display: block;
-        left: 50%;
-        top: 0%;
-      }
-
-      .timeline-fill.animated {
-        height: 100%;
-      }
-
-      .process-steps {
-        grid-template-columns: 1fr;
-        gap: 0.7rem;
-      }
-
-      .process-step {
-        position: relative;
-        margin-left: 0.45rem;
-        padding: 0.85rem 0.85rem 0.9rem;
-        opacity: 0;
-        transform: translateY(18px) scale(0.985);
-      }
-
-      .process-step.stage-visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .process-step::before {
-        content: "";
-        position: absolute;
-        left: -1rem;
-        top: 1.08rem;
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: linear-gradient(120deg, #FF6B00, #FFB800);
-        box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.16), 0 0 16px rgba(255, 184, 0, 0.28);
-      }
-
-      .pricing-cards-grid {
-        display: grid;
-        grid-template-columns: none;
-        grid-auto-flow: column;
-        grid-auto-columns: minmax(86vw, 1fr);
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory;
-        gap: 0.85rem;
-        padding-bottom: 0.35rem;
-      }
-
-      .pricing-card {
-        min-height: 300px;
-        scroll-snap-align: start;
-      }
-
-      .pricing-card.enterprise-card {
-        grid-column: auto;
-      }
-
-      .ecosystem-map {
-        display: none;
-      }
-
-      .ecosystem-legend {
-        display: none;
-      }
-
-      .ecosystem-mobile {
-        display: grid;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 0.95rem;
-        background: radial-gradient(circle at 50% 14%, rgba(255, 107, 0, 0.18), rgba(255, 107, 0, 0) 58%), rgba(255, 255, 255, 0.02);
-        gap: 0.55rem;
-      }
-
-      .ecosystem-mobile-note {
-        display: block;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .grid-4,
+    .muted { color: var(--muted); }
+
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 420ms ease, transform 420ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: inline-grid; place-content: center; }
+      .mobile-menu { display: block; }
+      .hero-grid,
+      .needs-grid,
       .services-grid,
-      .timeline-steps {
-        grid-template-columns: 1fr;
-      }
-
-      .scarcity-badge {
-        font-size: 0.8rem;
-      }
-
-      .hero-metrics {
-        font-size: 0.85rem;
-      }
-
-      .industry-btn {
-        min-width: 112px;
-      }
+      .steps,
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-media { width: 100%; height: 320px; }
+      .section { padding: 64px 0; }
+      .mobile-sticky-cta { display: block; }
+      body { padding-bottom: 70px; }
+      .cases-head { align-items: flex-start; }
+      .cases-controls { order: 2; }
+      .cases-track { grid-auto-columns: minmax(84%, 1fr); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      #solar-loader {
-        display: none !important;
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
       }
-
-      body.is-loading header,
-      body.is-loading main,
-      body.is-loading footer,
-      body.is-loading .mobile-sticky-cta,
-      body.is-loading #particles-bg {
-        opacity: 1 !important;
-        filter: none !important;
-        transform: none !important;
-        pointer-events: auto !important;
-      }
-
-      #particles-bg {
-        display: none;
-      }
-
-      #custom-cursor {
-        display: none !important;
-      }
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-      }
-
-      .reveal,
-      .reveal-left,
-      .reveal-right,
-      .reveal-scale,
-      .tech-pill {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-
-      .ticker-track {
-        animation: none;
-      }
-
+      .reveal { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
-<body class="is-loading">
+<body>
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
-  <div id="solar-loader" aria-hidden="true">
-    <div class="solar-loader__scene">
-      <div class="solar-loader__halo"></div>
-      <div class="solar-loader__ring r1 spin-a"></div>
-      <div class="solar-loader__ring r2 spin-b"></div>
-      <div class="solar-loader__ring r3 spin-c"></div>
-      <div class="solar-loader__core"></div>
-      <div class="solar-loader__shockwave wave-a"></div>
-      <div class="solar-loader__shockwave wave-b"></div>
-      <div class="solar-loader__nova"></div>
-      <div class="solar-loader__flash"></div>
-      <span class="solar-loader__spark" style="--i:0;"></span>
-      <span class="solar-loader__spark" style="--i:1;"></span>
-      <span class="solar-loader__spark" style="--i:2;"></span>
-      <span class="solar-loader__spark" style="--i:3;"></span>
-      <span class="solar-loader__spark" style="--i:4;"></span>
-      <span class="solar-loader__spark" style="--i:5;"></span>
-      <span class="solar-loader__spark" style="--i:6;"></span>
-      <span class="solar-loader__spark" style="--i:7;"></span>
-      <span class="solar-loader__spark" style="--i:8;"></span>
-      <span class="solar-loader__spark" style="--i:9;"></span>
-      <span class="solar-loader__spark" style="--i:10;"></span>
-      <span class="solar-loader__spark" style="--i:11;"></span>
-      <span class="solar-loader__spark" style="--i:12;"></span>
-      <span class="solar-loader__spark" style="--i:13;"></span>
-      <span class="solar-loader__spark" style="--i:14;"></span>
-      <span class="solar-loader__spark" style="--i:15;"></span>
-      <span class="solar-loader__spark" style="--i:16;"></span>
-      <span class="solar-loader__spark" style="--i:17;"></span>
-      <div class="solar-loader__caption">
-        <div class="solar-loader__brand">SOLARIS</div>
-        <div class="solar-loader__subtitle">Activando núcleo de energía</div>
-      </div>
-    </div>
-  </div>
 
   <header class="nav-wrap" id="siteNav">
     <div class="container nav">
@@ -3172,102 +653,65 @@
         <span class="brand-main">SOLARIS</span>
         <span class="brand-sub">AI AGENCY</span>
       </a>
-
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#why-solaris">Problemas</a>
         <a href="#servicios">Servicios</a>
+        <a href="#casos">Casos</a>
         <a href="#proceso">Proceso</a>
-        <a href="#precios">Inversión</a>
         <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
       </nav>
-
-      <a class="btn btn-primary nav-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20mi%20objetivo%20es%20%5Bobjetivo%5D." target="_blank" rel="noopener noreferrer" aria-label="Agendar diagnóstico gratuito por WhatsApp">
-        Agenda Diagnóstico Gratis →
-      </a>
-
-      <button class="hamburger" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú de navegación">
-        <span></span>
-      </button>
+      <a class="btn btn-primary nav-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos." target="_blank" rel="noopener noreferrer">Agenda Diagnóstico Gratis →</a>
+      <button class="hamburger" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">☰</button>
     </div>
-
     <div class="mobile-menu" id="mobileMenu">
       <div class="container mobile-menu-inner">
         <a href="#why-solaris">Problemas</a>
         <a href="#servicios">Servicios</a>
+        <a href="#casos">Casos</a>
         <a href="#proceso">Proceso</a>
-        <a href="#precios">Inversión</a>
         <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
-        <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20mi%20objetivo%20es%20%5Bobjetivo%5D." target="_blank" rel="noopener noreferrer">
-          Agenda Diagnóstico Gratis →
-        </a>
+        <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos." target="_blank" rel="noopener noreferrer">Agenda Diagnóstico Gratis →</a>
       </div>
     </div>
   </header>
-
-  <canvas id="particles-bg" style="
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.35;
-  "></canvas>
-  <div id="custom-cursor">
-    <div class="cursor-dot"></div>
-    <div class="cursor-halo"></div>
-  </div>
 
   <main id="main-content">
     <section class="hero" id="inicio" aria-labelledby="hero-heading">
       <div class="container hero-grid">
         <div class="hero-copy reveal visible">
-          <h1 id="hero-heading">
-            SOLARIS: Tu Negocio, Potenciado.
-            <span class="gradient-text gradient-animated">Resultados Reales.</span>
-          </h1>
-          <p>
-            Transformamos tu operación. Aceleramos tus ventas.
-          </p>
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20vengo%20desde%20la%20landing%20y%20quiero%20hablar%20con%20un%20experto.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20busco%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Hablar con SOLARIS por WhatsApp">
-              Agenda tu Diagnóstico de 30 min (Gratis) →
-            </a>
-          </div>
+          <h1 id="hero-heading">SOLARIS: Tu Negocio, Potenciado. <span class="gradient-text">Resultados Reales.</span></h1>
+          <p>Transformamos tu operación. Aceleramos tus ventas.</p>
+          <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
         </div>
-
-        <div class="hero-visual reveal-right visible" aria-hidden="true">
-          <div class="hero-media-carousel">
-            <div class="hero-media-track">
-              <div class="hero-media-slide"><span>Más leads calificados</span></div>
-              <div class="hero-media-slide"><span>Más cierres comerciales</span></div>
-              <div class="hero-media-slide"><span>Más control operativo</span></div>
-            </div>
-          </div>
+        <div class="hero-media reveal" aria-hidden="true">
+          <div class="hero-slide s1"><span>Transformación</span></div>
+          <div class="hero-slide s2"><span>Evolución</span></div>
+          <div class="hero-slide s3"><span>Aceleramiento</span></div>
         </div>
       </div>
     </section>
 
+    <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
+
     <section class="section section--light" aria-labelledby="why-solaris">
       <div class="container">
-        <div class="section-tag reveal">Navegación por resultados</div>
-        <h2 id="why-solaris" class="reveal section-title">¿Qué Problema Quieres Resolver HOY en tu Negocio?</h2>
-        <p class="needs-intro reveal">Elige el bloque que más se parece a tu realidad y entra directo a la solución.</p>
+        <div class="section-tag reveal">Navegación por Resultados</div>
+        <h2 id="why-solaris" class="reveal">¿Qué Problema Quieres Resolver HOY en tu Negocio?</h2>
+        <p class="needs-intro reveal">Conecta tu necesidad con una solución concreta y accionable.</p>
         <div class="needs-grid reveal">
-          <article class="need-card reveal delay-1">
+          <article class="need-card">
             <h3>Quiero Digitalizar mi Captación de Clientes</h3>
             <p>Necesitas más leads, más llamadas, más ventas online. Tu negocio no puede esperar.</p>
             <a class="need-cta" href="#servicios">Ver Soluciones de Captación →</a>
           </article>
-          <article class="need-card reveal delay-2">
+          <article class="need-card">
             <h3>Quiero Liberar Tiempo y Optimizar mi Operación</h3>
             <p>Tu equipo está ahogado en tareas repetitivas. Necesitas eficiencia, automatización y menos errores humanos.</p>
             <a class="need-cta" href="#servicios">Ver Soluciones de Eficiencia →</a>
           </article>
-          <article class="need-card reveal delay-3">
+          <article class="need-card">
             <h3>Quiero Expandirme a Nuevos Mercados</h3>
             <p>Tu negocio está listo para crecer más allá de las fronteras. Necesitas una estrategia global y clientes internacionales.</p>
             <a class="need-cta" href="#servicios">Ver Soluciones de Expansión →</a>
@@ -3276,682 +720,241 @@
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
-
-    <section class="section section--contrast-b" id="casos" aria-labelledby="cases-title">
-      <div class="container">
-        <div class="section-tag reveal">Casos reales</div>
-        <h2 id="cases-title" class="reveal section-title">Negocios reales que hoy venden más con SOLARIS.</h2>
-        <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza para ver más casos reales</p>
-        <div class="cases-grid">
-          <article class="case-card card-grad-border reveal delay-1">
-            <p class="muted">Clínica Odontológica · Montería</p>
-            <div class="case-big gradient-text"><span data-count="40">40</span></div>
-            <p><strong>pacientes nuevos en el primer mes</strong></p>
-            <div>
-              <span class="pill">Google Ads</span>
-              <span class="pill">Automatización</span>
-              <span class="pill">Reputación Digital</span>
-            </div>
-            <p style="margin-top:0.7rem;">“Antes 2-3 pacientes/semana. Hoy 10-12.” — Dra. Andrea M.</p>
-          </article>
-          <article class="case-card card-grad-border reveal delay-2">
-            <p class="muted">Retail & Moda · Colombia</p>
-            <div class="case-big gradient-text">+<span data-count="320">320</span>%</div>
-            <p><strong>aumento en ventas online en 60 días</strong></p>
-            <div>
-              <span class="pill">Meta Ads</span>
-              <span class="pill">Instagram Shopping</span>
-              <span class="pill">Bot IA</span>
-            </div>
-            <p style="margin-top:0.7rem;">“SOLARIS transformó nuestro Instagram en una máquina de ventas.”</p>
-          </article>
-          <article class="case-card card-grad-border reveal delay-3">
-            <p class="muted">Restaurante · Pereira</p>
-            <div class="case-big gradient-text"><span data-count="3">3</span>x</div>
-            <p><strong>más reservas y pedidos online</strong></p>
-            <div>
-              <span class="pill">WhatsApp Bot</span>
-              <span class="pill">Marketing</span>
-              <span class="pill">Fidelización IA</span>
-            </div>
-            <p style="margin-top:0.7rem;">“El bot atiende mientras duermo. Es increíble.” — Carlos R.</p>
-          </article>
-          <article class="case-card card-grad-border reveal">
-            <p class="muted">Inmobiliaria · Medellín</p>
-            <div class="case-big gradient-text">+<span data-count="185">185</span>%</div>
-            <p><strong>más leads calificados en 45 días</strong></p>
-            <div>
-              <span class="pill">Google Search</span>
-              <span class="pill">CRM IA</span>
-              <span class="pill">Lead Scoring</span>
-            </div>
-            <p style="margin-top:0.7rem;">“Ahora nos llegan contactos con intención real de compra.” — Felipe G.</p>
-          </article>
-          <article class="case-card card-grad-border reveal">
-            <p class="muted">Educación · Bogotá</p>
-            <div class="case-big gradient-text"><span data-count="62">62</span>%</div>
-            <p><strong>menos costo por inscripción</strong></p>
-            <div>
-              <span class="pill">Meta Ads</span>
-              <span class="pill">Embudo IA</span>
-              <span class="pill">WhatsApp</span>
-            </div>
-            <p style="margin-top:0.7rem;">“Bajamos costos y subimos matrículas al mismo tiempo.” — Natalia P.</p>
-          </article>
-          <article class="case-card card-grad-border reveal">
-            <p class="muted">E-commerce Beauty · Cali</p>
-            <div class="case-big gradient-text">+<span data-count="228">228</span>%</div>
-            <p><strong>crecimiento en recompra trimestral</strong></p>
-            <div>
-              <span class="pill">Remarketing IA</span>
-              <span class="pill">Email Flows</span>
-              <span class="pill">Automatización</span>
-            </div>
-            <p style="margin-top:0.7rem;">“La recompra se volvió predecible y escalable.” — Paola V.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
+    <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--surface-2" id="servicios" aria-labelledby="services-title">
       <div class="container">
         <div class="section-tag reveal">Servicios</div>
-        <h2 id="services-title" class="reveal section-title">Servicios Solaris: Tu Inversión, Tu Retorno.</h2>
-        <p class="reveal services-subcopy">Cada solución ataca un problema real de negocio con ejecución y retorno medible.</p>
-        <div class="services-radical-grid reveal">
-          <article class="service-radical-card">
+        <h2 id="services-title" class="reveal">Servicios Solaris: Tu Inversión, Tu Retorno.</h2>
+        <p class="services-subcopy reveal">Cada solución está diseñada para resolver un problema real con impacto medible.</p>
+        <div class="services-grid reveal">
+          <article class="service-card">
             <h3>Landing Page que Vende</h3>
-            <p>¿Necesitas leads y ventas online? Diseñamos tu primera máquina de ventas digital. Lista en 7 días, optimizada para convertir visitantes en clientes.</p>
+            <p>Diseñamos tu primera máquina de ventas digital. Lista en 7 días, optimizada para convertir visitantes en clientes.</p>
             <span class="service-invest">Inversión: Desde $1.500.000</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Landing%20Page%20que%20vende.%20Quiero%20captar%20leads%20r%C3%A1pido." target="_blank" rel="noopener noreferrer">Quiero mi Landing →</a>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Landing%20Page%20que%20vende." target="_blank" rel="noopener noreferrer">Quiero mi Landing →</a>
           </article>
-          <article class="service-radical-card">
+          <article class="service-card">
             <h3>Tu Tienda Online 24/7</h3>
-            <p>¿Quieres vender sin límites? Tu negocio online con plataforma de pagos propia. Ahorra comisiones y gestiona todo desde un panel intuitivo.</p>
+            <p>Tu negocio online con plataforma de pagos propia. Ahorra comisiones y gestiona todo desde un panel intuitivo.</p>
             <span class="service-invest">Inversión: Desde $3.000.000</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Tienda%20Online%2024%2F7%20con%20pagos%20propios." target="_blank" rel="noopener noreferrer">Quiero mi Tienda →</a>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Tienda%20Online%2024%2F7." target="_blank" rel="noopener noreferrer">Quiero mi Tienda →</a>
           </article>
-          <article class="service-radical-card">
+          <article class="service-card">
             <h3>Citas en Automático. Cero Errores.</h3>
-            <p>¿Cansado de gestionar citas manualmente? Automatiza agenda, recordatorios y disponibilidad. Sin mensualidades. Libera tu tiempo y optimiza operación.</p>
+            <p>Automatiza agenda, recordatorios y disponibilidad. Sin mensualidades. Libera tu tiempo y optimiza tu operación.</p>
             <span class="service-invest">Inversión: Desde $2.500.000</span>
             <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Sistema%20de%20Agendamiento%20Inteligente." target="_blank" rel="noopener noreferrer">Quiero mi Sistema →</a>
           </article>
-          <article class="service-radical-card">
+          <article class="service-card">
             <h3>Redes Sociales que Duplican Ventas</h3>
-            <p>¿Tus redes no venden? Estrategias de IA para duplicar ventas y seguidores, con piezas creativas que conectan y Meta Ads de alto impacto.</p>
+            <p>Estrategias de IA para duplicar ventas y seguidores, con piezas creativas y Meta Ads de alto impacto.</p>
             <span class="service-invest">Inversión: Desde $2.000.000</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20Duplicar%20mis%20Ventas%20desde%20redes%20sociales." target="_blank" rel="noopener noreferrer">Quiero Duplicar mis Ventas →</a>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20duplicar%20mis%20ventas%20con%20redes%20sociales." target="_blank" rel="noopener noreferrer">Quiero Duplicar mis Ventas →</a>
           </article>
-          <article class="service-radical-card">
+          <article class="service-card">
             <h3>Clientes Internacionales. Sin Fronteras.</h3>
-            <p>¿Listo para el mundo? Atrae clientes del extranjero con CRM con IA, marketing digital global y un equipo de closers especializados.</p>
+            <p>Implementamos CRM con IA, marketing digital global y un equipo de closers especializados.</p>
             <span class="service-invest">Inversión: Desde $15.000.000 (Cotización personalizada)</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20Clientes%20Internacionales%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Clientes Globales →</a>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20clientes%20internacionales%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Clientes Globales →</a>
           </article>
-          <article class="service-radical-card">
+          <article class="service-card">
             <h3>Tu Negocio en Piloto Automático</h3>
-            <p>¿Procesos lentos? Optimizamos flujos, integramos herramientas y creamos bots inteligentes para atención al cliente y procesos internos.</p>
-            <span class="service-invest">Inversión: Cotización personalizada</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20Automatizar%20mi%20Negocio%20con%20IA." target="_blank" rel="noopener noreferrer">Quiero Automatizar mi Negocio →</a>
+            <p>Optimizamos flujos de trabajo, integramos herramientas y creamos bots inteligentes para procesos internos y atención.</p>
+            <span class="service-invest">Inversión: Cotización Personalizada</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20automatizar%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Automatizar mi Negocio →</a>
           </article>
-          <article class="service-radical-card">
+          <article class="service-card">
             <h3>Importaciones Rentables con IA</h3>
-            <p>¿Márgenes bajos en importaciones? Asesoría experta y optimización de negociación e importación con IA para análisis de mercados y logística.</p>
-            <span class="service-invest">Inversión: Cotización personalizada</span>
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20Importaciones%20m%C3%A1s%20Rentables%20con%20IA." target="_blank" rel="noopener noreferrer">Quiero Importaciones Más Rentables →</a>
+            <p>Asesoría experta y optimización de importación/negociación global, apalancada en IA para análisis de mercados y logística.</p>
+            <span class="service-invest">Inversión: Cotización Personalizada</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20importaciones%20m%C3%A1s%20rentables%20con%20IA." target="_blank" rel="noopener noreferrer">Quiero Importaciones Más Rentables →</a>
           </article>
         </div>
-        <p class="services-final-cta reveal"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20necesito%20algo%20m%C3%A1s%20personalizado%20para%20mi%20negocio.%20Hablemos%20de%20mi%20proyecto%20%C3%BAnico." target="_blank" rel="noopener noreferrer">¿Necesitas algo más? Hablemos de tu Proyecto Único →</a></p>
+        <p class="services-final-cta reveal"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20necesito%20algo%20m%C3%A1s%20personalizado%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">¿Necesitas algo más? Hablemos de tu Proyecto Único →</a></p>
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
+    <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
-    <section class="section section--contrast-a" id="industrias" aria-labelledby="industry-title">
+    <section class="section section--base-dark" id="casos" aria-labelledby="cases-title">
       <div class="container">
-        <h2 id="industry-title" class="reveal section-title">Escoge tu industria y mira exactamente cómo crece contigo.</h2>
-        <div class="industries-selector reveal" style="margin-top:1rem;">
-          <p class="mobile-scroll-indicator" aria-hidden="true">↔ Desliza para elegir industria</p>
-          <div class="industry-nav" role="tablist" aria-label="Selector de industrias">
-            <button class="industry-btn active" data-industry="restaurantes">🍽️ Restaurantes</button>
-            <button class="industry-btn" data-industry="salud">🏥 Salud</button>
-            <button class="industry-btn" data-industry="moda">👗 Moda</button>
-            <button class="industry-btn" data-industry="servicios">🔧 Servicios</button>
-            <button class="industry-btn" data-industry="verde">🌱 Verde</button>
+        <div class="cases-head">
+          <div>
+            <div class="section-tag reveal">Casos Reales</div>
+            <h2 id="cases-title" class="reveal">Lo que hemos hecho con nuestros clientes.</h2>
+            <p class="reveal">Cada caso resume problema, ejecución y resultado para que un dueño de negocio se identifique en segundos.</p>
           </div>
+          <div class="cases-controls reveal">
+            <button class="cases-btn" id="casesPrev" aria-label="Ver caso anterior">‹</button>
+            <button class="cases-btn" id="casesNext" aria-label="Ver siguiente caso">›</button>
+          </div>
+        </div>
 
-          <article class="industry-panel active" data-industry-panel="restaurantes">
-            <div>
-              <span class="industry-proof">⚡ Sistema activo en 3-4 semanas</span>
-              <p class="muted">Caso real · Restaurante en Pereira</p>
-              <div class="industry-number gradient-text">3x</div>
-              <p><strong>mas reservas y pedidos online en 45 dias.</strong></p>
-              <ul class="industry-services">
-                <li>WhatsApp bot para reservas</li>
-                <li>Campanas geolocalizadas en Meta Ads</li>
-                <li>Automatizacion de seguimiento post-visita</li>
-              </ul>
+        <div class="cases-track reveal" id="casesTrack" aria-label="Carrusel de casos de clientes">
+          <article class="case-card">
+            <div class="case-meta">
+              <strong>Mirador Ébano · Pereira</strong>
+              <span class="case-pill">Restaurante</span>
             </div>
-            <div class="industry-meta">
-              <p><strong>Tiempo promedio:</strong> 2 a 4 semanas para primeras mejoras.</p>
-              <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20una%20estrategia%20para%20mi%20restaurante.%20Busco%20m%C3%A1s%20reservas%20y%20pedidos." target="_blank" rel="noopener noreferrer">Quiero esto para mi restaurante →</a>
-            </div>
+            <p class="case-summary">De crisis comercial y audiencia inflada sin interacción a una operación con agenda llena y eventos semanales.</p>
+            <a class="case-link" href="https://www.instagram.com/miradorebanopereira/" target="_blank" rel="noopener noreferrer">@miradorebanopereira</a>
+            <ul class="case-actions">
+              <li>Modernización total de branding, carta, servicios y presencia digital.</li>
+              <li>Estrategia de contenido + creativos + pauta Meta Ads orientada a conversión.</li>
+              <li>Automatizaciones con ManyChat, web y sistema para convertir seguidores en leads.</li>
+            </ul>
+            <p class="case-result">Resultado: en menos de 90 días, negocio sold out y comunidad activa que reduce dependencia de pauta.</p>
+            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20resultado%20como%20Mirador%20%C3%89bano%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
           </article>
 
-          <article class="industry-panel" data-industry-panel="salud">
-            <div>
-              <span class="industry-proof">⚡ Captación + agenda en tiempo real</span>
-              <p class="muted">Caso real · Clinica odontologica en Monteria</p>
-              <div class="industry-number gradient-text">40</div>
-              <p><strong>pacientes nuevos en el primer mes.</strong></p>
-              <ul class="industry-services">
-                <li>Captacion con Google Ads de alta intencion</li>
-                <li>Agenda automatica por WhatsApp</li>
-                <li>Flujo de reseñas y reputacion digital</li>
-              </ul>
+          <article class="case-card">
+            <div class="case-meta">
+              <strong>Deer Burgers · Pereira</strong>
+              <span class="case-pill">Fast Food</span>
             </div>
-            <div class="industry-meta">
-              <p><strong>Tiempo promedio:</strong> 7 a 21 dias para flujo constante de citas.</p>
-              <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20m%C3%A1s%20pacientes%20para%20mi%20cl%C3%ADnica.%20Me%20interesa%20agenda%20autom%C3%A1tica%20y%20Google%20Ads." target="_blank" rel="noopener noreferrer">Quiero mas pacientes →</a>
-            </div>
+            <p class="case-summary">Hamburguesería nueva que necesitaba posicionamiento acelerado desde su apertura para ganar mercado rápido.</p>
+            <a class="case-link" href="https://www.instagram.com/deerburgers.co/" target="_blank" rel="noopener noreferrer">@deerburgers.co</a>
+            <ul class="case-actions">
+              <li>Construcción de marca con identidad fuerte y diferenciada.</li>
+              <li>Estrategia de posicionamiento local y contenido comercial de alto impacto.</li>
+              <li>Implementación del mismo framework de crecimiento usado en Ébano.</li>
+            </ul>
+            <p class="case-result">Resultado: tracción temprana y posicionamiento rápido en Pereira en su primer mes.</p>
+            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20lanzamiento%20acelerado%20como%20Deer%20Burgers." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
           </article>
 
-          <article class="industry-panel" data-industry-panel="moda">
-            <div>
-              <span class="industry-proof">⚡ Más ventas con recompra automática</span>
-              <p class="muted">Caso real · Tienda de moda en Colombia</p>
-              <div class="industry-number gradient-text">+320%</div>
-              <p><strong>aumento en ventas online en 60 dias.</strong></p>
-              <ul class="industry-services">
-                <li>Embudo Instagram + WhatsApp</li>
-                <li>Creativos de pauta con IA</li>
-                <li>Recuperacion de carritos y recompra</li>
-              </ul>
+          <article class="case-card">
+            <div class="case-meta">
+              <strong>Odontología AVM · Cali</strong>
+              <span class="case-pill">Salud</span>
             </div>
-            <div class="industry-meta">
-              <p><strong>Tiempo promedio:</strong> 15 a 30 dias para crecimiento de conversion.</p>
-              <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20escalar%20mi%20marca%20de%20moda.%20Necesito%20m%C3%A1s%20ventas%20online." target="_blank" rel="noopener noreferrer">Escalar mi marca de moda →</a>
-            </div>
+            <p class="case-summary">Dependían del voz a voz local. Necesitaban visibilidad y un sistema para captar pacientes de turismo dental internacional.</p>
+            <a class="case-link" href="https://www.instagram.com/odontologia_avm/" target="_blank" rel="noopener noreferrer">@odontologia_avm</a>
+            <ul class="case-actions">
+              <li>Estrategia internacional para diseños de sonrisa y captación fuera de Colombia.</li>
+              <li>Modernización de marca y stack inteligente de atracción y seguimiento.</li>
+              <li>Capacitación en internacionalización, closers y soporte operativo integral.</li>
+            </ul>
+            <p class="case-result">Resultado: con 1 paciente internacional semanal generan ingresos equivalentes a un mes local completo.</p>
+            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20atraer%20clientes%20internacionales%20como%20Odontolog%C3%ADa%20AVM." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
           </article>
 
-          <article class="industry-panel" data-industry-panel="servicios">
-            <div>
-              <span class="industry-proof">⚡ Más llamadas, más cierres locales</span>
-              <p class="muted">Caso real · Servicio local en Colombia</p>
-              <div class="industry-number gradient-text">#1</div>
-              <p><strong>en Google Maps en su zona principal.</strong></p>
-              <ul class="industry-services">
-                <li>SEO local y optimizacion de perfil</li>
-                <li>Campanas para llamadas directas</li>
-                <li>Seguimiento automatico de prospectos</li>
-              </ul>
+          <article class="case-card">
+            <div class="case-meta">
+              <strong>Batido · Medellín</strong>
+              <span class="case-pill">Bebidas</span>
             </div>
-            <div class="industry-meta">
-              <p><strong>Tiempo promedio:</strong> 30 a 60 dias para posicionamiento local.</p>
-              <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20ser%20referente%20en%20Google%20Maps%20en%20mi%20ciudad." target="_blank" rel="noopener noreferrer">Posicionarme localmente →</a>
-            </div>
+            <p class="case-summary">Empresa de jugos pressed con bajo nivel de ventas y sin sistema de adquisición consistente.</p>
+            <a class="case-link" href="https://www.instagram.com/batido_co/" target="_blank" rel="noopener noreferrer">@batido_co</a>
+            <ul class="case-actions">
+              <li>Pauta Andrómeda y segmentación avanzada por perfil de cliente ideal.</li>
+              <li>Contenido hiperrealista y asesoramiento estratégico de Meta Ads.</li>
+              <li>Landing conectada a píxeles para trazabilidad y leads listos para cierre.</li>
+            </ul>
+            <p class="case-result">Resultado: facturación x3 en menos de 1 mes con leads más calificados.</p>
+            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20triplicar%20facturaci%C3%B3n%20como%20Batido." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
           </article>
 
-          <article class="industry-panel" data-industry-panel="verde">
-            <div>
-              <span class="industry-proof">⚡ Leads calificados de alto valor</span>
-              <p class="muted">Caso real · Marca sostenible regional</p>
-              <div class="industry-number gradient-text">2.7x</div>
-              <p><strong>mas solicitudes de cotizacion calificada.</strong></p>
-              <ul class="industry-services">
-                <li>Narrativa de impacto con contenido IA</li>
-                <li>Automatizacion de seguimiento comercial</li>
-                <li>Pauta para leads de alto valor</li>
-              </ul>
+          <article class="case-card">
+            <div class="case-meta">
+              <strong>La Guaca · Montería</strong>
+              <span class="case-pill">Moda</span>
             </div>
-            <div class="industry-meta">
-              <p><strong>Tiempo promedio:</strong> 3 a 5 semanas para traccion medible.</p>
-              <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20escalar%20mi%20negocio%20verde%20con%20IA%20y%20marketing%20de%20impacto." target="_blank" rel="noopener noreferrer">Escalar negocio verde →</a>
-            </div>
+            <p class="case-summary">Tienda multimarca que necesitaba digitalizar su operación comercial sin depender de terceros.</p>
+            <a class="case-link" href="https://www.instagram.com/boutiquelaguaca1/" target="_blank" rel="noopener noreferrer">@boutiquelaguaca1</a>
+            <ul class="case-actions">
+              <li>Tienda virtual a medida con plataforma de pagos y administración total del catálogo.</li>
+              <li>Base de datos de clientes y CRM operativo para eficiencia de mensajes.</li>
+              <li>Estrategia de alcance con Meta Ads integrada al día a día de ventas.</li>
+            </ul>
+            <p class="case-result">Resultado: canal digital escalable, sin comisiones de terceros y con control completo de precios/producto.</p>
+            <a class="btn btn-primary case-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20digitalizar%20mi%20tienda%20como%20La%20Guaca." target="_blank" rel="noopener noreferrer">Quiero este tipo de resultado →</a>
           </article>
         </div>
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
+    <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
-    <section class="section section--light process-radical" id="proceso" aria-labelledby="process-title">
+    <section class="section section--light" id="proceso" aria-labelledby="process-title">
       <div class="container">
-        <h2 id="process-title" class="reveal section-title">Tu Éxito es Nuestro Proceso. Así Trabajamos en Solaris.</h2>
-        <div class="process-timeline reveal">
-          <div class="timeline-line">
-            <div class="timeline-fill" id="timelineFill"></div>
-            <div class="timeline-energy-orb" id="timelineOrb" aria-hidden="true"></div>
-          </div>
-          <div class="process-steps">
-            <article class="process-step">
+        <h2 id="process-title" class="reveal">Tu Éxito es Nuestro Proceso. Así Trabajamos en Solaris.</h2>
+        <div class="process-wrap reveal">
+          <div class="timeline-line"><div class="timeline-fill" id="timelineFill"></div></div>
+          <div class="steps">
+            <article class="step">
               <div class="step-badge">1</div>
               <h3>Diagnóstico Estratégico <span class="step-time">30 min</span></h3>
-              <svg class="step-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v12H4z" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v4M16 3v4M4 9h16" stroke="currentColor" stroke-width="1.7"/></svg>
               <p class="step-inline">Identificamos tus desafíos clave y las oportunidades de crecimiento con IA. Sin rodeos, solo un plan claro para tu negocio.</p>
             </article>
-            <article class="process-step">
+            <article class="step">
               <div class="step-badge">2</div>
               <h3>Roadmap Personalizado <span class="step-time">24h</span></h3>
-              <svg class="step-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M12 4l8 8-8 8" stroke="currentColor" stroke-width="1.7"/></svg>
               <p class="step-inline">Diseñamos un plan de acción detallado con metas medibles y la tecnología ideal para que veas resultados rápidos.</p>
             </article>
-            <article class="process-step">
+            <article class="step">
               <div class="step-badge">3</div>
               <h3>Implementación Ágil <span class="step-time">Desde 7 días</span></h3>
-              <svg class="step-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 13l4 4 8-10" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
               <p class="step-inline">Activamos sistemas, campañas y automatizaciones. Te sorprenderá la velocidad con la que tu negocio empieza a transformarse.</p>
             </article>
-            <article class="process-step">
+            <article class="step">
               <div class="step-badge">4</div>
               <h3>Escala Continua <span class="step-time">Mes a mes</span></h3>
-              <svg class="step-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 16l5-5 4 3 7-8" stroke="currentColor" stroke-width="1.7"/><path d="M17 6h3v3" stroke="currentColor" stroke-width="1.7"/></svg>
               <p class="step-inline">Optimizamos con datos, ajustamos estrategias y aseguramos un crecimiento constante y rentable. Tu éxito es nuestra prioridad.</p>
             </article>
           </div>
         </div>
-        <p style="margin-top:1rem;"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20mi%20Transformaci%C3%B3n%20con%20un%20Diagn%C3%B3stico%20Gratuito." target="_blank" rel="noopener noreferrer">Empieza tu Transformación con un Diagnóstico Gratuito →</a></p>
+        <p style="margin-top:1rem;"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20mi%20transformaci%C3%B3n%20con%20un%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener noreferrer">Empieza tu Transformación con un Diagnóstico Gratuito →</a></p>
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
-
-    <section class="section section--contrast-c" id="precios" aria-labelledby="pricing-title">
-      <div class="container">
-        <div class="pricing-impact">
-          <div class="pricing-intro reveal">
-            <h2 id="pricing-title" class="section-title">Inversión clara para crecer sin improvisar.</h2>
-            <p>Arranca con una base sólida y escala con sistemas IA según tu operación y metas comerciales.</p>
-            <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza las cards para comparar</p>
-          </div>
-
-          <p class="mobile-scroll-indicator reveal" aria-hidden="true">↔ Desliza los filtros de etapa</p>
-          <div class="pricing-filter-nav reveal" role="tablist" aria-label="Selector tipo de cliente">
-            <button class="pricing-filter-btn active" aria-pressed="true" data-pricing-filter="presencia">🚀 Quiero presencia digital</button>
-            <button class="pricing-filter-btn" aria-pressed="false" data-pricing-filter="mensual">📈 Quiero crecer mensual</button>
-            <button class="pricing-filter-btn" aria-pressed="false" data-pricing-filter="enterprise">🤖 Quiero transformación total</button>
-          </div>
-
-          <div class="pricing-cards-grid reveal">
-            <article class="pricing-card tier-presence" data-tier="presencia">
-              <span class="pricing-badge">Entrada</span>
-              <div class="pricing-card-head">
-                <h3>🎬 VIDEO CLIP IA</h3>
-              </div>
-              <p class="pricing-amount">$300.000</p>
-              <ul class="pricing-includes">
-                <li>15s a 1 min</li>
-                <li>Efectos IA incluidos</li>
-                <li>Listo para pauta</li>
-              </ul>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20servicio%20de%20Video%20Clip%20con%20IA.%20Necesito%20%5Btipo%20de%20video%5D%20para%20%5Bcanal%5D%20y%20quiero%20publicarlo%20esta%20semana." target="_blank" rel="noopener noreferrer">Quiero mi video →</a>
-            </article>
-
-            <article class="pricing-card tier-presence" data-tier="presencia">
-              <span class="pricing-badge">Popular</span>
-              <div class="pricing-card-head">
-                <h3>🌐 LANDING PAGE</h3>
-              </div>
-              <p class="pricing-amount">$1.500.000</p>
-              <ul class="pricing-includes">
-                <li>Diseño UX/UI premium</li>
-                <li>Lista en 7 dias</li>
-                <li>Optimizada para conversion</li>
-              </ul>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20una%20Landing%20Page.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20captar%20%5Bleads%2Fventas%5D%20en%20los%20pr%C3%B3ximos%2030%20d%C3%ADas." target="_blank" rel="noopener noreferrer">Quiero mi landing →</a>
-            </article>
-
-            <article class="pricing-card tier-presence" data-tier="presencia">
-              <span class="pricing-badge">Sin comis.</span>
-              <div class="pricing-card-head">
-                <h3>🛒 TIENDA VIRTUAL</h3>
-              </div>
-              <p class="pricing-amount">$3.000.000</p>
-              <ul class="pricing-includes">
-                <li>Plataforma de pagos propia</li>
-                <li>Te ahorras $2M-$5M/año</li>
-                <li>Panel administrador</li>
-              </ul>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20una%20Tienda%20Virtual.%20Necesito%20integrar%20pagos%20y%20administrar%20mi%20cat%C3%A1logo%20de%20%5Bn%C3%BAmero%5D%20productos." target="_blank" rel="noopener noreferrer">Quiero mi tienda →</a>
-            </article>
-
-            <article class="pricing-card tier-monthly" data-tier="mensual">
-              <span class="pricing-badge">Personalizado</span>
-              <div class="pricing-card-head">
-                <h3>🧩 SISTEMAS IA A MEDIDA</h3>
-              </div>
-              <p class="pricing-amount">Cotización</p>
-              <ul class="pricing-includes">
-                <li>Agendamiento inteligente</li>
-                <li>Automatizaciones comerciales</li>
-                <li>Gestión de tráfico y seguimiento</li>
-              </ul>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20cotizar%20un%20sistema%20IA%20a%20medida%20para%20mi%20negocio.%20Mi%20objetivo%20principal%20es%20%5Bobjetivo%5D." target="_blank" rel="noopener noreferrer">Solicitar propuesta personalizada →</a>
-            </article>
-
-            <article class="pricing-card tier-monthly" data-tier="mensual">
-              <span class="pricing-badge">Best</span>
-              <div class="pricing-card-head">
-                <h3>🏆 CRECIMIENTO MARCA</h3>
-              </div>
-              <p class="pricing-amount">$2.000.000/mes</p>
-              <ul class="pricing-includes">
-                <li>Todo lo anterior incluido</li>
-                <li>Reportes semanales</li>
-                <li>Reunion estrategica mensual</li>
-              </ul>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20el%20Plan%20Crecimiento%20de%20Marca.%20Quiero%20una%20estrategia%20integral%20de%20pauta%2C%20contenido%20y%20automatizaci%C3%B3n." target="_blank" rel="noopener noreferrer">Quiero este plan →</a>
-            </article>
-
-            <article class="pricing-card tier-enterprise enterprise-card" data-tier="enterprise">
-              <div class="enterprise-top">
-                <h3>SOLARIS ENTERPRISE</h3>
-                <p class="enterprise-amount">Desde $15.000.000</p>
-              </div>
-              <p class="enterprise-agents">+10 AGENTES IA TRABAJANDO 24/7</p>
-              <div class="enterprise-modules">
-                <span>🧠 Genera contenido</span>
-                <span>📅 Agenda citas</span>
-                <span>💬 Cierra ventas</span>
-                <span>📊 Estudia mercado</span>
-                <span>⭐ Gestiona reputación</span>
-              </div>
-              <p><strong>Ideal:</strong> clinicas · agencias · consultorios</p>
-              <a class="pricing-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20SOLARIS%20Enterprise.%20Busco%20transformar%20mi%20operaci%C3%B3n%20completa%20con%20agentes%20de%20IA%2024%2F7." target="_blank" rel="noopener noreferrer">Transformar mi negocio →</a>
-            </article>
-          </div>
-
-          <div class="guarantee-box reveal">
-            Solo 10 cupos al mes · Prueba un mes · Si no ves resultados, todo el trabajo es tuyo.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
-
-    <section class="section section--contrast-a" aria-labelledby="stack-title">
-      <div class="container">
-        <h2 id="stack-title" class="reveal section-title">Un ecosistema conectado que trabaja al mismo tiempo</h2>
-        <p class="reveal">No somos una herramienta. Somos el ecosistema completo trabajando en sincronía para tu negocio.</p>
-
-        <div class="ecosystem-map reveal" aria-label="Mapa visual del stack de herramientas SOLARIS">
-          <svg class="ecosystem-svg" viewBox="0 0 1000 640" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="g-claude" x1="500" y1="320" x2="500" y2="105" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
-              <linearGradient id="g-claudecode" x1="500" y1="320" x2="635" y2="140" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-              <linearGradient id="g-gemini" x1="500" y1="320" x2="365" y2="140" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
-              <linearGradient id="g-cursor" x1="500" y1="320" x2="740" y2="235" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-              <linearGradient id="g-antigravity" x1="500" y1="320" x2="215" y2="360" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
-              <linearGradient id="g-manus" x1="500" y1="320" x2="260" y2="235" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B00"/></linearGradient>
-              <linearGradient id="g-n8n" x1="500" y1="320" x2="500" y2="590" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
-              <linearGradient id="g-meta" x1="500" y1="320" x2="735" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
-              <linearGradient id="g-manychat" x1="500" y1="320" x2="785" y2="360" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
-              <linearGradient id="g-canva" x1="500" y1="320" x2="265" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF3CAC"/></linearGradient>
-              <linearGradient id="g-pencil" x1="500" y1="320" x2="620" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FF9A1F"/></linearGradient>
-              <linearGradient id="g-obsidian" x1="500" y1="320" x2="380" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB800"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-
-              <path id="p-claude" d="M500 320 L500 105"></path>
-              <path id="p-claudecode" d="M500 320 L635 140"></path>
-              <path id="p-gemini" d="M500 320 L365 140"></path>
-              <path id="p-cursor" d="M500 320 L740 235"></path>
-              <path id="p-antigravity" d="M500 320 L215 360"></path>
-              <path id="p-manus" d="M500 320 L260 235"></path>
-              <path id="p-n8n" d="M500 320 L500 590"></path>
-              <path id="p-meta" d="M500 320 L735 480"></path>
-              <path id="p-manychat" d="M500 320 L785 360"></path>
-              <path id="p-canva" d="M500 320 L265 480"></path>
-              <path id="p-pencil" d="M500 320 L620 560"></path>
-              <path id="p-obsidian" d="M500 320 L380 560"></path>
-            </defs>
-
-            <path id="line-claude" class="flow-line delay-1" pathLength="100" d="M500 320 L500 105" stroke="url(#g-claude)"></path>
-            <path id="line-claudecode" class="flow-line delay-2" pathLength="100" d="M500 320 L635 140" stroke="url(#g-claudecode)"></path>
-            <path id="line-gemini" class="flow-line delay-3" pathLength="100" d="M500 320 L365 140" stroke="url(#g-gemini)"></path>
-            <path id="line-cursor" class="flow-line delay-4" pathLength="100" d="M500 320 L740 235" stroke="url(#g-cursor)"></path>
-            <path id="line-antigravity" class="flow-line delay-5" pathLength="100" d="M500 320 L215 360" stroke="url(#g-antigravity)"></path>
-            <path id="line-manus" class="flow-line delay-6" pathLength="100" d="M500 320 L260 235" stroke="url(#g-manus)"></path>
-            <path id="line-n8n" class="flow-line delay-7" pathLength="100" d="M500 320 L500 590" stroke="url(#g-n8n)"></path>
-            <path id="line-meta" class="flow-line delay-8" pathLength="100" d="M500 320 L735 480" stroke="url(#g-meta)"></path>
-            <path id="line-manychat" class="flow-line delay-9" pathLength="100" d="M500 320 L785 360" stroke="url(#g-manychat)"></path>
-            <path id="line-canva" class="flow-line delay-10" pathLength="100" d="M500 320 L265 480" stroke="url(#g-canva)"></path>
-            <path id="line-pencil" class="flow-line delay-11" pathLength="100" d="M500 320 L620 560" stroke="url(#g-pencil)"></path>
-            <path id="line-obsidian" class="flow-line delay-12" pathLength="100" d="M500 320 L380 560" stroke="url(#g-obsidian)"></path>
-
-            <circle class="flow-dot" r="2.4"><animateMotion dur="2.7s" repeatCount="indefinite"><mpath href="#p-claude"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.3s" repeatCount="indefinite"><mpath href="#p-claudecode"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.1s" repeatCount="indefinite"><mpath href="#p-gemini"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.8s" repeatCount="indefinite"><mpath href="#p-cursor"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#p-antigravity"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#p-manus"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="4.0s" repeatCount="indefinite"><mpath href="#p-n8n"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.7s" repeatCount="indefinite"><mpath href="#p-meta"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.5s" repeatCount="indefinite"><mpath href="#p-manychat"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#p-canva"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="3.9s" repeatCount="indefinite"><mpath href="#p-pencil"></mpath></animateMotion></circle>
-            <circle class="flow-dot" r="2.4"><animateMotion dur="4.1s" repeatCount="indefinite"><mpath href="#p-obsidian"></mpath></animateMotion></circle>
-          </svg>
-
-          <div class="ecosystem-center">
-            <span class="brand-main">SOLARIS</span>
-            <span class="brand-sub">AI AGENCY</span>
-          </div>
-
-          <button class="tech-node cat-ai" type="button" style="--x:500;--y:105;" data-link="line-claude" data-tip="Modelo principal para estrategia, copy y razonamiento comercial.">Claude</button>
-          <button class="tech-node cat-ai" type="button" style="--x:365;--y:140;" data-link="line-gemini" data-tip="Motor multimodal para analisis, ideas y soporte creativo.">Gemini</button>
-          <button class="tech-node cat-ai" type="button" style="--x:260;--y:235;" data-link="line-manus" data-tip="Sistema IA para investigacion profunda y ejecucion compleja.">Manus</button>
-
-          <button class="tech-node cat-auto" type="button" style="--x:500;--y:590;" data-link="line-n8n" data-tip="Automatizaciones backend para integrar procesos y datos.">n8n</button>
-          <button class="tech-node cat-auto" type="button" style="--x:785;--y:360;" data-link="line-manychat" data-tip="Bots conversacionales para captar y calificar leads.">ManyChat</button>
-          <button class="tech-node cat-auto" type="button" style="--x:620;--y:560;" data-link="line-pencil" data-tip="Diseño y edición de experiencias visuales interactivas.">Pencil</button>
-
-          <button class="tech-node cat-mkt" type="button" style="--x:735;--y:480;" data-link="line-meta" data-tip="Escalado de pauta y remarketing orientado a ROAS.">Meta Ads</button>
-          <button class="tech-node cat-mkt" type="button" style="--x:265;--y:480;" data-link="line-canva" data-tip="Producción creativa para anuncios y piezas de contenido.">Canva</button>
-          <button class="tech-node cat-mkt" type="button" style="--x:215;--y:360;" data-link="line-antigravity" data-tip="Framework de crecimiento para experimentos y optimización.">Antigravity</button>
-
-          <button class="tech-node cat-dev" type="button" style="--x:635;--y:140;" data-link="line-claudecode" data-tip="Asistencia de ingeniería para construir más rápido y mejor.">Claude Code</button>
-          <button class="tech-node cat-dev" type="button" style="--x:740;--y:235;" data-link="line-cursor" data-tip="Entorno de desarrollo IA para ejecución y refactor ágil.">Cursor</button>
-          <button class="tech-node cat-dev" type="button" style="--x:380;--y:560;" data-link="line-obsidian" data-tip="Base de conocimiento para estrategia, prompts y playbooks.">Obsidian</button>
-        </div>
-
-        <div class="ecosystem-legend reveal" aria-label="Categorías del ecosistema">
-          <span>🟠 IA &amp; Modelos</span>
-          <span>🟡 Automatización</span>
-          <span>🔴 Marketing</span>
-          <span>⚪ Diseño &amp; Dev</span>
-        </div>
-
-        <div class="ecosystem-mobile reveal" style="margin-top:1rem;">
-          <span class="tech-pill b-ai">Claude</span>
-          <span class="tech-pill b-ai">Gemini</span>
-          <span class="tech-pill b-ai">Manus</span>
-          <span class="tech-pill b-design">n8n</span>
-          <span class="tech-pill b-design">ManyChat</span>
-          <span class="tech-pill b-design">Pencil</span>
-          <span class="tech-pill b-marketing">Meta Ads</span>
-          <span class="tech-pill b-marketing">Canva</span>
-          <span class="tech-pill b-marketing">Antigravity</span>
-          <span class="tech-pill b-dev">Claude Code</span>
-          <span class="tech-pill b-dev">Cursor</span>
-          <span class="tech-pill b-dev">Obsidian</span>
-        </div>
-        <p class="ecosystem-mobile-note reveal">Un ecosistema completo. Un solo equipo.</p>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
+    <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--base-dark" id="faq" aria-labelledby="faq-title">
       <div class="container">
-        <h2 id="faq-title" class="reveal section-title">¿Tienes Preguntas? Tenemos Respuestas Claras.</h2>
+        <h2 id="faq-title" class="reveal">¿Tienes Preguntas? Tenemos Respuestas Claras.</h2>
         <div class="faq-list reveal">
           <article class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              ¿En cuánto tiempo veré resultados reales?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
+            <button class="faq-trigger" aria-expanded="false">¿En cuánto tiempo veré resultados reales?<span class="faq-icon" aria-hidden="true"></span></button>
             <div class="faq-body"><p>En marketing digital, los primeros datos llegan en 72 horas y mejoras claras en 2-3 semanas. Para proyectos más complejos, te daremos tiempos honestos desde el día 1. Nuestro enfoque es la velocidad y la rentabilidad.</p></div>
           </article>
           <article class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              ¿Necesito saber de tecnología para trabajar con Solaris?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-body"><p>Absolutamente no. Nosotros nos encargamos de toda la parte técnica. Tú solo validas decisiones clave y revisas los resultados con reportes claros y sencillos. Tu enfoque es tu negocio, el nuestro es la IA.</p></div>
+            <button class="faq-trigger" aria-expanded="false">¿Necesito saber de tecnología para trabajar con Solaris?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-body"><p>Absolutamente no. Nosotros nos encargamos de toda la parte técnica. Tú solo validas decisiones clave y revisas resultados con reportes claros y sencillos.</p></div>
           </article>
           <article class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              ¿Solaris trabaja con negocios de mi tamaño?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-body"><p>Sí. Tenemos soluciones para negocios que están empezando y para empresas que ya están escalando. Ajustamos nuestra estrategia y tecnología a tu realidad y objetivos específicos. Tu crecimiento es nuestra meta.</p></div>
+            <button class="faq-trigger" aria-expanded="false">¿Solaris trabaja con negocios de mi tamaño?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-body"><p>Sí. Tenemos soluciones para negocios que están empezando y para empresas que ya están escalando. Ajustamos estrategia y tecnología a tu realidad.</p></div>
           </article>
           <article class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              ¿Qué hace a Solaris diferente de otras agencias?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-body"><p>No somos una agencia más. Integramos IA, marketing, automatización y diseño en un solo ecosistema. Construimos una máquina de crecimiento medible y personalizada para tu negocio, no vendemos servicios sueltos.</p></div>
+            <button class="faq-trigger" aria-expanded="false">¿Qué hace a Solaris diferente de otras agencias?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-body"><p>No somos una agencia más. Integramos IA, marketing, automatización y diseño en un solo ecosistema con enfoque en crecimiento medible.</p></div>
           </article>
           <article class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              ¿Cómo funciona el diagnóstico estratégico gratuito?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-body"><p>Es simple: agendas por WhatsApp, nos cuentas tu objetivo principal y en 30 minutos salimos con oportunidades claras, prioridades y un plan de acción concreto. Sin compromiso, solo valor.</p></div>
+            <button class="faq-trigger" aria-expanded="false">¿Cómo funciona el diagnóstico estratégico gratuito?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-body"><p>Agendas por WhatsApp, nos cuentas tu objetivo principal y en 30 minutos sales con oportunidades claras, prioridades y un plan de acción concreto.</p></div>
           </article>
         </div>
         <div class="faq-cta-inline reveal">
-          <span>¿Tienes otra pregunta?</span>
-          <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20tengo%20otra%20pregunta%20antes%20de%20empezar.%20%C2%BFMe%20ayudan%20por%20WhatsApp%3F" target="_blank" rel="noopener noreferrer">¿Tienes Otra Pregunta? Hablemos por WhatsApp →</a>
+          <span>¿Tienes Otra Pregunta?</span>
+          <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20tengo%20otra%20pregunta%20antes%20de%20empezar." target="_blank" rel="noopener noreferrer">Hablemos por WhatsApp →</a>
         </div>
       </div>
     </section>
 
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
-
-    <section class="section section--contrast-c" aria-labelledby="testimonials-title">
-      <div class="container">
-        <h2 id="testimonials-title" class="reveal section-title">Clientes que ya están vendiendo mejor con SOLARIS</h2>
-        <p class="mobile-auto-hint" aria-hidden="true">Resultados reales en movimiento continuo</p>
-        <div class="testimonials-grid" style="margin-top:1rem;">
-          <article class="card glass gradient-border reveal delay-1">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“El bot atiende mientras duermo. Es increíble. Pasamos de perder chats a cerrar reservas todos los días.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">CR</span>
-              <div>
-                <strong>Carlos R.</strong>
-                <div class="muted">Restaurante · Pereira</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal delay-2">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Antes 2-3 pacientes por semana. Hoy 10-12 con agenda más ordenada. Fue rápido y medible desde el inicio.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">AM</span>
-              <div>
-                <strong>Andrea M.</strong>
-                <div class="muted">Clínica Odontológica · Montería</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal delay-3">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Pensé que la IA era complicada. SOLARIS nos mostró un sistema simple y logramos 3x en ventas en menos de dos meses.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">LS</span>
-              <div>
-                <strong>Laura S.</strong>
-                <div class="muted">Tienda de Moda · Colombia</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Lo que más valoro es la claridad: sabemos qué funciona y qué ajustar cada semana.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">FG</span>
-              <div>
-                <strong>Felipe G.</strong>
-                <div class="muted">Inmobiliaria · Medellín</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Pasamos de campañas sueltas a un sistema completo que sí genera ventas cada mes.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">NP</span>
-              <div>
-                <strong>Natalia P.</strong>
-                <div class="muted">Educación · Bogotá</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“Automatizar WhatsApp nos liberó tiempo y mejoró la experiencia del cliente.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">PV</span>
-              <div>
-                <strong>Paola V.</strong>
-                <div class="muted">E-commerce Beauty · Cali</div>
-              </div>
-            </div>
-          </article>
-          <article class="card glass gradient-border reveal">
-            <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-            <p>“En 3 semanas ya teníamos citas constantes, y ahora el proceso es mucho más ordenado.”</p>
-            <div class="author">
-              <span class="avatar" aria-hidden="true">JM</span>
-              <div>
-                <strong>Julián M.</strong>
-                <div class="muted">Clínica estética · Barranquilla</div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
+    <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--surface" id="contacto" aria-labelledby="cta-final-title">
       <div class="container">
-        <div class="cta-final reveal-scale">
-          <h2 id="cta-final-title" class="section-title">Listo para Acelerar tu Negocio? Hablemos.</h2>
+        <div class="cta-final reveal">
+          <h2 id="cta-final-title">Listo para Acelerar tu Negocio? Hablemos.</h2>
           <p>Agenda tu diagnóstico estratégico gratuito de 30 minutos. Sin compromiso. Solo oportunidades reales para tu empresa.</p>
           <p style="margin-top:1.2rem;">
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos.%20Estoy%20interesado%20en%20%5Bservicio%5D." target="_blank" rel="noopener noreferrer" aria-label="Hablar con SOLARIS en WhatsApp">
-              Agenda tu Diagnóstico GRATUITO por WhatsApp →
-            </a>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos.%20Mi%20objetivo%20principal%20es%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico GRATUITO por WhatsApp →</a>
           </p>
           <p><strong>o escríbenos a</strong> <a href="mailto:hola@solaris.co">hola@solaris.co</a></p>
-          <p style="font-weight:600;">@solaris.ia · hola@solaris.co · solaris.co</p>
+          <p style="font-weight:700;">@solaris.ia · hola@solaris.co · solaris.co</p>
           <p class="muted" style="margin-bottom:0;">COLOMBIA · LATINOAMÉRICA · EL MUNDO</p>
         </div>
       </div>
@@ -3959,9 +962,7 @@
   </main>
 
   <div class="mobile-sticky-cta">
-    <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20objetivo%20principal%20es%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Diagnóstico gratuito por WhatsApp">
-      Agenda tu Diagnóstico GRATUITO por WhatsApp →
-    </a>
+    <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico GRATUITO por WhatsApp →</a>
   </div>
 
   <footer>
@@ -3971,121 +972,48 @@
           <span class="brand-main">SOLARIS</span>
           <span class="brand-sub">AI AGENCY</span>
         </a>
-        <p style="margin-top:0.55rem;">Construido en Colombia. Listo para el mundo.</p>
+        <p style="margin-top:0.6rem;">Construido en Colombia. Listo para el mundo.</p>
         <p class="muted" style="margin:0;">@solaris.ia · hola@solaris.co · solaris.co</p>
         <p class="muted" style="margin:0;">COLOMBIA · LATINOAMÉRICA · EL MUNDO</p>
       </div>
       <nav class="footer-links" aria-label="Links de footer">
         <a href="#why-solaris">Problemas</a>
         <a href="#servicios">Servicios</a>
+        <a href="#casos">Casos</a>
         <a href="#proceso">Proceso</a>
-        <a href="#precios">Inversión</a>
         <a href="#faq">FAQ</a>
         <a href="#contacto">Contacto</a>
         <a href="https://instagram.com/solaris.ia" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://wa.me/573116165784" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a href="terminos.html">Términos y Condiciones</a>
-        <a href="privacidad.html">Política de Privacidad</a>
-        <a href="datos.html">Tratamiento de Datos</a>
       </nav>
-      <div class="footer-contact">
+      <div>
         <strong>Contacto</strong><br>
-        hola@solaris.co<br>
-        +57 311 6165784<br>
-        Colombia · Latam
+        <span class="muted">hola@solaris.co</span><br>
+        <span class="muted">+57 311 6165784</span>
       </div>
     </div>
   </footer>
 
   <script>
     (function () {
-      const loader = document.getElementById('solar-loader');
-      if (!loader) return;
-
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const start = performance.now();
-      const minDuration = reduceMotion ? 260 : 2600;
-      let done = false;
-
-      function hideLoader() {
-        if (done) return;
-        done = true;
-        loader.classList.add('is-exit');
-        document.body.classList.remove('is-loading');
-        setTimeout(function () {
-          loader.style.display = 'none';
-        }, reduceMotion ? 260 : 980);
-      }
-
-      window.addEventListener('load', function () {
-        const elapsed = performance.now() - start;
-        const wait = Math.max(0, minDuration - elapsed);
-        setTimeout(hideLoader, wait);
-      }, { once: true });
-
-      setTimeout(hideLoader, reduceMotion ? 900 : 5200);
-    })();
-  </script>
-  <script>
-    (function () {
       "use strict";
-
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const nav = document.getElementById("siteNav");
       const menuToggle = document.getElementById("menuToggle");
       const mobileMenu = document.getElementById("mobileMenu");
+      const reveals = document.querySelectorAll(".reveal");
+      const timelineFill = document.getElementById("timelineFill");
+      const processSection = document.getElementById("proceso");
+      const casesTrack = document.getElementById("casesTrack");
+      const casesPrev = document.getElementById("casesPrev");
+      const casesNext = document.getElementById("casesNext");
 
       function onScrollNav() {
+        if (!nav) return;
         if (window.scrollY > 8) nav.classList.add("scrolled");
         else nav.classList.remove("scrolled");
       }
       onScrollNav();
       window.addEventListener("scroll", onScrollNav, { passive: true });
-
-      const parallaxElements = document.querySelectorAll('.section-title');
-      window.addEventListener('scroll', function () {
-        const scrollY = window.scrollY;
-        parallaxElements.forEach(function (el) {
-          const rect = el.getBoundingClientRect();
-          const centerY = rect.top + rect.height / 2;
-          const viewportCenter = window.innerHeight / 2;
-          const distance = (centerY - viewportCenter) * 0.05;
-          el.style.transform = 'translateY(' + distance + 'px)';
-        });
-      }, { passive: true });
-
-      const cursor = document.getElementById('custom-cursor');
-      if (cursor) {
-        const dot = cursor.querySelector('.cursor-dot');
-        const halo = cursor.querySelector('.cursor-halo');
-        const canUseCustomCursor = !prefersReducedMotion && window.innerWidth >= 768;
-
-        if (!canUseCustomCursor) {
-          cursor.style.display = 'none';
-          document.body.style.cursor = 'auto';
-        } else {
-          document.body.style.cursor = 'none';
-          document.addEventListener('mousemove', function (e) {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-          });
-
-          document.querySelectorAll('a, button, [role="button"]').forEach(function (el) {
-            el.addEventListener('mouseenter', function () {
-              halo.style.width = '60px';
-              halo.style.height = '60px';
-              halo.style.borderColor = 'rgba(255, 184, 0, 0.8)';
-              dot.style.transform = 'scale(1.5)';
-            });
-            el.addEventListener('mouseleave', function () {
-              halo.style.width = '40px';
-              halo.style.height = '40px';
-              halo.style.borderColor = 'rgba(255, 107, 0, 0.5)';
-              dot.style.transform = 'scale(1)';
-            });
-          });
-        }
-      }
 
       if (menuToggle && mobileMenu) {
         menuToggle.addEventListener("click", function () {
@@ -4093,561 +1021,71 @@
           menuToggle.setAttribute("aria-expanded", String(!expanded));
           mobileMenu.style.maxHeight = expanded ? "0px" : mobileMenu.scrollHeight + "px";
         });
-
-        mobileMenu.querySelectorAll("a").forEach(function (link) {
-          link.addEventListener("click", function () {
+        mobileMenu.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
             menuToggle.setAttribute("aria-expanded", "false");
             mobileMenu.style.maxHeight = "0px";
           });
         });
       }
 
-      const revealTargets = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale");
-      if (!prefersReducedMotion) {
-        const revealObserver = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (!entry.isIntersecting) return;
-              entry.target.classList.add("visible");
-              revealObserver.unobserve(entry.target);
-            });
-          },
-          { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
-        );
-        revealTargets.forEach(function (el) {
-          if (!el.classList.contains("visible")) revealObserver.observe(el);
-        });
-      } else {
-        revealTargets.forEach(function (el) { el.classList.add("visible"); });
-      }
-
-      function countUp(element, end, duration) {
-        if (duration === undefined) duration = 2000;
-        const start = 0;
-        const startTime = performance.now();
-        const prefix = element.dataset.prefix || "";
-        const suffix = element.dataset.suffix || "";
-        const decimals = parseInt(element.dataset.decimals || "0", 10);
-
-        function update(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const value = start + eased * (end - start);
-          const current = decimals > 0 ? value.toFixed(decimals) : Math.floor(value);
-          element.textContent = prefix + current + suffix;
-
-          if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-      }
-
-      const countEls = document.querySelectorAll("[data-count]");
-      const countObserver = new IntersectionObserver(
-        function (entries) {
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const io = new IntersectionObserver(function (entries, obs) {
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
-            const end = parseFloat(entry.target.dataset.count || "0");
-            const duration = parseInt(entry.target.dataset.duration || "2000", 10);
-            countUp(entry.target, end, duration);
-            countObserver.unobserve(entry.target);
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
           });
-        },
-        { threshold: 0.45 }
-      );
-      countEls.forEach(function (el) { countObserver.observe(el); });
-
-      const tickerRotator = document.getElementById("tickerRotator");
-      if (tickerRotator) {
-        const tickerItems = Array.from(tickerRotator.querySelectorAll(".ticker-item"));
-        if (tickerItems.length > 1) {
-          let tickerIndex = 0;
-          const setTickerItem = function (nextIndex) {
-            tickerItems.forEach(function (item, idx) {
-              item.classList.toggle("active", idx === nextIndex);
-            });
-          };
-
-          if (!prefersReducedMotion) {
-            setInterval(function () {
-              tickerIndex = (tickerIndex + 1) % tickerItems.length;
-              setTickerItem(tickerIndex);
-            }, 2400);
-          } else {
-            setTickerItem(0);
-          }
-        }
+        }, { threshold: 0.14 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add("visible"); });
       }
 
-      const timelineFill = document.getElementById("timelineFill");
-      const timelineOrb = document.getElementById("timelineOrb");
-      const processTimeline = document.querySelector(".process-timeline");
-      const processSteps = Array.from(document.querySelectorAll(".process-step"));
-      if (timelineFill && processTimeline && processSteps.length > 0) {
-        const mobileProcessQuery = window.matchMedia("(max-width: 768px)");
-        processSteps.forEach(function (step) { step.classList.remove("stage-visible", "active"); });
+      function updateTimeline() {
+        if (!timelineFill || !processSection) return;
+        const rect = processSection.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const p = Math.max(0, Math.min(1, (vh - rect.top) / (rect.height + vh * 0.2)));
+        timelineFill.style.width = (p * 100).toFixed(2) + "%";
+      }
+      updateTimeline();
+      window.addEventListener("scroll", updateTimeline, { passive: true });
+      window.addEventListener("resize", updateTimeline);
 
-        const applyDesktopProcessState = function () {
-          timelineFill.style.width = "100%";
-          timelineFill.style.height = "100%";
-          if (timelineOrb) {
-            timelineOrb.style.left = "100%";
-            timelineOrb.style.top = "50%";
-          }
-          processSteps.forEach(function (step) { step.classList.remove("stage-visible", "active"); });
+      if (casesTrack && casesPrev && casesNext) {
+        const scrollStep = function () {
+          return Math.max(280, Math.round(casesTrack.clientWidth * 0.88));
         };
-
-        const updateProcessEnergy = function () {
-          if (!mobileProcessQuery.matches) {
-            applyDesktopProcessState();
-            return;
-          }
-
-          const rect = processTimeline.getBoundingClientRect();
-          const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-          const range = rect.height + viewportHeight * 0.24;
-          const progress = Math.min(1, Math.max(0, (viewportHeight - rect.top) / Math.max(1, range)));
-          const percent = (progress * 100).toFixed(2) + "%";
-
-          timelineFill.style.height = percent;
-          if (timelineOrb) timelineOrb.style.top = percent;
-
-          processSteps.forEach(function (step, idx) {
-            const revealThreshold = 0.12 + idx * 0.18;
-            const visible = progress >= revealThreshold;
-            step.classList.toggle("stage-visible", visible);
-            step.classList.toggle("active", visible);
-          });
-        };
-
-        if (prefersReducedMotion) {
-          if (mobileProcessQuery.matches) {
-            timelineFill.style.height = "100%";
-            processSteps.forEach(function (step) { step.classList.add("active", "stage-visible"); });
-          } else {
-            applyDesktopProcessState();
-          }
-        } else {
-          let timelineTicking = false;
-          const requestTimelineUpdate = function () {
-            if (timelineTicking) return;
-            timelineTicking = true;
-            requestAnimationFrame(function () {
-              updateProcessEnergy();
-              timelineTicking = false;
-            });
-          };
-
-          updateProcessEnergy();
-          window.addEventListener("scroll", requestTimelineUpdate, { passive: true });
-          window.addEventListener("resize", requestTimelineUpdate);
-        }
-      }
-
-      const serviceTabs = document.querySelectorAll(".tab-btn");
-      const servicePanels = document.querySelectorAll("[data-service-panel]");
-      serviceTabs.forEach(function (tab) {
-        tab.addEventListener("click", function () {
-          const selected = tab.dataset.service;
-          serviceTabs.forEach(function (btn) {
-            btn.classList.toggle("active", btn === tab);
-            btn.setAttribute("aria-selected", String(btn === tab));
-          });
-          servicePanels.forEach(function (panel) {
-            panel.classList.toggle("active", panel.dataset.servicePanel === selected);
-          });
+        casesPrev.addEventListener("click", function () {
+          casesTrack.scrollBy({ left: -scrollStep(), behavior: "smooth" });
         });
-      });
-
-      const industryBtns = document.querySelectorAll(".industry-btn");
-      const industryPanels = document.querySelectorAll("[data-industry-panel]");
-      industryBtns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          const selected = btn.dataset.industry;
-          industryBtns.forEach(function (item) {
-            item.classList.toggle("active", item === btn);
-          });
-          industryPanels.forEach(function (panel) {
-            panel.classList.toggle("active", panel.dataset.industryPanel === selected);
-          });
-        });
-      });
-
-      const pricingFilterBtns = document.querySelectorAll(".pricing-filter-btn");
-      const pricingCards = document.querySelectorAll(".pricing-card");
-      const pricingCardsGrid = document.querySelector(".pricing-cards-grid");
-
-      function applyPricingFilter(filter) {
-        pricingFilterBtns.forEach(function (btn) {
-          const active = btn.dataset.pricingFilter === filter;
-          btn.classList.toggle("active", active);
-          btn.setAttribute("aria-pressed", String(active));
-        });
-
-        pricingCards.forEach(function (card) {
-          const shouldShow = card.dataset.tier === filter;
-
-          if (shouldShow) {
-            card.style.display = "flex";
-            if (prefersReducedMotion) {
-              card.classList.add("is-visible");
-            } else {
-              requestAnimationFrame(function () {
-                card.classList.add("is-visible");
-              });
-            }
-            return;
-          }
-
-          card.classList.remove("is-visible");
-          if (prefersReducedMotion) {
-            card.style.display = "none";
-          } else {
-            setTimeout(function () {
-              if (!card.classList.contains("is-visible")) {
-                card.style.display = "none";
-              }
-            }, 300);
-          }
-        });
-
-        if (pricingCardsGrid && window.matchMedia("(max-width: 768px)").matches) {
-          pricingCardsGrid.scrollTo({
-            left: 0,
-            behavior: prefersReducedMotion ? "auto" : "smooth"
-          });
-        }
-      }
-
-      pricingFilterBtns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          applyPricingFilter(btn.dataset.pricingFilter || "presencia");
-        });
-      });
-
-      if (pricingFilterBtns.length > 0 && pricingCards.length > 0) {
-        applyPricingFilter("presencia");
-      }
-
-      const testimonialsTrack = document.querySelector(".testimonials-grid");
-      if (
-        testimonialsTrack &&
-        window.matchMedia("(max-width: 768px)").matches &&
-        !prefersReducedMotion &&
-        !testimonialsTrack.dataset.continuousReady
-      ) {
-        testimonialsTrack.dataset.continuousReady = "true";
-        const originals = Array.from(testimonialsTrack.querySelectorAll("article"));
-        originals.forEach(function (card) {
-          testimonialsTrack.appendChild(card.cloneNode(true));
-        });
-
-        let marqueeRaf = 0;
-        let offset = 0;
-        const speed = 1.2;
-
-        const loopTestimonials = function () {
-          const resetPoint = testimonialsTrack.scrollWidth / 2;
-          offset += speed;
-          if (offset >= resetPoint) offset = 0;
-          testimonialsTrack.scrollLeft = offset;
-          marqueeRaf = requestAnimationFrame(loopTestimonials);
-        };
-
-        marqueeRaf = requestAnimationFrame(loopTestimonials);
-
-        document.addEventListener("visibilitychange", function () {
-          if (document.visibilityState === "hidden" && marqueeRaf) {
-            cancelAnimationFrame(marqueeRaf);
-            marqueeRaf = 0;
-            return;
-          }
-          if (document.visibilityState === "visible" && !marqueeRaf) {
-            marqueeRaf = requestAnimationFrame(loopTestimonials);
-          }
-        });
-      }
-
-      const ecosystemMap = document.querySelector(".ecosystem-map");
-      if (ecosystemMap) {
-        const flowLines = ecosystemMap.querySelectorAll(".flow-line");
-        const techNodes = ecosystemMap.querySelectorAll(".tech-node[data-link]");
-
-        if (prefersReducedMotion) {
-          ecosystemMap.classList.add("is-drawn");
-        } else {
-          const ecosystemObserver = new IntersectionObserver(
-            function (entries, obs) {
-              entries.forEach(function (entry) {
-                if (!entry.isIntersecting) return;
-                ecosystemMap.classList.add("is-drawn");
-                obs.disconnect();
-              });
-            },
-            { threshold: 0.32 }
-          );
-          ecosystemObserver.observe(ecosystemMap);
-        }
-
-        function clearActiveLines() {
-          flowLines.forEach(function (line) { line.classList.remove("active"); });
-        }
-
-        techNodes.forEach(function (node) {
-          const lineId = node.dataset.link;
-          const targetLine = lineId ? document.getElementById(lineId) : null;
-          if (!targetLine) return;
-
-          function activate() {
-            clearActiveLines();
-            targetLine.classList.add("active");
-          }
-
-          function deactivate() {
-            targetLine.classList.remove("active");
-          }
-
-          node.addEventListener("mouseenter", activate);
-          node.addEventListener("mouseleave", deactivate);
-          node.addEventListener("focus", activate);
-          node.addEventListener("blur", deactivate);
+        casesNext.addEventListener("click", function () {
+          casesTrack.scrollBy({ left: scrollStep(), behavior: "smooth" });
         });
       }
 
       document.querySelectorAll(".faq-trigger").forEach(function (trigger) {
         trigger.addEventListener("click", function () {
           const item = trigger.closest(".faq-item");
-          const alreadyOpen = item.classList.contains("open");
-          document.querySelectorAll(".faq-item.open").forEach(function (openItem) {
-            openItem.classList.remove("open");
-            const openBtn = openItem.querySelector(".faq-trigger");
-            if (openBtn) openBtn.setAttribute("aria-expanded", "false");
-            const openBody = openItem.querySelector(".faq-body");
-            if (openBody) openBody.style.maxHeight = "0px";
+          const body = item.querySelector(".faq-body");
+          const open = item.classList.contains("open");
+
+          document.querySelectorAll(".faq-item.open").forEach(function (it) {
+            it.classList.remove("open");
+            const b = it.querySelector(".faq-body");
+            const t = it.querySelector(".faq-trigger");
+            if (b) b.style.maxHeight = "0px";
+            if (t) t.setAttribute("aria-expanded", "false");
           });
 
-          if (!alreadyOpen) {
+          if (!open) {
             item.classList.add("open");
             trigger.setAttribute("aria-expanded", "true");
-            const body = item.querySelector(".faq-body");
-            if (body) body.style.maxHeight = body.scrollHeight + "px";
+            body.style.maxHeight = body.scrollHeight + "px";
           }
         });
       });
-
-      document.querySelectorAll(".faq-item").forEach(function (item) {
-        const body = item.querySelector(".faq-body");
-        if (body) {
-          body.addEventListener("transitionend", function () {
-            if (!item.classList.contains("open")) body.style.maxHeight = "0px";
-          });
-        }
-      });
-
-      const techCategories = document.querySelectorAll(".tech-category");
-      if (techCategories.length > 0) {
-        const techObserver = new IntersectionObserver(
-          function (entries, obs) {
-            entries.forEach(function (entry) {
-              if (!entry.isIntersecting) return;
-              const group = entry.target.querySelectorAll(".tech-pill");
-              group.forEach(function (pill, i) {
-                setTimeout(function () { pill.classList.add("visible"); }, i * 70);
-              });
-              obs.unobserve(entry.target);
-            });
-          },
-          { threshold: 0.2 }
-        );
-        techCategories.forEach(function (cat) { techObserver.observe(cat); });
-      }
-
-    })();
-  </script>
-  <script>
-    const heroSection = document.querySelector('.hero-bg-nebula')
-      || document.querySelector('[class*="nebula"]')
-      || document.querySelector('.hero iframe').parentElement;
-
-    const iframe = document.querySelector('.hero-bg-nebula iframe')
-      || document.querySelector('[class*="nebula"] iframe');
-
-    if (heroSection && iframe) {
-      heroSection.addEventListener('mousemove', (e) => {
-        const iframeRect = iframe.getBoundingClientRect();
-
-        const x = (e.clientX - iframeRect.left) / iframeRect.width;
-        const y = (e.clientY - iframeRect.top) / iframeRect.height;
-
-        try {
-          iframe.contentWindow.postMessage({
-            type: 'mousemove',
-            x: x,
-            y: y
-          }, '*');
-        } catch(e) {}
-      });
-    }
-  </script>
-  <script>
-    (function () {
-      if (!('PerformanceObserver' in window)) return;
-      const vitals = { lcp: 0, cls: 0, fid: 0 };
-      let clsValue = 0;
-
-      try {
-        const poLcp = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          const lastEntry = entries[entries.length - 1];
-          if (lastEntry) vitals.lcp = Math.round(lastEntry.startTime);
-        });
-        poLcp.observe({ type: 'largest-contentful-paint', buffered: true });
-
-        const poCls = new PerformanceObserver((list) => {
-          list.getEntries().forEach((entry) => {
-            if (!entry.hadRecentInput) clsValue += entry.value;
-          });
-          vitals.cls = Number(clsValue.toFixed(3));
-        });
-        poCls.observe({ type: 'layout-shift', buffered: true });
-
-        const poFid = new PerformanceObserver((list) => {
-          const firstInput = list.getEntries()[0];
-          if (firstInput) vitals.fid = Math.round(firstInput.processingStart - firstInput.startTime);
-        });
-        poFid.observe({ type: 'first-input', buffered: true });
-
-        document.addEventListener('visibilitychange', () => {
-          if (document.visibilityState !== 'hidden') return;
-          console.groupCollapsed('[SOLARIS] Web Vitals');
-          console.log('LCP (ms):', vitals.lcp);
-          console.log('CLS:', vitals.cls);
-          console.log('FID (ms):', vitals.fid);
-          console.groupEnd();
-        });
-      } catch (err) {
-        console.warn('[SOLARIS] Web Vitals observer no disponible.', err);
-      }
-    })();
-  </script>
-  <script>
-    (function() {
-      const canvas = document.getElementById('particles-bg');
-      if (!canvas) return;
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        canvas.style.display = 'none';
-        return;
-      }
-
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas, { passive: true });
-
-      const COLORS = ['#FF6B00', '#FFB800', '#FF3CAC', '#FF8C30', '#FFD700'];
-
-      const particles = Array.from({ length: 120 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 3.2 + 0.8,
-        speedX: (Math.random() - 0.5) * 0.45,
-        speedY: (Math.random() - 0.5) * 0.45,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        opacity: Math.random() * 0.7 + 0.15,
-        pulse: Math.random() * Math.PI * 2,
-        pulseSpeed: Math.random() * 0.024 + 0.007
-      }));
-
-      const nebulaClouds = Array.from({ length: 6 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 220 + 140,
-        driftX: (Math.random() - 0.5) * 0.12,
-        driftY: (Math.random() - 0.5) * 0.12,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        opacity: Math.random() * 0.08 + 0.04
-      }));
-
-      function drawNebula() {
-        nebulaClouds.forEach((cloud) => {
-          cloud.x += cloud.driftX;
-          cloud.y += cloud.driftY;
-
-          if (cloud.x < -cloud.radius) cloud.x = canvas.width + cloud.radius;
-          if (cloud.x > canvas.width + cloud.radius) cloud.x = -cloud.radius;
-          if (cloud.y < -cloud.radius) cloud.y = canvas.height + cloud.radius;
-          if (cloud.y > canvas.height + cloud.radius) cloud.y = -cloud.radius;
-
-          const gradient = ctx.createRadialGradient(
-            cloud.x, cloud.y, cloud.radius * 0.15,
-            cloud.x, cloud.y, cloud.radius
-          );
-          gradient.addColorStop(0, cloud.color + '30');
-          gradient.addColorStop(1, 'transparent');
-
-          ctx.globalAlpha = cloud.opacity;
-          ctx.fillStyle = gradient;
-          ctx.beginPath();
-          ctx.arc(cloud.x, cloud.y, cloud.radius, 0, Math.PI * 2);
-          ctx.fill();
-        });
-      }
-
-      function drawParticle(p) {
-        p.pulse += p.pulseSpeed;
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        const currentOpacity = p.opacity * (0.72 + Math.sin(p.pulse) * 0.28);
-        const currentSize = p.size * (0.85 + Math.sin(p.pulse) * 0.22);
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = currentOpacity;
-        ctx.fill();
-
-        const glow = ctx.createRadialGradient(
-          p.x, p.y, 0,
-          p.x, p.y, currentSize * 4.2
-        );
-        glow.addColorStop(0, p.color + '55');
-        glow.addColorStop(1, 'transparent');
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, currentSize * 4.2, 0, Math.PI * 2);
-        ctx.fillStyle = glow;
-        ctx.globalAlpha = currentOpacity * 0.38;
-        ctx.fill();
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawNebula();
-        particles.forEach(drawParticle);
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(animate);
-      }
-
-      if (window.innerWidth < 768) {
-        particles.splice(70);
-        nebulaClouds.splice(3);
-        canvas.style.opacity = '0.28';
-      }
-
-      animate();
     })();
   </script>
 </body>
