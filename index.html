@@ -179,24 +179,77 @@
       padding: 0.62rem 0;
     }
 
-    .hero {
-      min-height: auto;
-      display: grid;
-      align-items: start;
-      background: #0A0A0A;
-      padding-top: 0;
+    .hero-strip {
+      margin-top: 74px;
+      width: 100%;
+      height: clamp(230px, 45vw, 560px);
+      overflow: hidden;
+      position: relative;
+      background: #080808;
     }
-    .hero-grid {
+    .hero-strip::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 44%;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0), rgba(10, 10, 10, 0.6));
+      pointer-events: none;
+    }
+    .hero-intro {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 16%, rgba(255, 184, 0, 0.14), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 88% 84%, rgba(255, 60, 172, 0.12), rgba(255, 60, 172, 0)),
+        #0A0A0A;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .hero-intro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 107, 0, 0.1), rgba(255, 107, 0, 0) 42%);
+      pointer-events: none;
+    }
+    .hero-intro-grid {
+      position: relative;
+      z-index: 1;
+      min-height: clamp(360px, 54vh, 560px);
       display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(1rem, 2.8vw, 2rem);
-      align-items: start;
+      align-content: center;
+      gap: 1rem;
+      padding: clamp(2rem, 6vw, 4rem) 0;
+    }
+    .hero-copy {
+      max-width: 780px;
+      border: 1px solid rgba(255, 184, 0, 0.26);
+      border-radius: 22px;
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.36);
+      padding: clamp(1.2rem, 3vw, 2rem);
     }
     .hero-copy p {
       font-size: clamp(1.12rem, 2vw, 1.6rem);
       color: #E4E4E4;
       max-width: 36ch;
-      margin-bottom: 1.35rem;
+      margin-bottom: 1.1rem;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid rgba(255, 184, 0, 0.36);
+      border-radius: 999px;
+      background: rgba(255, 184, 0, 0.1);
+      color: #FFE3B2;
+      padding: 0.34rem 0.66rem;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 0.7rem;
     }
 
     .gradient-text {
@@ -208,17 +261,14 @@
 
     .hero-media {
       width: 100%;
-      max-width: 1200px;
-      height: clamp(240px, 44vw, 520px);
+      height: 100%;
       overflow: hidden;
       border: 0;
       background: transparent;
       position: relative;
-      margin-inline: auto;
       box-shadow: none;
-      order: 1;
+      margin-inline: auto;
     }
-    .hero-copy { order: 2; }
     .hero-slide {
       position: absolute;
       inset: 0;
@@ -229,8 +279,8 @@
     .hero-slide img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: center top;
+      object-fit: cover;
+      object-position: center center;
       display: block;
     }
     .hero-slide.s1 {
@@ -253,6 +303,12 @@
       place-items: center;
       background: linear-gradient(180deg, rgba(255, 184, 0, 0.04), rgba(255, 184, 0, 0));
     }
+    .hero-cut {
+      height: 16px;
+      background:
+        linear-gradient(90deg, rgba(255, 107, 0, 0), rgba(255, 107, 0, 0.58), rgba(255, 184, 0, 0.46), rgba(255, 107, 0, 0));
+      filter: blur(0.3px);
+    }
     .divider-glow {
       width: min(88%, 780px);
       height: 1px;
@@ -262,18 +318,21 @@
     .section { padding: 68px 0; }
     .section--light {
       background:
-        radial-gradient(circle at 14% 18%, rgba(255, 184, 0, 0.08), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 14% 18%, rgba(255, 184, 0, 0.1), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 84% 84%, rgba(255, 107, 0, 0.08), rgba(255, 107, 0, 0)),
         #F5F5F5;
       color: #0A0A0A;
     }
     .section--surface-2 {
       background:
-        radial-gradient(circle at 82% 14%, rgba(255, 107, 0, 0.13), rgba(255, 107, 0, 0)),
+        radial-gradient(circle at 82% 14%, rgba(255, 107, 0, 0.2), rgba(255, 107, 0, 0)),
+        radial-gradient(circle at 16% 92%, rgba(255, 184, 0, 0.12), rgba(255, 184, 0, 0)),
         #1A1A1A;
     }
     .section--base-dark {
       background:
-        radial-gradient(circle at 12% 86%, rgba(255, 60, 172, 0.1), rgba(255, 60, 172, 0)),
+        radial-gradient(circle at 12% 86%, rgba(255, 60, 172, 0.16), rgba(255, 60, 172, 0)),
+        radial-gradient(circle at 88% 18%, rgba(255, 184, 0, 0.08), rgba(255, 184, 0, 0)),
         #0A0A0A;
     }
     .section--surface {
@@ -292,6 +351,21 @@
       background: rgba(255, 184, 0, 0.12);
       color: #6B3900;
     }
+    .section-panel {
+      border-radius: 22px;
+      padding: clamp(1rem, 2.6vw, 1.5rem);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .section-panel--light {
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 232, 0.9));
+      border-color: rgba(255, 184, 0, 0.22);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.07);
+    }
+    .section-panel--dark {
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.26);
+    }
 
     .section-tag {
       display: inline-block;
@@ -309,7 +383,8 @@
     .context-brief {
       padding: 40px 0 24px;
       background:
-        radial-gradient(circle at 75% 28%, rgba(255, 184, 0, 0.14), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 75% 28%, rgba(255, 184, 0, 0.22), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 16% 82%, rgba(255, 107, 0, 0.16), rgba(255, 107, 0, 0)),
         #111111;
     }
     .context-brief .context-inner {
@@ -506,6 +581,33 @@
       padding: clamp(1rem, 3.2vw, 1.8rem);
       box-shadow: 0 24px 56px rgba(0, 0, 0, 0.24);
     }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 0.9rem;
+      align-items: stretch;
+    }
+    .contact-side {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 184, 0, 0.24);
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      padding: 1rem;
+      display: grid;
+      gap: 0.55rem;
+      align-content: start;
+    }
+    .contact-side h3 {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      margin: 0;
+    }
+    .contact-points {
+      margin: 0;
+      padding-left: 1rem;
+      color: #F0E3CB;
+      display: grid;
+      gap: 0.35rem;
+    }
+    .contact-side .btn { width: fit-content; }
 
     .cases-head {
       display: flex;
@@ -782,14 +884,19 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: inline-grid; place-content: center; }
       .mobile-menu { display: block; }
-      .hero-grid,
       .context-points,
       .needs-grid,
       .services-grid,
       .steps,
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero-media { width: 100%; height: clamp(200px, 56vw, 320px); }
+      .footer-grid,
+      .contact-layout { grid-template-columns: 1fr; }
+      .hero-strip { margin-top: 74px; height: clamp(200px, 58vw, 320px); }
+      .hero-intro-grid { min-height: auto; padding: 1.6rem 0 1.9rem; }
+      .hero-copy { padding: 1rem; border-radius: 16px; }
+      .hero-kicker { margin-bottom: 0.52rem; }
+      .hero-media { width: 100%; height: 100%; }
       .context-brief { padding: 40px 0 28px; }
+      .hero-cut { height: 12px; }
       .section-divider { height: 30px; }
       .section { padding: 50px 0; }
       .mobile-sticky-cta { display: block; }
@@ -845,23 +952,29 @@
   </header>
 
   <main id="main-content">
-    <section class="hero" id="inicio" aria-labelledby="hero-heading">
-      <div class="container hero-grid">
+    <section class="hero-strip" id="inicio" aria-label="Galería principal SOLARIS">
+      <div class="hero-media" aria-hidden="true">
+        <div class="hero-slide s1">
+          <img src="https://i.postimg.cc/NgwQVGDC/1.jpg?dl=1" alt="" loading="eager" decoding="async">
+        </div>
+        <div class="hero-slide s2">
+          <img src="https://i.postimg.cc/4XpYnSSJ/2.jpg?dl=1" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="hero-slide s3">
+          <img src="https://i.postimg.cc/PHy8m0rq/3.jpg?dl=1" alt="" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <div class="hero-cut" aria-hidden="true"></div>
+
+    <section class="hero-intro" aria-labelledby="hero-heading">
+      <div class="container hero-intro-grid">
         <div class="hero-copy reveal visible">
+          <div class="hero-kicker">Estrategia + IA + Ejecución</div>
           <h1 id="hero-heading">SOLARIS: Tu Negocio, Potenciado. <span class="gradient-text">Resultados Reales.</span></h1>
           <p>Transformamos tu operación. Aceleramos tus ventas.</p>
           <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
-        </div>
-        <div class="hero-media reveal" aria-hidden="true">
-          <div class="hero-slide s1">
-            <img src="https://i.postimg.cc/NgwQVGDC/1.jpg?dl=1" alt="" loading="eager" decoding="async">
-          </div>
-          <div class="hero-slide s2">
-            <img src="https://i.postimg.cc/4XpYnSSJ/2.jpg?dl=1" alt="" loading="lazy" decoding="async">
-          </div>
-          <div class="hero-slide s3">
-            <img src="https://i.postimg.cc/PHy8m0rq/3.jpg?dl=1" alt="" loading="lazy" decoding="async">
-          </div>
         </div>
       </div>
     </section>
@@ -886,7 +999,7 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--light" aria-labelledby="why-solaris">
-      <div class="container">
+      <div class="container section-panel section-panel--light">
         <div class="section-tag reveal">Navegación por Resultados</div>
         <h2 id="why-solaris" class="reveal">¿Qué Problema Quieres Resolver HOY en tu Negocio?</h2>
         <p class="needs-intro reveal">Conecta tu necesidad con una solución concreta y accionable.</p>
@@ -913,7 +1026,7 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--surface-2" id="servicios" aria-labelledby="services-title">
-      <div class="container">
+      <div class="container section-panel section-panel--dark">
         <div class="section-tag reveal">Servicios</div>
         <h2 id="services-title" class="reveal">Servicios Solaris: Tu Inversión, Tu Retorno.</h2>
         <p class="services-subcopy reveal">Cada solución está diseñada para resolver un problema real con impacto medible.</p>
@@ -968,7 +1081,7 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--base-dark" id="casos" aria-labelledby="cases-title">
-      <div class="container">
+      <div class="container section-panel section-panel--dark">
         <div class="cases-head">
           <div>
             <div class="section-tag reveal">Casos Reales</div>
@@ -1083,7 +1196,7 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--light" id="proceso" aria-labelledby="process-title">
-      <div class="container">
+      <div class="container section-panel section-panel--light">
         <h2 id="process-title" class="reveal">Tu Éxito es Nuestro Proceso. Así Trabajamos en Solaris.</h2>
         <div class="process-wrap reveal">
           <div class="timeline-line"><div class="timeline-fill" id="timelineFill"></div></div>
@@ -1117,7 +1230,7 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--base-dark" id="faq" aria-labelledby="faq-title">
-      <div class="container">
+      <div class="container section-panel section-panel--dark">
         <h2 id="faq-title" class="reveal">¿Tienes Preguntas? Tenemos Respuestas Claras.</h2>
         <div class="faq-list reveal">
           <article class="faq-item">
@@ -1151,16 +1264,27 @@
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
     <section class="section section--surface" id="contacto" aria-labelledby="cta-final-title">
-      <div class="container">
-        <div class="cta-final reveal">
-          <h2 id="cta-final-title">Listo para Acelerar tu Negocio? Hablemos.</h2>
-          <p>Agenda tu diagnóstico estratégico gratuito de 30 minutos. Sin compromiso. Solo oportunidades reales para tu empresa.</p>
-          <p style="margin-top:1.2rem;">
-            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos.%20Mi%20objetivo%20principal%20es%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico GRATUITO por WhatsApp →</a>
-          </p>
-          <p><strong>o escríbenos a</strong> <a href="mailto:hola@solaris.co">hola@solaris.co</a></p>
-          <p style="font-weight:700;">@solaris.ia · hola@solaris.co · solaris.co</p>
-          <p class="muted" style="margin-bottom:0;">COLOMBIA · LATINOAMÉRICA · EL MUNDO</p>
+      <div class="container section-panel section-panel--dark">
+        <div class="contact-layout reveal">
+          <div class="cta-final">
+            <h2 id="cta-final-title">Listo para Acelerar tu Negocio? Hablemos.</h2>
+            <p>Agenda tu diagnóstico estratégico gratuito de 30 minutos. Sin compromiso. Solo oportunidades reales para tu empresa.</p>
+            <p style="margin-top:1rem;">
+              <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos.%20Mi%20objetivo%20principal%20es%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico GRATUITO por WhatsApp →</a>
+            </p>
+            <p><strong>o escríbenos a</strong> <a href="mailto:hola@solaris.co">hola@solaris.co</a></p>
+            <p style="font-weight:700;">@solaris.ia · hola@solaris.co · solaris.co</p>
+            <p class="muted" style="margin-bottom:0;">COLOMBIA · LATINOAMÉRICA · EL MUNDO</p>
+          </div>
+          <aside class="contact-side" aria-label="Beneficios del diagnóstico">
+            <h3>Lo que recibes en 30 minutos</h3>
+            <ul class="contact-points">
+              <li>Diagnóstico claro de tu cuello de botella comercial.</li>
+              <li>Prioridades accionables para los próximos 30 días.</li>
+              <li>Ruta realista de implementación con IA según tu negocio.</li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20diagn%C3%B3stico%20y%20plan%20de%20acci%C3%B3n." target="_blank" rel="noopener noreferrer">Quiero mi plan de acción →</a>
+          </aside>
         </div>
       </div>
     </section>
