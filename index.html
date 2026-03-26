@@ -114,6 +114,18 @@
       background: linear-gradient(180deg, rgba(255, 60, 172, 0.06) 0%, rgba(255, 60, 172, 0) 42%, rgba(255, 255, 255, 0) 100%);
     }
 
+    .section--surface-2 {
+      background: #1A1A1A;
+    }
+
+    .section--surface {
+      background: #111111;
+    }
+
+    .section--base-dark {
+      background: #0A0A0A;
+    }
+
     main,
     .hero,
     .ticker-wrap,
@@ -480,22 +492,22 @@
     }
 
     h1 {
-      font-size: clamp(2.25rem, 5.8vw, 4rem);
+      font-size: clamp(2.2rem, 6.2vw, 4rem);
     }
 
     h2 {
-      font-size: clamp(1.85rem, 4.3vw, 2.7rem);
+      font-size: clamp(1.7rem, 4.1vw, 2.67rem);
     }
 
     h3 {
-      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+      font-size: clamp(1.2rem, 2.7vw, 2rem);
     }
 
     p {
       margin: 0 0 1rem;
       color: var(--text-soft);
-      line-height: 1.68;
-      font-size: clamp(0.95rem, 1.03vw, 1.05rem);
+      line-height: 1.64;
+      font-size: clamp(0.92rem, 0.88rem + 0.2vw, 0.98rem);
     }
 
     .gradient-text {
@@ -639,15 +651,29 @@
 
     .brand {
       display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.08rem;
       font-weight: 800;
       letter-spacing: 0.03em;
     }
 
-    .brand svg {
-      width: 30px;
-      height: 30px;
+    .brand-main {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      line-height: 1;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      color: #f5f5f5;
+    }
+
+    .brand-sub {
+      font-size: 0.58rem;
+      line-height: 1;
+      letter-spacing: 0.26em;
+      color: #bcbcbc;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -790,12 +816,13 @@
 
     .hero-copy h1 {
       letter-spacing: -0.03em;
-      line-height: 1.02;
+      line-height: 1.04;
+      max-width: 13ch;
     }
 
     .hero p {
       max-width: 64ch;
-      font-size: clamp(1.02rem, 2.2vw, 1.2rem);
+      font-size: clamp(1.12rem, 2vw, 1.6rem);
       color: var(--text-soft);
       text-wrap: pretty;
     }
@@ -925,25 +952,25 @@
     .hero-media-slide:nth-child(1) {
       animation-delay: 0s;
       background-image:
-        radial-gradient(circle at 20% 20%, rgba(255, 184, 0, 0.2), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 22% 24%, rgba(255, 184, 0, 0.26), rgba(255, 184, 0, 0)),
         linear-gradient(135deg, rgba(10, 10, 10, 0.48), rgba(10, 10, 10, 0.72)),
-        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80");
+        url("https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1400&q=80");
     }
 
     .hero-media-slide:nth-child(2) {
       animation-delay: 6s;
       background-image:
-        radial-gradient(circle at 80% 20%, rgba(255, 107, 0, 0.25), rgba(255, 107, 0, 0)),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 0, 0.3), rgba(255, 107, 0, 0)),
         linear-gradient(135deg, rgba(10, 10, 10, 0.42), rgba(10, 10, 10, 0.74)),
-        url("https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80");
+        url("https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80");
     }
 
     .hero-media-slide:nth-child(3) {
       animation-delay: 12s;
       background-image:
-        radial-gradient(circle at 50% 18%, rgba(255, 60, 172, 0.2), rgba(255, 60, 172, 0)),
+        radial-gradient(circle at 50% 18%, rgba(255, 60, 172, 0.24), rgba(255, 60, 172, 0)),
         linear-gradient(135deg, rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.78)),
-        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80");
+        url("https://images.unsplash.com/photo-1516110833967-0b5716ca1387?auto=format&fit=crop&w=1400&q=80");
     }
 
     @keyframes heroSlideFade {
@@ -1503,6 +1530,46 @@
       font-weight: 600;
     }
 
+    .services-radical-grid {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .service-radical-card {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1rem;
+      display: grid;
+      gap: 0.7rem;
+      align-content: start;
+    }
+
+    .service-radical-card h3 {
+      margin: 0;
+      color: #fff5e4;
+      font-size: clamp(1.12rem, 2.2vw, 1.45rem);
+    }
+
+    .service-radical-card p {
+      margin: 0;
+      color: #ddd3c6;
+    }
+
+    .service-invest {
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffd79d;
+      font-weight: 700;
+    }
+
+    .services-final-cta {
+      margin-top: 1rem;
+    }
+
     .tabs-nav {
       display: flex;
       gap: 0.6rem;
@@ -1690,6 +1757,11 @@
       transition: border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), transform 0.35s var(--ease-out), background 0.35s var(--ease-out), opacity 0.35s var(--ease-out);
     }
 
+    .process-step h3 {
+      color: #f5f5f5;
+      font-size: clamp(1.03rem, 2vw, 1.32rem);
+    }
+
     .process-step.active {
       border-color: rgba(255, 184, 0, 0.55);
       background: radial-gradient(circle at 20% 15%, rgba(255, 184, 0, 0.15), rgba(255, 107, 0, 0.05) 58%, rgba(255, 255, 255, 0.03));
@@ -1746,6 +1818,33 @@
     .step-inline {
       margin: 0;
       color: #d9d9d9;
+    }
+
+    .process-radical .process-step {
+      border-color: rgba(16, 16, 16, 0.14);
+      background: #ffffff;
+    }
+
+    .process-radical .process-step h3 {
+      color: #101010;
+    }
+
+    .process-radical .step-inline {
+      color: #2f2f2f;
+    }
+
+    .process-radical .step-icon {
+      color: #d06100;
+    }
+
+    .process-radical .step-time {
+      color: #8b4b00;
+      border-color: rgba(208, 97, 0, 0.24);
+      background: rgba(255, 184, 0, 0.1);
+    }
+
+    .process-radical .timeline-line {
+      background: rgba(16, 16, 16, 0.13);
     }
 
     .ecosystem-map {
@@ -1841,10 +1940,15 @@
       margin: 0 auto;
     }
 
-    .ecosystem-center strong {
-      font-size: 0.84rem;
-      letter-spacing: 0.06em;
-      margin-top: 0.2rem;
+    .ecosystem-center .brand-main {
+      letter-spacing: 0.14em;
+      font-size: 1.12rem;
+      color: #f5f5f5;
+    }
+
+    .ecosystem-center .brand-sub {
+      letter-spacing: 0.22em;
+      color: #d5d5d5;
     }
 
     .tech-node {
@@ -2747,6 +2851,10 @@
         padding: 0.9rem;
       }
 
+      .services-radical-grid {
+        grid-template-columns: 1fr;
+      }
+
       .why-metrics-grid,
       .cases-grid,
       .pricing-cards-grid,
@@ -3061,12 +3169,8 @@
   <header class="nav-wrap" id="siteNav">
     <div class="container nav">
       <a class="brand" href="#inicio" aria-label="Ir al inicio SOLARIS">
-        <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-          <circle cx="50" cy="50" r="10" fill="#FFB800"></circle>
-          <circle cx="50" cy="50" r="28" fill="none" stroke="#FF6B00" stroke-width="4"></circle>
-          <circle cx="79" cy="50" r="5" fill="#FF3CAC"></circle>
-        </svg>
-        <span>SOLARIS</span>
+        <span class="brand-main">SOLARIS</span>
+        <span class="brand-sub">AI AGENCY</span>
       </a>
 
       <nav class="nav-links" aria-label="Navegación principal">
@@ -3119,19 +3223,8 @@
 
   <main id="main-content">
     <section class="hero" id="inicio" aria-labelledby="hero-heading">
-      <div class="hero-bg-nebula">
-        <iframe
-          src='https://my.spline.design/particlenebula-qRgToKkNV4DnBkv18RcRNKba/'
-          frameborder='0'
-          width='100%'
-          height='100%'
-          title='Nebulosa de partículas de SOLARIS'
-          style="background: transparent; border: none;">
-        </iframe>
-      </div>
       <div class="container hero-grid">
         <div class="hero-copy reveal visible">
-          <div class="hero-badge">🔥 Colombia's #1 AI Agency · 2026</div>
           <h1 id="hero-heading">
             SOLARIS: Tu Negocio, Potenciado.
             <span class="gradient-text gradient-animated">Resultados Reales.</span>
@@ -3143,19 +3236,6 @@
             <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20vengo%20desde%20la%20landing%20y%20quiero%20hablar%20con%20un%20experto.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20busco%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Hablar con SOLARIS por WhatsApp">
               Agenda tu Diagnóstico de 30 min (Gratis) →
             </a>
-            <a class="btn btn-secondary" href="#proceso" aria-label="Ver cómo trabajamos">
-              Ver cómo lo hacemos →
-            </a>
-          </div>
-          <div class="hero-metrics">
-            <span><strong data-count="320" data-prefix="+" data-suffix="%">+320%</strong> ventas promedio</span>
-            <span><strong data-count="40" data-prefix="+">+40</strong> clientes activos</span>
-            <span><strong data-count="100" data-suffix="%">100%</strong> resultados medibles</span>
-          </div>
-          <div class="hero-trust-strip" aria-label="Pruebas de confianza">
-            <div class="hero-trust-item">Diagnóstico en 30 min</div>
-            <div class="hero-trust-item">Implementación desde 7 días</div>
-            <div class="hero-trust-item">KPIs claros cada semana</div>
           </div>
         </div>
 
@@ -3171,42 +3251,26 @@
       </div>
     </section>
 
-    <section class="ticker-wrap" aria-label="Resultados de clientes SOLARIS">
-      <div class="container">
-        <div class="ticker-rotator" id="tickerRotator" role="status" aria-live="polite">
-          <div class="ticker-item gradient-text active">✦ Estrategia + ejecución + métricas semanales</div>
-          <div class="ticker-item gradient-text">✦ No vendemos humo: vendemos resultados</div>
-          <div class="ticker-item gradient-text">✦ IA aplicada al negocio real, no a la moda</div>
-          <div class="ticker-item gradient-text">✦ Enfoque Latam: contexto local y acción rápida</div>
-          <div class="ticker-item gradient-text"><span class="ticker-live-pill">✦ Diagnóstico accionable desde el día 1</span></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="divider-glow"></div>
-    </div>
-
     <section class="section section--light" aria-labelledby="why-solaris">
       <div class="container">
-        <div class="section-tag reveal">Empieza aquí</div>
-        <h2 id="why-solaris" class="reveal section-title">¿Qué quieres destrabar primero en tu negocio?</h2>
-        <p class="needs-intro reveal">Selecciona tu prioridad y te mostramos la ruta concreta para pasar de fricción a crecimiento.</p>
+        <div class="section-tag reveal">Navegación por resultados</div>
+        <h2 id="why-solaris" class="reveal section-title">¿Qué Problema Quieres Resolver HOY en tu Negocio?</h2>
+        <p class="needs-intro reveal">Elige el bloque que más se parece a tu realidad y entra directo a la solución.</p>
         <div class="needs-grid reveal">
           <article class="need-card reveal delay-1">
-            <h3>Quiero más clientes y más ventas</h3>
-            <p>Si tu negocio necesita más llamadas, más chats y más cierres, activamos captación digital que vende.</p>
-            <a class="need-cta" href="#servicios">Ver soluciones de captación →</a>
+            <h3>Quiero Digitalizar mi Captación de Clientes</h3>
+            <p>Necesitas más leads, más llamadas, más ventas online. Tu negocio no puede esperar.</p>
+            <a class="need-cta" href="#servicios">Ver Soluciones de Captación →</a>
           </article>
           <article class="need-card reveal delay-2">
-            <h3>Quiero liberar tiempo y ordenar la operación</h3>
-            <p>Si tu equipo está cargado con tareas repetitivas, diseñamos sistemas IA a medida para ahorrar tiempo y evitar fugas.</p>
-            <a class="need-cta" href="#servicios">Ver soluciones de eficiencia →</a>
+            <h3>Quiero Liberar Tiempo y Optimizar mi Operación</h3>
+            <p>Tu equipo está ahogado en tareas repetitivas. Necesitas eficiencia, automatización y menos errores humanos.</p>
+            <a class="need-cta" href="#servicios">Ver Soluciones de Eficiencia →</a>
           </article>
           <article class="need-card reveal delay-3">
-            <h3>Quiero escalar con control y rentabilidad</h3>
-            <p>Si ya vendes pero sin estructura, alineamos marketing, automatización y datos para crecer de forma sostenible.</p>
-            <a class="need-cta" href="#precios">Ver inversión recomendada →</a>
+            <h3>Quiero Expandirme a Nuevos Mercados</h3>
+            <p>Tu negocio está listo para crecer más allá de las fronteras. Necesitas una estrategia global y clientes internacionales.</p>
+            <a class="need-cta" href="#servicios">Ver Soluciones de Expansión →</a>
           </article>
         </div>
       </div>
@@ -3296,100 +3360,56 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section section--contrast-c" id="servicios" aria-labelledby="services-title">
+    <section class="section section--surface-2" id="servicios" aria-labelledby="services-title">
       <div class="container">
         <div class="section-tag reveal">Servicios</div>
-        <h2 id="services-title" class="reveal services-hero-title">Servicios diseñados para resultados, no para likes.</h2>
-        <p class="reveal services-subcopy">Elige el frente que quieres resolver ahora y te mostramos ejecución, tiempos e inversión.</p>
-        <div class="services-tabs reveal" style="margin-top:1rem;">
-          <p class="mobile-scroll-indicator" aria-hidden="true">↔ Desliza categorías de servicio</p>
-          <div class="tabs-nav" role="tablist" aria-label="Tabs de servicios">
-            <button class="tab-btn active" role="tab" aria-selected="true" data-service="publicidad">Publicidad</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-service="sistemas">Sistemas IA a medida</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-service="contenido">Contenido</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-service="web">Web</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-service="estrategia">Estrategia</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-service="seo">SEO</button>
-          </div>
-
-          <article class="tab-panel active" data-service-panel="publicidad">
-            <div>
-              <h3>Publicidad con IA enfocada en ventas, no en vanidad.</h3>
-              <p>Combinamos pauta, segmentación y seguimiento comercial para atraer prospectos con intención real de compra.</p>
-              <p class="service-result">Resultado esperado: más ventas con mejor costo por cliente.</p>
-              <a class="btn btn-primary" href="#precios">Ver opciones de entrada →</a>
-            </div>
-            <div class="service-metric">
-              <div class="metric-big gradient-text">4.2x</div>
-              <p>ROAS promedio</p>
-            </div>
+        <h2 id="services-title" class="reveal section-title">Servicios Solaris: Tu Inversión, Tu Retorno.</h2>
+        <p class="reveal services-subcopy">Cada solución ataca un problema real de negocio con ejecución y retorno medible.</p>
+        <div class="services-radical-grid reveal">
+          <article class="service-radical-card">
+            <h3>Landing Page que Vende</h3>
+            <p>¿Necesitas leads y ventas online? Diseñamos tu primera máquina de ventas digital. Lista en 7 días, optimizada para convertir visitantes en clientes.</p>
+            <span class="service-invest">Inversión: Desde $1.500.000</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Landing%20Page%20que%20vende.%20Quiero%20captar%20leads%20r%C3%A1pido." target="_blank" rel="noopener noreferrer">Quiero mi Landing →</a>
           </article>
-
-          <article class="tab-panel" data-service-panel="sistemas">
-            <div>
-              <h3>Sistemas IA personalizados para tu operación.</h3>
-              <p>Diseñamos soluciones a medida (automatización, agendamiento, tráfico y flujos internos) según tu tipo de negocio y tu proceso comercial.</p>
-              <p class="service-result">Resultado esperado: menos carga operativa y más ventas con control.</p>
-              <a class="btn btn-primary" href="#contacto">Cotizar solución a medida →</a>
-            </div>
-            <div class="service-metric">
-              <div class="metric-big gradient-text">A medida</div>
-              <p>según tu negocio</p>
-            </div>
+          <article class="service-radical-card">
+            <h3>Tu Tienda Online 24/7</h3>
+            <p>¿Quieres vender sin límites? Tu negocio online con plataforma de pagos propia. Ahorra comisiones y gestiona todo desde un panel intuitivo.</p>
+            <span class="service-invest">Inversión: Desde $3.000.000</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Tienda%20Online%2024%2F7%20con%20pagos%20propios." target="_blank" rel="noopener noreferrer">Quiero mi Tienda →</a>
           </article>
-
-          <article class="tab-panel" data-service-panel="contenido">
-            <div>
-              <h3>Contenido que te posiciona y te vende.</h3>
-              <p>Diseñamos piezas que generan confianza, explican tu valor y empujan la decisión de compra.</p>
-              <p class="service-result">Resultado esperado: más atención, más conversaciones y más cierres.</p>
-              <a class="btn btn-primary" href="#precios">Quiero contenido con IA →</a>
-            </div>
-            <div class="service-metric">
-              <div class="metric-big gradient-text">3x</div>
-              <p>mas engagement</p>
-            </div>
+          <article class="service-radical-card">
+            <h3>Citas en Automático. Cero Errores.</h3>
+            <p>¿Cansado de gestionar citas manualmente? Automatiza agenda, recordatorios y disponibilidad. Sin mensualidades. Libera tu tiempo y optimiza operación.</p>
+            <span class="service-invest">Inversión: Desde $2.500.000</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Sistema%20de%20Agendamiento%20Inteligente." target="_blank" rel="noopener noreferrer">Quiero mi Sistema →</a>
           </article>
-
-          <article class="tab-panel" data-service-panel="web">
-            <div>
-              <h3>Web pensada para convertir desde el primer clic.</h3>
-              <p>Creamos landing pages y tiendas orientadas a venta, con mensaje claro y ruta de acción directa.</p>
-              <p class="service-result">Resultado esperado: más oportunidades comerciales desde tu web.</p>
-              <a class="btn btn-primary" href="#precios">Lanzar mi web →</a>
-            </div>
-            <div class="service-metric">
-              <div class="metric-big gradient-text">7</div>
-              <p>dias al aire</p>
-            </div>
+          <article class="service-radical-card">
+            <h3>Redes Sociales que Duplican Ventas</h3>
+            <p>¿Tus redes no venden? Estrategias de IA para duplicar ventas y seguidores, con piezas creativas que conectan y Meta Ads de alto impacto.</p>
+            <span class="service-invest">Inversión: Desde $2.000.000</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20Duplicar%20mis%20Ventas%20desde%20redes%20sociales." target="_blank" rel="noopener noreferrer">Quiero Duplicar mis Ventas →</a>
           </article>
-
-          <article class="tab-panel" data-service-panel="estrategia">
-            <div>
-              <h3>Estrategia ejecutable para crecer sin improvisar.</h3>
-              <p>Te entregamos prioridades claras, metas medibles y un plan que tu negocio puede ejecutar desde ya.</p>
-              <p class="service-result">Resultado esperado: decisiones firmes y crecimiento rentable.</p>
-              <a class="btn btn-primary" href="#contacto">Quiero el diagnostico →</a>
-            </div>
-            <div class="service-metric">
-              <div class="metric-big gradient-text">30</div>
-              <p>dias a resultados</p>
-            </div>
+          <article class="service-radical-card">
+            <h3>Clientes Internacionales. Sin Fronteras.</h3>
+            <p>¿Listo para el mundo? Atrae clientes del extranjero con CRM con IA, marketing digital global y un equipo de closers especializados.</p>
+            <span class="service-invest">Inversión: Desde $15.000.000 (Cotización personalizada)</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20Clientes%20Internacionales%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Clientes Globales →</a>
           </article>
-
-          <article class="tab-panel" data-service-panel="seo">
-            <div>
-              <h3>Posicionamiento local para que te encuentren primero.</h3>
-              <p>Mejoramos tu presencia local y reputación para atraer personas que ya están listas para comprar.</p>
-              <p class="service-result">Resultado esperado: más llamadas y ventas orgánicas constantes.</p>
-              <a class="btn btn-primary" href="#contacto">Posicionarme ahora →</a>
-            </div>
-            <div class="service-metric">
-              <div class="metric-big gradient-text">#1</div>
-              <p>en Google Maps</p>
-            </div>
+          <article class="service-radical-card">
+            <h3>Tu Negocio en Piloto Automático</h3>
+            <p>¿Procesos lentos? Optimizamos flujos, integramos herramientas y creamos bots inteligentes para atención al cliente y procesos internos.</p>
+            <span class="service-invest">Inversión: Cotización personalizada</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20Automatizar%20mi%20Negocio%20con%20IA." target="_blank" rel="noopener noreferrer">Quiero Automatizar mi Negocio →</a>
+          </article>
+          <article class="service-radical-card">
+            <h3>Importaciones Rentables con IA</h3>
+            <p>¿Márgenes bajos en importaciones? Asesoría experta y optimización de negociación e importación con IA para análisis de mercados y logística.</p>
+            <span class="service-invest">Inversión: Cotización personalizada</span>
+            <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20Importaciones%20m%C3%A1s%20Rentables%20con%20IA." target="_blank" rel="noopener noreferrer">Quiero Importaciones Más Rentables →</a>
           </article>
         </div>
+        <p class="services-final-cta reveal"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20necesito%20algo%20m%C3%A1s%20personalizado%20para%20mi%20negocio.%20Hablemos%20de%20mi%20proyecto%20%C3%BAnico." target="_blank" rel="noopener noreferrer">¿Necesitas algo más? Hablemos de tu Proyecto Único →</a></p>
       </div>
     </section>
 
@@ -3507,9 +3527,9 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section section--contrast-b" id="proceso" aria-labelledby="process-title">
+    <section class="section section--light process-radical" id="proceso" aria-labelledby="process-title">
       <div class="container">
-        <h2 id="process-title" class="reveal section-title">Tu éxito tiene método: 4 pasos, ejecución total.</h2>
+        <h2 id="process-title" class="reveal section-title">Tu Éxito es Nuestro Proceso. Así Trabajamos en Solaris.</h2>
         <div class="process-timeline reveal">
           <div class="timeline-line">
             <div class="timeline-fill" id="timelineFill"></div>
@@ -3518,30 +3538,31 @@
           <div class="process-steps">
             <article class="process-step">
               <div class="step-badge">1</div>
-              <h3>Diagnostico <span class="step-time">30 min</span></h3>
+              <h3>Diagnóstico Estratégico <span class="step-time">30 min</span></h3>
               <svg class="step-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v12H4z" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v4M16 3v4M4 9h16" stroke="currentColor" stroke-width="1.7"/></svg>
-              <p class="step-inline">Detectamos cuellos de botella y oportunidades claras.</p>
+              <p class="step-inline">Identificamos tus desafíos clave y las oportunidades de crecimiento con IA. Sin rodeos, solo un plan claro para tu negocio.</p>
             </article>
             <article class="process-step">
               <div class="step-badge">2</div>
-              <h3>Roadmap <span class="step-time">24h</span></h3>
+              <h3>Roadmap Personalizado <span class="step-time">24h</span></h3>
               <svg class="step-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M12 4l8 8-8 8" stroke="currentColor" stroke-width="1.7"/></svg>
-              <p class="step-inline">Definimos prioridades, stack y metas medibles.</p>
+              <p class="step-inline">Diseñamos un plan de acción detallado con metas medibles y la tecnología ideal para que veas resultados rápidos.</p>
             </article>
             <article class="process-step">
               <div class="step-badge">3</div>
-              <h3>Implementacion <span class="step-time">7 dias</span></h3>
+              <h3>Implementación Ágil <span class="step-time">Desde 7 días</span></h3>
               <svg class="step-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 13l4 4 8-10" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
-              <p class="step-inline">Activamos sistemas, campañas y automatizaciones.</p>
+              <p class="step-inline">Activamos sistemas, campañas y automatizaciones. Te sorprenderá la velocidad con la que tu negocio empieza a transformarse.</p>
             </article>
             <article class="process-step">
               <div class="step-badge">4</div>
-              <h3>Escala continua <span class="step-time">Mes a mes</span></h3>
+              <h3>Escala Continua <span class="step-time">Mes a mes</span></h3>
               <svg class="step-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 16l5-5 4 3 7-8" stroke="currentColor" stroke-width="1.7"/><path d="M17 6h3v3" stroke="currentColor" stroke-width="1.7"/></svg>
-              <p class="step-inline">Optimizamos con datos y aumentamos rentabilidad.</p>
+              <p class="step-inline">Optimizamos con datos, ajustamos estrategias y aseguramos un crecimiento constante y rentable. Tu éxito es nuestra prioridad.</p>
             </article>
           </div>
         </div>
+        <p style="margin-top:1rem;"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20mi%20Transformaci%C3%B3n%20con%20un%20Diagn%C3%B3stico%20Gratuito." target="_blank" rel="noopener noreferrer">Empieza tu Transformación con un Diagnóstico Gratuito →</a></p>
       </div>
     </section>
 
@@ -3728,26 +3749,8 @@
           </svg>
 
           <div class="ecosystem-center">
-            <svg class="solaris-core" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
-              <defs>
-                <linearGradient id="sunGrad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#FF6B00"></stop>
-                  <stop offset="1" stop-color="#FFB800"></stop>
-                </linearGradient>
-              </defs>
-              <g stroke="url(#sunGrad)" stroke-width="3" stroke-linecap="round" fill="none">
-                <line x1="40" y1="6" x2="40" y2="16"></line>
-                <line x1="40" y1="64" x2="40" y2="74"></line>
-                <line x1="6" y1="40" x2="16" y2="40"></line>
-                <line x1="64" y1="40" x2="74" y2="40"></line>
-                <line x1="14.5" y1="14.5" x2="21.5" y2="21.5"></line>
-                <line x1="58.5" y1="58.5" x2="65.5" y2="65.5"></line>
-                <line x1="58.5" y1="21.5" x2="65.5" y2="14.5"></line>
-                <line x1="14.5" y1="65.5" x2="21.5" y2="58.5"></line>
-              </g>
-              <circle cx="40" cy="40" r="14" fill="url(#sunGrad)"></circle>
-            </svg>
-            <strong>SOLARIS</strong>
+            <span class="brand-main">SOLARIS</span>
+            <span class="brand-sub">AI AGENCY</span>
           </div>
 
           <button class="tech-node cat-ai" type="button" style="--x:500;--y:105;" data-link="line-claude" data-tip="Modelo principal para estrategia, copy y razonamiento comercial.">Claude</button>
@@ -3796,56 +3799,49 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section section--contrast-b" id="faq" aria-labelledby="faq-title">
+    <section class="section section--base-dark" id="faq" aria-labelledby="faq-title">
       <div class="container">
-        <h2 id="faq-title" class="reveal section-title">¿Tienes preguntas? Te respondemos claro.</h2>
+        <h2 id="faq-title" class="reveal section-title">¿Tienes Preguntas? Tenemos Respuestas Claras.</h2>
         <div class="faq-list reveal">
           <article class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              ¿En cuánto tiempo veo resultados?
+              ¿En cuánto tiempo veré resultados reales?
               <span class="faq-icon" aria-hidden="true"></span>
             </button>
-            <div class="faq-body"><p>En pauta digital, los primeros datos llegan en 72 horas y mejoras claras en 2-3 semanas. En SEO, entre 60 y 90 días. Te damos tiempos honestos desde el día 1.</p></div>
+            <div class="faq-body"><p>En marketing digital, los primeros datos llegan en 72 horas y mejoras claras en 2-3 semanas. Para proyectos más complejos, te daremos tiempos honestos desde el día 1. Nuestro enfoque es la velocidad y la rentabilidad.</p></div>
           </article>
           <article class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              ¿Necesito tener conocimientos técnicos?
+              ¿Necesito saber de tecnología para trabajar con Solaris?
               <span class="faq-icon" aria-hidden="true"></span>
             </button>
-            <div class="faq-body"><p>No. Nosotros nos encargamos de toda la parte técnica. Tú solo validas decisiones clave y revisas resultados con reportes simples.</p></div>
+            <div class="faq-body"><p>Absolutamente no. Nosotros nos encargamos de toda la parte técnica. Tú solo validas decisiones clave y revisas los resultados con reportes claros y sencillos. Tu enfoque es tu negocio, el nuestro es la IA.</p></div>
           </article>
           <article class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              ¿Trabajan con negocios pequeños?
+              ¿Solaris trabaja con negocios de mi tamaño?
               <span class="faq-icon" aria-hidden="true"></span>
             </button>
-            <div class="faq-body"><p>Sí. Tenemos planes para negocios que están empezando y para empresas que ya están escalando. Ajustamos el stack a tu realidad.</p></div>
+            <div class="faq-body"><p>Sí. Tenemos soluciones para negocios que están empezando y para empresas que ya están escalando. Ajustamos nuestra estrategia y tecnología a tu realidad y objetivos específicos. Tu crecimiento es nuestra meta.</p></div>
           </article>
           <article class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              ¿Qué diferencia a SOLARIS de otras agencias?
+              ¿Qué hace a Solaris diferente de otras agencias?
               <span class="faq-icon" aria-hidden="true"></span>
             </button>
-            <div class="faq-body"><p>Integramos IA + marketing + automatización + diseño en un solo sistema. No vendemos “servicios sueltos”: construimos una máquina de crecimiento medible.</p></div>
+            <div class="faq-body"><p>No somos una agencia más. Integramos IA, marketing, automatización y diseño en un solo ecosistema. Construimos una máquina de crecimiento medible y personalizada para tu negocio, no vendemos servicios sueltos.</p></div>
           </article>
           <article class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              ¿Cómo funciona el diagnóstico gratuito?
+              ¿Cómo funciona el diagnóstico estratégico gratuito?
               <span class="faq-icon" aria-hidden="true"></span>
             </button>
-            <div class="faq-body"><p>Agendas por WhatsApp, nos cuentas tu objetivo y en 30 minutos salimos con oportunidades claras, prioridades y un plan de acción.</p></div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              ¿Tienen presencia fuera de Colombia?
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-body"><p>Sí. Nacimos en Colombia y operamos para clientes en Latam. Nuestro enfoque local nos hace más precisos y nuestra ejecución es global.</p></div>
+            <div class="faq-body"><p>Es simple: agendas por WhatsApp, nos cuentas tu objetivo principal y en 30 minutos salimos con oportunidades claras, prioridades y un plan de acción concreto. Sin compromiso, solo valor.</p></div>
           </article>
         </div>
         <div class="faq-cta-inline reveal">
-          <span>¿Quieres resolver dudas en menos de 10 minutos por WhatsApp?</span>
-          <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20resolver%20unas%20dudas%20r%C3%A1pidas%20antes%20de%20iniciar.%20%C2%BFPodemos%20hablar%20hoy%3F" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp ahora →</a>
+          <span>¿Tienes otra pregunta?</span>
+          <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20tengo%20otra%20pregunta%20antes%20de%20empezar.%20%C2%BFMe%20ayudan%20por%20WhatsApp%3F" target="_blank" rel="noopener noreferrer">¿Tienes Otra Pregunta? Hablemos por WhatsApp →</a>
         </div>
       </div>
     </section>
@@ -3944,18 +3940,19 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section section--contrast-c" id="contacto" aria-labelledby="cta-final-title">
+    <section class="section section--surface" id="contacto" aria-labelledby="cta-final-title">
       <div class="container">
         <div class="cta-final reveal-scale">
-          <h2 id="cta-final-title" class="section-title">¿Listo para acelerar tu negocio?</h2>
-          <p>Escríbenos por WhatsApp y en 30 minutos tendrás un diagnóstico accionable para vender más y operar mejor.</p>
+          <h2 id="cta-final-title" class="section-title">Listo para Acelerar tu Negocio? Hablemos.</h2>
+          <p>Agenda tu diagnóstico estratégico gratuito de 30 minutos. Sin compromiso. Solo oportunidades reales para tu empresa.</p>
           <p style="margin-top:1.2rem;">
             <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito%20de%2030%20minutos.%20Estoy%20interesado%20en%20%5Bservicio%5D." target="_blank" rel="noopener noreferrer" aria-label="Hablar con SOLARIS en WhatsApp">
-              💬 Agendar diagnóstico por WhatsApp
+              Agenda tu Diagnóstico GRATUITO por WhatsApp →
             </a>
           </p>
           <p><strong>o escríbenos a</strong> <a href="mailto:hola@solaris.co">hola@solaris.co</a></p>
-          <p style="font-weight:600;">@solaris.ia | hola@solaris.co | solaris.co | Colombia · Latam</p>
+          <p style="font-weight:600;">@solaris.ia · hola@solaris.co · solaris.co</p>
+          <p class="muted" style="margin-bottom:0;">COLOMBIA · LATINOAMÉRICA · EL MUNDO</p>
         </div>
       </div>
     </section>
@@ -3963,7 +3960,7 @@
 
   <div class="mobile-sticky-cta">
     <a href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20diagn%C3%B3stico%20gratuito.%20Mi%20objetivo%20principal%20es%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Diagnóstico gratuito por WhatsApp">
-      💬 Agenda diagnóstico gratis ahora
+      Agenda tu Diagnóstico GRATUITO por WhatsApp →
     </a>
   </div>
 
@@ -3971,15 +3968,12 @@
     <div class="container footer-grid">
       <div>
         <a class="brand" href="#inicio" aria-label="Ir al inicio SOLARIS">
-          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-            <circle cx="50" cy="50" r="10" fill="#FFB800"></circle>
-            <circle cx="50" cy="50" r="28" fill="none" stroke="#FF6B00" stroke-width="4"></circle>
-            <circle cx="79" cy="50" r="5" fill="#FF3CAC"></circle>
-          </svg>
-          <span>SOLARIS</span>
+          <span class="brand-main">SOLARIS</span>
+          <span class="brand-sub">AI AGENCY</span>
         </a>
         <p style="margin-top:0.55rem;">Construido en Colombia. Listo para el mundo.</p>
-        <p class="muted" style="margin:0;">© 2026 SOLARIS AI Agency · Colombia</p>
+        <p class="muted" style="margin:0;">@solaris.ia · hola@solaris.co · solaris.co</p>
+        <p class="muted" style="margin:0;">COLOMBIA · LATINOAMÉRICA · EL MUNDO</p>
       </div>
       <nav class="footer-links" aria-label="Links de footer">
         <a href="#why-solaris">Problemas</a>
