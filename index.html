@@ -1329,6 +1329,68 @@
       font-size: clamp(1rem, 2.4vw, 1.28rem);
     }
 
+    .section--light {
+      background: #F5F5F5;
+      color: #0A0A0A;
+    }
+
+    .section--light .section-tag {
+      color: #6a3b00;
+      border-color: rgba(255, 107, 0, 0.35);
+      background: rgba(255, 184, 0, 0.1);
+    }
+
+    .section--light .section-title,
+    .section--light p,
+    .section--light li,
+    .section--light .muted {
+      color: #101010;
+    }
+
+    .needs-intro {
+      max-width: 760px;
+      color: #252525;
+      font-weight: 560;
+    }
+
+    .needs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .need-card {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 107, 0, 0.24);
+      background: #FFFFFF;
+      padding: 1rem;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
+      display: grid;
+      gap: 0.62rem;
+      align-content: start;
+    }
+
+    .need-card h3 {
+      margin: 0;
+      color: #101010;
+      font-size: 1.08rem;
+    }
+
+    .need-card p {
+      margin: 0;
+      color: #3a3a3a;
+      line-height: 1.55;
+    }
+
+    .need-card .need-cta {
+      margin-top: 0.2rem;
+      font-weight: 800;
+      color: #b45100;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     .services-tabs {
       display: grid;
       gap: 1rem;
@@ -2572,6 +2634,14 @@
         padding-bottom: 0.3rem;
       }
 
+      .needs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .need-card {
+        padding: 0.9rem;
+      }
+
       .why-metrics-grid,
       .cases-grid,
       .pricing-cards-grid,
@@ -2960,7 +3030,7 @@
             <span class="gradient-text gradient-animated">transforma negocios.</span>
           </h1>
           <p>
-            Automatizamos, diseñamos y escalamos tu empresa con IA aplicada a resultados reales: más clientes, más ventas y menos fricción operativa.
+            Convertimos tu operación en un sistema de crecimiento: más clientes, más cierres y menos desgaste para tu equipo.
           </p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20vengo%20desde%20la%20landing%20y%20quiero%20hablar%20con%20un%20experto.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20busco%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer" aria-label="Hablar con SOLARIS por WhatsApp">
@@ -3002,43 +3072,27 @@
       <div class="divider-glow"></div>
     </div>
 
-    <section class="section section--contrast-a" aria-labelledby="why-solaris">
+    <section class="section section--light" aria-labelledby="why-solaris">
       <div class="container">
-        <div class="section-tag reveal">Por qué SOLARIS</div>
-        <h2 id="why-solaris" class="reveal section-title">Lo que a un dueño de negocio sí le importa: vender más y operar mejor.</h2>
-        <p class="mobile-swipe-hint" aria-hidden="true">↔ Desliza para descubrir cada métrica</p>
-        <div class="why-metrics reveal" style="margin-top:1rem;">
-          <div class="why-metrics-grid">
-            <article class="why-metric reveal delay-1">
-              <div class="metric-big gradient-text">
-                <span data-count="37" data-prefix="+">+37</span>
-              </div>
-              <div class="why-metric-label">ventas nuevas promedio por mes</div>
-              <p class="why-metric-context">Más cierres reales, no solo likes o alcance.</p>
-            </article>
-            <article class="why-metric reveal delay-2">
-              <div class="metric-big gradient-text">
-                <span data-count="2.4" data-decimals="1" data-suffix="h">2.4h</span>
-              </div>
-              <div class="why-metric-label">ahorradas por día en tareas repetitivas</div>
-              <p class="why-metric-context">Tu equipo vuelve a enfocarse en vender y atender mejor.</p>
-            </article>
-            <article class="why-metric reveal delay-3">
-              <div class="metric-big gradient-text">
-                <span data-count="93" data-suffix="%">93%</span>
-              </div>
-              <div class="why-metric-label">de chats atendidos en menos de 5 minutos</div>
-              <p class="why-metric-context">Cuando respondes rápido, vendes más.</p>
-            </article>
-            <article class="why-metric reveal delay-4">
-              <div class="metric-big gradient-text">
-                <span data-count="28" data-suffix=" días">28 días</span>
-              </div>
-              <div class="why-metric-label">para ver mejoras claras en caja comercial</div>
-              <p class="why-metric-context">Con ejecución semanal y decisiones basadas en datos.</p>
-            </article>
-          </div>
-          <p class="why-metrics-claim gradient-text reveal">Menos improvisación. Más clientes. Más rentabilidad.</p>
+        <div class="section-tag reveal">Claridad Radical</div>
+        <h2 id="why-solaris" class="reveal section-title">¿Qué necesitas resolver HOY en tu negocio?</h2>
+        <p class="needs-intro reveal">Elige tu prioridad y te mostramos el camino directo para convertirla en resultados medibles.</p>
+        <div class="needs-grid reveal">
+          <article class="need-card reveal delay-1">
+            <h3>Quiero más clientes y más ventas</h3>
+            <p>Si tu negocio necesita más llamadas, más chats y más cierres, activamos captación digital que vende.</p>
+            <a class="need-cta" href="#servicios">Ver soluciones de captación →</a>
+          </article>
+          <article class="need-card reveal delay-2">
+            <h3>Quiero liberar tiempo y ordenar la operación</h3>
+            <p>Si tu equipo está cargado con tareas repetitivas, diseñamos sistemas IA a medida para ahorrar tiempo y evitar fugas.</p>
+            <a class="need-cta" href="#servicios">Ver soluciones de eficiencia →</a>
+          </article>
+          <article class="need-card reveal delay-3">
+            <h3>Quiero escalar con control y rentabilidad</h3>
+            <p>Si ya vendes pero sin estructura, alineamos marketing, automatización y datos para crecer de forma sostenible.</p>
+            <a class="need-cta" href="#precios">Ver inversión recomendada →</a>
+          </article>
         </div>
       </div>
     </section>
@@ -3145,9 +3199,9 @@
 
           <article class="tab-panel active" data-service-panel="publicidad">
             <div>
-              <h3>Publicidad con IA que aprende y mejora cada semana.</h3>
-              <p>Combinamos Meta Ads, Google Ads y automatizaciones para captar demanda real con seguimiento inmediato.</p>
-              <p class="service-result">Resultado esperado: mas ventas con menor costo por lead.</p>
+              <h3>Publicidad con IA enfocada en ventas, no en vanidad.</h3>
+              <p>Combinamos pauta, segmentación y seguimiento comercial para atraer prospectos con intención real de compra.</p>
+              <p class="service-result">Resultado esperado: más ventas con mejor costo por cliente.</p>
               <a class="btn btn-primary" href="#precios">Ver opciones de entrada →</a>
             </div>
             <div class="service-metric">
@@ -3171,9 +3225,9 @@
 
           <article class="tab-panel" data-service-panel="contenido">
             <div>
-              <h3>Contenido que convierte, no solo contenido bonito.</h3>
-              <p>Producimos guiones, videos y piezas para redes orientadas a ventas y posicionamiento de marca.</p>
-              <p class="service-result">Resultado esperado: mejor retencion, mas clics y mayor conversion.</p>
+              <h3>Contenido que te posiciona y te vende.</h3>
+              <p>Diseñamos piezas que generan confianza, explican tu valor y empujan la decisión de compra.</p>
+              <p class="service-result">Resultado esperado: más atención, más conversaciones y más cierres.</p>
               <a class="btn btn-primary" href="#precios">Quiero contenido con IA →</a>
             </div>
             <div class="service-metric">
@@ -3184,9 +3238,9 @@
 
           <article class="tab-panel" data-service-panel="web">
             <div>
-              <h3>Web enfocada en conversion desde el dia uno.</h3>
-              <p>Creamos landing pages y tiendas listas para vender con arquitectura clara, rapida y medible.</p>
-              <p class="service-result">Resultado esperado: lanzamientos rapidos con embudo funcional.</p>
+              <h3>Web pensada para convertir desde el primer clic.</h3>
+              <p>Creamos landing pages y tiendas orientadas a venta, con mensaje claro y ruta de acción directa.</p>
+              <p class="service-result">Resultado esperado: más oportunidades comerciales desde tu web.</p>
               <a class="btn btn-primary" href="#precios">Lanzar mi web →</a>
             </div>
             <div class="service-metric">
@@ -3198,8 +3252,8 @@
           <article class="tab-panel" data-service-panel="estrategia">
             <div>
               <h3>Estrategia ejecutable para crecer sin improvisar.</h3>
-              <p>Diagnostico, roadmap y acompanamiento para alinear marketing, operaciones y resultados.</p>
-              <p class="service-result">Resultado esperado: decisiones claras y foco total en rentabilidad.</p>
+              <p>Te entregamos prioridades claras, metas medibles y un plan que tu negocio puede ejecutar desde ya.</p>
+              <p class="service-result">Resultado esperado: decisiones firmes y crecimiento rentable.</p>
               <a class="btn btn-primary" href="#contacto">Quiero el diagnostico →</a>
             </div>
             <div class="service-metric">
@@ -3210,9 +3264,9 @@
 
           <article class="tab-panel" data-service-panel="seo">
             <div>
-              <h3>SEO local para captar demanda de alta intencion.</h3>
-              <p>Optimizamos Google Maps, contenidos y reputacion para que te encuentren primero en tu zona.</p>
-              <p class="service-result">Resultado esperado: mas llamadas y leads organicos mensuales.</p>
+              <h3>Posicionamiento local para que te encuentren primero.</h3>
+              <p>Mejoramos tu presencia local y reputación para atraer personas que ya están listas para comprar.</p>
+              <p class="service-result">Resultado esperado: más llamadas y ventas orgánicas constantes.</p>
               <a class="btn btn-primary" href="#contacto">Posicionarme ahora →</a>
             </div>
             <div class="service-metric">
