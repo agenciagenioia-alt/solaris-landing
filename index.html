@@ -188,9 +188,9 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: clamp(1.4rem, 4.2vw, 3rem);
-      align-items: center;
+      grid-template-columns: 1fr;
+      gap: clamp(1rem, 2.8vw, 2rem);
+      align-items: start;
     }
     .hero-copy p {
       font-size: clamp(1.12rem, 2vw, 1.6rem);
@@ -207,58 +207,39 @@
     }
 
     .hero-media {
-      width: min(100%, 520px);
-      height: min(68vh, 620px);
-      border-radius: 24px;
+      width: 100%;
+      max-width: 1200px;
+      height: clamp(240px, 44vw, 520px);
       overflow: hidden;
-      border: 1px solid var(--border);
-      background: #111;
+      border: 0;
+      background: transparent;
       position: relative;
       margin-inline: auto;
-      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.38);
+      box-shadow: none;
+      order: 1;
     }
+    .hero-copy { order: 2; }
     .hero-slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      background-size: cover;
-      background-position: center top;
+      background: #0A0A0A;
       animation: heroFade 18s infinite;
     }
-    .hero-slide::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.15), rgba(10, 10, 10, 0.6));
-    }
-    .hero-slide span {
-      position: absolute;
-      left: 0.9rem;
-      bottom: 0.9rem;
-      z-index: 1;
-      font-size: var(--caption);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #FFE6BA;
-      border: 1px solid rgba(255, 184, 0, 0.38);
-      border-radius: 999px;
-      padding: 0.36rem 0.56rem;
-      background: rgba(10, 10, 10, 0.65);
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center top;
+      display: block;
     }
     .hero-slide.s1 {
-      background-image: url("https://i.postimg.cc/NgwQVGDC/1.jpg?dl=1");
-      background-position: center 0%;
       animation-delay: 0s;
     }
     .hero-slide.s2 {
-      background-image: url("https://i.postimg.cc/4XpYnSSJ/2.jpg?dl=1");
-      background-position: center 0%;
       animation-delay: 6s;
     }
     .hero-slide.s3 {
-      background-image: url("https://i.postimg.cc/PHy8m0rq/3.jpg?dl=1");
-      background-position: center 0%;
       animation-delay: 12s;
     }
     @keyframes heroFade {
@@ -637,7 +618,7 @@
       .services-grid,
       .steps,
       .footer-grid { grid-template-columns: 1fr; }
-      .hero-media { width: 100%; height: 320px; }
+      .hero-media { width: 100%; height: clamp(200px, 56vw, 320px); }
       .section { padding: 64px 0; }
       .mobile-sticky-cta { display: block; }
       body { padding-bottom: 70px; }
@@ -698,9 +679,15 @@
           <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
         </div>
         <div class="hero-media reveal" aria-hidden="true">
-          <div class="hero-slide s1"><span>Transformación</span></div>
-          <div class="hero-slide s2"><span>Evolución</span></div>
-          <div class="hero-slide s3"><span>Aceleramiento</span></div>
+          <div class="hero-slide s1">
+            <img src="https://i.postimg.cc/NgwQVGDC/1.jpg?dl=1" alt="" loading="eager" decoding="async">
+          </div>
+          <div class="hero-slide s2">
+            <img src="https://i.postimg.cc/4XpYnSSJ/2.jpg?dl=1" alt="" loading="lazy" decoding="async">
+          </div>
+          <div class="hero-slide s3">
+            <img src="https://i.postimg.cc/PHy8m0rq/3.jpg?dl=1" alt="" loading="lazy" decoding="async">
+          </div>
         </div>
       </div>
     </section>
