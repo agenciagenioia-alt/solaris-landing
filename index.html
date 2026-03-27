@@ -1664,6 +1664,131 @@
     }
     .need-cta:hover { border-bottom-color: #FF6B00; }
 
+    /* ─── Navegación por resultados: escenario “energía / profundidad” (sin otro visor 3D) ─── */
+    .needs-deck {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(3.5rem, 9vw, 5.25rem) 0;
+      background:
+        radial-gradient(ellipse 100% 70% at 50% -15%, rgba(46, 27, 38, 0.2), transparent 55%),
+        radial-gradient(circle at 82% 12%, rgba(255, 107, 0, 0.14), transparent 40%),
+        radial-gradient(circle at 6% 88%, rgba(255, 60, 172, 0.1), transparent 42%),
+        linear-gradient(178deg, #E6E2DA 0%, #F0EBE4 35%, #FAF8F4 72%, #F5F2EC 100%);
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .needs-deck::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 38%;
+      width: min(100%, 520px);
+      height: min(90vw, 520px);
+      transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle at 45% 42%, rgba(255, 230, 180, 0.35) 0%, rgba(255, 184, 0, 0.12) 32%, transparent 62%),
+        radial-gradient(circle at 62% 58%, rgba(255, 107, 0, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 38% 55%, rgba(255, 60, 172, 0.1) 0%, transparent 48%);
+      filter: blur(36px);
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 0;
+      animation: needsDeckOrb 9s ease-in-out infinite alternate;
+    }
+    .needs-deck::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(10, 10, 10, 0.06), transparent 55%),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 62px,
+          rgba(255, 107, 0, 0.02) 62px,
+          rgba(255, 107, 0, 0.02) 64px
+        );
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.9;
+    }
+    @keyframes needsDeckOrb {
+      from { transform: translate(-50%, -50%) scale(0.92) rotate(0deg); opacity: 0.75; }
+      to { transform: translate(-50%, -50%) scale(1.06) rotate(4deg); opacity: 0.95; }
+    }
+    .needs-deck .container {
+      position: relative;
+      z-index: 1;
+    }
+    .needs-deck .needs-stack {
+      margin-top: 1.35rem;
+      border-top: none;
+      gap: clamp(1rem, 3vw, 1.4rem);
+      perspective: 1400px;
+    }
+    .needs-deck .need-item {
+      position: relative;
+      grid-template-columns: auto 1fr;
+      gap: clamp(1rem, 3vw, 1.5rem);
+      padding: clamp(1.2rem, 2.8vw, 1.65rem) clamp(1.15rem, 2.5vw, 1.5rem);
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: clamp(17px, 3vw, 24px);
+      background: linear-gradient(168deg, rgba(255, 255, 255, 0.93) 0%, rgba(255, 253, 249, 0.86) 55%, rgba(252, 248, 242, 0.9) 100%);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.95) inset,
+        0 14px 42px rgba(24, 14, 32, 0.09),
+        0 6px 16px rgba(255, 107, 0, 0.05);
+      transform-style: preserve-3d;
+      transform: translateZ(0) rotateX(0.8deg);
+      transition: transform 0.45s cubic-bezier(0.34, 1.25, 0.64, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .needs-deck .need-item:hover {
+        transform: translateY(-8px) translateZ(12px) rotateX(2.5deg);
+        border-color: rgba(255, 140, 72, 0.42);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 1) inset,
+          0 26px 56px rgba(24, 14, 32, 0.14),
+          0 0 0 1px rgba(255, 107, 0, 0.16),
+          0 0 52px rgba(255, 107, 0, 0.1);
+      }
+    }
+    .needs-deck .need-item:active {
+      transform: translateY(-2px) translateZ(4px) rotateX(1deg);
+    }
+    .needs-deck .need-index {
+      width: clamp(2.85rem, 8vw, 3.35rem);
+      height: clamp(2.85rem, 8vw, 3.35rem);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: clamp(0.95rem, 2.2vw, 1.12rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #B63A00;
+      line-height: 1;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 107, 0, 0.35);
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 235, 0.92) 45%, rgba(255, 224, 186, 0.55) 120%);
+      box-shadow:
+        0 0 20px rgba(255, 107, 0, 0.18),
+        0 4px 14px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    }
+    .needs-deck .need-body h3 {
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+    .needs-deck .need-cta {
+      padding: 0.15rem 0;
+      transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .needs-deck .need-cta:hover {
+      transform: translateX(3px);
+    }
+
     .services-subcopy { margin-bottom: 0.35rem; }
     .services-list {
       display: grid;
@@ -2814,6 +2939,10 @@
         scroll-snap-align: unset;
       }
       .context-card__chev { transition: none !important; }
+      .needs-deck::before { animation: none !important; opacity: 0.85 !important; transform: translate(-50%, -50%) !important; }
+      .needs-deck .need-item { transition: none !important; transform: none !important; }
+      .needs-deck .need-item:active { transform: none !important; }
+      .needs-deck .need-cta:hover { transform: none !important; }
     }
   </style>
 </head>
@@ -3049,7 +3178,7 @@
 
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
-    <section class="section section--light" aria-labelledby="why-solaris">
+    <section class="section section--light needs-deck" aria-labelledby="why-solaris">
       <div class="container section-body section-body--light">
         <div class="section-tag reveal">Navegación por Resultados</div>
         <h2 id="why-solaris" class="reveal">¿Qué Problema Quieres Resolver HOY en tu Negocio?</h2>
