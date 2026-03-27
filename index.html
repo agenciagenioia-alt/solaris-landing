@@ -867,6 +867,10 @@
     .hero-3d--mobile {
       display: none;
     }
+    .hero-3d-mobile-shell,
+    .hero-3d-mobile-head {
+      display: none;
+    }
     .hero-aside {
       display: grid;
       gap: 0;
@@ -2055,7 +2059,58 @@
       .hero-3d--hero { display: none; }
       .hero-3d--mobile-section {
         display: block;
-        padding: 0 0 10px;
+        position: relative;
+        padding: 14px 0 18px;
+        background:
+          radial-gradient(circle at 82% 40%, rgba(255, 184, 0, 0.16), rgba(255, 184, 0, 0)),
+          radial-gradient(circle at 22% 78%, rgba(255, 60, 172, 0.11), rgba(255, 60, 172, 0)),
+          linear-gradient(180deg, #14110e 0%, #17110f 44%, #18120f 100%);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .hero-3d-mobile-shell {
+        display: grid;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        background:
+          linear-gradient(145deg, rgba(255, 184, 0, 0.08), rgba(255, 60, 172, 0.04)),
+          rgba(255, 255, 255, 0.02);
+        box-shadow:
+          0 10px 32px rgba(0, 0, 0, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+      .hero-3d-mobile-head {
+        display: block;
+      }
+      .hero-3d-mobile-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.38rem;
+        border-radius: 999px;
+        padding: 0.26rem 0.58rem;
+        margin: 0 0 0.48rem;
+        font-size: 0.6rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 225, 182, 0.92);
+        border: 1px solid rgba(255, 184, 0, 0.34);
+        background: rgba(255, 184, 0, 0.08);
+      }
+      .hero-3d-mobile-title {
+        margin: 0 0 0.35rem;
+        font-size: clamp(1.02rem, 3.6vw, 1.2rem);
+        line-height: 1.26;
+        letter-spacing: -0.01em;
+        color: #F8F4EC;
+      }
+      .hero-3d-mobile-copy {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.48;
+        color: #CFC6B8;
       }
       .hero-3d--mobile {
         display: block;
@@ -2288,7 +2343,13 @@
 
     <section class="hero-3d--mobile-section" aria-label="Experiencia 3D SOLARIS en móvil">
       <div class="container">
-        <div class="hero-3d hero-3d--mobile reveal" aria-label="Modelo 3D SOLARIS (interactivo)">
+        <div class="hero-3d-mobile-shell reveal">
+          <div class="hero-3d-mobile-head">
+            <p class="hero-3d-mobile-kicker">Vista interactiva</p>
+            <h3 class="hero-3d-mobile-title">Explora el núcleo SOLARIS en tiempo real</h3>
+            <p class="hero-3d-mobile-copy">Gíralo con tus dedos para ver nuestra energía de ejecución desde otro ángulo.</p>
+          </div>
+        <div class="hero-3d hero-3d--mobile" aria-label="Modelo 3D SOLARIS (interactivo)">
           <div class="hero-3d-chrome" aria-hidden="true"><span class="hero-3d-chrome-glow"></span></div>
           <div class="hero-3d-chrome-meta" aria-hidden="true">
             <span class="hero-3d-chrome-live"><span class="hero-3d-chrome-dot"></span> Interactivo</span>
@@ -2310,6 +2371,7 @@
           </div>
           <div class="hero-3d-gridfx" aria-hidden="true"></div>
           <p class="hero-3d-tag" aria-hidden="true"><span class="hero-3d-tag-inner">Experiencia 3D · SOLARIS</span></p>
+        </div>
         </div>
       </div>
     </section>
