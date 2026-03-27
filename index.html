@@ -692,15 +692,114 @@
       display: none;
       position: relative;
       padding: 0;
+      overflow: hidden;
       background:
-        radial-gradient(circle at 80% 32%, rgba(255, 184, 0, 0.16), rgba(255, 184, 0, 0)),
-        radial-gradient(circle at 18% 84%, rgba(255, 60, 172, 0.1), rgba(255, 60, 172, 0)),
-        #14100f;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        radial-gradient(ellipse 110% 62% at 50% -8%, rgba(255, 107, 0, 0.11), transparent 48%),
+        radial-gradient(circle at 82% 28%, rgba(255, 184, 0, 0.12), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 14% 78%, rgba(255, 60, 172, 0.1), rgba(255, 60, 172, 0)),
+        linear-gradient(180deg, #161117 0%, #100d12 48%, #0e0c10 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .hero-3d-relocated-slot::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.55), rgba(255, 184, 0, 0.5), rgba(255, 60, 172, 0.45), transparent);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    /* Micro-textura: profundidad sin competir con el Spline */
+    .hero-3d-relocated-slot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.9) 0.5px, transparent 0.6px);
+      background-size: 7px 7px;
     }
     .hero-3d-relocated-shell {
-      padding: 14px 0 14px;
+      position: relative;
+      z-index: 1;
+      padding: clamp(1.35rem, 4.2vw, 2.1rem) 0 clamp(1.55rem, 4.8vw, 2.35rem);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: clamp(0.85rem, 2.8vw, 1.35rem);
+    }
+    .hero-3d-slot-head {
+      text-align: center;
+      max-width: 36rem;
+      margin: 0 auto;
+      padding: 0 clamp(0.25rem, 2vw, 0.5rem);
+    }
+    .hero-3d-slot-head .section-tag {
+      margin-bottom: 0.72rem;
+    }
+    .hero-3d-slot-title {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: clamp(1.28rem, 4.1vw, 1.82rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin: 0 auto 0.55rem;
+      max-width: 18ch;
+      color: #FAFAFA;
+    }
+    .hero-3d-slot-title .gradient-text {
+      display: inline;
+    }
+    .hero-3d-slot-lead {
+      margin: 0 auto;
+      max-width: 36ch;
+      font-size: 0.91rem;
+      line-height: 1.58;
+      color: #C4BBB2;
+    }
+    .hero-3d-slot-meta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.65rem;
+      margin: 0.85rem auto 0;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 214, 170, 0.78);
+    }
+    .hero-3d-slot-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.32rem;
+    }
+    .hero-3d-slot-meta .meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--grad);
+      opacity: 0.85;
+    }
+    .hero-3d-slot-stage {
+      position: relative;
+      border-radius: clamp(20px, 4.2vw, 26px);
+      padding: clamp(0.55rem, 1.8vw, 0.9rem);
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 0 0 1px rgba(255, 107, 0, 0.14),
+        0 0 40px rgba(255, 107, 0, 0.06),
+        0 0 0 1px rgba(0, 0, 0, 0.42) inset,
+        inset 0 1px 0 rgba(255, 255, 255, 0.09),
+        0 22px 52px rgba(0, 0, 0, 0.4);
     }
     .hero-3d-relocated-slot .hero-3d {
       width: min(100%, 430px);
@@ -2114,8 +2213,20 @@
       </div>
     </section>
 
-    <section class="hero-3d-relocated-slot" aria-label="Experiencia 3D SOLARIS">
-      <div class="container hero-3d-relocated-shell" id="hero3dRelocatedShell"></div>
+    <section class="hero-3d-relocated-slot" aria-labelledby="hero3d-slot-title">
+      <div class="container hero-3d-relocated-shell">
+        <header class="hero-3d-slot-head reveal">
+          <div class="section-tag">Portal en vivo</div>
+          <h2 id="hero3d-slot-title" class="hero-3d-slot-title">La misma energía de <span class="gradient-text">SOLARIS</span>, en 3D</h2>
+          <p class="hero-3d-slot-lead">Interactúa con el modelo: arrastra, acerca y explora. Es el corazón visual de la marca, en un espacio solo para esto — antes de seguir con resultados y soluciones.</p>
+          <p class="hero-3d-slot-meta" aria-hidden="true">
+            <span><span class="meta-dot" aria-hidden="true"></span> Interactivo</span>
+            <span><span class="meta-dot" aria-hidden="true"></span> En tu móvil</span>
+            <span><span class="meta-dot" aria-hidden="true"></span> Sin salir de la página</span>
+          </p>
+        </header>
+        <div class="hero-3d-slot-stage reveal" id="hero3dRelocatedShell"></div>
+      </div>
     </section>
 
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
@@ -2726,6 +2837,9 @@
             if (hero3d.parentElement !== hero3dRelocatedShell) {
               hero3dRelocatedShell.appendChild(hero3d);
             }
+            document.querySelectorAll(".hero-3d-relocated-slot .reveal").forEach(function (el) {
+              el.classList.add("visible");
+            });
           } else if (hero3d.parentElement !== heroAside.parentElement) {
             heroAside.parentElement.insertBefore(hero3d, heroAside);
           }
