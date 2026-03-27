@@ -2137,20 +2137,86 @@
       .hero-copy-column {
         display: contents;
       }
+      /* Copy del hero (solo móvil): centrado como el visor, halo continuo — no se toca .hero-intro .hero-3d */
       .hero-copy-column .hero-copy {
         grid-area: copy;
         position: relative;
         z-index: 2;
-        padding: 0.15rem 0 0.25rem;
+        margin-top: -0.2rem;
+        padding: 1rem clamp(0.35rem, 2.5vw, 0.85rem) 0.3rem;
+        text-align: center;
+      }
+      .hero-copy-column .hero-copy::before {
+        left: 50%;
+        transform: translateX(-50%);
+        top: -14%;
+        width: min(110%, 24rem);
+        height: 92%;
+        background: radial-gradient(ellipse 75% 62% at 50% 22%, rgba(255, 107, 0, 0.11), rgba(46, 27, 38, 0.2) 48%, transparent 74%);
+      }
+      .hero-copy-column .hero-copy .hero-title-block {
+        align-items: center;
+        margin-inline: auto;
+      }
+      .hero-copy-column .hero-copy .hero-kicker {
+        margin-inline: auto;
+        margin-bottom: clamp(0.9rem, 2.8vw, 1.15rem);
+        padding: 0.32rem 0.75rem;
+        border-color: rgba(255, 140, 72, 0.42);
+        background: linear-gradient(145deg, rgba(255, 107, 0, 0.14), rgba(255, 60, 172, 0.07));
+        box-shadow: 0 4px 24px rgba(255, 107, 0, 0.1);
+        font-size: 0.64rem;
+        letter-spacing: 0.11em;
+      }
+      .hero-copy-column .hero-copy .hero-brand-name {
+        font-size: clamp(2.5rem, 10.5vw, 3.65rem);
+        letter-spacing: 0.1em;
+        line-height: 0.9;
+      }
+      .hero-copy-column .hero-copy .hero-brand-name::after {
+        margin-inline: auto;
+        width: min(9rem, 62vw);
+        height: 3px;
+        margin-top: clamp(0.48rem, 2vw, 0.68rem);
+        border-radius: 4px;
+        opacity: 0.95;
+      }
+      .hero-copy-column .hero-copy .hero-title-sub {
+        max-width: 24ch;
+        margin-inline: auto;
+        font-size: clamp(1.05rem, 3.5vw, 1.28rem);
+        color: rgba(210, 210, 210, 0.93);
+      }
+      .hero-copy-column .hero-copy .hero-title-accent {
+        font-size: clamp(1.14rem, 3.9vw, 1.48rem);
+        max-width: 22ch;
+        margin-inline: auto;
+      }
+      .hero-copy-column .hero-copy .hero-lead {
+        max-width: 30ch;
+        margin-inline: auto;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+        line-height: 1.58;
+        color: #949494;
       }
       .hero-copy-column .hero-cta-hero {
         grid-area: hero-cta;
         position: relative;
         z-index: 2;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         margin-top: 0.35rem;
-        margin-bottom: 0.35rem;
+        margin-bottom: 0.45rem;
+        padding: 0.92rem 0.95rem;
+        font-size: 0.88rem;
+        line-height: 1.35;
+        text-align: center;
+        box-shadow: 0 14px 34px rgba(255, 107, 0, 0.26);
       }
-      /* Opción 1 móvil: visor 3D primero → impacto inmediato; luego copy, CTA y métricas */
+      /* Visor primero → copy + CTA + métricas */
       .hero-intro-grid {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -2158,7 +2224,7 @@
           "copy"
           "hero-cta"
           "aside";
-        gap: 0.45rem 0;
+        gap: 0.2rem 0;
         padding: 0.2rem 0 1rem;
         min-height: auto;
       }
@@ -2186,7 +2252,6 @@
       }
       .hero-3d-relocated-slot .hero-3d-gridfx { display: none; }
       .hero-3d-relocated-slot .hero-3d-chrome-dot { animation: none !important; }
-      .hero-brand-name::after { width: min(9rem, 70vw); }
       /*
        * Tamaño base fijo en móvil (~43% del alto de pantalla): es lo que todos ven por defecto.
        * El marco no cambia al interactuar; overscroll evita que el arrastre mueva la página.
