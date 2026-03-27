@@ -689,7 +689,7 @@
       z-index: 1;
     }
     .hero-3d-relocated-slot {
-      display: none;
+      display: block;
       position: relative;
       padding: 0;
       overflow: hidden;
@@ -800,6 +800,22 @@
         0 0 0 1px rgba(0, 0, 0, 0.42) inset,
         inset 0 1px 0 rgba(255, 255, 255, 0.09),
         0 22px 52px rgba(0, 0, 0, 0.4);
+    }
+    .hero-3d-slot-stage .hero-3d--sun {
+      position: relative;
+      top: auto;
+      grid-area: auto;
+      width: min(100%, 680px);
+      height: clamp(260px, 52vw, 430px);
+      min-height: 260px;
+      max-height: 430px;
+      margin: 0 auto;
+      animation: none !important;
+    }
+    .hero-3d-slot-stage .hero-3d--sun iframe {
+      width: 118%;
+      height: 118%;
+      filter: none;
     }
     .hero-3d-relocated-slot .hero-3d {
       width: min(100%, 430px);
@@ -1976,6 +1992,7 @@
         grid-template-columns: 1fr;
         grid-template-areas:
           "copy"
+          "media"
           "aside";
         padding: 1.25rem 0 1.5rem;
       }
@@ -1987,13 +2004,19 @@
       .hero-3d-relocated-slot .hero-3d iframe {
         left: 50%;
         top: 50%;
-        width: 122%;
-        height: 124%;
+        width: 112%;
+        height: 112%;
         max-width: none;
         max-height: none;
         transform: translate(-50%, -50%);
         filter: none;
         touch-action: none;
+      }
+      .hero-3d-slot-stage .hero-3d--sun {
+        width: min(100%, 330px);
+        height: clamp(220px, 38vh, 300px);
+        min-height: 220px;
+        max-height: 300px;
       }
       .hero-3d-relocated-slot .hero-3d-gridfx { display: none; }
       .hero-3d-relocated-slot .hero-3d-chrome-dot { animation: none !important; }
@@ -2005,12 +2028,13 @@
       .hero-3d {
         position: relative;
         top: auto;
-        width: min(100%, 400px);
+        width: min(100%, 360px);
         margin-right: auto;
         margin-left: auto;
-        height: clamp(268px, 43.5vh, 420px);
-        min-height: 268px;
-        max-height: 420px;
+        margin-top: 0.55rem;
+        height: clamp(220px, 38vh, 320px);
+        min-height: 220px;
+        max-height: 320px;
         flex-shrink: 0;
         border-radius: clamp(16px, 4vw, 22px);
         animation: none !important;
@@ -2035,8 +2059,8 @@
       .hero-3d iframe {
         left: 50%;
         top: 50%;
-        width: 122%;
-        height: 124%;
+        width: 114%;
+        height: 114%;
         max-width: none;
         max-height: none;
         transform: translate(-50%, -50%);
@@ -2148,13 +2172,13 @@
             -->
             <iframe
               id="heroSplineFrame"
-              src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
+              src="https://my.spline.design/nexbotrobotcharacterconcept-FErjQ84U9ZuyYT3n4gJL5p5h/"
               width="100%"
               height="100%"
               loading="eager"
               allow="fullscreen; autoplay; xr-spatial-tracking; accelerometer; gyroscope"
               referrerpolicy="no-referrer"
-              title="Modelo 3D interactivo SOLARIS"
+              title="Robot 3D interactivo SOLARIS"
             ></iframe>
           </div>
           <div class="hero-3d-gridfx" aria-hidden="true"></div>
@@ -2212,7 +2236,24 @@
             <span><span class="meta-dot" aria-hidden="true"></span> Sin salir de la página</span>
           </p>
         </header>
-        <div class="hero-3d-slot-stage reveal" id="hero3dRelocatedShell"></div>
+        <div class="hero-3d-slot-stage reveal" id="hero3dRelocatedShell">
+          <div class="hero-3d hero-3d--sun reveal" aria-label="Sol 3D SOLARIS (interactivo)">
+            <div class="hero-3d-spline">
+              <iframe
+                id="sunSplineFrame"
+                src="about:blank"
+                data-spline-src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
+                width="100%"
+                height="100%"
+                loading="lazy"
+                allow="fullscreen; autoplay; xr-spatial-tracking; accelerometer; gyroscope"
+                referrerpolicy="no-referrer"
+                title="Sol 3D interactivo SOLARIS"
+              ></iframe>
+            </div>
+            <p class="hero-3d-tag" aria-hidden="true"><span class="hero-3d-tag-inner">Sol 3D · SOLARIS</span></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2779,9 +2820,6 @@
       const previewClose = document.getElementById("previewClose");
       const previewRemoteStatus = document.getElementById("previewRemoteStatus");
       const previewRemoteText = document.getElementById("previewRemoteText");
-      const hero3d = document.querySelector(".hero-3d");
-      const heroAside = document.querySelector(".hero-aside");
-      const hero3dRelocatedShell = document.getElementById("hero3dRelocatedShell");
       let previewFetchAbort = null;
 
       function onScrollNav() {
@@ -2832,26 +2870,6 @@
       window.addEventListener("scroll", updateTimeline, { passive: true });
       window.addEventListener("resize", updateTimeline);
 
-      (function moveHero3dForMobile() {
-        if (!hero3d || !heroAside || !hero3dRelocatedShell) return;
-        function applyPlacement() {
-          var mobile = window.matchMedia("(max-width: 960px)").matches;
-          if (mobile) {
-            if (hero3d.parentElement !== hero3dRelocatedShell) {
-              hero3dRelocatedShell.appendChild(hero3d);
-            }
-            document.querySelectorAll(".hero-3d-relocated-slot .reveal").forEach(function (el) {
-              el.classList.add("visible");
-            });
-          } else if (hero3d.parentElement !== heroAside.parentElement) {
-            heroAside.parentElement.insertBefore(hero3d, heroAside);
-          }
-        }
-        applyPlacement();
-        window.addEventListener("resize", applyPlacement);
-        window.addEventListener("orientationchange", applyPlacement);
-      })();
-
       (function initHero3dHint() {
         var hint = document.getElementById("hero3dHint");
         if (!hint) return;
@@ -2865,6 +2883,35 @@
             window.removeEventListener("pointerdown", onFirstTouch, { capture: true });
           };
           window.addEventListener("pointerdown", onFirstTouch, { capture: true, passive: true, once: true });
+        }
+      })();
+
+      (function initDeferredSunSpline() {
+        var frame = document.getElementById("sunSplineFrame");
+        if (!frame) return;
+        var deferredSrc = frame.getAttribute("data-spline-src");
+        if (!deferredSrc) return;
+        var hasLoaded = false;
+
+        function loadSunSpline() {
+          if (hasLoaded) return;
+          hasLoaded = true;
+          frame.src = deferredSrc;
+        }
+
+        frame.addEventListener("pointerdown", loadSunSpline, { once: true, passive: true });
+
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              loadSunSpline();
+              obs.disconnect();
+            });
+          }, { rootMargin: "280px 0px", threshold: 0.05 });
+          io.observe(frame);
+        } else {
+          loadSunSpline();
         }
       })();
 
