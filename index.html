@@ -48,6 +48,85 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
+    body.page-loading {
+      overflow: hidden;
+    }
+
+    /* ─── Pantalla de carga ─── */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background:
+        radial-gradient(ellipse 120% 90% at 50% -10%, rgba(255, 107, 0, 0.09), transparent 55%),
+        radial-gradient(ellipse 90% 70% at 80% 60%, rgba(255, 60, 172, 0.06), transparent 50%),
+        radial-gradient(ellipse 96% 78% at 72% 50%, var(--bg-spline-mid), transparent 62%),
+        var(--bg);
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .page-loader.page-loader--done {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .page-loader__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.15rem;
+      text-align: center;
+      max-width: 22rem;
+    }
+    .page-loader__brand {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: clamp(1.85rem, 7vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #FAFAFA;
+      text-shadow: 0 0 48px rgba(255, 107, 0, 0.18);
+    }
+    .page-loader__brand::after {
+      content: "";
+      display: block;
+      width: min(8rem, 55vw);
+      height: 3px;
+      margin: 0.75rem auto 0;
+      border-radius: 3px;
+      background: var(--grad);
+      box-shadow: 0 0 18px rgba(255, 107, 0, 0.35);
+    }
+    .page-loader__track {
+      width: min(11rem, 72vw);
+      height: 4px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+    .page-loader__fill {
+      display: block;
+      width: 38%;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--grad);
+      animation: page-loader-shuttle 0.95s ease-in-out infinite;
+    }
+    @keyframes page-loader-shuttle {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(320%); }
+    }
+    .page-loader__tagline {
+      margin: 0;
+      font-size: clamp(0.78rem, 2.6vw, 0.9rem);
+      color: rgba(200, 195, 188, 0.88);
+      letter-spacing: 0.02em;
+      line-height: 1.45;
+    }
 
     .skip-link {
       position: absolute;
@@ -2373,6 +2452,13 @@
         animation: none !important;
         transition: none !important;
       }
+      .page-loader { transition: opacity 0.2s ease, visibility 0.2s ease; }
+      .page-loader__fill {
+        animation: none !important;
+        width: 100% !important;
+        transform: none !important;
+        opacity: 0.75;
+      }
       .reveal { opacity: 1 !important; transform: none !important; }
       .case-ig-cover img { transform: none !important; }
       .timeline-rail-fill,
@@ -2387,7 +2473,14 @@
     }
   </style>
 </head>
-<body>
+<body class="page-loading">
+  <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-busy="true" aria-label="Cargando sitio SOLARIS">
+    <div class="page-loader__inner">
+      <p class="page-loader__brand">SOLARIS</p>
+      <div class="page-loader__track" aria-hidden="true"><span class="page-loader__fill"></span></div>
+      <p class="page-loader__tagline">Energía que transforma negocios.</p>
+    </div>
+  </div>
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
 
   <header class="nav-wrap" id="siteNav">
@@ -3086,6 +3179,27 @@
   <script>
     (function () {
       "use strict";
+      (function initPageLoader() {
+        var el = document.getElementById("pageLoader");
+        if (!el) return;
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var minMs = reduced ? 120 : 680;
+        var t0 = performance.now();
+        function finish() {
+          var wait = Math.max(0, minMs - (performance.now() - t0));
+          window.setTimeout(function () {
+            el.classList.add("page-loader--done");
+            document.body.classList.remove("page-loading");
+            el.setAttribute("aria-busy", "false");
+            window.setTimeout(function () {
+              el.remove();
+            }, 520);
+          }, wait);
+        }
+        if (document.readyState === "complete") finish();
+        else window.addEventListener("load", finish);
+      })();
+
       const nav = document.getElementById("siteNav");
       const menuToggle = document.getElementById("menuToggle");
       const mobileMenu = document.getElementById("mobileMenu");
