@@ -935,6 +935,32 @@
       animation: none !important;
       overscroll-behavior: contain;
     }
+    .hero-3d-fallback {
+      position: absolute;
+      inset: auto 10px 10px 10px;
+      z-index: 6;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem 0.65rem;
+      border-radius: 10px;
+      background: rgba(8, 8, 8, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #F0E8DA;
+      font-size: 0.74rem;
+    }
+    .hero-3d-fallback.is-visible { display: flex; }
+    .hero-3d-fallback button {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.35rem 0.62rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--orange);
+      cursor: pointer;
+    }
     .hero-aside {
       display: grid;
       gap: 0;
@@ -2327,44 +2353,6 @@
           <p class="hero-lead">Transformamos tu operación. Aceleramos tus ventas.</p>
           <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
         </div>
-        <div class="hero-3d hero-3d--hero reveal" aria-label="Modelo 3D SOLARIS (interactivo)">
-          <div class="hero-3d-chrome" aria-hidden="true"><span class="hero-3d-chrome-glow"></span></div>
-          <div class="hero-3d-chrome-meta" aria-hidden="true">
-            <span class="hero-3d-chrome-live"><span class="hero-3d-chrome-dot"></span> Interactivo</span>
-          </div>
-          <span class="hero-3d-corner hero-3d-corner--tl" aria-hidden="true"></span>
-          <span class="hero-3d-corner hero-3d-corner--tr" aria-hidden="true"></span>
-          <span class="hero-3d-corner hero-3d-corner--bl" aria-hidden="true"></span>
-          <span class="hero-3d-corner hero-3d-corner--br" aria-hidden="true"></span>
-          <div class="hero-3d-spline">
-            <!--
-              Pose al abrir la página: definida en Spline (Export → Play Settings).
-              Main Camera = vista deseada al cargar | Turntable auto = No si no quieres giro solo.
-              Touch: orbit 1 dedo; Page scroll en la escena = No. Soft limit = Ease (suelta → vuelve a la pose inicial).
-              Quitar el texto “Built with Spline”: plan de pago en Spline; aquí solo velo + zoom suave.
-            -->
-            <iframe
-              id="heroSplineFrame"
-              src="about:blank"
-              width="100%"
-              height="100%"
-              loading="eager"
-              allow="fullscreen; autoplay; xr-spatial-tracking; accelerometer; gyroscope"
-              referrerpolicy="no-referrer"
-              title="Modelo 3D interactivo SOLARIS"
-            ></iframe>
-          </div>
-          <div class="hero-3d-gridfx" aria-hidden="true"></div>
-          <div class="hero-3d-hint" id="hero3dHint" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-              <path d="M8 12h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-              <path d="M10.5 9.5L8 12l2.5 2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13.5 9.5L16 12l-2.5 2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Arrastra para interactuar
-          </div>
-          <p class="hero-3d-tag" aria-hidden="true"><span class="hero-3d-tag-inner">Experiencia 3D · SOLARIS</span></p>
-        </div>
         <aside class="hero-aside" aria-label="Cómo trabajamos">
           <dl>
             <dt>Ritmo</dt>
@@ -2417,6 +2405,7 @@
           <div class="hero-3d-spline">
             <iframe
               id="mobileSplineFrame"
+              data-spline-src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
               src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
               width="100%"
               height="100%"
@@ -2425,6 +2414,10 @@
               referrerpolicy="no-referrer"
               title="Modelo 3D interactivo SOLARIS en sección móvil"
             ></iframe>
+          </div>
+          <div class="hero-3d-fallback" id="mobileSplineFallback" aria-live="polite">
+            <span>Si no carga el 3D, recárgalo.</span>
+            <button type="button" id="mobileSplineRetry">Reintentar</button>
           </div>
           <div class="hero-3d-gridfx" aria-hidden="true"></div>
           <p class="hero-3d-tag" aria-hidden="true"><span class="hero-3d-tag-inner">Experiencia 3D · SOLARIS</span></p>
@@ -2967,6 +2960,58 @@
       var loaderStart = performance.now();
       var minLoaderMs = reduceMotion ? 220 : 2300;
       var loaderDone = false;
+      var mobileSplineFrame = document.getElementById("mobileSplineFrame");
+      var mobileSplineFallback = document.getElementById("mobileSplineFallback");
+      var mobileSplineRetry = document.getElementById("mobileSplineRetry");
+
+      (function initMobileSpline() {
+        if (!mobileSplineFrame) return;
+        var source = mobileSplineFrame.getAttribute("data-spline-src") || mobileSplineFrame.getAttribute("src");
+        if (!source) return;
+        var loaded = false;
+        var attempts = 0;
+        var maxAttempts = 3;
+        var timeoutId = null;
+
+        function showFallback(show) {
+          if (!mobileSplineFallback) return;
+          mobileSplineFallback.classList.toggle("is-visible", !!show);
+        }
+
+        function armTimeout() {
+          window.clearTimeout(timeoutId);
+          timeoutId = window.setTimeout(function () {
+            if (loaded) return;
+            showFallback(true);
+            if (attempts < maxAttempts) loadAttempt();
+          }, 6500);
+        }
+
+        function loadAttempt() {
+          attempts += 1;
+          loaded = false;
+          showFallback(false);
+          var url = source + (source.indexOf("?") === -1 ? "?" : "&") + "v=" + Date.now();
+          mobileSplineFrame.setAttribute("src", url);
+          armTimeout();
+        }
+
+        mobileSplineFrame.addEventListener("load", function () {
+          loaded = true;
+          window.clearTimeout(timeoutId);
+          showFallback(false);
+        });
+
+        if (mobileSplineRetry) {
+          mobileSplineRetry.addEventListener("click", function () {
+            attempts = 0;
+            loadAttempt();
+          });
+        }
+
+        armTimeout();
+      })();
+
       function hideLoader() {
         if (!loader || loaderDone) return;
         loaderDone = true;
