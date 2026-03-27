@@ -1528,6 +1528,13 @@
     .context-brief h2 { max-width: 20ch; }
 
     /* Pilares “Antes de continuar”: vidrio + acordeón; en móvil carril snap */
+    .context-cards-wrap {
+      display: block;
+      min-width: 0;
+    }
+    .context-cards-mobile-ui {
+      display: none;
+    }
     .context-cards {
       display: flex;
       flex-direction: column;
@@ -1569,6 +1576,8 @@
       text-align: left;
       cursor: pointer;
       border-radius: var(--radius);
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(255, 107, 0, 0.15);
     }
     .context-card__trigger:focus-visible {
       outline: 2px solid var(--gold);
@@ -1603,7 +1612,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.07);
     }
     .context-card__panel[hidden] {
-      display: none;
+      display: none !important;
     }
     .context-card__panel p {
       margin: 0.8rem 0 0;
@@ -2689,6 +2698,48 @@
         scroll-snap-align: center;
         max-height: none;
       }
+      .context-cards-mobile-ui {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+        margin-top: 0.85rem;
+        padding: 0 clamp(0.5rem, 2vw, 1rem);
+      }
+      .context-cards-hint {
+        margin: 0;
+        font-size: 0.74rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgba(255, 184, 0, 0.82);
+        text-align: center;
+        line-height: 1.45;
+        max-width: 20rem;
+      }
+      .context-cards-hint svg {
+        display: inline-block;
+        vertical-align: -0.2em;
+        margin: 0 0.15rem;
+        opacity: 0.95;
+      }
+      .context-cards-dots {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .context-cards-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.22);
+        transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+      }
+      .context-cards-dot.is-active {
+        background: var(--orange);
+        transform: scale(1.2);
+        box-shadow: 0 0 14px rgba(255, 107, 0, 0.5);
+      }
       .hero-aside { max-width: 100%; }
       .section-divider { height: 30px; }
       .section { padding: 50px 0; }
@@ -2892,6 +2943,7 @@
             <h2 id="context-title">¿Qué es SOLARIS y qué hace por tu negocio?</h2>
             <p>SOLARIS es una agencia de IA y crecimiento que diseña sistemas completos para vender más, operar con menos fricción y escalar con claridad. No entregamos piezas sueltas: construimos la estrategia, la ejecución y la optimización continua.</p>
           </div>
+          <div class="context-cards-wrap">
           <div class="context-cards" data-context-cards>
             <article class="context-card">
               <button type="button" class="context-card__trigger" aria-expanded="false" aria-controls="context-panel-1" id="context-btn-1">
@@ -2923,6 +2975,19 @@
                 <p>Entregas en semanas, no en trimestres vacíos. Tableros simples y seguimiento con cifras que sí importan a tu operación.</p>
               </div>
             </article>
+          </div>
+          <div class="context-cards-mobile-ui">
+            <p class="context-cards-hint">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 5l7 7-7 7M5 12h15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Desliza a los lados para ver los 3 pilares
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 5l-7 7 7 7M19 12H4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </p>
+            <div class="context-cards-dots" role="presentation">
+              <span class="context-cards-dot is-active"></span>
+              <span class="context-cards-dot"></span>
+              <span class="context-cards-dot"></span>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3535,30 +3600,71 @@
         var root = document.querySelector("[data-context-cards]");
         if (!root) return;
         var cards = root.querySelectorAll(".context-card");
+        function closePanel(other) {
+          other.classList.remove("is-open");
+          var ob = other.querySelector(".context-card__trigger");
+          var op = other.querySelector(".context-card__panel");
+          if (ob) ob.setAttribute("aria-expanded", "false");
+          if (op) op.hidden = true;
+        }
         cards.forEach(function (card) {
           var btn = card.querySelector(".context-card__trigger");
           var panel = card.querySelector(".context-card__panel");
           if (!btn || !panel) return;
           btn.addEventListener("click", function () {
-            var willOpen = !card.classList.contains("is-open");
-            if (willOpen) {
-              cards.forEach(function (other) {
-                other.classList.remove("is-open");
-                var ob = other.querySelector(".context-card__trigger");
-                var op = other.querySelector(".context-card__panel");
-                if (ob) ob.setAttribute("aria-expanded", "false");
-                if (op) op.setAttribute("hidden", "");
-              });
-              card.classList.add("is-open");
-              btn.setAttribute("aria-expanded", "true");
-              panel.removeAttribute("hidden");
-            } else {
-              card.classList.remove("is-open");
-              btn.setAttribute("aria-expanded", "false");
-              panel.setAttribute("hidden", "");
+            var isOpen = card.classList.contains("is-open");
+            if (isOpen) {
+              closePanel(card);
+              return;
             }
+            cards.forEach(function (other) {
+              if (other !== card) closePanel(other);
+            });
+            card.classList.add("is-open");
+            btn.setAttribute("aria-expanded", "true");
+            panel.hidden = false;
           });
         });
+      })();
+
+      (function initContextCardsScrollHint() {
+        var root = document.querySelector("[data-context-cards]");
+        var wrap = root && root.closest(".context-cards-wrap");
+        var dotsRoot = wrap && wrap.querySelector(".context-cards-dots");
+        if (!root || !dotsRoot) return;
+        var cards = root.querySelectorAll(".context-card");
+        var dots = dotsRoot.querySelectorAll(".context-cards-dot");
+        if (!cards.length || dots.length !== cards.length) return;
+        function syncDots() {
+          var rr = root.getBoundingClientRect();
+          if (rr.width < 10) return;
+          var centerX = rr.left + rr.width * 0.5;
+          var bestIdx = 0;
+          var bestDist = Infinity;
+          cards.forEach(function (c, i) {
+            var cr = c.getBoundingClientRect();
+            var mid = cr.left + cr.width * 0.5;
+            var d = Math.abs(mid - centerX);
+            if (d < bestDist) {
+              bestDist = d;
+              bestIdx = i;
+            }
+          });
+          dots.forEach(function (d, i) {
+            d.classList.toggle("is-active", i === bestIdx);
+          });
+        }
+        var t = null;
+        function onScroll() {
+          if (t) return;
+          t = window.requestAnimationFrame(function () {
+            t = null;
+            syncDots();
+          });
+        }
+        root.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll, { passive: true });
+        syncDots();
       })();
 
       const nav = document.getElementById("siteNav");
