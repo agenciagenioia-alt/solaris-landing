@@ -730,26 +730,42 @@
       display: none;
     }
     .hero-intro .hero-3d iframe {
-      width: 112%;
-      height: 112%;
+      width: 122%;
+      height: 122%;
       filter: saturate(1.04) contrast(1.03) brightness(1.04);
     }
     .hero-intro .hero-3d-spline::after {
-      width: min(30%, 160px);
-      height: min(18%, 72px);
+      width: min(40%, 240px);
+      height: min(24%, 110px);
       background: radial-gradient(
         ellipse 118% 118% at 100% 100%,
-        rgba(10, 10, 10, 0.62) 0%,
-        rgba(10, 10, 10, 0.4) 40%,
-        rgba(10, 10, 10, 0.16) 65%,
-        transparent 92%
+        rgba(10, 10, 10, 0.92) 0%,
+        rgba(10, 10, 10, 0.78) 42%,
+        rgba(10, 10, 10, 0.42) 68%,
+        transparent 94%
       );
     }
     .hero-intro .hero-3d-gridfx,
     .hero-intro .hero-3d-chrome,
-    .hero-intro .hero-3d-corner,
-    .hero-intro .hero-3d-tag {
+    .hero-intro .hero-3d-corner {
       display: none !important;
+    }
+    .hero-intro .hero-3d-tag {
+      display: block !important;
+      right: clamp(0.4rem, 1.8vw, 0.9rem);
+      bottom: clamp(0.32rem, 1.6vw, 0.85rem);
+      z-index: 6;
+    }
+    .hero-intro .hero-3d-tag-inner {
+      padding: 0.35rem 0.62rem 0.46rem 0.62rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      color: rgba(255, 243, 232, 0.95);
+      background: rgba(8, 5, 12, 0.9);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.58),
+        0 0 18px rgba(255, 107, 0, 0.14);
     }
     .hero-intro .hero-3d-hint {
       top: auto;
@@ -2133,8 +2149,8 @@
         box-shadow: none;
       }
       .hero-intro .hero-3d iframe {
-        width: 108%;
-        height: 108%;
+        width: 118%;
+        height: 118%;
         filter: none;
       }
       .hero-intro .hero-3d-hint {
@@ -2146,6 +2162,14 @@
       .hero-intro .hero-aside {
         margin-top: 0.75rem;
         background: rgba(8, 8, 10, 0.24);
+      }
+      .hero-intro .hero-3d-tag {
+        right: 0.45rem;
+        bottom: 0.45rem;
+      }
+      .hero-intro .hero-3d-tag-inner {
+        font-size: 0.52rem;
+        padding: 0.32rem 0.52rem 0.4rem 0.52rem;
       }
       .hero-3d-spline {
         touch-action: none;
