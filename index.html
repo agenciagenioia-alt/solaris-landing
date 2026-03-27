@@ -309,6 +309,18 @@
         gap: clamp(2rem, 5.2vw, 3.5rem);
       }
     }
+    /* Columna izquierda del hero: en móvil display:contents reparte copy / CTA en filas con z-index propio */
+    .hero-copy-column {
+      grid-area: copy;
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      align-self: start;
+      max-width: min(100%, 640px);
+      width: 100%;
+    }
     .hero-copy {
       position: relative;
       max-width: none;
@@ -316,15 +328,12 @@
       border-left: none;
       padding: 0;
       border-top: none;
-      z-index: 4;
-      grid-area: copy;
       background: transparent;
       border: 0;
       border-radius: 18px;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       padding: clamp(0.85rem, 2.6vw, 1.2rem);
-      max-width: min(100%, 640px);
     }
     .hero-copy::before {
       content: "";
@@ -399,8 +408,9 @@
       line-height: 1.62;
       margin: 0 0 1.15rem;
     }
-    .hero-copy .btn-primary {
+    .hero-copy-column .hero-cta-hero {
       margin-top: 0.15rem;
+      flex-shrink: 0;
     }
     /* Visor 3D: el recuadro pasa a ser un marco premium (vidrio + gradiente marca), no un error visual */
     .hero-3d {
@@ -718,7 +728,7 @@
       height: clamp(520px, 76vh, 920px);
       min-height: 520px;
       max-height: none;
-      margin: -1.1rem 0 0;
+      margin: -0.35rem 0 0;
       border: 0;
       border-radius: 0;
       background: #080808;
@@ -747,14 +757,31 @@
     .hero-intro .hero-3d iframe {
       width: 100%;
       height: 100%;
-      top: 44%;
+      top: 48%;
       left: 50%;
       filter: brightness(1.06) saturate(1.04);
-      transform: translate(-50%, calc(-50% - 6%));
+      transform: translate(-50%, calc(-50% + 1%));
     }
-    /* Sin velo oscuro en esquina (causaba mancha negra abajo a la derecha). Marca: badge SOLARIS. */
+    /* Solo esquina inferior derecha (#080808 + tono lienzo): tapa marca Spline sin velo sobre el robot */
     .hero-intro .hero-3d-spline::after {
-      display: none !important;
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: min(62%, 280px);
+      height: min(44%, 150px);
+      z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse 122% 118% at 100% 100%,
+        #080808 0%,
+        #080808 18%,
+        rgba(8, 8, 8, 0.96) 32%,
+        rgba(46, 27, 38, 0.55) 62%,
+        transparent 82%
+      );
+      border-bottom-right-radius: inherit;
     }
     .hero-intro .hero-3d-gridfx,
     .hero-intro .hero-3d-chrome,
@@ -2107,13 +2134,30 @@
       .service-row { align-items: start; }
       .service-cta { white-space: normal; justify-self: start; }
       .hero-strip { margin-top: 0; height: clamp(200px, 58vw, 320px); }
+      .hero-copy-column {
+        display: contents;
+      }
+      .hero-copy-column .hero-copy {
+        grid-area: copy;
+        position: relative;
+        z-index: 7;
+        padding: 0.05rem 0 0.2rem;
+      }
+      .hero-copy-column .hero-cta-hero {
+        grid-area: hero-cta;
+        position: relative;
+        z-index: 4;
+        margin-top: 0.45rem;
+        margin-bottom: 0.25rem;
+      }
       .hero-intro-grid {
         grid-template-columns: 1fr;
         grid-template-areas:
           "copy"
+          "hero-cta"
           "media"
           "aside";
-        gap: 0;
+        gap: 0.3rem 0;
         padding: 0.55rem 0 1rem;
         min-height: auto;
       }
@@ -2161,36 +2205,34 @@
         animation: none !important;
         overscroll-behavior: contain;
       }
-      .hero-intro .hero-copy {
-        background: transparent;
-        border: 0;
-        padding: 0.05rem 0 0.1rem;
-      }
+      /* Texto por encima del robot; CTA debajo en stacking para que el modelo no quede tapado por el naranja */
       .hero-intro .hero-3d {
         position: relative;
         inset: auto;
         width: 100%;
-        height: clamp(500px, 82vh, 820px);
-        margin: -1.35rem 0 0;
-        min-height: 500px;
+        height: clamp(580px, 92vh, 940px);
+        margin: 0.1rem 0 0;
+        min-height: 580px;
         max-height: none;
         border: 0;
         border-radius: 0;
         background: #080808;
         box-shadow: none;
         overflow: visible;
+        z-index: 6;
       }
-      /* Encuadre alto + bloque subido: el personaje entra en el primer pantallazo con el zoom de Spline */
+      /* Piernas visibles: menos “subida” del encuadre + más alto del visor */
       .hero-intro .hero-3d iframe {
         width: 100%;
         height: 100%;
-        top: 40%;
+        top: 50%;
         left: 50%;
         filter: brightness(1.07) saturate(1.03);
-        transform: translate(-50%, calc(-50% - 10%));
+        transform: translate(-50%, calc(-50% + 3%));
       }
       .hero-intro .hero-3d-spline::after {
-        display: none !important;
+        width: min(68%, 300px);
+        height: min(48%, 168px);
       }
       .hero-intro .hero-3d-hint {
         left: 0.45rem;
@@ -2200,7 +2242,7 @@
         padding: 0.32rem 0.5rem;
       }
       .hero-intro .hero-aside {
-        margin-top: -5rem;
+        margin-top: -4.75rem;
         background: rgba(8, 8, 10, 0.36);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
@@ -2319,15 +2361,17 @@
   <main id="main-content">
     <section class="hero-intro" id="inicio" aria-labelledby="hero-heading">
       <div class="container hero-intro-grid">
-        <div class="hero-copy reveal visible">
-          <div class="hero-kicker">Estrategia + IA + Ejecución</div>
-          <h1 id="hero-heading" class="hero-title-block">
-            <span class="hero-brand-name">SOLARIS</span>
-            <span class="hero-title-sub">Tu negocio, potenciado.</span>
-            <span class="hero-title-accent gradient-text">Resultados reales.</span>
-          </h1>
-          <p class="hero-lead">Transformamos tu operación. Aceleramos tus ventas.</p>
-          <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
+        <div class="hero-copy-column">
+          <div class="hero-copy reveal visible">
+            <div class="hero-kicker">Estrategia + IA + Ejecución</div>
+            <h1 id="hero-heading" class="hero-title-block">
+              <span class="hero-brand-name">SOLARIS</span>
+              <span class="hero-title-sub">Tu negocio, potenciado.</span>
+              <span class="hero-title-accent gradient-text">Resultados reales.</span>
+            </h1>
+            <p class="hero-lead">Transformamos tu operación. Aceleramos tus ventas.</p>
+          </div>
+          <a class="btn btn-primary hero-cta-hero reveal visible" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
         </div>
         <div class="hero-3d reveal" aria-label="Modelo 3D SOLARIS (interactivo)">
           <div class="hero-3d-chrome" aria-hidden="true"><span class="hero-3d-chrome-glow"></span></div>
