@@ -2095,6 +2095,177 @@
     .service-cta:hover { color: #FFD189; border-bottom-color: #FFD189; }
     .services-final-cta { margin-top: 1.35rem; padding-top: 0.5rem; }
 
+    /* ─── Servicios: hub móvil (chips + snap) + bento escritorio ─── */
+    .services-hub {
+      margin-top: 0.75rem;
+    }
+    .services-chips {
+      display: none;
+      flex-wrap: nowrap;
+      gap: 0.45rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.35rem 0 0.85rem;
+      margin: 0 -0.25rem;
+      scroll-padding-inline: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .services-chips::-webkit-scrollbar { display: none; }
+    .services-chip {
+      flex: 0 0 auto;
+      padding: 0.42rem 0.78rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #C8B8A0;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease;
+      -webkit-tap-highlight-color: rgba(255, 107, 0, 0.12);
+      touch-action: manipulation;
+    }
+    .services-chip[aria-current="true"] {
+      color: #1a0a00;
+      background: linear-gradient(135deg, #FFB800, #FF9A3C);
+      border-color: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 0 20px rgba(255, 107, 0, 0.35);
+    }
+    .services-snap-wrap {
+      position: relative;
+    }
+    .services-snap-track {
+      display: flex;
+      gap: 0.85rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: clamp(0.75rem, 4vw, 1.25rem);
+      padding: 0.25rem clamp(0.5rem, 3vw, 0.75rem) 1rem;
+      margin: 0 -0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .services-snap-track::-webkit-scrollbar { display: none; }
+    .services-hub .service-row {
+      flex: 0 0 min(88vw, 340px);
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65rem;
+      padding: 1.05rem 1.1rem 1.15rem;
+      margin: 0;
+      border: none;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow:
+        0 0 0 1px rgba(255, 107, 0, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+        0 18px 48px rgba(0, 0, 0, 0.35);
+      min-height: min(52vh, 320px);
+    }
+    .services-hub .service-row h3 {
+      margin-bottom: 0.2rem;
+    }
+    .services-hub .service-row .service-main {
+      flex: 1;
+      min-height: 0;
+    }
+    .services-hub .service-row .service-meta {
+      padding-top: 0.15rem;
+    }
+    .services-hub .service-row .service-cta {
+      align-self: flex-start;
+      margin-top: auto;
+      padding: 0.45rem 0.85rem;
+      border-radius: 10px;
+      background: rgba(255, 107, 0, 0.12);
+      border: 1px solid rgba(255, 184, 0, 0.35);
+      border-bottom: 1px solid rgba(255, 184, 0, 0.35);
+    }
+    .services-snap-dots {
+      display: none;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      padding: 0 0.5rem 0.35rem;
+    }
+    .services-snap-dot {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.22);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .services-snap-dot[aria-current="true"] {
+      background: linear-gradient(135deg, #FF6B00, #FFB800);
+      transform: scale(1.35);
+      box-shadow: 0 0 12px rgba(255, 107, 0, 0.55);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .services-chip,
+      .services-snap-dot {
+        transition: none;
+      }
+      .services-snap-track {
+        scroll-behavior: auto;
+      }
+    }
+    @media (min-width: 961px) {
+      .services-chips,
+      .services-snap-dots { display: none !important; }
+      .services-snap-track {
+        display: contents;
+        overflow: visible;
+        padding: 0;
+        margin: 0;
+        gap: 0;
+      }
+      .services-snap-wrap {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: clamp(0.85rem, 1.4vw, 1.15rem);
+      }
+      .services-hub .service-row {
+        flex: none;
+        scroll-snap-align: unset;
+        min-height: 0;
+        grid-column: span 4;
+        border-radius: 18px;
+        padding: clamp(1rem, 1.4vw, 1.35rem);
+        box-shadow:
+          0 0 0 1px rgba(255, 184, 0, 0.12),
+          0 16px 44px rgba(0, 0, 0, 0.32);
+      }
+      /* Ítems del grid: hijos del track con display:contents (no usar nth-child del wrap) */
+      .services-hub .services-snap-track > .service-row:nth-child(1) { grid-column: span 7; }
+      .services-hub .services-snap-track > .service-row:nth-child(2) { grid-column: span 5; }
+      .services-hub .services-snap-track > .service-row:nth-child(3),
+      .services-hub .services-snap-track > .service-row:nth-child(4),
+      .services-hub .services-snap-track > .service-row:nth-child(5) { grid-column: span 4; }
+      .services-hub .services-snap-track > .service-row:nth-child(6),
+      .services-hub .services-snap-track > .service-row:nth-child(7) { grid-column: span 6; }
+      .services-hub .service-row .service-cta {
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(255, 184, 0, 0.5);
+      }
+    }
+
     .process-wrap { margin-top: 0.75rem; }
     .process-timeline-wrap {
       --rail-w: 52px;
@@ -2822,6 +2993,11 @@
         padding: 0.75rem 0 0;
       }
       .service-row { align-items: start; }
+      .services-chips { display: flex; }
+      .services-snap-dots { display: flex; }
+      .services-hub .service-row {
+        border-bottom: none;
+      }
       .service-cta { white-space: normal; justify-self: start; }
       .hero-strip { margin-top: 0; height: clamp(200px, 58vw, 320px); }
       .hero-copy-column {
@@ -3608,8 +3784,19 @@
         <div class="section-tag reveal">Servicios</div>
         <h2 id="services-title" class="reveal">Servicios Solaris: Tu Inversión, Tu Retorno.</h2>
         <p class="section-lead reveal services-subcopy">Cada solución está diseñada para resolver un problema real con impacto medible.</p>
-        <div class="services-list reveal">
-          <article class="service-row">
+        <div class="services-hub reveal" id="servicesHub" data-services-hub>
+          <nav class="services-chips" id="servicesChips" aria-label="Acceso rápido a servicios">
+            <button type="button" class="services-chip" data-service-index="0" aria-current="true">Landing</button>
+            <button type="button" class="services-chip" data-service-index="1">Tienda 24/7</button>
+            <button type="button" class="services-chip" data-service-index="2">Citas</button>
+            <button type="button" class="services-chip" data-service-index="3">Redes</button>
+            <button type="button" class="services-chip" data-service-index="4">Global</button>
+            <button type="button" class="services-chip" data-service-index="5">Autopiloto</button>
+            <button type="button" class="services-chip" data-service-index="6">Import IA</button>
+          </nav>
+          <div class="services-snap-wrap">
+            <div class="services-snap-track" id="servicesSnapTrack" aria-label="Desliza para ver cada servicio">
+          <article class="service-row" id="service-card-0">
             <div class="service-main">
               <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg></span><span class="service-title-text">Landing Page que Vende</span></h3>
               <p>Diseñamos tu primera máquina de ventas digital. Lista en 7 días, optimizada para convertir visitantes en clientes.</p>
@@ -3617,7 +3804,7 @@
             <div class="service-meta"><span class="service-invest">Inversión: Desde $1.500.000</span></div>
             <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Landing%20Page%20que%20vende." target="_blank" rel="noopener noreferrer">Quiero mi Landing →</a>
           </article>
-          <article class="service-row">
+          <article class="service-row" id="service-card-1">
             <div class="service-main">
               <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5"/><path d="M3.375 9.757l1.049 11.28c.082.884.82 1.563 1.706 1.563h12.74c.886 0 1.624-.68 1.706-1.563l1.049-11.28A1.125 1.125 0 0020.625 8.5H3.375a1.125 1.125 0 00-1.119 1.257z"/></svg></span><span class="service-title-text">Tu Tienda Online 24/7</span></h3>
               <p>Tu negocio online con plataforma de pagos propia. Ahorra comisiones y gestiona todo desde un panel intuitivo.</p>
@@ -3625,7 +3812,7 @@
             <div class="service-meta"><span class="service-invest">Inversión: Desde $3.000.000</span></div>
             <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Tienda%20Online%2024%2F7." target="_blank" rel="noopener noreferrer">Quiero mi Tienda →</a>
           </article>
-          <article class="service-row">
+          <article class="service-row" id="service-card-2">
             <div class="service-main">
               <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></span><span class="service-title-text">Citas en Automático. Cero Errores.</span></h3>
               <p>Automatiza agenda, recordatorios y disponibilidad. Sin mensualidades. Libera tu tiempo y optimiza tu operación.</p>
@@ -3633,7 +3820,7 @@
             <div class="service-meta"><span class="service-invest">Inversión: Desde $2.500.000</span></div>
             <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20mi%20Sistema%20de%20Agendamiento%20Inteligente." target="_blank" rel="noopener noreferrer">Quiero mi Sistema →</a>
           </article>
-          <article class="service-row">
+          <article class="service-row" id="service-card-3">
             <div class="service-main">
               <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg></span><span class="service-title-text">Redes Sociales que Duplican Ventas</span></h3>
               <p>Estrategias de IA para duplicar ventas y seguidores, con piezas creativas y Meta Ads de alto impacto.</p>
@@ -3641,7 +3828,7 @@
             <div class="service-meta"><span class="service-invest">Inversión: Desde $2.000.000</span></div>
             <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20duplicar%20mis%20ventas%20con%20redes%20sociales." target="_blank" rel="noopener noreferrer">Quiero Duplicar mis Ventas →</a>
           </article>
-          <article class="service-row">
+          <article class="service-row" id="service-card-4">
             <div class="service-main">
               <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg></span><span class="service-title-text">Clientes Internacionales. Sin Fronteras.</span></h3>
               <p>Implementamos CRM con IA, marketing digital global y un equipo de closers especializados.</p>
@@ -3649,7 +3836,7 @@
             <div class="service-meta"><span class="service-invest">Inversión: Desde $15.000.000 (Cotización personalizada)</span></div>
             <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20clientes%20internacionales%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Clientes Globales →</a>
           </article>
-          <article class="service-row">
+          <article class="service-row" id="service-card-5">
             <div class="service-main">
               <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/></svg></span><span class="service-title-text">Tu Negocio en Piloto Automático</span></h3>
               <p>Optimizamos flujos de trabajo, integramos herramientas y creamos bots inteligentes para procesos internos y atención.</p>
@@ -3657,7 +3844,7 @@
             <div class="service-meta"><span class="service-invest">Inversión: Cotización Personalizada</span></div>
             <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20automatizar%20mi%20negocio." target="_blank" rel="noopener noreferrer">Quiero Automatizar mi Negocio →</a>
           </article>
-          <article class="service-row">
+          <article class="service-row" id="service-card-6">
             <div class="service-main">
               <h3><span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.25 18.75a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25zm6 0a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25zm-10.5-1.125a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25zm6 0a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25zm3.75 0a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25M4.5 5.625v10.125a1.125 1.125 0 001.125 1.125h1.125m10.5-11.25v10.125a1.125 1.125 0 001.125 1.125h1.125m-13.5 0h9.75m-9.75 0a1.125 1.125 0 01-1.125-1.125V9.375m0 0a1.125 1.125 0 011.125-1.125h3.75m0 0H15m4.5 0h1.125a1.125 1.125 0 011.125 1.125v8.25m-16.5 0V6.75a1.125 1.125 0 011.125-1.125h3.75m0 0h9.75"/></svg></span><span class="service-title-text">Importaciones Rentables con IA</span></h3>
               <p>Asesoría experta y optimización de importación/negociación global, apalancada en IA para análisis de mercados y logística.</p>
@@ -3665,6 +3852,9 @@
             <div class="service-meta"><span class="service-invest">Inversión: Cotización Personalizada</span></div>
             <a class="service-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20importaciones%20m%C3%A1s%20rentables%20con%20IA." target="_blank" rel="noopener noreferrer">Quiero Importaciones Más Rentables →</a>
           </article>
+            </div>
+            <div class="services-snap-dots" id="servicesSnapDots" role="group" aria-label="Índice de servicios"></div>
+          </div>
         </div>
         <p class="services-final-cta reveal"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20necesito%20algo%20m%C3%A1s%20personalizado%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">¿Necesitas algo más? Hablemos de tu Proyecto Único →</a></p>
       </div>
@@ -4491,6 +4681,137 @@
         } else {
           loadSunSpline();
         }
+      })();
+
+      (function initServicesHub() {
+        var hub = document.getElementById("servicesHub");
+        var track = document.getElementById("servicesSnapTrack");
+        var chipsRoot = document.getElementById("servicesChips");
+        var dotsRoot = document.getElementById("servicesSnapDots");
+        if (!hub || !track || !chipsRoot || !dotsRoot) return;
+
+        var cards = track.querySelectorAll(".service-row");
+        if (!cards.length) return;
+
+        var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var mqlMobile = window.matchMedia("(max-width: 960px)");
+
+        function isMobileHub() {
+          return mqlMobile.matches;
+        }
+
+        function buildDots() {
+          dotsRoot.innerHTML = "";
+          for (var i = 0; i < cards.length; i++) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "services-snap-dot";
+            b.setAttribute("aria-label", "Ir al servicio " + (i + 1));
+            b.setAttribute("data-service-index", String(i));
+            dotsRoot.appendChild(b);
+          }
+        }
+        buildDots();
+
+        var chips = chipsRoot.querySelectorAll(".services-chip");
+
+        function dotButtons() {
+          return dotsRoot.querySelectorAll(".services-snap-dot");
+        }
+
+        function setActiveIndex(i) {
+          i = Math.max(0, Math.min(i, cards.length - 1));
+          chips.forEach(function (c, j) {
+            c.setAttribute("aria-current", j === i ? "true" : "false");
+          });
+          dotButtons().forEach(function (d, j) {
+            d.setAttribute("aria-current", j === i ? "true" : "false");
+          });
+        }
+
+        function scrollToIndex(i) {
+          if (!isMobileHub()) return;
+          var card = cards[i];
+          if (!card) return;
+          var behavior = reducedMotion ? "auto" : "smooth";
+          var tRect = track.getBoundingClientRect();
+          var cRect = card.getBoundingClientRect();
+          var delta = (cRect.left + cRect.width / 2) - (tRect.left + tRect.width / 2);
+          track.scrollBy({ left: delta, behavior: behavior });
+        }
+
+        function syncFromScroll() {
+          if (!isMobileHub()) return;
+          var tRect = track.getBoundingClientRect();
+          var cx = tRect.left + tRect.width / 2;
+          var best = 0;
+          var bestDist = Infinity;
+          for (var j = 0; j < cards.length; j++) {
+            var c = cards[j];
+            var r = c.getBoundingClientRect();
+            var mid = r.left + r.width / 2;
+            var d = Math.abs(mid - cx);
+            if (d < bestDist) {
+              bestDist = d;
+              best = j;
+            }
+          }
+          setActiveIndex(best);
+        }
+
+        var scrollScheduled = false;
+        function onTrackScroll() {
+          if (scrollScheduled) return;
+          scrollScheduled = true;
+          requestAnimationFrame(function () {
+            scrollScheduled = false;
+            syncFromScroll();
+          });
+        }
+
+        chips.forEach(function (chip) {
+          chip.addEventListener("click", function () {
+            var idx = parseInt(chip.getAttribute("data-service-index"), 10);
+            if (isNaN(idx)) return;
+            setActiveIndex(idx);
+            scrollToIndex(idx);
+          });
+        });
+
+        dotsRoot.addEventListener("click", function (e) {
+          var t = e.target;
+          if (!t || !t.closest) return;
+          var btn = t.closest(".services-snap-dot");
+          if (!btn || !dotsRoot.contains(btn)) return;
+          var idx = parseInt(btn.getAttribute("data-service-index"), 10);
+          if (isNaN(idx)) return;
+          setActiveIndex(idx);
+          scrollToIndex(idx);
+        });
+
+        track.addEventListener("scroll", onTrackScroll, { passive: true });
+        window.addEventListener("resize", syncFromScroll, { passive: true });
+
+        function onBreakpointChange() {
+          if (isMobileHub()) {
+            syncFromScroll();
+          } else {
+            chips.forEach(function (c, j) {
+              c.setAttribute("aria-current", j === 0 ? "true" : "false");
+            });
+            dotButtons().forEach(function (d) {
+              d.removeAttribute("aria-current");
+            });
+          }
+        }
+
+        if (typeof mqlMobile.addEventListener === "function") {
+          mqlMobile.addEventListener("change", onBreakpointChange);
+        } else if (typeof mqlMobile.addListener === "function") {
+          mqlMobile.addListener(onBreakpointChange);
+        }
+
+        onBreakpointChange();
       })();
 
       if (casesTrack && casesPrev && casesNext) {
