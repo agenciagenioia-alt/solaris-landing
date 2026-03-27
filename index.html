@@ -123,7 +123,7 @@
         padding-top: 0.45rem;
         padding-bottom: 0.45rem;
       }
-      .hero-strip { margin-top: 86px; }
+      .hero-strip { margin-top: 0; }
     }
     .brand {
       display: inline-flex;
@@ -242,7 +242,7 @@
     }
 
     .hero-strip {
-      margin-top: 74px;
+      margin-top: 0;
       width: 100%;
       height: clamp(230px, 45vw, 560px);
       overflow: hidden;
@@ -1970,7 +1970,7 @@
       }
       .service-row { align-items: start; }
       .service-cta { white-space: normal; justify-self: start; }
-      .hero-strip { margin-top: 86px; height: clamp(200px, 58vw, 320px); }
+      .hero-strip { margin-top: 0; height: clamp(200px, 58vw, 320px); }
       .hero-intro-grid {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -2117,21 +2117,7 @@
   </header>
 
   <main id="main-content">
-    <section class="hero-strip" id="inicio" aria-label="Galería principal SOLARIS">
-      <div class="hero-media" aria-hidden="true">
-        <div class="hero-slide s1">
-          <img src="https://i.postimg.cc/NgwQVGDC/1.jpg?dl=1" alt="" loading="eager" decoding="async">
-        </div>
-        <div class="hero-slide s2">
-          <img src="https://i.postimg.cc/4XpYnSSJ/2.jpg?dl=1" alt="" loading="lazy" decoding="async">
-        </div>
-        <div class="hero-slide s3">
-          <img src="https://i.postimg.cc/PHy8m0rq/3.jpg?dl=1" alt="" loading="lazy" decoding="async">
-        </div>
-      </div>
-    </section>
-
-    <section class="hero-intro" aria-labelledby="hero-heading">
+    <section class="hero-intro" id="inicio" aria-labelledby="hero-heading">
       <div class="container hero-intro-grid">
         <div class="hero-copy reveal visible">
           <div class="hero-kicker">Estrategia + IA + Ejecución</div>
@@ -2614,6 +2600,22 @@
           </div>
         </div>
         <p style="margin-top:1rem;"><a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20empezar%20mi%20transformaci%C3%B3n%20con%20un%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener noreferrer">Empieza tu Transformación con un Diagnóstico Gratuito →</a></p>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
+
+    <section class="hero-strip" id="galeria" aria-label="Galería principal SOLARIS">
+      <div class="hero-media" aria-hidden="true">
+        <div class="hero-slide s1">
+          <img src="https://i.postimg.cc/NgwQVGDC/1.jpg?dl=1" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="hero-slide s2">
+          <img src="https://i.postimg.cc/4XpYnSSJ/2.jpg?dl=1" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="hero-slide s3">
+          <img src="https://i.postimg.cc/PHy8m0rq/3.jpg?dl=1" alt="" loading="lazy" decoding="async">
+        </div>
       </div>
     </section>
 
