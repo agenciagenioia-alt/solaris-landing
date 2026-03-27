@@ -277,8 +277,8 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(108deg, rgba(6, 6, 8, 0.86) 0%, rgba(6, 6, 8, 0.72) 36%, rgba(6, 6, 8, 0.24) 58%, rgba(6, 6, 8, 0) 78%),
-        radial-gradient(circle at 18% 22%, rgba(255, 107, 0, 0.18), rgba(255, 107, 0, 0));
+        linear-gradient(108deg, rgba(6, 6, 8, 0.58) 0%, rgba(6, 6, 8, 0.42) 34%, rgba(6, 6, 8, 0.14) 56%, rgba(6, 6, 8, 0) 76%),
+        radial-gradient(circle at 18% 22%, rgba(255, 107, 0, 0.14), rgba(255, 107, 0, 0));
       pointer-events: none;
     }
     .hero-intro::after {
@@ -287,7 +287,7 @@
       inset: auto 0 0 0;
       height: min(30%, 220px);
       z-index: 1;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0), rgba(10, 10, 10, 0.7));
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0), rgba(10, 10, 10, 0.46));
       pointer-events: none;
     }
     .hero-intro-grid {
@@ -317,11 +317,11 @@
       border-top: none;
       z-index: 4;
       grid-area: copy;
-      background: rgba(8, 8, 10, 0.32);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 8, 10, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 18px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       padding: clamp(0.85rem, 2.6vw, 1.2rem);
       max-width: min(100%, 640px);
     }
@@ -710,7 +710,7 @@
     /* Opción A: robot integrado a toda la sección hero (sin recuadro) */
     .hero-intro .hero-3d {
       position: absolute;
-      inset: clamp(1.2rem, 4vw, 2.1rem) -10% -22% 34%;
+      inset: clamp(1.2rem, 4vw, 2.1rem) -6% -18% 22%;
       top: clamp(1.2rem, 4vw, 2rem);
       width: auto;
       height: auto;
@@ -729,8 +729,8 @@
       display: none;
     }
     .hero-intro .hero-3d iframe {
-      width: 128%;
-      height: 128%;
+      width: 120%;
+      height: 120%;
       filter: saturate(1.02) contrast(1.02) brightness(1.03);
     }
     .hero-intro .hero-3d-spline::after {
@@ -2113,12 +2113,12 @@
         overscroll-behavior: contain;
       }
       .hero-intro .hero-copy {
-        background: rgba(8, 8, 10, 0.5);
-        border-color: rgba(255, 255, 255, 0.1);
+        background: rgba(8, 8, 10, 0.24);
+        border-color: rgba(255, 255, 255, 0.07);
       }
       .hero-intro .hero-3d {
         position: absolute;
-        inset: 28% -52% -12% -40%;
+        inset: 34% -34% -10% -22%;
         width: auto;
         height: auto;
         margin: 0;
@@ -2130,8 +2130,8 @@
         box-shadow: none;
       }
       .hero-intro .hero-3d iframe {
-        width: 118%;
-        height: 118%;
+        width: 112%;
+        height: 112%;
         filter: none;
       }
       .hero-intro .hero-3d-hint {
@@ -2142,7 +2142,7 @@
       }
       .hero-intro .hero-aside {
         margin-top: 0.75rem;
-        background: rgba(8, 8, 10, 0.42);
+        background: rgba(8, 8, 10, 0.28);
       }
       .hero-3d-spline {
         touch-action: none;
