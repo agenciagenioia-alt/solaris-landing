@@ -260,7 +260,8 @@
     }
     .hero-intro {
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: visible;
       margin-top: 74px;
       background:
         radial-gradient(ellipse 105% 96% at 76% 46%, var(--spline-canvas-base) 0%, var(--bg-spline-mid) 38%, rgba(30, 16, 22, 0.65) 58%, transparent 76%),
@@ -285,9 +286,9 @@
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: min(30%, 220px);
+      height: min(22%, 140px);
       z-index: 1;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0), rgba(10, 10, 10, 0.2));
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0), rgba(10, 10, 10, 0.08));
       pointer-events: none;
     }
     .hero-intro-grid {
@@ -707,16 +708,16 @@
       transform-origin: center center;
       z-index: 1;
     }
-    /* Hero split: bloque dedicado para el robot, sin superponer copy */
+    /* Hero split: robot con altura generosa para ver figura completa (piernas visibles) */
     .hero-intro .hero-3d {
       position: relative;
       inset: auto;
       top: auto;
       grid-area: media;
       width: 100%;
-      height: clamp(440px, 66vh, 760px);
-      min-height: 440px;
-      max-height: 760px;
+      height: clamp(520px, 76vh, 920px);
+      min-height: 520px;
+      max-height: none;
       margin: 0;
       border: 0;
       border-radius: 0;
@@ -724,26 +725,30 @@
       box-shadow: none;
       animation: none !important;
       z-index: 3;
+      overflow: visible;
     }
     .hero-intro .hero-3d::before,
     .hero-intro .hero-3d::after {
       display: none;
     }
-    .hero-intro .hero-3d iframe {
-      width: 108%;
-      height: 108%;
-      filter: saturate(1.04) contrast(1.03) brightness(1.04);
+    .hero-intro .hero-3d-spline {
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 45%, rgba(46, 27, 38, 0.35), transparent 62%),
+        var(--spline-canvas-base);
+      border-radius: 0;
     }
+    .hero-intro .hero-3d iframe {
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      filter: brightness(1.06) saturate(1.04);
+      transform: translate(-50%, calc(-50% + 6%));
+    }
+    /* Sin velo oscuro en esquina (causaba mancha negra abajo a la derecha). Marca: badge SOLARIS. */
     .hero-intro .hero-3d-spline::after {
-      width: min(54%, 320px);
-      height: min(30%, 150px);
-      background: radial-gradient(
-        ellipse 118% 118% at 100% 100%,
-        rgba(10, 10, 10, 0.98) 0%,
-        rgba(10, 10, 10, 0.9) 45%,
-        rgba(10, 10, 10, 0.55) 72%,
-        transparent 94%
-      );
+      display: none !important;
     }
     .hero-intro .hero-3d-gridfx,
     .hero-intro .hero-3d-chrome,
@@ -769,8 +774,8 @@
     }
     .hero-intro .hero-3d-hint {
       top: auto;
-      left: auto;
-      right: clamp(0.45rem, 2vw, 0.9rem);
+      left: clamp(0.45rem, 2vw, 0.9rem);
+      right: auto;
       bottom: clamp(0.45rem, 2vw, 0.9rem);
       background: rgba(0, 0, 0, 0.36);
     }
@@ -2063,6 +2068,15 @@
       .hamburger { display: inline-grid; place-content: center; }
       .mobile-menu { display: block; }
       .hero-intro { margin-top: 86px; }
+      .hero-intro::before {
+        background:
+          linear-gradient(108deg, rgba(6, 6, 8, 0.12) 0%, rgba(6, 6, 8, 0.06) 40%, rgba(6, 6, 8, 0.02) 62%, rgba(6, 6, 8, 0) 80%),
+          radial-gradient(circle at 18% 22%, rgba(255, 107, 0, 0.08), rgba(255, 107, 0, 0));
+      }
+      .hero-intro::after {
+        height: min(14%, 72px);
+        background: linear-gradient(180deg, rgba(10, 10, 10, 0), rgba(10, 10, 10, 0.04));
+      }
       .context-split,
       .service-row,
       .case-split,
@@ -2139,29 +2153,41 @@
         position: relative;
         inset: auto;
         width: 100%;
-        height: clamp(340px, 52vh, 460px);
+        height: clamp(500px, 82vh, 820px);
         margin: 0;
-        min-height: 340px;
-        max-height: 460px;
+        min-height: 500px;
+        max-height: none;
         border: 0;
         border-radius: 0;
         background: transparent;
         box-shadow: none;
+        overflow: visible;
       }
       .hero-intro .hero-3d iframe {
-        width: 106%;
-        height: 106%;
-        filter: none;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        filter: brightness(1.07) saturate(1.03);
+        transform: translate(-50%, calc(-50% + 9%));
+      }
+      .hero-intro .hero-3d-spline::after {
+        display: none !important;
       }
       .hero-intro .hero-3d-hint {
-        right: 0.45rem;
+        left: 0.45rem;
+        right: auto;
         bottom: 0.55rem;
         font-size: 0.66rem;
         padding: 0.32rem 0.5rem;
       }
       .hero-intro .hero-aside {
-        margin-top: 0.75rem;
-        background: rgba(8, 8, 10, 0.24);
+        margin-top: -4.25rem;
+        background: rgba(8, 8, 10, 0.36);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        z-index: 8;
+        box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.35);
       }
       .hero-intro .hero-3d-tag {
         right: 0.45rem;
