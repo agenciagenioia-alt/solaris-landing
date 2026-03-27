@@ -718,7 +718,7 @@
       height: clamp(520px, 76vh, 920px);
       min-height: 520px;
       max-height: none;
-      margin: -0.5rem 0 0;
+      margin: -1.1rem 0 0;
       border: 0;
       border-radius: 0;
       background: #080808;
@@ -747,10 +747,10 @@
     .hero-intro .hero-3d iframe {
       width: 100%;
       height: 100%;
-      top: 48%;
+      top: 44%;
       left: 50%;
       filter: brightness(1.06) saturate(1.04);
-      transform: translate(-50%, calc(-50% + 2%));
+      transform: translate(-50%, calc(-50% - 6%));
     }
     /* Sin velo oscuro en esquina (causaba mancha negra abajo a la derecha). Marca: badge SOLARIS. */
     .hero-intro .hero-3d-spline::after {
@@ -2113,8 +2113,8 @@
           "copy"
           "media"
           "aside";
-        gap: 0.35rem 0;
-        padding: 0.85rem 0 1.15rem;
+        gap: 0;
+        padding: 0.55rem 0 1rem;
         min-height: auto;
       }
       .hero-3d-relocated-slot { display: block; }
@@ -2164,14 +2164,14 @@
       .hero-intro .hero-copy {
         background: transparent;
         border: 0;
-        padding: 0.15rem 0 0.25rem;
+        padding: 0.05rem 0 0.1rem;
       }
       .hero-intro .hero-3d {
         position: relative;
         inset: auto;
         width: 100%;
         height: clamp(500px, 82vh, 820px);
-        margin: -0.35rem 0 0;
+        margin: -1.35rem 0 0;
         min-height: 500px;
         max-height: none;
         border: 0;
@@ -2180,14 +2180,14 @@
         box-shadow: none;
         overflow: visible;
       }
-      /* Encuadre más alto: el zoom inicial de Spline se nota al abrir, sin añadir animación CSS */
+      /* Encuadre alto + bloque subido: el personaje entra en el primer pantallazo con el zoom de Spline */
       .hero-intro .hero-3d iframe {
         width: 100%;
         height: 100%;
-        top: 48%;
+        top: 40%;
         left: 50%;
         filter: brightness(1.07) saturate(1.03);
-        transform: translate(-50%, calc(-50% + 2%));
+        transform: translate(-50%, calc(-50% - 10%));
       }
       .hero-intro .hero-3d-spline::after {
         display: none !important;
@@ -2200,7 +2200,7 @@
         padding: 0.32rem 0.5rem;
       }
       .hero-intro .hero-aside {
-        margin-top: -4.25rem;
+        margin-top: -5rem;
         background: rgba(8, 8, 10, 0.36);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
