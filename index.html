@@ -1853,7 +1853,8 @@
       box-shadow: 0 0 16px rgba(255, 107, 0, 0.28);
       transform: scaleX(var(--needs-progress, 0));
       transform-origin: left center;
-      transition: transform 0.68s cubic-bezier(0.16, 1, 0.3, 1);
+      /* Misma sensación que .timeline-rail-fill: pegado al scroll, no “rezagado” */
+      transition: transform 95ms linear;
     }
     .needs-deck-track__steps {
       position: relative;
@@ -4085,107 +4086,78 @@
         var deck = document.querySelector(".needs-deck");
         if (!deck) return;
         var track = document.getElementById("needsDeckTrack");
+        var stack = deck.querySelector(".needs-stack");
         var items = deck.querySelectorAll(".need-item--reveal");
         var steps = track ? track.querySelectorAll(".needs-deck-track__step") : [];
-        if (!items.length) return;
-
-        function syncTrackFromCards() {
-          if (!track || !steps.length) return;
-          var count = 0;
-          items.forEach(function (el) {
-            if (el.classList.contains("is-visible")) count++;
-          });
-          var progress = count <= 1 ? 0 : (count - 1) / (items.length - 1 || 1);
-          track.style.setProperty("--needs-progress", progress.toFixed(4));
-          var activeIdx = count > 0 ? count - 1 : 0;
-          steps.forEach(function (li, i) {
-            li.classList.toggle("is-step-visible", i < count);
-            li.classList.toggle("is-past", i < activeIdx);
-            li.classList.toggle("is-active", count > 0 && i === activeIdx);
-          });
-        }
+        if (!stack || !items.length) return;
 
         function showAll() {
           items.forEach(function (el) { el.classList.add("is-visible"); });
-          syncTrackFromCards();
+          if (track) {
+            track.style.setProperty("--needs-progress", "1");
+          }
+          if (track && steps.length) {
+            var last = items.length - 1;
+            steps.forEach(function (li, i) {
+              li.classList.add("is-step-visible");
+              li.classList.toggle("is-past", i < last);
+              li.classList.toggle("is-active", i === last);
+            });
+          }
         }
 
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           showAll();
           return;
         }
-        if (!("IntersectionObserver" in window)) {
-          showAll();
-          return;
-        }
 
-        /* Una tarjeta a la vez; al salir por completo de la sección se reinicia para que al volver el efecto siga fluido */
-        var nextCard = 0;
-        var deckInside = false;
-        var deckLeaveTimer = null;
-        var cardIo;
-
-        function resetNeedsDeck() {
-          items.forEach(function (el) {
-            el.classList.remove("is-visible");
-            cardIo.unobserve(el);
-          });
-          nextCard = 0;
-          syncTrackFromCards();
-          cardIo.observe(items[0]);
-        }
-
-        function markDeckSectionEnter() {
-          if (deckLeaveTimer) {
-            clearTimeout(deckLeaveTimer);
-            deckLeaveTimer = null;
+        /* Misma idea que la línea del proceso (#timelineRail): progreso continuo según scroll; subir/bajar o volver a la sección se nota fluido */
+        function updateNeedsDeckScroll() {
+          var rect = stack.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          var denom = Math.max(rect.height + vh * 0.4, 1);
+          var p = (vh - rect.top) / denom;
+          p = Math.max(0, Math.min(1, p));
+          if (track) {
+            track.style.setProperty("--needs-progress", p.toFixed(4));
           }
-          if (!deckInside) {
-            resetNeedsDeck();
-          }
-          deckInside = true;
-        }
-
-        function markDeckSectionLeave() {
-          if (deckLeaveTimer) {
-            clearTimeout(deckLeaveTimer);
-          }
-          deckLeaveTimer = setTimeout(function () {
-            deckLeaveTimer = null;
-            deckInside = false;
-          }, 160);
-        }
-
-        cardIo = new IntersectionObserver(function (entries, obs) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            var i = Array.prototype.indexOf.call(items, entry.target);
-            if (i !== nextCard) return;
-            entry.target.classList.add("is-visible");
-            syncTrackFromCards();
-            obs.unobserve(entry.target);
-            nextCard++;
-            if (nextCard < items.length) {
-              obs.observe(items[nextCard]);
+          var n = items.length;
+          var i;
+          for (i = 0; i < n; i++) {
+            var el = items[i];
+            var gateIn = (i + 0.3) / n;
+            var gateOut = (i + 0.1) / n;
+            var on = el.classList.contains("is-visible");
+            if (!on && p >= gateIn) {
+              el.classList.add("is-visible");
+            } else if (on && p < gateOut) {
+              el.classList.remove("is-visible");
             }
-          });
-        }, {
-          threshold: 0.14,
-          rootMargin: "0px 0px -16% 0px",
-        });
-
-        var deckIo = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              markDeckSectionEnter();
-            } else {
-              markDeckSectionLeave();
+          }
+          if (!track || !steps.length) return;
+          var lastVis = -1;
+          for (i = 0; i < n; i++) {
+            if (items[i].classList.contains("is-visible")) {
+              lastVis = i;
             }
+          }
+          steps.forEach(function (li, idx) {
+            var stepIn = (idx + 0.22) / n;
+            var stepOut = (idx + 0.06) / n;
+            var stepOn = li.classList.contains("is-step-visible");
+            if (!stepOn && p >= stepIn) {
+              li.classList.add("is-step-visible");
+            } else if (stepOn && p < stepOut) {
+              li.classList.remove("is-step-visible");
+            }
+            li.classList.toggle("is-past", lastVis >= 0 && idx < lastVis);
+            li.classList.toggle("is-active", lastVis >= 0 && idx === lastVis);
           });
-        }, { threshold: 0 });
+        }
 
-        deckIo.observe(deck);
-        cardIo.observe(items[0]);
+        updateNeedsDeckScroll();
+        window.addEventListener("scroll", updateNeedsDeckScroll, { passive: true });
+        window.addEventListener("resize", updateNeedsDeckScroll);
       })();
 
       function updateTimeline() {
