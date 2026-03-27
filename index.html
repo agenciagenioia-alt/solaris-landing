@@ -458,10 +458,10 @@
       z-index: 1;
       min-height: auto;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
+      grid-template-columns: 1fr;
       grid-template-areas:
-        "copy media"
-        "aside media";
+        "copy"
+        "aside";
       gap: clamp(1.5rem, 4.5vw, 2.75rem);
       align-items: stretch;
       padding: clamp(1.35rem, 4vw, 2.35rem) 0 clamp(1.75rem, 5vw, 2.85rem);
@@ -863,13 +863,77 @@
       transform-origin: center center;
       z-index: 1;
     }
-    .hero-3d--mobile-section,
-    .hero-3d--mobile {
+    .hero-3d--hero {
       display: none;
     }
+    .hero-3d--mobile-section,
+    .hero-3d--mobile,
     .hero-3d-mobile-shell,
     .hero-3d-mobile-head {
-      display: none;
+      display: block;
+    }
+    .hero-3d--mobile-section {
+      position: relative;
+      padding: 22px 0 26px;
+      background:
+        radial-gradient(circle at 82% 40%, rgba(255, 184, 0, 0.16), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 22% 78%, rgba(255, 60, 172, 0.11), rgba(255, 60, 172, 0)),
+        linear-gradient(180deg, #14110e 0%, #17110f 44%, #18120f 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .hero-3d-mobile-shell {
+      display: grid;
+      gap: 0.9rem;
+      padding: 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      background:
+        linear-gradient(145deg, rgba(255, 184, 0, 0.08), rgba(255, 60, 172, 0.04)),
+        rgba(255, 255, 255, 0.02);
+      box-shadow:
+        0 10px 32px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .hero-3d-mobile-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      border-radius: 999px;
+      padding: 0.26rem 0.58rem;
+      margin: 0 0 0.48rem;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 225, 182, 0.92);
+      border: 1px solid rgba(255, 184, 0, 0.34);
+      background: rgba(255, 184, 0, 0.08);
+    }
+    .hero-3d-mobile-title {
+      margin: 0 0 0.35rem;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+      color: #F8F4EC;
+    }
+    .hero-3d-mobile-copy {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #CFC6B8;
+    }
+    .hero-3d--mobile {
+      position: relative;
+      top: auto;
+      width: min(100%, 940px);
+      margin: 0 auto;
+      height: clamp(340px, 58vh, 720px);
+      min-height: 340px;
+      max-height: 720px;
+      border-radius: clamp(16px, 2.8vw, 24px);
+      animation: none !important;
+      overscroll-behavior: contain;
     }
     .hero-aside {
       display: grid;
@@ -2056,9 +2120,7 @@
         animation: none !important;
         overscroll-behavior: contain;
       }
-      .hero-3d--hero { display: none; }
       .hero-3d--mobile-section {
-        display: block;
         position: relative;
         padding: 14px 0 18px;
         background:
@@ -2069,7 +2131,6 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       }
       .hero-3d-mobile-shell {
-        display: grid;
         gap: 0.75rem;
         padding: 0.75rem;
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -2080,9 +2141,6 @@
         box-shadow:
           0 10px 32px rgba(0, 0, 0, 0.28),
           inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      }
-      .hero-3d-mobile-head {
-        display: block;
       }
       .hero-3d-mobile-kicker {
         display: inline-flex;
@@ -2112,9 +2170,7 @@
         line-height: 1.48;
         color: #CFC6B8;
       }
-      .hero-3d--mobile {
-        display: block;
-      }
+      .hero-3d--mobile { width: min(100%, 400px); }
       .hero-3d-spline {
         touch-action: none;
         overscroll-behavior: contain;
@@ -2289,7 +2345,7 @@
             -->
             <iframe
               id="heroSplineFrame"
-              src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
+              data-spline-src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
               width="100%"
               height="100%"
               loading="eager"
@@ -2360,7 +2416,8 @@
           <span class="hero-3d-corner hero-3d-corner--br" aria-hidden="true"></span>
           <div class="hero-3d-spline">
             <iframe
-              src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
+              id="mobileSplineFrame"
+              data-spline-src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
               width="100%"
               height="100%"
               loading="eager"
@@ -2910,6 +2967,26 @@
       var loaderStart = performance.now();
       var minLoaderMs = reduceMotion ? 220 : 2300;
       var loaderDone = false;
+      var heroSplineFrame = document.getElementById("heroSplineFrame");
+      var mobileSplineFrame = document.getElementById("mobileSplineFrame");
+
+      function setSplineFrameActive(frame, active) {
+        if (!frame) return;
+        var source = frame.getAttribute("data-spline-src");
+        if (!source) return;
+        if (active) {
+          if (frame.getAttribute("src") !== source) frame.setAttribute("src", source);
+        } else if (frame.hasAttribute("src")) {
+          frame.removeAttribute("src");
+        }
+      }
+
+      function syncSplineFrames() {
+        setSplineFrameActive(heroSplineFrame, false);
+        setSplineFrameActive(mobileSplineFrame, true);
+      }
+      syncSplineFrames();
+      window.addEventListener("resize", syncSplineFrames);
 
       function hideLoader() {
         if (!loader || loaderDone) return;
