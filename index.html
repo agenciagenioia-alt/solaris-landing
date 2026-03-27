@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.59/build/spline-viewer.js"></script>
   <style>
     :root {
       --bg: #0A0A0A;
@@ -48,181 +47,6 @@
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
-    }
-    body.is-loading { overflow: hidden; }
-    body header,
-    body main,
-    body footer,
-    body .mobile-sticky-cta {
-      transition: opacity 0.55s ease, filter 0.55s ease;
-    }
-    body.is-loading header,
-    body.is-loading main,
-    body.is-loading footer,
-    body.is-loading .mobile-sticky-cta {
-      opacity: 0;
-      filter: blur(6px);
-      pointer-events: none;
-    }
-
-    #solar-loader {
-      position: fixed;
-      inset: 0;
-      z-index: 13000;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 50% 44%, rgba(255, 184, 0, 0.14), rgba(255, 107, 0, 0.08) 24%, rgba(10, 10, 10, 0.98) 62%),
-        #0A0A0A;
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.9s ease, visibility 0.9s ease;
-      overflow: hidden;
-    }
-    #solar-loader.is-exit {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-    .solar-loader__scene {
-      position: relative;
-      width: min(54vw, 330px);
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      filter: drop-shadow(0 0 24px rgba(255, 107, 0, 0.35));
-    }
-    .solar-loader__core {
-      width: clamp(56px, 12vw, 88px);
-      height: clamp(56px, 12vw, 88px);
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 30% 28%, rgba(255, 230, 170, 0.92), rgba(255, 184, 0, 0.9) 42%, rgba(255, 107, 0, 0.85) 78%, rgba(255, 107, 0, 0.18) 100%);
-      box-shadow:
-        0 0 34px rgba(255, 184, 0, 0.55),
-        0 0 86px rgba(255, 107, 0, 0.3);
-      animation: loaderCorePulse 1.5s ease-in-out infinite;
-      z-index: 2;
-    }
-    .solar-loader__ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 184, 0, 0.5);
-      box-shadow: inset 0 0 22px rgba(255, 107, 0, 0.26);
-      z-index: 1;
-    }
-    .solar-loader__ring.r1 { width: 34%; height: 34%; animation: loaderOrbitA 3.6s linear infinite; }
-    .solar-loader__ring.r2 { width: 52%; height: 52%; animation: loaderOrbitB 4.8s linear infinite; }
-    .solar-loader__ring.r3 { width: 72%; height: 72%; animation: loaderOrbitA 6.2s linear infinite; opacity: 0.75; }
-    .solar-loader__shockwave {
-      position: absolute;
-      width: 20%;
-      height: 20%;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 184, 0, 0.55);
-      opacity: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .solar-loader__shockwave.wave-a {
-      animation: loaderShockwave 1.65s ease-out infinite;
-    }
-    .solar-loader__shockwave.wave-b {
-      animation: loaderShockwave 1.65s ease-out 0.82s infinite;
-    }
-    .solar-loader__nova {
-      position: absolute;
-      width: 18%;
-      height: 18%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 236, 188, 0.95) 0%, rgba(255, 184, 0, 0.55) 54%, rgba(255, 107, 0, 0) 100%);
-      opacity: 0;
-      filter: blur(1px);
-      animation: loaderNova 1.65s ease-out infinite;
-      z-index: 3;
-      pointer-events: none;
-    }
-    .solar-loader__flash {
-      position: absolute;
-      width: 140%;
-      height: 140%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 184, 0, 0.2) 0%, rgba(255, 107, 0, 0.06) 35%, rgba(255, 107, 0, 0) 70%);
-      opacity: 0;
-      animation: loaderFlash 1.65s ease-out infinite;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .solar-loader__spark {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 3px;
-      height: 3px;
-      margin-left: -1.5px;
-      margin-top: -1.5px;
-      border-radius: 999px;
-      background: rgba(255, 202, 120, 0.95);
-      box-shadow: 0 0 9px rgba(255, 184, 0, 0.6);
-      opacity: 0;
-      transform: rotate(calc(var(--i) * 30deg)) translateY(0);
-      animation: loaderSpark 1.65s ease-out infinite;
-      animation-delay: calc(var(--i) * 0.04s);
-      z-index: 2;
-      pointer-events: none;
-    }
-    .solar-loader__caption {
-      position: absolute;
-      left: 50%;
-      bottom: -26%;
-      transform: translateX(-50%);
-      text-align: center;
-      white-space: nowrap;
-    }
-    .solar-loader__brand {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      letter-spacing: 0.16em;
-      font-size: clamp(0.82rem, 1.8vw, 0.95rem);
-      font-weight: 800;
-      color: #f9f9f9;
-    }
-    .solar-loader__subtitle {
-      margin-top: 0.35rem;
-      font-size: clamp(0.65rem, 1.5vw, 0.76rem);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 200, 140, 0.88);
-    }
-    @keyframes loaderCorePulse {
-      0%, 100% { transform: scale(0.96); filter: saturate(0.98); }
-      50% { transform: scale(1.05); filter: saturate(1.12); }
-    }
-    @keyframes loaderOrbitA {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes loaderOrbitB {
-      from { transform: rotate(360deg); }
-      to { transform: rotate(0deg); }
-    }
-    @keyframes loaderShockwave {
-      0% { transform: scale(0.35); opacity: 0.9; }
-      72% { opacity: 0.22; }
-      100% { transform: scale(6.2); opacity: 0; }
-    }
-    @keyframes loaderNova {
-      0% { transform: scale(0.35); opacity: 0.8; }
-      35% { opacity: 0.35; }
-      100% { transform: scale(4.8); opacity: 0; }
-    }
-    @keyframes loaderFlash {
-      0% { opacity: 0.62; transform: scale(0.25); }
-      100% { opacity: 0; transform: scale(1.15); }
-    }
-    @keyframes loaderSpark {
-      0% { opacity: 0; transform: rotate(calc(var(--i) * 30deg)) translateY(0) scale(0.4); }
-      18% { opacity: 1; }
-      100% { opacity: 0; transform: rotate(calc(var(--i) * 30deg)) translateY(-120px) scale(0.9); }
     }
 
     .skip-link {
@@ -459,10 +283,10 @@
       z-index: 1;
       min-height: auto;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
       grid-template-areas:
-        "copy"
-        "aside";
+        "copy media"
+        "aside media";
       gap: clamp(1.5rem, 4.5vw, 2.75rem);
       align-items: stretch;
       padding: clamp(1.35rem, 4vw, 2.35rem) 0 clamp(1.75rem, 5vw, 2.85rem);
@@ -846,8 +670,7 @@
       background-size: 28px 28px;
       mix-blend-mode: overlay;
     }
-    .hero-3d iframe,
-    .hero-3d-spline spline-viewer {
+    .hero-3d iframe {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -864,104 +687,6 @@
       transform: translate(-50%, -50%);
       transform-origin: center center;
       z-index: 1;
-    }
-    .hero-3d--hero {
-      display: none;
-    }
-    .hero-3d--mobile-section,
-    .hero-3d--mobile,
-    .hero-3d-mobile-shell,
-    .hero-3d-mobile-head {
-      display: block;
-    }
-    .hero-3d--mobile-section {
-      position: relative;
-      padding: 22px 0 26px;
-      background:
-        radial-gradient(circle at 82% 40%, rgba(255, 184, 0, 0.16), rgba(255, 184, 0, 0)),
-        radial-gradient(circle at 22% 78%, rgba(255, 60, 172, 0.11), rgba(255, 60, 172, 0)),
-        linear-gradient(180deg, #14110e 0%, #17110f 44%, #18120f 100%);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .hero-3d-mobile-shell {
-      display: grid;
-      gap: 0.9rem;
-      padding: 0.95rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      background:
-        linear-gradient(145deg, rgba(255, 184, 0, 0.08), rgba(255, 60, 172, 0.04)),
-        rgba(255, 255, 255, 0.02);
-      box-shadow:
-        0 10px 32px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    }
-    .hero-3d-mobile-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.38rem;
-      border-radius: 999px;
-      padding: 0.26rem 0.58rem;
-      margin: 0 0 0.48rem;
-      font-size: 0.6rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255, 225, 182, 0.92);
-      border: 1px solid rgba(255, 184, 0, 0.34);
-      background: rgba(255, 184, 0, 0.08);
-    }
-    .hero-3d-mobile-title {
-      margin: 0 0 0.35rem;
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
-      line-height: 1.28;
-      letter-spacing: -0.01em;
-      color: #F8F4EC;
-    }
-    .hero-3d-mobile-copy {
-      margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #CFC6B8;
-    }
-    .hero-3d--mobile {
-      position: relative;
-      top: auto;
-      width: min(100%, 940px);
-      margin: 0 auto;
-      height: clamp(340px, 58vh, 720px);
-      min-height: 340px;
-      max-height: 720px;
-      border-radius: clamp(16px, 2.8vw, 24px);
-      animation: none !important;
-      overscroll-behavior: contain;
-    }
-    .hero-3d-fallback {
-      position: absolute;
-      inset: auto 10px 10px 10px;
-      z-index: 6;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      padding: 0.5rem 0.65rem;
-      border-radius: 10px;
-      background: rgba(8, 8, 8, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      color: #F0E8DA;
-      font-size: 0.74rem;
-    }
-    .hero-3d-fallback.is-visible { display: flex; }
-    .hero-3d-fallback button {
-      border: 0;
-      border-radius: 999px;
-      padding: 0.35rem 0.62rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #fff;
-      background: var(--orange);
-      cursor: pointer;
     }
     .hero-aside {
       display: grid;
@@ -2126,6 +1851,7 @@
         grid-template-columns: 1fr;
         grid-template-areas:
           "copy"
+          "media"
           "aside";
         padding: 1.25rem 0 1.5rem;
       }
@@ -2148,72 +1874,9 @@
         animation: none !important;
         overscroll-behavior: contain;
       }
-      .hero-3d--mobile-section {
-        position: relative;
-        padding: 14px 0 18px;
-        background:
-          radial-gradient(circle at 82% 40%, rgba(255, 184, 0, 0.16), rgba(255, 184, 0, 0)),
-          radial-gradient(circle at 22% 78%, rgba(255, 60, 172, 0.11), rgba(255, 60, 172, 0)),
-          linear-gradient(180deg, #14110e 0%, #17110f 44%, #18120f 100%);
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .hero-3d-mobile-shell {
-        gap: 0.75rem;
-        padding: 0.75rem;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 18px;
-        background:
-          linear-gradient(145deg, rgba(255, 184, 0, 0.08), rgba(255, 60, 172, 0.04)),
-          rgba(255, 255, 255, 0.02);
-        box-shadow:
-          0 10px 32px rgba(0, 0, 0, 0.28),
-          inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      }
-      .hero-3d-mobile-kicker {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.38rem;
-        border-radius: 999px;
-        padding: 0.26rem 0.58rem;
-        margin: 0 0 0.48rem;
-        font-size: 0.6rem;
-        font-weight: 800;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(255, 225, 182, 0.92);
-        border: 1px solid rgba(255, 184, 0, 0.34);
-        background: rgba(255, 184, 0, 0.08);
-      }
-      .hero-3d-mobile-title {
-        margin: 0 0 0.35rem;
-        font-size: clamp(1.02rem, 3.6vw, 1.2rem);
-        line-height: 1.26;
-        letter-spacing: -0.01em;
-        color: #F8F4EC;
-      }
-      .hero-3d-mobile-copy {
-        margin: 0;
-        font-size: 0.9rem;
-        line-height: 1.48;
-        color: #CFC6B8;
-      }
-      .hero-3d--mobile { width: min(100%, 400px); }
       .hero-3d-spline {
         touch-action: none;
         overscroll-behavior: contain;
-      }
-      .hero-3d--mobile .hero-3d-spline::after,
-      .hero-3d--mobile .hero-3d-gridfx,
-      .hero-3d--mobile .hero-3d-chrome,
-      .hero-3d--mobile .hero-3d-chrome-meta,
-      .hero-3d--mobile .hero-3d-corner,
-      .hero-3d--mobile .hero-3d-tag {
-        display: none !important;
-      }
-      .hero-3d--mobile::before,
-      .hero-3d--mobile::after {
-        display: none !important;
       }
       /* Ligero zoom + velo ::after: recorta marca Spline sin volver al 158% (menos lag) */
       .hero-3d-spline::after {
@@ -2227,18 +1890,15 @@
       .hero-3d-tag-inner {
         padding: 0.4rem 0.65rem 0.55rem 0.65rem;
       }
-      .hero-3d iframe,
-      .hero-3d-spline spline-viewer {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        transform: none;
+      .hero-3d iframe {
+        left: 50%;
+        top: 50%;
+        width: 122%;
+        height: 124%;
+        max-width: none;
+        max-height: none;
+        transform: translate(-50%, -50%);
         filter: none;
-        opacity: 1;
-        mix-blend-mode: normal;
         touch-action: none;
       }
       .hero-3d-gridfx { display: none; }
@@ -2279,35 +1939,7 @@
     }
   </style>
 </head>
-<body class="is-loading">
-  <div id="solar-loader" aria-hidden="true">
-    <div class="solar-loader__scene">
-      <div class="solar-loader__ring r1"></div>
-      <div class="solar-loader__ring r2"></div>
-      <div class="solar-loader__ring r3"></div>
-      <div class="solar-loader__core"></div>
-      <div class="solar-loader__shockwave wave-a"></div>
-      <div class="solar-loader__shockwave wave-b"></div>
-      <div class="solar-loader__nova"></div>
-      <div class="solar-loader__flash"></div>
-      <span class="solar-loader__spark" style="--i:0;"></span>
-      <span class="solar-loader__spark" style="--i:1;"></span>
-      <span class="solar-loader__spark" style="--i:2;"></span>
-      <span class="solar-loader__spark" style="--i:3;"></span>
-      <span class="solar-loader__spark" style="--i:4;"></span>
-      <span class="solar-loader__spark" style="--i:5;"></span>
-      <span class="solar-loader__spark" style="--i:6;"></span>
-      <span class="solar-loader__spark" style="--i:7;"></span>
-      <span class="solar-loader__spark" style="--i:8;"></span>
-      <span class="solar-loader__spark" style="--i:9;"></span>
-      <span class="solar-loader__spark" style="--i:10;"></span>
-      <span class="solar-loader__spark" style="--i:11;"></span>
-      <div class="solar-loader__caption">
-        <div class="solar-loader__brand">SOLARIS</div>
-        <div class="solar-loader__subtitle">Activando núcleo de energía</div>
-      </div>
-    </div>
-  </div>
+<body>
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
 
   <header class="nav-wrap" id="siteNav">
@@ -2370,6 +2002,44 @@
           <p class="hero-lead">Transformamos tu operación. Aceleramos tus ventas.</p>
           <a class="btn btn-primary" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20estrat%C3%A9gico%20gratuito%20de%2030%20minutos.%20Mi%20negocio%20es%20%5Btipo%5D%20y%20quiero%20%5Bresultado%5D." target="_blank" rel="noopener noreferrer">Agenda tu Diagnóstico de 30 min (Gratis) →</a>
         </div>
+        <div class="hero-3d reveal" aria-label="Modelo 3D SOLARIS (interactivo)">
+          <div class="hero-3d-chrome" aria-hidden="true"><span class="hero-3d-chrome-glow"></span></div>
+          <div class="hero-3d-chrome-meta" aria-hidden="true">
+            <span class="hero-3d-chrome-live"><span class="hero-3d-chrome-dot"></span> Interactivo</span>
+          </div>
+          <span class="hero-3d-corner hero-3d-corner--tl" aria-hidden="true"></span>
+          <span class="hero-3d-corner hero-3d-corner--tr" aria-hidden="true"></span>
+          <span class="hero-3d-corner hero-3d-corner--bl" aria-hidden="true"></span>
+          <span class="hero-3d-corner hero-3d-corner--br" aria-hidden="true"></span>
+          <div class="hero-3d-spline">
+            <!--
+              Pose al abrir la página: definida en Spline (Export → Play Settings).
+              Main Camera = vista deseada al cargar | Turntable auto = No si no quieres giro solo.
+              Touch: orbit 1 dedo; Page scroll en la escena = No. Soft limit = Ease (suelta → vuelve a la pose inicial).
+              Quitar el texto “Built with Spline”: plan de pago en Spline; aquí solo velo + zoom suave.
+            -->
+            <iframe
+              id="heroSplineFrame"
+              src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
+              width="100%"
+              height="100%"
+              loading="eager"
+              allow="fullscreen; autoplay; xr-spatial-tracking; accelerometer; gyroscope"
+              referrerpolicy="no-referrer"
+              title="Modelo 3D interactivo SOLARIS"
+            ></iframe>
+          </div>
+          <div class="hero-3d-gridfx" aria-hidden="true"></div>
+          <div class="hero-3d-hint" id="hero3dHint" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <path d="M8 12h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <path d="M10.5 9.5L8 12l2.5 2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 9.5L16 12l-2.5 2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Arrastra para interactuar
+          </div>
+          <p class="hero-3d-tag" aria-hidden="true"><span class="hero-3d-tag-inner">Experiencia 3D · SOLARIS</span></p>
+        </div>
         <aside class="hero-aside" aria-label="Cómo trabajamos">
           <dl>
             <dt>Ritmo</dt>
@@ -2398,37 +2068,6 @@
             <li><span class="context-list-index">02</span><span>Automatización y procesos para ahorrar tiempo operativo.</span></li>
             <li><span class="context-list-index">03</span><span>Implementación rápida con KPIs claros y seguimiento real.</span></li>
           </ol>
-        </div>
-      </div>
-    </section>
-
-    <section class="hero-3d--mobile-section" aria-label="Experiencia 3D SOLARIS en móvil">
-      <div class="container">
-        <div class="hero-3d-mobile-shell reveal">
-          <div class="hero-3d-mobile-head">
-            <p class="hero-3d-mobile-kicker">Vista interactiva</p>
-            <h3 class="hero-3d-mobile-title">Explora el núcleo SOLARIS en tiempo real</h3>
-            <p class="hero-3d-mobile-copy">Gíralo con tus dedos para ver nuestra energía de ejecución desde otro ángulo.</p>
-          </div>
-        <div class="hero-3d hero-3d--mobile" aria-label="Modelo 3D SOLARIS (interactivo)">
-          <div class="hero-3d-chrome" aria-hidden="true"><span class="hero-3d-chrome-glow"></span></div>
-          <div class="hero-3d-chrome-meta" aria-hidden="true">
-            <span class="hero-3d-chrome-live"><span class="hero-3d-chrome-dot"></span> Interactivo</span>
-          </div>
-          <span class="hero-3d-corner hero-3d-corner--tl" aria-hidden="true"></span>
-          <span class="hero-3d-corner hero-3d-corner--tr" aria-hidden="true"></span>
-          <span class="hero-3d-corner hero-3d-corner--bl" aria-hidden="true"></span>
-          <span class="hero-3d-corner hero-3d-corner--br" aria-hidden="true"></span>
-          <div class="hero-3d-spline">
-            <spline-viewer
-              id="mobileSplineViewer"
-              url="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
-              loading-anim-type="none"
-            ></spline-viewer>
-          </div>
-          <div class="hero-3d-gridfx" aria-hidden="true"></div>
-          <p class="hero-3d-tag" aria-hidden="true"><span class="hero-3d-tag-inner">Experiencia 3D · SOLARIS</span></p>
-        </div>
         </div>
       </div>
     </section>
@@ -2962,29 +2601,6 @@
   <script>
     (function () {
       "use strict";
-      var loader = document.getElementById("solar-loader");
-      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var loaderStart = performance.now();
-      var minLoaderMs = reduceMotion ? 220 : 2300;
-      var loaderDone = false;
-
-      function hideLoader() {
-        if (!loader || loaderDone) return;
-        loaderDone = true;
-        loader.classList.add("is-exit");
-        document.body.classList.remove("is-loading");
-        window.setTimeout(function () {
-          loader.style.display = "none";
-        }, reduceMotion ? 240 : 900);
-      }
-
-      window.addEventListener("load", function () {
-        var elapsed = performance.now() - loaderStart;
-        var wait = Math.max(0, minLoaderMs - elapsed);
-        window.setTimeout(hideLoader, wait);
-      }, { once: true });
-      window.setTimeout(hideLoader, reduceMotion ? 900 : 5200);
-
       const nav = document.getElementById("siteNav");
       const menuToggle = document.getElementById("menuToggle");
       const mobileMenu = document.getElementById("mobileMenu");
