@@ -2345,7 +2345,7 @@
             -->
             <iframe
               id="heroSplineFrame"
-              data-spline-src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
+              src="about:blank"
               width="100%"
               height="100%"
               loading="eager"
@@ -2417,7 +2417,7 @@
           <div class="hero-3d-spline">
             <iframe
               id="mobileSplineFrame"
-              data-spline-src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
+              src="https://my.spline.design/astarlikeourown-4SlZToXajlxeadShBs9ovqJ8/"
               width="100%"
               height="100%"
               loading="eager"
@@ -2967,27 +2967,6 @@
       var loaderStart = performance.now();
       var minLoaderMs = reduceMotion ? 220 : 2300;
       var loaderDone = false;
-      var heroSplineFrame = document.getElementById("heroSplineFrame");
-      var mobileSplineFrame = document.getElementById("mobileSplineFrame");
-
-      function setSplineFrameActive(frame, active) {
-        if (!frame) return;
-        var source = frame.getAttribute("data-spline-src");
-        if (!source) return;
-        if (active) {
-          if (frame.getAttribute("src") !== source) frame.setAttribute("src", source);
-        } else if (frame.hasAttribute("src")) {
-          frame.removeAttribute("src");
-        }
-      }
-
-      function syncSplineFrames() {
-        setSplineFrameActive(heroSplineFrame, false);
-        setSplineFrameActive(mobileSplineFrame, true);
-      }
-      syncSplineFrames();
-      window.addEventListener("resize", syncSplineFrames);
-
       function hideLoader() {
         if (!loader || loaderDone) return;
         loaderDone = true;
