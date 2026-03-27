@@ -1746,21 +1746,23 @@
       transform-style: preserve-3d;
       transform: translateZ(0) rotateX(0.8deg);
       transition:
-        transform 0.55s cubic-bezier(0.34, 1.15, 0.64, 1),
-        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.45s ease,
-        border-color 0.35s ease;
+        transform 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.68s cubic-bezier(0.22, 1, 0.28, 1),
+        box-shadow 0.5s ease,
+        border-color 0.4s ease;
     }
     /* Entrada una por una al hacer scroll (móvil y escritorio) */
     .needs-deck .need-item.need-item--reveal {
       opacity: 0;
-      transform: translateY(1.85rem) translateZ(0) rotateX(1.05deg);
+      transform: translate3d(0, 1.35rem, 0) translateZ(0) rotateX(1.05deg);
       pointer-events: none;
+      will-change: transform, opacity;
     }
     .needs-deck .need-item.need-item--reveal.is-visible {
       opacity: 1;
       pointer-events: auto;
       transform: translateZ(0) rotateX(0.8deg);
+      will-change: auto;
     }
     @keyframes needIndexPop {
       0% { transform: scale(0.88); box-shadow: 0 0 12px rgba(255, 107, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.85); }
@@ -1768,7 +1770,7 @@
       100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 107, 0, 0.18), 0 4px 14px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.85); }
     }
     .needs-deck .need-item.need-item--reveal.is-visible .need-index {
-      animation: needIndexPop 0.65s cubic-bezier(0.34, 1.25, 0.64, 1) both;
+      animation: needIndexPop 0.72s cubic-bezier(0.2, 1, 0.32, 1) both;
     }
     @media (hover: hover) and (pointer: fine) {
       .needs-deck .need-item.is-visible:hover {
@@ -1851,7 +1853,7 @@
       box-shadow: 0 0 16px rgba(255, 107, 0, 0.28);
       transform: scaleX(var(--needs-progress, 0));
       transform-origin: left center;
-      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.68s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .needs-deck-track__steps {
       position: relative;
@@ -1870,33 +1872,33 @@
     @keyframes needDeckStepAppear {
       from {
         opacity: 0;
-        transform: translateY(14px) scale(0.78);
+        transform: translate3d(0, 12px, 0) scale(0.82);
       }
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
       }
     }
     @keyframes needDeckStepAppearActive {
       from {
         opacity: 0;
-        transform: translateY(14px) scale(0.78);
+        transform: translate3d(0, 12px, 0) scale(0.82);
       }
       to {
         opacity: 1;
-        transform: translateY(0) scale(1.08);
+        transform: translate3d(0, 0, 0) scale(1.08);
       }
     }
     /* Pasos de la barra: ocultos hasta que la tarjeta correspondiente entra en vista */
     .needs-deck-track__step.needs-step--reveal:not(.is-step-visible) span {
       opacity: 0;
-      transform: translateY(14px) scale(0.78);
+      transform: translate3d(0, 12px, 0) scale(0.82);
       box-shadow: none;
     }
     .needs-deck-track__step.needs-step--reveal.is-step-visible:not(.is-active) span {
       opacity: 1;
-      transform: translateY(0) scale(1);
-      animation: needDeckStepAppear 0.6s cubic-bezier(0.34, 1.15, 0.64, 1) both;
+      transform: translate3d(0, 0, 0) scale(1);
+      animation: needDeckStepAppear 0.72s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .needs-deck-track__step span {
       display: grid;
@@ -1916,8 +1918,8 @@
         0 2px 10px rgba(24, 14, 32, 0.07),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
       transition:
-        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.55s cubic-bezier(0.34, 1.15, 0.64, 1),
+        opacity 0.65s cubic-bezier(0.22, 1, 0.28, 1),
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
         color 0.3s ease,
         border-color 0.3s ease,
         box-shadow 0.35s ease,
@@ -1933,7 +1935,7 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
     .needs-deck-track__step.needs-step--reveal.is-step-visible.is-active span {
-      animation: needDeckStepAppearActive 0.62s cubic-bezier(0.34, 1.15, 0.64, 1) both;
+      animation: needDeckStepAppearActive 0.74s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .needs-deck-track__step.is-active span {
       color: #1a0a00;
@@ -3102,7 +3104,7 @@
       .context-card__chev { transition: none !important; }
       .needs-deck::before { animation: none !important; opacity: 0.85 !important; transform: translate(-50%, -50%) !important; }
       .needs-deck .need-item { transition: none !important; transform: none !important; }
-      .needs-deck .need-item.need-item--reveal { opacity: 1 !important; pointer-events: auto !important; }
+      .needs-deck .need-item.need-item--reveal { opacity: 1 !important; pointer-events: auto !important; will-change: auto !important; }
       .needs-deck .need-item.need-item--reveal .need-index { animation: none !important; }
       .needs-deck .need-item.is-visible:hover { transform: none !important; }
       .needs-deck .need-item:active { transform: none !important; }
@@ -4117,9 +4119,44 @@
           return;
         }
 
-        /* Una tarjeta a la vez: solo se observa la siguiente después de revelar la actual (móvil lo nota al hacer scroll) */
+        /* Una tarjeta a la vez; al salir por completo de la sección se reinicia para que al volver el efecto siga fluido */
         var nextCard = 0;
-        var io = new IntersectionObserver(function (entries, obs) {
+        var deckInside = false;
+        var deckLeaveTimer = null;
+        var cardIo;
+
+        function resetNeedsDeck() {
+          items.forEach(function (el) {
+            el.classList.remove("is-visible");
+            cardIo.unobserve(el);
+          });
+          nextCard = 0;
+          syncTrackFromCards();
+          cardIo.observe(items[0]);
+        }
+
+        function markDeckSectionEnter() {
+          if (deckLeaveTimer) {
+            clearTimeout(deckLeaveTimer);
+            deckLeaveTimer = null;
+          }
+          if (!deckInside) {
+            resetNeedsDeck();
+          }
+          deckInside = true;
+        }
+
+        function markDeckSectionLeave() {
+          if (deckLeaveTimer) {
+            clearTimeout(deckLeaveTimer);
+          }
+          deckLeaveTimer = setTimeout(function () {
+            deckLeaveTimer = null;
+            deckInside = false;
+          }, 160);
+        }
+
+        cardIo = new IntersectionObserver(function (entries, obs) {
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
             var i = Array.prototype.indexOf.call(items, entry.target);
@@ -4133,10 +4170,22 @@
             }
           });
         }, {
-          threshold: 0.18,
-          rootMargin: "0px 0px -22% 0px",
+          threshold: 0.14,
+          rootMargin: "0px 0px -16% 0px",
         });
-        io.observe(items[0]);
+
+        var deckIo = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              markDeckSectionEnter();
+            } else {
+              markDeckSectionLeave();
+            }
+          });
+        }, { threshold: 0 });
+
+        deckIo.observe(deck);
+        cardIo.observe(items[0]);
       })();
 
       function updateTimeline() {
