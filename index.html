@@ -688,6 +688,31 @@
       transform-origin: center center;
       z-index: 1;
     }
+    .hero-3d-relocated-slot {
+      display: none;
+      position: relative;
+      padding: 0;
+      background:
+        radial-gradient(circle at 80% 32%, rgba(255, 184, 0, 0.16), rgba(255, 184, 0, 0)),
+        radial-gradient(circle at 18% 84%, rgba(255, 60, 172, 0.1), rgba(255, 60, 172, 0)),
+        #14100f;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .hero-3d-relocated-shell {
+      padding: 14px 0 14px;
+    }
+    .hero-3d-relocated-slot .hero-3d {
+      width: min(100%, 430px);
+      margin: 0 auto;
+      top: auto;
+      position: relative;
+      height: clamp(268px, 43.5vh, 420px);
+      min-height: 268px;
+      max-height: 420px;
+      border-radius: clamp(16px, 4vw, 22px);
+      animation: none !important;
+    }
     .hero-aside {
       display: grid;
       gap: 0;
@@ -1851,10 +1876,27 @@
         grid-template-columns: 1fr;
         grid-template-areas:
           "copy"
-          "media"
           "aside";
         padding: 1.25rem 0 1.5rem;
       }
+      .hero-3d-relocated-slot { display: block; }
+      .hero-3d-relocated-slot .hero-3d-spline {
+        touch-action: none;
+        overscroll-behavior: contain;
+      }
+      .hero-3d-relocated-slot .hero-3d iframe {
+        left: 50%;
+        top: 50%;
+        width: 122%;
+        height: 124%;
+        max-width: none;
+        max-height: none;
+        transform: translate(-50%, -50%);
+        filter: none;
+        touch-action: none;
+      }
+      .hero-3d-relocated-slot .hero-3d-gridfx { display: none; }
+      .hero-3d-relocated-slot .hero-3d-chrome-dot { animation: none !important; }
       .hero-brand-name::after { width: min(9rem, 70vw); }
       /*
        * Tamaño base fijo en móvil (~43% del alto de pantalla): es lo que todos ven por defecto.
@@ -2070,6 +2112,10 @@
           </ol>
         </div>
       </div>
+    </section>
+
+    <section class="hero-3d-relocated-slot" aria-label="Experiencia 3D SOLARIS">
+      <div class="container hero-3d-relocated-shell" id="hero3dRelocatedShell"></div>
     </section>
 
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
@@ -2619,6 +2665,9 @@
       const previewClose = document.getElementById("previewClose");
       const previewRemoteStatus = document.getElementById("previewRemoteStatus");
       const previewRemoteText = document.getElementById("previewRemoteText");
+      const hero3d = document.querySelector(".hero-3d");
+      const heroAside = document.querySelector(".hero-aside");
+      const hero3dRelocatedShell = document.getElementById("hero3dRelocatedShell");
       let previewFetchAbort = null;
 
       function onScrollNav() {
@@ -2668,6 +2717,23 @@
       updateTimeline();
       window.addEventListener("scroll", updateTimeline, { passive: true });
       window.addEventListener("resize", updateTimeline);
+
+      (function moveHero3dForMobile() {
+        if (!hero3d || !heroAside || !hero3dRelocatedShell) return;
+        function applyPlacement() {
+          var mobile = window.matchMedia("(max-width: 960px)").matches;
+          if (mobile) {
+            if (hero3d.parentElement !== hero3dRelocatedShell) {
+              hero3dRelocatedShell.appendChild(hero3d);
+            }
+          } else if (hero3d.parentElement !== heroAside.parentElement) {
+            heroAside.parentElement.insertBefore(hero3d, heroAside);
+          }
+        }
+        applyPlacement();
+        window.addEventListener("resize", applyPlacement);
+        window.addEventListener("orientationchange", applyPlacement);
+      })();
 
       (function initHero3dHint() {
         var hint = document.getElementById("hero3dHint");
