@@ -3059,6 +3059,36 @@
       .cases-track { grid-auto-columns: minmax(84%, 1fr); }
       .footer-links { grid-template-columns: 1fr; }
       .preview-dialog { height: min(86vh, 680px); }
+      /* Needs-deck: menos GPU en móvil (orbe, 3D, scroll) */
+      .needs-deck {
+        contain: layout style;
+      }
+      .needs-deck::before {
+        animation: none !important;
+        filter: blur(22px);
+        opacity: 0.78;
+        transform: translate(-50%, -50%) scale(1) !important;
+      }
+      .needs-deck .needs-stack {
+        perspective: none;
+      }
+      .needs-deck .need-item {
+        transform-style: flat;
+        transition-duration: 0.48s, 0.45s, 0.38s, 0.3s;
+      }
+      .needs-deck .need-item.need-item--reveal {
+        transform: translate3d(0, 1rem, 0);
+        will-change: auto;
+      }
+      .needs-deck .need-item.need-item--reveal.is-visible {
+        transform: translate3d(0, 0, 0);
+      }
+      .needs-deck .need-item.is-visible:active {
+        transform: none;
+      }
+      .needs-deck-track__line-fill {
+        transition: none;
+      }
       .services-bridge-steps { grid-template-columns: 1fr; }
       .services-bridge-heading { max-width: none; }
     }
@@ -4131,20 +4161,35 @@
           return { enter: gateIn, exit: gateOut };
         }
 
+        var n = items.length;
+        var deckGates = [];
+        for (var gi = 0; gi < n; gi++) {
+          deckGates.push(milestoneGates(gi, n));
+        }
+        var lastNeedsDeckP = -1;
+
         function updateNeedsDeckScroll() {
-          var rect = stack.getBoundingClientRect();
+          var dr = deck.getBoundingClientRect();
           var vh = window.innerHeight || document.documentElement.clientHeight;
+          var margin = Math.min(280, Math.round(vh * 0.45));
+          if (dr.bottom < -margin || dr.top > vh + margin) {
+            return;
+          }
+          var rect = stack.getBoundingClientRect();
           var denom = Math.max(rect.height + vh * 0.4, 1);
           var p = (vh - rect.top) / denom;
           p = Math.max(0, Math.min(1, p));
           if (track) {
-            track.style.setProperty("--needs-progress", p.toFixed(4));
+            var ps = p.toFixed(4);
+            if (ps !== lastNeedsDeckP) {
+              lastNeedsDeckP = ps;
+              track.style.setProperty("--needs-progress", ps);
+            }
           }
-          var n = items.length;
           var i;
           for (i = 0; i < n; i++) {
             var el = items[i];
-            var g = milestoneGates(i, n);
+            var g = deckGates[i];
             var on = el.classList.contains("is-visible");
             if (!on && p >= g.enter) {
               el.classList.add("is-visible");
@@ -4160,7 +4205,7 @@
             }
           }
           steps.forEach(function (li, idx) {
-            var sg = milestoneGates(idx, n);
+            var sg = deckGates[idx];
             var stepOn = li.classList.contains("is-step-visible");
             if (!stepOn && p >= sg.enter) {
               li.classList.add("is-step-visible");
@@ -4172,9 +4217,8 @@
           });
         }
 
+        window.__scrollNeedsDeck = updateNeedsDeckScroll;
         updateNeedsDeckScroll();
-        window.addEventListener("scroll", updateNeedsDeckScroll, { passive: true });
-        window.addEventListener("resize", updateNeedsDeckScroll);
       })();
 
       function updateTimeline() {
@@ -4186,9 +4230,26 @@
         p = Math.max(0, Math.min(1, p));
         timelineRail.style.setProperty("--timeline-progress", p.toFixed(4));
       }
-      updateTimeline();
-      window.addEventListener("scroll", updateTimeline, { passive: true });
-      window.addEventListener("resize", updateTimeline);
+
+      (function bindScrollDrivenUi() {
+        var rafId = null;
+        function flushScrollDrivenUi() {
+          updateTimeline();
+          if (typeof window.__scrollNeedsDeck === "function") {
+            window.__scrollNeedsDeck();
+          }
+        }
+        function scheduleScrollDrivenUi() {
+          if (rafId !== null) return;
+          rafId = requestAnimationFrame(function () {
+            rafId = null;
+            flushScrollDrivenUi();
+          });
+        }
+        flushScrollDrivenUi();
+        window.addEventListener("scroll", scheduleScrollDrivenUi, { passive: true });
+        window.addEventListener("resize", flushScrollDrivenUi);
+      })();
 
       (function initHero3dHint() {
         var hint = document.getElementById("hero3dHint");
