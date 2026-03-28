@@ -2394,6 +2394,36 @@
     }
     .timeline-step p { color: #333; margin: 0; max-width: 58ch; line-height: 1.58; }
     .step-inline { color: #333; }
+    .timeline-step--active {
+      border-left-color: #FF6B00;
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.05),
+        0 10px 36px rgba(255, 107, 0, 0.14),
+        0 0 0 1px rgba(255, 107, 0, 0.14);
+    }
+    .timeline-step--active .timeline-node {
+      background: linear-gradient(145deg, #FF6B00, #FFB800);
+      box-shadow:
+        0 0 0 2px #fff,
+        0 0 14px rgba(255, 107, 0, 0.5);
+      transform: scale(1.12);
+    }
+    .timeline-step--active h3::before {
+      color: #3d2100;
+      background: linear-gradient(145deg, rgba(255, 107, 0, 0.2), rgba(255, 184, 0, 0.38));
+      border-color: rgba(255, 107, 0, 0.32);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .timeline-step {
+        transition: box-shadow 220ms ease, border-left-color 220ms ease;
+      }
+      .timeline-step .timeline-node {
+        transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      }
+      .timeline-step h3::before {
+        transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
+      }
+    }
     @media (max-width: 520px) {
       .process-timeline-wrap { --rail-w: 44px; }
       .timeline-car { width: 28px; height: 18px; }
@@ -4595,6 +4625,45 @@
         timelineRail.style.setProperty("--timeline-progress", p.toFixed(4));
       }
 
+      function updateProcessStepActive() {
+        var sec = document.getElementById("proceso");
+        if (!sec) return;
+        var steps = sec.querySelectorAll(".timeline-step");
+        if (!steps.length) return;
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var sr = sec.getBoundingClientRect();
+        var margin = 48;
+        if (sr.bottom < margin || sr.top > vh - margin) {
+          for (var k = 0; k < steps.length; k++) {
+            steps[k].classList.remove("timeline-step--active");
+            steps[k].removeAttribute("aria-current");
+          }
+          return;
+        }
+        var focusY = vh * 0.42;
+        var bestI = 0;
+        var bestD = Infinity;
+        var i;
+        for (i = 0; i < steps.length; i++) {
+          var r = steps[i].getBoundingClientRect();
+          var c = r.top + r.height * 0.32;
+          var d = Math.abs(c - focusY);
+          if (d < bestD) {
+            bestD = d;
+            bestI = i;
+          }
+        }
+        for (i = 0; i < steps.length; i++) {
+          var on = i === bestI;
+          steps[i].classList.toggle("timeline-step--active", on);
+          if (on) {
+            steps[i].setAttribute("aria-current", "step");
+          } else {
+            steps[i].removeAttribute("aria-current");
+          }
+        }
+      }
+
       function updateServicesBridgeRail() {
         var fill = document.getElementById("servicesBridgeRailFill");
         var steps = document.getElementById("servicesBridgeSteps");
@@ -4617,6 +4686,7 @@
         var rafId = null;
         function flushScrollDrivenUi() {
           updateTimeline();
+          updateProcessStepActive();
           updateServicesBridgeRail();
           if (typeof window.__scrollNeedsDeck === "function") {
             window.__scrollNeedsDeck();
