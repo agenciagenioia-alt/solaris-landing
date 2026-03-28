@@ -2331,16 +2331,28 @@
       border-left: none;
       grid-row: 1;
       grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      counter-reset: proc-step;
     }
     .timeline-step {
       position: relative;
-      padding: 0 0 1.6rem 0.25rem;
+      counter-increment: proc-step;
+      padding: 1rem 1.15rem 1.1rem 1.2rem;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-radius: 14px;
+      border-left: 3px solid rgba(232, 90, 0, 0.35);
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 6px 20px rgba(0, 0, 0, 0.05);
     }
-    .timeline-step:last-child { padding-bottom: 0.25rem; }
+    .timeline-step:last-child { margin-bottom: 0; }
     .timeline-node {
       position: absolute;
       left: calc(-1 * (var(--rail-w) / 2 + 0.35rem + 7px));
-      top: 0.15rem;
+      top: 1.2rem;
       width: 14px;
       height: 14px;
       border-radius: 50%;
@@ -2351,13 +2363,34 @@
     .timeline-step h3 {
       color: #121212;
       font-size: clamp(1.05rem, 1.7vw, 1.22rem);
-      margin-bottom: 0.35rem;
+      margin: 0 0 0.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.5rem;
+    }
+    .timeline-step h3::before {
+      content: counter(proc-step, decimal-leading-zero);
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.1rem;
+      height: 1.55rem;
+      padding: 0 0.4rem;
+      border-radius: 8px;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #5c3300;
+      background: rgba(255, 184, 0, 0.2);
+      border: 1px solid rgba(255, 107, 0, 0.18);
     }
     .step-time {
       font-size: var(--caption);
       font-weight: 700;
       color: #6B3900;
-      margin-left: 0.4rem;
+      margin-left: 0;
     }
     .timeline-step p { color: #333; margin: 0; max-width: 58ch; line-height: 1.58; }
     .step-inline { color: #333; }
