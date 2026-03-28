@@ -518,8 +518,8 @@
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 58%;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, rgba(8, 8, 8, 0.45) 45%, rgba(8, 8, 8, 0.88) 100%);
+      height: 36%;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0) 0%, rgba(8, 8, 8, 0.18) 45%, rgba(8, 8, 8, 0.48) 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -531,11 +531,36 @@
       z-index: 2;
       width: 100%;
       max-width: 1100px;
-      padding: clamp(0.85rem, 3vw, 1.35rem) clamp(1rem, 3vw, 1.5rem) clamp(1.75rem, 4vw, 2.15rem);
+      padding: clamp(0.65rem, 2.5vw, 1.1rem) clamp(1rem, 3vw, 1.5rem) clamp(1.35rem, 3.5vw, 1.85rem);
       pointer-events: none;
     }
-    .hero-strip__overlay * {
-      pointer-events: auto;
+    .hero-strip__glass {
+      position: relative;
+      display: grid;
+      max-width: min(26.5rem, 92vw);
+      pointer-events: none;
+    }
+    .hero-strip__caption {
+      grid-area: 1 / 1;
+      opacity: 0;
+      visibility: hidden;
+      padding: 0.78rem 0.95rem 0.88rem;
+      border-radius: 14px;
+      background: rgba(6, 6, 8, 0.48);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+    }
+    .hero-strip__caption.is-active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 1;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-strip__caption {
+        transition: opacity 0.45s ease, visibility 0.45s ease;
+      }
     }
     .hero-strip__kicker {
       margin: 0 0 0.35rem;
@@ -546,45 +571,52 @@
       color: #FFB800;
     }
     .hero-strip__title {
-      margin: 0 0 0.45rem;
-      font-size: clamp(1.15rem, 4.2vw, 1.55rem);
+      margin: 0 0 0.4rem;
+      font-size: clamp(1.08rem, 4vw, 1.48rem);
       font-weight: 800;
-      line-height: 1.18;
+      line-height: 1.2;
       letter-spacing: -0.02em;
       color: #fff;
-      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
     }
     .hero-strip__lead {
       margin: 0;
-      font-size: clamp(0.88rem, 2.6vw, 1rem);
-      line-height: 1.5;
-      color: rgba(245, 245, 245, 0.92);
-      text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5);
-      max-width: 34ch;
+      font-size: clamp(0.86rem, 2.5vw, 0.98rem);
+      line-height: 1.52;
+      color: rgba(248, 248, 248, 0.94);
+      max-width: 36ch;
     }
     .hero-strip__dots {
       position: absolute;
       left: 50%;
-      bottom: clamp(0.45rem, 2vw, 0.75rem);
+      bottom: clamp(0.4rem, 2vw, 0.65rem);
       transform: translateX(-50%);
       z-index: 3;
       display: flex;
-      gap: 0.4rem;
-      pointer-events: none;
+      align-items: center;
+      gap: 0.45rem;
     }
     .hero-strip__dot {
-      width: 7px;
-      height: 7px;
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.35);
-      animation: heroStripDot 18s infinite;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.38);
+      -webkit-tap-highlight-color: rgba(255, 107, 0, 0.15);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
-    .hero-strip__dot:nth-child(1) { animation-delay: 0s; }
-    .hero-strip__dot:nth-child(2) { animation-delay: 6s; }
-    .hero-strip__dot:nth-child(3) { animation-delay: 12s; }
-    @keyframes heroStripDot {
-      0%, 26% { opacity: 1; transform: scale(1.2); background: #FFB800; box-shadow: 0 0 12px rgba(255, 107, 0, 0.55); }
-      33%, 100% { opacity: 0.35; transform: scale(1); background: rgba(255, 255, 255, 0.35); box-shadow: none; }
+    .hero-strip__dot:hover {
+      background: rgba(255, 255, 255, 0.55);
+    }
+    .hero-strip__dot:focus-visible {
+      outline: 2px solid #FFB800;
+      outline-offset: 3px;
+    }
+    .hero-strip__dot[aria-current="true"] {
+      background: linear-gradient(135deg, #FF6B00, #FFB800);
+      transform: scale(1.2);
+      box-shadow: 0 0 14px rgba(255, 107, 0, 0.55);
     }
     .hero-strip__mini {
       position: relative;
@@ -1403,11 +1435,20 @@
       position: absolute;
       inset: 0;
       opacity: 0;
+      z-index: 0;
       background: #0A0A0A;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: heroFade 18s infinite;
+    }
+    .hero-slide.is-active {
+      opacity: 1;
+      z-index: 1;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-slide {
+        transition: opacity 0.65s ease;
+      }
     }
     .hero-slide img {
       width: 100%;
@@ -1416,19 +1457,6 @@
       object-fit: cover;
       object-position: center center;
       display: block;
-    }
-    .hero-slide.s1 {
-      animation-delay: 0s;
-    }
-    .hero-slide.s2 {
-      animation-delay: 6s;
-    }
-    .hero-slide.s3 {
-      animation-delay: 12s;
-    }
-    @keyframes heroFade {
-      0%, 27% { opacity: 1; }
-      34%, 100% { opacity: 0; }
     }
 
     .section-divider {
@@ -3594,18 +3622,16 @@
       .hero-3d { position: relative; top: auto; animation: none !important; }
       .hero-3d-hint { transition: none !important; }
       .hero-3d-chrome-dot { animation: none !important; }
-      .hero-slide.s1,
-      .hero-slide.s2,
-      .hero-slide.s3 { opacity: 0 !important; }
-      .hero-slide.s1 { opacity: 1 !important; }
+      .hero-slide { transition: none !important; }
+      .hero-strip__caption { transition: none !important; }
       .hero-strip__dot {
-        opacity: 0.38 !important;
+        transition: none !important;
         transform: none !important;
-        background: rgba(255, 255, 255, 0.4) !important;
         box-shadow: none !important;
       }
-      .hero-strip__dot:first-child {
-        opacity: 1 !important;
+      .hero-strip__dot[aria-current="true"] {
+        transform: none !important;
+        box-shadow: none !important;
         background: #FFB800 !important;
       }
       .hero-brand-name {
@@ -4314,38 +4340,52 @@
 
     <div class="section-divider" aria-hidden="true"><div class="divider-glow"></div></div>
 
-    <section class="hero-strip" id="galeria" aria-label="Importaciones y operación en almacén SOLARIS">
-      <div class="hero-strip__stage">
+    <section class="hero-strip" id="galeria" aria-label="Galería SOLARIS: operación, datos y crecimiento">
+      <div class="hero-strip__stage" id="heroStripStage">
         <div class="hero-media" aria-hidden="true">
-          <div class="hero-slide s1">
+          <div class="hero-slide is-active" data-hero-slide="0">
             <img src="https://i.postimg.cc/NgwQVGDC/1.jpg?dl=1" alt="" loading="lazy" decoding="async">
           </div>
-          <div class="hero-slide s2">
+          <div class="hero-slide" data-hero-slide="1">
             <img src="https://i.postimg.cc/4XpYnSSJ/2.jpg?dl=1" alt="" loading="lazy" decoding="async">
           </div>
-          <div class="hero-slide s3">
+          <div class="hero-slide" data-hero-slide="2">
             <img src="https://i.postimg.cc/PHy8m0rq/3.jpg?dl=1" alt="" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="hero-strip__overlay">
-          <p class="hero-strip__kicker">SOLARIS · IMPORTACIONES RENTABLES</p>
-          <h2 class="hero-strip__title">¿Importas y aún pierdes plata en cada pedido?</h2>
-          <p class="hero-strip__lead">Optimizamos tu negociación, logística y márgenes con IA.</p>
+          <div class="hero-strip__glass" id="heroStripPanel">
+            <div class="hero-strip__caption is-active" data-hero-caption="0" aria-hidden="false">
+              <p class="hero-strip__kicker">SOLARIS · OPERACIÓN &amp; LOGÍSTICA</p>
+              <h2 class="hero-strip__title">De la bodega al cliente sin fricción.</h2>
+              <p class="hero-strip__lead">Importación, stock y entregas alineados para que cada pedido deje margen, no dolores de cabeza.</p>
+            </div>
+            <div class="hero-strip__caption" data-hero-caption="1" aria-hidden="true">
+              <p class="hero-strip__kicker">SOLARIS · DATOS &amp; AUTOMATIZACIÓN</p>
+              <h2 class="hero-strip__title">Decisiones rápidas con IA en tu negocio.</h2>
+              <p class="hero-strip__lead">Paneles, alertas y flujos que te ahorran horas: menos Excel improvisado, más control real.</p>
+            </div>
+            <div class="hero-strip__caption" data-hero-caption="2" aria-hidden="true">
+              <p class="hero-strip__kicker">SOLARIS · MARCA &amp; CANALES</p>
+              <h2 class="hero-strip__title">Presencia que convierte, no solo likes.</h2>
+              <p class="hero-strip__lead">Creatividad, pauta y mensaje coherente para que el tráfico se traduzca en clientes y ventas.</p>
+            </div>
+          </div>
         </div>
-        <div class="hero-strip__dots" aria-hidden="true">
-          <span class="hero-strip__dot"></span>
-          <span class="hero-strip__dot"></span>
-          <span class="hero-strip__dot"></span>
+        <div class="hero-strip__dots" role="group" aria-label="Cambiar imagen de la galería">
+          <button type="button" class="hero-strip__dot" aria-current="true" data-hero-dot="0" aria-label="Escena 1: operación y logística"></button>
+          <button type="button" class="hero-strip__dot" data-hero-dot="1" aria-label="Escena 2: datos y automatización"></button>
+          <button type="button" class="hero-strip__dot" data-hero-dot="2" aria-label="Escena 3: marca y canales"></button>
         </div>
       </div>
       <div class="hero-strip__mini">
         <div class="hero-strip__mini-inner">
-          <ul class="hero-strip__pills" aria-label="Pilares del servicio de importaciones">
-            <li>Negociación</li>
-            <li>Logística</li>
-            <li>Márgenes con IA</li>
+          <ul class="hero-strip__pills" aria-label="Líneas de trabajo SOLARIS">
+            <li>Operación</li>
+            <li>IA &amp; datos</li>
+            <li>Marca &amp; growth</li>
           </ul>
-          <a class="hero-strip__mini-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20diagn%C3%B3stico%20de%20importaciones%20con%20IA." target="_blank" rel="noopener noreferrer">Diagnóstico de importación →</a>
+          <a class="hero-strip__mini-cta" href="https://wa.me/573116165784?text=Hola%20SOLARIS%2C%20quiero%20un%20diagn%C3%B3stico%20gratuito%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer">Diagnóstico gratuito →</a>
         </div>
       </div>
     </section>
@@ -4859,6 +4899,96 @@
         flushScrollDrivenUi();
         window.addEventListener("scroll", scheduleScrollDrivenUi, { passive: true });
         window.addEventListener("resize", flushScrollDrivenUi);
+      })();
+
+      (function initHeroStripCarousel() {
+        var stage = document.getElementById("heroStripStage");
+        if (!stage) return;
+        var slides = stage.querySelectorAll("[data-hero-slide]");
+        var captions = stage.querySelectorAll("[data-hero-caption]");
+        var dots = stage.querySelectorAll("[data-hero-dot]");
+        var n = slides.length;
+        if (!n || n !== dots.length || n !== captions.length) return;
+
+        var current = 0;
+        var timerId = null;
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var intervalMs = 6000;
+        var touchStartX = null;
+
+        function goTo(index) {
+          current = ((index % n) + n) % n;
+          var i;
+          for (i = 0; i < n; i++) {
+            slides[i].classList.toggle("is-active", i === current);
+            captions[i].classList.toggle("is-active", i === current);
+            captions[i].setAttribute("aria-hidden", i === current ? "false" : "true");
+            if (i === current) {
+              dots[i].setAttribute("aria-current", "true");
+            } else {
+              dots[i].removeAttribute("aria-current");
+            }
+          }
+        }
+
+        function stopAuto() {
+          if (timerId !== null) {
+            window.clearInterval(timerId);
+            timerId = null;
+          }
+        }
+
+        function startAuto() {
+          stopAuto();
+          if (reduced) return;
+          timerId = window.setInterval(function () {
+            goTo(current + 1);
+          }, intervalMs);
+        }
+
+        dots.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var idx = parseInt(btn.getAttribute("data-hero-dot"), 10);
+            if (isNaN(idx)) return;
+            goTo(idx);
+            startAuto();
+          });
+        });
+
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+          stage.addEventListener("mouseenter", stopAuto);
+          stage.addEventListener("mouseleave", startAuto);
+        }
+
+        stage.addEventListener("touchstart", function (e) {
+          touchStartX = e.changedTouches[0] ? e.changedTouches[0].screenX : null;
+        }, { passive: true });
+        stage.addEventListener("touchend", function (e) {
+          if (touchStartX === null || !e.changedTouches[0]) return;
+          var dx = e.changedTouches[0].screenX - touchStartX;
+          touchStartX = null;
+          if (Math.abs(dx) < 48) return;
+          goTo(dx < 0 ? current + 1 : current - 1);
+          startAuto();
+        }, { passive: true });
+
+        var mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        function onReduceMotionChange() {
+          reduced = mqReduce.matches;
+          if (reduced) {
+            stopAuto();
+          } else {
+            startAuto();
+          }
+        }
+        if (typeof mqReduce.addEventListener === "function") {
+          mqReduce.addEventListener("change", onReduceMotionChange);
+        } else if (typeof mqReduce.addListener === "function") {
+          mqReduce.addListener(onReduceMotionChange);
+        }
+
+        goTo(0);
+        startAuto();
       })();
 
       (function initServicesBridgeInview() {
