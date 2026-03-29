@@ -2618,17 +2618,18 @@
       border-radius: 16px;
       overflow: hidden;
       background: rgba(255, 255, 255, 0.045);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      /* Blur más bajo: menos repintado al cambiar altura del acordeón */
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 184, 0, 0.2);
       box-shadow:
         0 0 0 1px rgba(255, 107, 0, 0.1) inset,
         0 10px 36px rgba(0, 0, 0, 0.22);
+      /* Sin opacity/transform: evita 4–5 animaciones a la vez con :has() + grid */
       transition:
-        opacity 0.35s ease,
-        transform 0.35s ease,
-        border-color 0.25s ease,
-        box-shadow 0.35s ease;
+        border-color 0.22s ease,
+        box-shadow 0.26s ease;
+      contain: layout;
     }
     .faq-item::before {
       content: "";
@@ -2644,7 +2645,7 @@
       pointer-events: none;
       z-index: 0;
       opacity: 0.55;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.22s ease;
     }
     .faq-item > * {
       position: relative;
@@ -2657,17 +2658,17 @@
     .faq-item:hover::before {
       opacity: 0.85;
     }
+    /* Opacidad sin transición en .faq-item → atenuación instantánea (menos jank con blur) */
     .faq-list:has(.faq-item.open) .faq-item:not(.open) {
       opacity: 0.86;
     }
     .faq-item.open {
       opacity: 1 !important;
-      transform: scale(1.012);
       border-color: rgba(255, 184, 0, 0.5);
       box-shadow:
         0 0 0 1px rgba(255, 107, 0, 0.28) inset,
-        0 0 28px rgba(255, 107, 0, 0.14),
-        0 18px 48px rgba(0, 0, 0, 0.38);
+        0 0 32px rgba(255, 107, 0, 0.16),
+        0 20px 52px rgba(0, 0, 0, 0.4);
     }
     .faq-item.open::before {
       opacity: 1;
@@ -2745,23 +2746,23 @@
       font-weight: 300;
       line-height: 1;
       display: block;
-      transition: transform 0.32s ease;
+      transition: transform 0.24s cubic-bezier(0.32, 0.72, 0, 1);
     }
     .faq-item.open .faq-icon::before {
       transform: rotate(45deg);
     }
+    /* max-height anima más fluido que grid-template-rows + menos invalidación con blur */
     .faq-body {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 0 1rem;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      transition: max-height 0.34s cubic-bezier(0.32, 0.72, 0, 1);
     }
     .faq-item.open .faq-body {
-      grid-template-rows: 1fr;
+      max-height: min(28rem, 80vh);
     }
     .faq-body__inner {
-      min-height: 0;
-      overflow: hidden;
+      padding: 0 1rem;
     }
     .faq-body__inner p {
       color: #D8D8D8;
